@@ -18,10 +18,14 @@
   const sec = document.querySelector('.pages');
   if (!sec) return;
 
-  const N = +sec.dataset.count;
+  // files are named after their Frame number (f01…f40); play from data-from to data-to
+  const from = +sec.dataset.from; const to = +sec.dataset.to;
+  const step = from > to ? -1 : 1;
+  const frames = Array.from({ length: Math.abs(from - to) + 1 }, (_, k) => from + k * step);
+  const N = frames.length;
   const base = sec.dataset.src;
-  const full = (i) => `${base}/full/p${pad(i + 1)}.jpg`;
-  const thumb = (i) => `${base}/thumb/p${pad(i + 1)}.jpg`;
+  const full = (i) => `${base}/full/f${pad(frames[i])}.jpg`;
+  const thumb = (i) => `${base}/thumb/f${pad(frames[i])}.jpg`;
 
   const stage = sec.querySelector('.pg-stage');
   const layers = [...stage.querySelectorAll('.pg-img')];
@@ -32,7 +36,7 @@
   const grid = sec.querySelector('.pg-grid');
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const INTERVAL = 1500;
+  const INTERVAL = 1000;
   let cur = -1;
   let front = 0;
   let playing = !reduce;
