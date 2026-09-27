@@ -14,6 +14,8 @@
     todo      what still needs to be added (shows as a dashed box)
     images    ['book/b10', 'bookfair/f7016', ...]  → assets/img/<folder>/{thumb,full}/<file>.jpg
     links     [{ label, url }]
+    entries   [{ img: [...], source, url, about, text, more: { label, text, notes: [{ text, url }] } }]
+              → one block per image (or pair): caption text is mine, as written
     feedback  [ 'note from class crit…' ]   → shown under "Feedback"
     response  [ 'what I did about it…' ]    → shown under "Response"
     href      works only — the standalone page to open
@@ -49,47 +51,110 @@
         {
           id: 'w1', kind: 'week', label: 'From Interest to Question',
           date: '08.28', tag: '256 · Image Collection',
-          text: 'Start of the 256 project: the designer as editor. A first small collection, and ways of putting it in order.',
           feedback: [], response: [],
           children: [
             {
+              id: 'w1-mindmap', kind: 'step', label: 'Mindmap',
+              images: ['w1-mindmap/mindmap'],
+            },
+            {
               id: 'w1-images', kind: 'step', label: '12 Images',
-              text: 'Twelve images with sources and my own captions — one from the Last Whole Earth Catalog, one from the Smithsonian Archives, one made with a lens.',
-              todo: 'Add the 12 images, sources and captions',
-              images: [],
-            },
-            {
-              id: 'w1-orders', kind: 'step', label: '10 Ways to Order',
-              text: 'Ten one-line instructions for sequencing the collection — by content, form, association or speculation.',
-              todo: 'Add the 10 instructions',
-            },
-            {
-              id: 'w1-look', kind: 'step', label: 'Look At',
-              text: 'Three practices that use collecting and juxtaposing images as a way of thinking.',
-              children: [
+              // one entry per image (or pair) — caption text is mine, as written
+              entries: [
                 {
-                  id: 'w1-warburg', kind: 'step', label: 'Aby Warburg',
-                  text: 'Bilderatlas Mnemosyne (1920s): panels of images tracing recurring gestures and motifs across time.',
-                  links: [{ label: 'Brooklyn Rail', url: 'https://brooklynrail.org/2021/02/art_books/Aby-Warburgs-Bilderatlas-Mnemosyne/' }],
+                  img: ['w1-images/17'],
+                  source: 'Instagram post by 40_who, 2006',
+                  about: `While passing through a quarry in Sweden, the photographer noticed a strange shape in the snow. As he approached, he discovered an eagle lying there, leaving behind the trace of its final moments.`,
+                  text: `This image reflects themes of nature, death, and trace. Rather than depicting the animal itself in a dramatic way, it focuses on the quiet imprint left behind, emphasizing absence, fragility, and the passage of life. The image resonates with my interest in slowness, care, and non-spectacular ways of seeing nature, where meaning emerges through subtle marks rather than visual excess.`,
                 },
                 {
-                  id: 'w1-tillmans', kind: 'step', label: 'Wolfgang Tillmans',
-                  text: 'Arranges his own photographs in space — scale, sequence and proximity make new relationships.',
-                  links: [
-                    { label: 'Interview, Fondation Beyeler', url: 'https://www.youtube.com/watch?v=f9RrmzUXnhA' },
-                    { label: 'Installation views, Zwirner 2015', url: 'http://tillmans.co.uk/component/jcgtillmans/2015_pcr-david-zwirner' },
-                  ],
+                  img: ['w1-images/09'],
+                  source: 'Ghost Forest',
+                  text: `Ghost Forest addresses the fragile relationship between humans and nature by bringing dead trees into public urban space.`,
                 },
                 {
-                  id: 'w1-suter', kind: 'step', label: 'Batia Suter',
-                  text: 'Sequences found images from books and archives to surface unexpected associations.',
-                  links: [{ label: 'Interview', url: 'https://www.youtube.com/watch?v=FpRM4-aAa1I' }],
+                  img: ['w1-images/18'],
+                  source: 'Cannupa Hanska Luger, Mirror Shield Project, 2016, Oceti Sakowin camp, Standing Rock, ND',
+                  text: `This project represents a gentle form of protest that uses reflection instead of confrontation. The mirror becomes a nonviolent tool, emphasizing environmental protection and respect for local culture.`,
+                  more: {
+                    label: 'Annotation',
+                    text: `Cannupa Hanska Luger’s Mirror Shield Project transforms visibility into a tactical, relational tool of resistance, using reflective surfaces to compel militarized actors to confront their own bodies and the institutions they represent. The shields operate as “relational technologies,” reorganizing how vision and power interact: the traditional one-way gaze of authority is disrupted, and the perpetrator’s context is appropriated and inverted, exposing the ethical and structural violence embedded in their actions. By reflecting the observer back onto themselves, the project enacts a form of context reversal, making visible the social, political, and historical frameworks that sustain settler-colonial power. Simultaneously, the shields foster communal recognition among protestors, materializing collective responsibility and care. In this way, the project demonstrates how visibility can be redirected, manipulated, and ethically reconfigured to reveal hidden hierarchies and redistribute agency.`,
+                    notes: [
+                      { text: 'Corina L. Apostol and Nato Thompson, “Cannupa Hanska Luger,” Making Another World Possible, October 11, 2019, 102.', url: 'https://doi.org/10.4324/9780429468988' },
+                      { text: 'Robyn Lee, “Art, Affect, and Social Media in the ‘No Dakota Access Pipeline’ Movement,” Theory, Culture & Society 40, no. 7–8 (March 1, 2023): 92.', url: 'https://doi.org/10.1177/02632764221146715' },
+                      { text: 'Emilie Luckett, Radical Care in Precarious Times: The Socially Engaged Art of Cannupa Hanska Luger and STTLMNT, PhD diss., University of Colorado at Boulder, 2022, 11.', url: 'https://www.proquest.com/dissertations-theses/radical-care-precarious-times-socially-engaged/docview/2678514033/se-2' },
+                    ],
+                  },
                 },
+                {
+                  img: ['w1-images/11', 'w1-images/12'],
+                  source: 'D’Arcy Thompson, On Growth and Form (1917)',
+                },
+                {
+                  img: ['w1-images/10'],
+                  source: 'The Last Whole Earth Catalog',
+                  url: 'https://wholeearth.info/p/the-last-whole-earth-catalog-january-1971?format=grid&index=437',
+                  text: `The top half is a passage on geese migration. Since the Ice Age, every March the geese’s route has tied distant places into one whole — “from the China Sea to the Siberian Steppe, from the Euphrates to the Volga” — carrying the corn left in Illinois fields up to the Arctic tundra. The line below, “We all strive for safety, prosperity, comfort, long life, and dullness,” is the ending of Leopold’s other essay, Thinking Like a Mountain: people killed the wolves thinking it would help the deer, the deer overpopulated and ate the plants bare, and the whole mountain paid a bigger price.`,
+                },
+                {
+                  img: ['w1-images/13'],
+                  source: 'The Last Whole Earth Catalog — Wildlife Nurseries catalog ad',
+                  text: `“If you got open water, you can plant various goodies that will attract ducks, as well as muskrats and fish.” A mail-order catalog selling things for making wildlife habitat, from Oshkosh, Wisconsin. The “-SB” at the end is Stewart Brand recommending it himself. People changing the environment on purpose to “invite” other species in.`,
+                },
+                {
+                  img: ['w1-images/14'],
+                  source: 'The Last Whole Earth Catalog — Polled Herefords',
+                  text: `Top left: a pig with its parts labelled (SHOULDER, LOIN, RUMP…). The text is the breeding history of the Polled Hereford: in 1900 Warren Gammon wrote to Hereford breeders all over the US and found 13 purebred cattle born without horns, and bred a whole hornless breed from them — a case of people selecting on purpose to change a species.`,
+                },
+                {
+                  img: ['w1-images/05'],
+                  source: 'Smithsonian Institution Archives — “Dynamics of Evolution,” National Museum of Natural History',
+                  url: 'https://siarchives.si.edu/collections/siris_sic_11643',
+                  about: `The "Dynamics of Evolution" exhibit in the Smithsonian's National Museum of Natural History seen from above. A group of Smithsonian staff members pose for a photograph next to the "People Tower" and the "Dog Tower." The "People Tower" is covered with more than 100 larger than life-size photos of faces showing genetic traits, such as blue or brown eyes, or black or blond hair. The "Dog Tower" illustrates how "artificial" selection by human beings has influenced an animal's evolutionary history.`,
+                },
+                {
+                  img: ['w1-images/03'],
+                  text: `I usually think of birds at the beach as part of the scenery, but this made me notice how much they are already adapting to spaces shaped by humans. They are living around us even when we are not really paying attention to them.`,
+                },
+                {
+                  img: ['w1-images/04'],
+                  text: `Pigeons seem almost inseparable from the city now. I find it interesting that we built this environment for ourselves, but other species learned how to use it too, sometimes better than we expected.`,
+                },
+                {
+                  img: ['w1-images/02'],
+                  text: `Seeing pigeons standing together in the snow made me think about how much effort animals put into simply surviving conditions that we usually ignore. They look ordinary because we see them every day, but their lives are not necessarily easy.`,
+                },
+                {
+                  img: ['w1-images/16'],
+                  source: 'Giacomo Balla, Street Light',
+                  text: `This painting transforms ordinary street lamps into beams of dancing light, capturing the rhythm, energy, and vitality of the city. Balla uses abstraction and motion to depict an idealized, utopian future, where light embodies hope, freedom, and possibility. The work resonates with my interest in how visual form can convey emotion and imagination, turning everyday phenomena into a medium for exploring future worlds and human experience.`,
+                  more: {
+                    label: 'Longer notes',
+                    text: `Seeing Giacomo Balla’s Street Light left me truly amazed. The beams of light in the painting seem to dance, as if the city itself is breathing, and I can almost feel the rhythm and energy of the night. The light does more than illuminate the streets—it seems to depict an ideal future world: fast, free, and full of vitality. Balla captures the movement of light in an abstract way, turning street lamps into dancing forms, making the city feel alive. Calm or stillness are not his goals; instead, through speed, rhythm, and the pulse of light, he transforms the city into a vibrant, energetic organism. I am deeply moved by the idealized future world it envisions—a utopia that is fast, free, and full of hope.
+
+Connecting it to the idea of “utopia,” I feel this painting sketches a possible future: every beam of light guides the way, every flicker symbolizes hope and energy. It makes me imagine—if the city could flow like light, would life feel lighter, freer? In Balla’s world, light is both order and imagination, a way for us to touch a future ideal.
+
+From this painting, I’ve learned that art can go beyond reality to express a possible way of living and feeling. Light and motion are not only physical phenomena; they can also carry thought and emotion. Through abstraction and form, we can imagine an ideal city and world, even if it doesn’t yet exist in reality. Art allows us to experience a future utopia, awakening both imagination and the senses. Balla teaches me that even the most ordinary street lamps can, in an artist’s hands, become a medium for exploring the future and expressing hope.`,
+                  },
+                },
+                {
+                  img: ['w1-images/15'],
+                  source: 'Louise Bourgeois, Maman (1999)',
+                  text: `This monumental spider sculpture embodies themes of care, protection, and maternal strength. It resonates with my interest in cross-species perspectives and femininity, transforming the familiar (a spider) into a symbol of both vulnerability and power, and inviting viewers to reflect on relational bonds, memory, and the emotional presence of nature in art.`,
+                },
+                {
+                  img: ['w1-images/08'],
+                  source: 'Ideonella sakaiensis',
+                  text: `I find it fascinating that a bacteria has evolved to break down a material that humans only invented recently. It feels like nature is already reacting to our waste, even though plastic was never supposed to be part of its environment.`,
+                },
+                { img: ['w1-images/01'] },
+                { img: ['w1-images/06'] },
+                { img: ['w1-images/07'] },
               ],
             },
             {
-              id: 'w1-archive', kind: 'step', label: 'Living Archive',
-              text: 'This site. Set up as a map that grows, rather than a folder that fills.',
+              id: 'w1-orders', kind: 'step', label: 'Orders',
+              images: Array.from({ length: 16 }, (_, i) => `w1-orders/o${String(i + 1).padStart(2, '0')}`),
             },
           ],
         },
@@ -124,11 +189,6 @@
                 { id: 'w2-actions', kind: 'step', label: '10 Unseen Actions', text: 'Materials, labour, extraction, transport, systems, people.', todo: 'Add the list' },
                 { id: 'w2-reflection', kind: 'step', label: 'Reflection', text: 'Could revealing these infrastructures become part of the book, the thesis, or both?', todo: 'Add the ~200 word reflection' },
               ],
-            },
-            {
-              id: 'w2-look', kind: 'step', label: 'Look At',
-              text: 'Hyning Gan — Open Studio · UTNS — Radical Records of Nature · @lyavengerik — Unravel a Manifesto · Observational Practices Lab — Talking About Seeing.',
-              links: [{ label: '@lyavengerik', url: 'https://www.instagram.com/lyavengerik/' }],
             },
           ],
         },

@@ -62,7 +62,11 @@
 
   function collectImages(n, max) {
     const all = [];
-    (function w(x) { (x.images || []).forEach((p) => all.push(p)); x.children.forEach(w); })(n);
+    (function w(x) {
+      (x.images || []).forEach((p) => all.push(p));
+      (x.entries || []).forEach((e) => (e.img || []).forEach((p) => all.push(p)));
+      x.children.forEach(w);
+    })(n);
     if (all.length <= max) return all;
     return Array.from({ length: max }, (_, i) => all[Math.floor((i * all.length) / max)]);
   }
@@ -146,7 +150,7 @@
       const { w, h, pad } = n.g;
       el('rect', { class: 'box', x: 0, y: -h / 2, width: w, height: h }, g);
       if (n.kind === 'work') el('rect', { class: 'box box-in', x: 3, y: -h / 2 + 3, width: w - 6, height: h - 6 }, g);
-      const icon = n.kind === 'root' ? ICON.root : n.kind === 'work' ? ICON.work : n.children.length || (n.images && n.images.length) ? ICON.folder : ICON.doc;
+      const icon = n.kind === 'root' ? ICON.root : n.kind === 'work' ? ICON.work : n.children.length || (n.images && n.images.length) || (n.entries && n.entries.length) ? ICON.folder : ICON.doc;
       el('path', { class: 'icon', d: icon, transform: `translate(${pad},-6.5)` }, g);
       el('text', { x: pad + 25, y: 0.5 }, g).textContent = n.g.label;
     }
@@ -486,7 +490,7 @@
       : `<span class="pill">${esc(dateOf(n))}</span><span class="pill">${esc(tagOf(n))}</span>`;
     noteEl.innerHTML = `
       <div class="n-meta">${meta}</div>
-      <p><sup>${S.noteNo}</sup>${esc(text || '')}</p>
+      ${text ? `<p><sup>${S.noteNo}</sup>${esc(text)}</p>` : ''}
       ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : '<button class="n-open" type="button">notes, feedback &amp; response →</button>'}`;
     const btn = noteEl.querySelector('.n-open');
     if (btn) btn.onclick = () => { SND.node(n, 0, 0.6); openPanel(n); };
@@ -536,6 +540,25 @@
         .map((p, i) => `<button type="button" data-img="${i}"><img loading="lazy" src="${thumb(p)}" alt=""></button>`)
         .join('')}</div></section>`;
     }
+    const entryItems = [];
+    if (n.entries && n.entries.length) {
+      const paras = (t) => String(t).split(/\n\s*\n/).map((x) => `<p>${esc(x)}</p>`).join('');
+      html += `<section class="entries"><h3>Collection <span>${n.entries.length}</span></h3>${n.entries.map((e, k) => {
+        const btns = (e.img || []).map((p) => {
+          entryItems.push({ src: full(p), caption: e.source || String(k + 1).padStart(2, '0') });
+          return `<button type="button" data-entry="${entryItems.length - 1}"><img loading="lazy" src="${thumb(p)}" alt=""></button>`;
+        }).join('');
+        const src = e.source ? (e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)} ↗</a>` : esc(e.source)) : '';
+        const more = e.more ? `<details><summary>${esc(e.more.label || 'More')}</summary>${paras(e.more.text || '')}${e.more.notes && e.more.notes.length ? `<ol class="fn">${e.more.notes.map((f) => `<li>${esc(f.text)}${f.url ? ` <a href="${esc(f.url)}" target="_blank" rel="noopener">↗</a>` : ''}</li>`).join('')}</ol>` : ''}</details>` : '';
+        return `<article class="entry">
+          <div class="e-imgs e-n${(e.img || []).length}">${btns}</div>
+          <div class="e-meta"><span class="e-no">${String(k + 1).padStart(2, '0')}</span>${src ? `<span class="e-src">${src}</span>` : ''}</div>
+          ${e.about ? `<p class="e-about">${esc(e.about)}</p>` : ''}
+          ${e.text ? `<p class="e-text">${esc(e.text)}</p>` : ''}
+          ${more}
+        </article>`;
+      }).join('')}</section>`;
+    }
     if (n.links && n.links.length) {
       html += `<section><h3>Links</h3><ul>${n.links
         .map((l) => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">↗ ${esc(l.label)}</a></li>`)
@@ -563,6 +586,7 @@
     panel.querySelectorAll('[data-kid]').forEach((b) => { b.onclick = () => activate(byId.get(b.dataset.kid)); });
     const items = imgs.map((p, i) => ({ src: full(p), caption: `${n.label} — ${String(i + 1).padStart(2, '0')}` }));
     panel.querySelectorAll('[data-img]').forEach((b) => { b.onclick = () => window.Lightbox.open(items, +b.dataset.img); });
+    panel.querySelectorAll('[data-entry]').forEach((b) => { b.onclick = () => window.Lightbox.open(entryItems, +b.dataset.entry); });
 
     frameFocus();
     kick();
