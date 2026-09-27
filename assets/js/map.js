@@ -535,6 +535,9 @@
       ${n.text ? String(n.text).split(/\n\s*\n/).map((t) => `<p class="p-text">${esc(t)}</p>`).join('') : ''}
       ${n.todo ? `<div class="todo"><b>TO ADD</b>${esc(n.todo)}</div>` : ''}`;
 
+    if (n.blocks && n.blocks.length) {
+      html += n.blocks.map((bl) => `<section class="block"><h3>${esc(bl.title)}</h3>${String(bl.text || '').split(/\n\s*\n/).map((t) => `<p class="p-text">${esc(t)}</p>`).join('')}</section>`).join('');
+    }
     if (imgs.length) {
       html += `<section><h3>Material <span>${imgs.length}</span></h3><div class="grid">${imgs
         .map((p, i) => `<button type="button" data-img="${i}"><img loading="lazy" src="${thumb(p)}" alt=""></button>`)

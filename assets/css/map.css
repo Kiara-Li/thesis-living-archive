@@ -194,6 +194,10 @@ html, body { height: 100%; overflow: hidden; }
 .grid img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
 .grid button:hover img { transform: scale(1.05); }
 
+/* headed paragraphs */
+.panel .block { margin-top: 20px; }
+.panel .block h3 { text-transform: none; letter-spacing: 0.02em; font-size: 11px; }
+
 /* numbered lists (e.g. unseen actions) */
 .steps ol { list-style: none; margin: 0; padding: 0; }
 .steps li { display: grid; grid-template-columns: 28px 1fr; gap: 8px; font-size: 12px; padding: 7px 0; }

@@ -19,6 +19,7 @@
     feedback  [ 'note from class crit…' ]   → shown under "Feedback"
     response  [ 'what I did about it…' ]    → shown under "Response"
     title     longer heading shown in the panel (label stays short on the map)
+    blocks    [{ title, text }]          → headed paragraphs (e.g. the four questions)
     sections  [{ title, items: [...] }]  → numbered list, numbering runs on across sections
     href      works only — the standalone page to open
     island    true = grows as a separate cluster, joined by a long dotted line
@@ -40,7 +41,7 @@
 
     // Finished pieces — listed on works/, each with its own page
     works: [
-      { id: '256', title: '256', kind: 'Printed book', date: '09.25', href: '256/', process: 'w4-256', cover: null },
+      { id: '256', title: 'The 256 Project', kind: 'Printed book', date: '09.25', href: '256/', process: 'w4-256', cover: null },
     ],
 
     root: {
@@ -302,33 +303,57 @@ I want the book to show both procedures: how humans build a system to control a 
         {
           id: 'w4', kind: 'week', label: 'What Do I Want to Do Next?',
           date: '09.18', tag: 'Research Map',
-          text: 'Too early for a thesis question. Instead: look for where what I bring, what I can reach, and design as a lens overlap.',
           feedback: [], response: [],
           children: [
             {
-              id: 'w4-map', kind: 'step', label: 'Research Map',
-              text: 'Four areas, broken down until they get specific.',
-              children: [
-                { id: 'w4-bring', kind: 'step', label: 'What I Bring', todo: 'Background, skills, ways of working' },
-                { id: 'w4-reach', kind: 'step', label: 'What I Can Reach', todo: 'Places, people, archives, collections' },
-                { id: 'w4-lens', kind: 'step', label: 'Design as a Lens', todo: 'Which means of communication design' },
-                { id: 'w4-sub', kind: 'step', label: 'Subtopics', todo: 'Break it down, then again' },
-              ],
-            },
-            {
               id: 'w4-directions', kind: 'step', label: 'Three Directions',
-              text: 'Each direction answers: which resource, what to find out, how to document and circulate it, and who it is for.',
               children: [
-                { id: 'w4-dir-a', kind: 'step', label: 'Direction A', todo: 'Add the typeset sheet' },
-                { id: 'w4-dir-b', kind: 'step', label: 'Direction B', todo: 'Add the typeset sheet' },
-                { id: 'w4-dir-c', kind: 'step', label: 'Direction C', todo: 'Add the typeset sheet' },
+                {
+                  id: 'w4-dir-1', kind: 'step', label: 'Coexistence',
+                  title: 'Direction One — Coexistence',
+                  images: ['w4-directions/d1'],
+                  text: `My thesis topic is evolution. One direction I want to explore is coexistence. I put coexistence under evolution because it can be connected to survival, choice, chance, and opportunity. Coexistence can include humans and animals, humans and AI, humans and the environment, and even our relationship with civilizations or beings that we cannot understand. It can move from a very small scale to a very large scale.`,
+                  blocks: [
+                    { title: '1 Which resource do I want to interact with', text: `I want to do field trips, interviews, and attend talks. I am interested in projects such as sea turtle education activities, bird rescue centers, and public projects in New York that grow shellfish to help clean the riverbed. I want to interview the people who work on these projects and listen to them explain their work.` },
+                    { title: '2 What do I want to find out', text: `Humans and other living things have always existed together. I want to know what this relationship may become in the future. I want to understand the connections between humans and animals, humans and other humans, humans and AI, and humans and wider forms of life or civilization. What is the value of these connections? What have we gained from them? What will we have to face together? I am also interested in what the future relationship between humans and AI may be, but AI does not have to be the main subject.` },
+                    { title: '3 How will I document and circulate what I find', text: `This topic could work as science communication because it may show perspectives that people do not usually see. I could make a video or short videos. I could also make a publication, science textbook, science magazine, science posts, or something connected to natural history. If I make science communication, I want the information to be as accurate as possible.` },
+                    { title: '4 Who could be interested in this', text: `I think this could reach a broad audience because it is still about us and the relationships in our daily lives. My pigeon project also used another point of view, but it was about the environment around us and the birds we see. I want this project to have the same feeling of something people can reach in everyday life. People who are interested in research, natural history, nature, and environmental protection may be especially interested.` },
+                  ],
+                },
+                {
+                  id: 'w4-dir-2', kind: 'step', label: 'Pattern and Chance',
+                  title: 'Direction Two — Evolution as Pattern and Chance',
+                  images: ['w4-directions/d2'],
+                  text: `This direction is about accumulation, DNA, mistakes, choices, chances, and opportunities. It may not be the direction I am most interested in, but I think it could become an interesting project. Evolution can be considered not only through biology, but also through human history and technological development.`,
+                  blocks: [
+                    { title: '1 Which resource do I want to interact with', text: `I want to talk with someone who studies this area. I also want to talk with many people and see how they understand evolution. Evolution is difficult to project onto one person, so I want to hear how different people understand major historical opportunities, personal opportunities, painful growth, and transformation. I also want to look at this question through scientific research.` },
+                    { title: '2 What do I want to find out', text: `Each stage of evolution may involve meeting errors, correcting something like a program, leaving some things behind, and moving into a new stage. At the same time, the new stage has traces that can be followed, and history can repeat in cycles. Biological evolution, technological evolution, and human history may follow similar patterns. I want to understand these mechanisms, rules, and opportunities. I also want to know how people understand chances that may change their lives. From a larger view, I want to ask how earlier forms of evolution can be used to make reasonable guesses about later forms of evolution.` },
+                    { title: '3 How will I document and circulate what I find', text: `I would like to make a very thick and heavy book that records many things. I could also make commercial motion graphics because this topic can use abstract metaphors, geometric forms, black and white, and light and dark. Another possibility is a small interactive product, such as a website or app. It does not have to help people directly. It can simply be interesting and allow people to interact with the idea.` },
+                    { title: '4 Who could be interested in this', text: `I think everyone could be interested because it connects large ideas about evolution and history with personal chances, growth, pain, transformation, and changes in a person's life. I have not decided on a more specific audience yet.` },
+                  ],
+                },
+                {
+                  id: 'w4-dir-3', kind: 'step', label: 'Future Bodies',
+                  title: 'Direction Three — Biological Evolution and Future Bodies',
+                  images: ['w4-directions/d3'],
+                  text: `I want my thesis to be about evolution, so it is difficult for me to create a third direction that tries to avoid this subject. This direction stays with evolution and looks more directly at biological change, the future of this generation, and what humans and other living things may become. AI can be part of the discussion, but I do not want AI to be the main topic.`,
+                  blocks: [
+                    { title: '1 Which resource do I want to interact with', text: `I want to talk with researchers. I could also use research archives, books, libraries, and online archives. The resources would be related to biology and possibly pharmacology.` },
+                    { title: '2 What do I want to find out', text: `I want to look at how human bodies and other living things are still changing in modern society. Some changes may be called degeneration and some may be called evolution. I am interested in the example I heard about insects connected to plastic, and I want to understand what has actually evolved. I want to ask what humans and other living things may eventually evolve into. I also want to consider the comment I mentioned about humans being unable to understand AI and AI killing us, but I do not want AI to be the main topic. I am also interested in the example we discussed in which an idea about the path of human evolution came from a printing error. This makes me think about the role of the author in science media and about the limits of science communication design.` },
+                    { title: '3 How will I document and circulate what I find', text: `Evolution could be made into a game. Pokemon presents evolution as something that cannot be reversed, changes appearance, and makes a character stronger, although people do not always like every evolution. I think a game could use a more enjoyable form to discuss how people understand evolution.` },
+                    { title: '4 Who could be interested in this', text: `I have not decided on the specific audience for this direction yet.` },
+                  ],
+                },
               ],
             },
             {
-              id: 'w4-256', kind: 'work', label: '256 — Printed Book',
-              text: 'The finished book.',
-              todo: 'Add book images',
+              id: 'w4-256', kind: 'work', label: 'The 256 Project',
               href: 'works/256/',
+              images: ['book/s08', 'book/s11', 'book/s14', 'book/s20', 'book/s25', 'book/s29', 'book/s33', 'book/s37'],
+            },
+            {
+              id: 'w4-abf', kind: 'step', label: 'Art Book Fair', island: true,
+              images: FAIR,
             },
           ],
         },
@@ -363,12 +388,6 @@ I want the book to show both procedures: how humans build a system to control a 
               id: 'w5-visual', kind: 'step', label: 'Visual Research', island: true,
               text: 'Communication design that makes me want to make something.',
               children: [
-                {
-                  id: 'w5-nyabf', kind: 'step', label: 'NYABF 2026',
-                  text: 'Photographed at the New York Art Book Fair, September 2026.',
-                  todo: 'Choose the 10 for the archive',
-                  images: FAIR,
-                },
                 {
                   id: 'w5-visual-text', kind: 'step', label: 'Reflection',
                   text: 'Not what I like — how communication design is being used across the examples.',
