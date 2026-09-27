@@ -184,6 +184,16 @@
 
   /* ── layout ─────────────────────────────────────── */
 
+  // every diagonal on the map runs at this one angle (1 = 45°)
+  const SLOPE = 1;
+
+  // a branch: leave at 45° until level with the child, then run straight in
+  function clade(x1, y1, x2, y2) {
+    const dx = Math.abs(y2 - y1) * SLOPE;
+    if (dx < 0.5 || x2 - x1 < dx) return `M${x1},${y1}L${x2},${y2}`;
+    return `M${x1},${y1}L${x1 + dx},${y2}H${x2}`;
+  }
+
   // vertical room a branch needs (islands are placed on their own)
   function span(n) {
     const own = n.g.type === 'circle' ? 54 : n.g.h;
@@ -194,8 +204,8 @@
     return Math.max(own, sum);
   }
 
-  // Each child gets its own vertical slot, bent into an arc around the parent:
-  // lines fan out like a web, but branches can never overlap.
+  // Each child gets its own vertical slot, so branches never overlap.
+  // Siblings line up in one column, like the labels of a cladogram.
   function place(n, x, y, local, islands) {
     local.set(n.id, { x, y });
     if (!S.expanded.has(n.id)) return;
@@ -203,15 +213,12 @@
     const gap = n.depth <= 1 ? 16 : 10;
     const total = kids.reduce((s, c) => s + span(c), 0) + gap * Math.max(0, kids.length - 1);
     const ox = x + n.g.out;
-    const R = Math.max(n.depth <= 1 ? 240 : 180, total / 2 + 40);
     let top = y - total / 2;
-    kids.forEach((c) => {
-      const h = span(c);
-      const cy = top + h / 2;
-      const reach = Math.sqrt(Math.max(0, R * R - (cy - y) * (cy - y)));
-      place(c, ox + 40 + reach * 0.6, cy, local, islands);
-      top += h + gap;
-    });
+    const slots = kids.map((c) => { const h = span(c); const cy = top + h / 2; top += h + gap; return cy; });
+    // the column sits far enough right for every 45° branch to reach its row
+    const run = Math.max(0, ...slots.map((cy) => Math.abs(cy - y)));
+    const col = ox + 36 + run * SLOPE;
+    kids.forEach((c, i) => place(c, col, slots[i], local, islands));
     n.children.filter((c) => c.island).forEach((c) => islands.push({ c, from: n }));
   }
 
@@ -288,7 +295,7 @@
       const e = edgeFor(n);
       const x1 = n.parent.p.x + n.parent.g.out; const y1 = n.parent.p.y;
       const x2 = n.p.x; const y2 = n.p.y;
-      e.path.setAttribute('d', `M${x1},${y1}L${x2},${y2}`);
+      e.path.setAttribute('d', clade(x1, y1, x2, y2));
       e.a.setAttribute('cx', x1); e.a.setAttribute('cy', y1);
       e.b.setAttribute('cx', x2); e.b.setAttribute('cy', y2);
       e.g.classList.toggle('dim', !(active.has(n.id) && active.has(n.parent.id)));
@@ -301,16 +308,17 @@
     s0.head.setAttribute('d', arrow(w1.p.x - 26, w1.p.y, 1, 0));
     s0.g.classList.toggle('dim', !(active.has('root') && active.has(w1.id)));
 
-    // week → week: straight dashed arrows, circle edge to circle edge
+    // week → week: straight down, then a 45° step into the next circle —
+    // parallel to every other diagonal on the map
+    const k = Math.SQRT1_2;
     for (let i = 0; i < weeks.length - 1; i++) {
       const a = weeks[i]; const b = weeks[i + 1];
       const s = spineAt(i + 1);
-      const dx = b.p.x - a.p.x; const dy = b.p.y - a.p.y; const d = Math.hypot(dx, dy) || 1;
-      const ux = dx / d; const uy = dy / d;
-      const x1 = a.p.x + ux * 28; const y1 = a.p.y + uy * 28;
-      const x2 = b.p.x - ux * 28; const y2 = b.p.y - uy * 28;
-      s.path.setAttribute('d', `M${x1},${y1}L${x2},${y2}`);
-      s.head.setAttribute('d', arrow(x2, y2, ux, uy));
+      const ex = b.p.x - 27 * k; const ey = b.p.y - 27 * k;
+      const run = Math.max(0, ex - a.p.x);
+      const sy = Math.max(a.p.y + 26, ey - run / SLOPE);
+      s.path.setAttribute('d', `M${a.p.x},${a.p.y + 26}V${sy}L${ex},${ey}`);
+      s.head.setAttribute('d', arrow(ex, ey, k, k));
       s.g.classList.toggle('future', b.kind === 'future');
       s.g.classList.toggle('dim', !(active.has(a.id) && active.has(b.id)));
     }
