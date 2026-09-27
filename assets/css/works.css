@@ -64,6 +64,8 @@ main.work { max-width: 1320px; }
 .about { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin: 34px 0 60px; }
 .about-meta { font-size: 11px; line-height: 1.7; color: var(--mute); }
 .about-text { font-size: 15px; line-height: 1.6; max-width: 58ch; }
+.about-text p { margin: 0 0 1em; }
+.about-text p:last-child { margin-bottom: 0; }
 .about-text.placeholder { display: grid; gap: 11px; padding-top: 5px; }
 .about-text.placeholder span { height: 9px; background: #222; }
 .about-text.placeholder span.short { width: 55%; }

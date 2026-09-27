@@ -37,7 +37,7 @@
   const grid = sec.querySelector('.pg-grid');
 
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const INTERVAL = 1000;
+  const INTERVAL = 2000;
   let cur = -1;
   let front = 0;
   let playing = !reduce;
