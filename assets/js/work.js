@@ -2,7 +2,8 @@
   Work pages
   - [data-lb] images open full size in the lightbox
   - .pages: one large frame that keeps turning through the inner pages
-    (pauses on hover / when off screen), a tick line to jump, or all pages at once
+    (pauses only with the PAUSE button or when scrolled off screen),
+    a tick line to jump, or all pages at once
 */
 (() => {
   const pad = (n) => String(n).padStart(2, '0');
@@ -40,7 +41,6 @@
   let cur = -1;
   let front = 0;
   let playing = !reduce;
-  let hovering = false;
   let visible = false;
   let timer = null;
 
@@ -83,7 +83,7 @@
 
   function schedule() {
     clearTimeout(timer);
-    if (playing && !hovering && visible && !document.hidden) timer = setTimeout(() => show(cur + 1, 1), INTERVAL);
+    if (playing && visible && !document.hidden) timer = setTimeout(() => show(cur + 1, 1), INTERVAL);
   }
 
   function setPlaying(p) {
@@ -102,8 +102,6 @@
     if (e.key === 'ArrowLeft') { e.preventDefault(); show(cur - 1, -1); }
     if (e.key === ' ') { e.preventDefault(); setPlaying(!playing); }
   });
-  stage.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hovering = true; schedule(); } });
-  stage.addEventListener('pointerleave', () => { hovering = false; schedule(); });
   document.addEventListener('visibilitychange', schedule);
 
   // swipe on phones
@@ -115,7 +113,7 @@
     if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
   });
 
-  new IntersectionObserver((es) => { visible = es[0].isIntersecting; schedule(); }, { threshold: 0.4 }).observe(stage);
+  new IntersectionObserver((es) => { visible = es[0].isIntersecting; schedule(); }, { threshold: 0.25 }).observe(stage);
 
   // all pages at once
   allBtn.onclick = () => {
