@@ -53,9 +53,8 @@ html, body { height: 100%; overflow: hidden; }
 .node.focus .box:not(.box-in) { stroke-width: 2.4; }
 .node.target .box, .node.target .ring { stroke: var(--fg); stroke-width: 3; stroke-dasharray: 4 3; }
 
-/* dimmed = not relevant right now, not clickable */
+/* dimmed = not relevant right now; still clickable, no hover preview */
 .node, .edge, .spine { transition: opacity 0.35s; }
-.node.dim { pointer-events: none; }
 .node.dim text { fill: var(--dim-text); }
 .node.dim .box { stroke: var(--dim); fill: var(--bg); }
 .node.dim .icon { stroke: var(--dim-text); }

@@ -37,7 +37,7 @@ The visual design and interaction (`assets/css/*`, `assets/js/map.js`, `sound.js
 
 - Black + white only. Lines are the main element. Mono type (IBM Plex Mono) plus Inter for titles.
 - References: the Dropbox "Smart Workspace" file-tree poster (boxed folder nodes, dotted leader notes, grey inactive nodes, "…" pills) and the "Achievement" chapter map (circled numbered nodes, dashed arrows, pill tags).
-- Map behaviour: branches grow and stay; the current step and its path stay bright, everything else dims and can't be clicked; hover shows an orbit of images; leaves open a side panel; works open real pages; visitor-made connections are never saved; every click plays a music-box note.
+- Map behaviour: branches grow and stay; the current step and its path stay bright, everything else dims (still clickable, but no hover preview); hover shows an orbit of images; leaves open a side panel; works open real pages; visitor-made connections are never saved; every click plays a music-box note.
 
 ## Preview
 

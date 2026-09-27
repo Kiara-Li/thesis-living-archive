@@ -3,6 +3,7 @@
   - weeks sit on a dashed spine; each opens like a spider web into its steps
   - the map keeps what has been opened, so it grows as you explore
   - only the current step and its path stay bright; everything else dims
+    (dimmed nodes still open on click, they just don't preview on hover)
   - leaf steps slide out a panel; works open their own page
   - drag one node onto another to make your own (unsaved) connection
 */
@@ -184,7 +185,7 @@
 
   /* ── layout ─────────────────────────────────────── */
 
-  // every diagonal on the map runs at this one angle (1 = 45°)
+  // every branch diagonal runs at this one angle (1 = 45°)
   const SLOPE = 1;
 
   // a branch: leave at 45° until level with the child, then run straight in
@@ -308,17 +309,12 @@
     s0.head.setAttribute('d', arrow(w1.p.x - 26, w1.p.y, 1, 0));
     s0.g.classList.toggle('dim', !(active.has('root') && active.has(w1.id)));
 
-    // week → week: straight down, then a 45° step into the next circle —
-    // parallel to every other diagonal on the map
-    const k = Math.SQRT1_2;
+    // week → week: the same right-angle elbow as root → week 1
     for (let i = 0; i < weeks.length - 1; i++) {
       const a = weeks[i]; const b = weeks[i + 1];
       const s = spineAt(i + 1);
-      const ex = b.p.x - 27 * k; const ey = b.p.y - 27 * k;
-      const run = Math.max(0, ex - a.p.x);
-      const sy = Math.max(a.p.y + 26, ey - run / SLOPE);
-      s.path.setAttribute('d', `M${a.p.x},${a.p.y + 26}V${sy}L${ex},${ey}`);
-      s.head.setAttribute('d', arrow(ex, ey, k, k));
+      s.path.setAttribute('d', `M${a.p.x},${a.p.y + 26}V${b.p.y}H${b.p.x - 26}`);
+      s.head.setAttribute('d', arrow(b.p.x - 26, b.p.y, 1, 0));
       s.g.classList.toggle('future', b.kind === 'future');
       s.g.classList.toggle('dim', !(active.has(a.id) && active.has(b.id)));
     }
