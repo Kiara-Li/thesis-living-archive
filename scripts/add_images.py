@@ -2,12 +2,13 @@
 """
 Make web copies of a folder of photos for the site.
 
-    python3 scripts/add_images.py <source-folder> <name> [--prefix p]
+    python3 scripts/add_images.py <source-folder> <name> [--prefix p] [--full 2800 --quality 86]
 
   <source-folder>  raw photos/scans (jpg, jpeg, png) — never committed
   <name>           folder under assets/img/, e.g. "bookfair", "w06-activity"
 
-Writes assets/img/<name>/full/*.jpg (1800px) and thumb/*.jpg (420px),
+Writes assets/img/<name>/full/*.jpg (1800px by default; use --full for
+finished work that should stay sharp) and thumb/*.jpg (420px),
 fixes rotation, strips all metadata (incl. GPS), then prints the image
 ids to paste into assets/js/data.js.
 
@@ -43,6 +44,9 @@ def main():
     ap.add_argument("src")
     ap.add_argument("name")
     ap.add_argument("--prefix", default="", help="prepended to every filename")
+    ap.add_argument("--full", type=int, default=1800, help="long edge of the full-size copy")
+    ap.add_argument("--quality", type=int, default=74, help="JPEG quality of the full-size copy")
+    ap.add_argument("--thumb", type=int, default=420, help="long edge of the thumbnail")
     a = ap.parse_args()
 
     src = Path(a.src).expanduser()
@@ -58,8 +62,8 @@ def main():
     for p in files:
         fn = a.prefix + slug(p.stem)
         im = ImageOps.exif_transpose(Image.open(p)).convert("RGB")
-        save(im, out / "full" / f"{fn}.jpg", 1800, 74)
-        save(im, out / "thumb" / f"{fn}.jpg", 420, 68)
+        save(im, out / "full" / f"{fn}.jpg", a.full, a.quality)
+        save(im, out / "thumb" / f"{fn}.jpg", a.thumb, 72)
         ids.append(f"'{slug(a.name)}/{fn}'")
         print(f"  {p.name} -> {slug(a.name)}/{fn}.jpg")
 
