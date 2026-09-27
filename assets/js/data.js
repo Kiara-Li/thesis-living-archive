@@ -18,6 +18,8 @@
               → one block per image (or pair): caption text is mine, as written
     feedback  [ 'note from class crit…' ]   → shown under "Feedback"
     response  [ 'what I did about it…' ]    → shown under "Response"
+    title     longer heading shown in the panel (label stays short on the map)
+    sections  [{ title, items: [...] }]  → numbered list, numbering runs on across sections
     href      works only — the standalone page to open
     island    true = grows as a separate cluster, joined by a long dotted line
     children  [ ...nodes ]
@@ -147,9 +149,12 @@ From this painting, I’ve learned that art can go beyond reality to express a p
                   source: 'Ideonella sakaiensis',
                   text: `I find it fascinating that a bacteria has evolved to break down a material that humans only invented recently. It feels like nature is already reacting to our waste, even though plastic was never supposed to be part of its environment.`,
                 },
-                { img: ['w1-images/01'] },
-                { img: ['w1-images/06'] },
-                { img: ['w1-images/07'] },
+                {
+                  img: ['w1-images/martha'],
+                  source: 'Martha on display in 1985 in the National Museum of Natural History, by Carl Hansen, Smithsonian Institution, neg. no. 2002-3499.',
+                  url: 'https://siarchives.si.edu/blog/martha-cold-and-lonely-last-migration',
+                  text: `I think it is strange that a species can go from being extremely common to only existing as a specimen in a museum. It makes extinction feel much less distant because Martha was once just a normal bird.`,
+                },
               ],
             },
             {
@@ -163,31 +168,90 @@ From this painting, I’ve learned that art can go beyond reality to express a p
         {
           id: 'w2', kind: 'week', label: 'Sequence → Category → Book',
           date: '09.04', tag: '256 · Book Development',
-          text: 'Turning the collection into a book — a research document that asks questions, not a container for images.',
           feedback: [], response: [],
           children: [
             {
-              id: 'w2-spreads', kind: 'step', label: 'Spread Explorations',
-              text: 'Several printed directions tested side by side: scale, hierarchy, rhythm, grids, captions, image/text.',
-              todo: 'Add photos of the printed spreads',
-            },
-            {
-              id: 'w2-structure', kind: 'step', label: 'Organizational Structure',
-              text: 'A proposed system for the whole collection — chapters, categories, sequences or an index.',
-              todo: 'Add the structure diagram',
-            },
-            {
-              id: 'w2-mockup', kind: 'step', label: 'Physical Mock-up',
-              text: 'A blank dummy to test size and binding — how the book opens and is read.',
-              todo: 'Add mock-up photos',
-            },
-            {
               id: 'w2-unseen', kind: 'step', label: 'Unseen Actions',
-              text: 'After “I, Pencil”: one everyday object and the hidden work that brings it into existence.',
               children: [
-                { id: 'w2-object', kind: 'step', label: 'The Object', todo: 'Add a photo of the object' },
-                { id: 'w2-actions', kind: 'step', label: '10 Unseen Actions', text: 'Materials, labour, extraction, transport, systems, people.', todo: 'Add the list' },
-                { id: 'w2-reflection', kind: 'step', label: 'Reflection', text: 'Could revealing these infrastructures become part of the book, the thesis, or both?', todo: 'Add the ~200 word reflection' },
+                {
+                  id: 'w2-object', kind: 'step', label: 'Anti-bird Spikes',
+                  images: ['w2-unseen/spikes'],
+                },
+                {
+                  id: 'w2-actions', kind: 'step', label: '31 Actions',
+                  title: 'The Unseen Actions Behind a Strip of Anti-Bird Spikes',
+                  sections: [
+                    {
+                      title: 'I. The Metal',
+                      items: [
+                        'Chromite ore is mined in places such as South Africa and Kazakhstan. Chromium helps stainless steel resist rust outdoors.',
+                        'Nickel may come from Indonesia or the Philippines. It improves the steel’s resistance to rain, salt, pollution, and bird droppings.',
+                        'Iron, chromium, and nickel are melted together above 1,500°C. At this point, the steel could still become many different products.',
+                        'The steel is drawn through smaller and smaller dies until it becomes wire about one millimetre thick.',
+                        'The wire is cut and sharpened. The point needs to discourage birds from landing without being designed to injure them.',
+                      ],
+                    },
+                    {
+                      title: 'II. The Plastic',
+                      items: [
+                        'The plastic base begins with crude oil, refining, and petrochemical processing.',
+                        'Benzene and propylene are used to make bisphenol A, which is used in polycarbonate plastic.',
+                        'Polycarbonate production can involve phosgene, a toxic chemical that is now widely used in industry.',
+                        'UV stabilisers are added so the plastic does not become brittle after long exposure to sunlight.',
+                        'The bases are mass-produced by injection moulding. Much of the production cost comes from making the mould itself.',
+                      ],
+                    },
+                    {
+                      title: 'III. Adhesion and Mounting',
+                      items: [
+                        'Bird spikes are often attached with silicone or polyurethane adhesive.',
+                        'Silicone begins with quartz processed into silicon, while polyurethane comes from a separate petrochemical process.',
+                        'The adhesive is applied with a caulking gun, and the strip is often glued directly onto the building rather than bolted down.',
+                        'Over time, the adhesive can weaken. When the strip is removed, dried glue may remain on the surface.',
+                        'Some versions use ferrite or neodymium magnets instead. Much of the world’s rare-earth refining takes place in China.',
+                        'The strip must also stay attached during strong wind so that it does not fall from the building.',
+                        'Spikes may be chosen over netting because they interfere less with airflow, drainage, and access to rooftop equipment.',
+                      ],
+                    },
+                    {
+                      title: 'IV. Labour and Commerce',
+                      items: [
+                        'The materials and finished spikes may pass through several countries before reaching the building where they are installed.',
+                        'In some factories, the metal pins are still inserted into the plastic base by hand.',
+                        'Bird spikes are sold as ordinary building hardware and can be bought without special training or a licence.',
+                        'Someone may need to clean bird droppings before installation, and clean the area again if the spikes do not work.',
+                        'This maintenance labour is easy to overlook because it does not produce a new object.',
+                        'The decision to install spikes is usually made by landlords, property managers, or building staff rather than the people living below them.',
+                      ],
+                    },
+                    {
+                      title: 'V. Why It Is Installed at All',
+                      items: [
+                        'Bird droppings can gradually damage stone, metal, paint, and other building materials.',
+                        'Large accumulations of droppings can also create health risks, especially when they are disturbed during cleaning.',
+                        'This is why bird control is often connected to cleaning, maintenance, public health, and building protection.',
+                        'In 1979, Barnard student Grace Gold was killed by falling masonry in Morningside Heights.',
+                        'New York City later introduced façade inspection laws requiring taller buildings to be checked regularly.',
+                        'Sidewalk sheds are often installed during inspection or repair work. Their beams and covered surfaces can also create new places for pigeons to perch.',
+                        'Building safety measures can therefore unintentionally create new bird habitat, which may later lead to more spikes being installed.',
+                        'The final row of spikes comes from many separate systems: mining, manufacturing, shipping, maintenance, building management, safety regulations, and attempts to control how birds use urban space.',
+                      ],
+                    },
+                  ],
+                },
+                {
+                  id: 'w2-reflection', kind: 'step', label: 'Reflection',
+                  title: 'Reflection — Anti-bird Spikes',
+                  text: `I started with two sides of this object: why humans install spikes, and how birds respond to them. What became more interesting through the research was everything in between.
+
+A lot of it comes down to rules and authority. The decision is usually made by a landlord or property manager, not the person living underneath. Some things are carefully regulated: for example, the strip has to stay attached so it does not fall and injure someone. But other parts, such as how sharp the pins should be, are much less clearly defined.
+
+The same logic also appears in other forms of hostile design, such as benches designed to stop people from lying down. A situation is identified as a problem, then turned into a rule or design solution, which makes the same response easier to repeat.
+
+What interests me is that everyone knows the spikes are meant for pigeons, but pigeons often find ways around them, and the spikes keep being installed anyway.
+
+I want the book to show both procedures: how humans build a system to control a space, and how birds respond to that system. The reader should be able to follow the human logic from beginning to end.`,
+                },
               ],
             },
           ],

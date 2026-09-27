@@ -530,15 +530,21 @@
         <div class="p-crumb">${crumbs.map((c) => `<button type="button" data-go="${c.id}">${esc(c.week === c ? 'W' + c.num : c.label)}</button>`).join(' / ') || 'Living Archive'}</div>
         <button class="p-close" type="button">× CLOSE</button>
       </div>
-      <h2>${esc(n.label)}</h2>
+      <h2>${esc(n.title || n.label)}</h2>
       <div class="p-meta">${dateOf(n) ? `<span class="pill">${esc(dateOf(n))}</span>` : ''}${tagOf(n) ? `<span class="pill">${esc(tagOf(n))}</span>` : ''}</div>
-      ${n.text ? `<p class="p-text">${esc(n.text)}</p>` : ''}
+      ${n.text ? String(n.text).split(/\n\s*\n/).map((t) => `<p class="p-text">${esc(t)}</p>`).join('') : ''}
       ${n.todo ? `<div class="todo"><b>TO ADD</b>${esc(n.todo)}</div>` : ''}`;
 
     if (imgs.length) {
       html += `<section><h3>Material <span>${imgs.length}</span></h3><div class="grid">${imgs
         .map((p, i) => `<button type="button" data-img="${i}"><img loading="lazy" src="${thumb(p)}" alt=""></button>`)
         .join('')}</div></section>`;
+    }
+    if (n.sections && n.sections.length) {
+      let k = 0;
+      html += n.sections.map((sec) => `<section class="steps"><h3>${esc(sec.title)} <span>${sec.items.length}</span></h3><ol>${sec.items
+        .map((t) => `<li><span class="s-no">${String(++k).padStart(2, '0')}</span><span>${esc(t)}</span></li>`)
+        .join('')}</ol></section>`).join('');
     }
     const entryItems = [];
     if (n.entries && n.entries.length) {
