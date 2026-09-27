@@ -261,27 +261,39 @@ I want the book to show both procedures: how humans build a system to control a 
         {
           id: 'w3', kind: 'week', label: 'From 256 to Research Inquiry',
           date: '09.11', tag: 'Unseen Actions II',
-          text: 'The image collection and the unseen actions start informing each other. I am the connection between them.',
           feedback: [], response: [],
           children: [
             {
-              id: 'w3-proto', kind: 'step', label: '256 Prototype',
-              text: 'An iteration of the book brought in for review.',
-              todo: 'Add prototype photos',
-            },
-            {
-              id: 'w3-encounters', kind: 'step', label: 'Three Encounters',
-              text: 'Three entities to question, each leaving one piece of evidence — a quote, image, screenshot, note or link.',
+              id: 'w3-encounters', kind: 'step', label: 'Unseen Actions',
               children: [
-                { id: 'w3-human', kind: 'step', label: 'A Human', todo: 'Add the evidence' },
-                { id: 'w3-archive', kind: 'step', label: 'An Archive', todo: 'Add the evidence' },
-                { id: 'w3-ai', kind: 'step', label: 'An AI Prompt', todo: 'Add the prompt + response' },
+                {
+                  id: 'w3-human', kind: 'step', label: 'A Human',
+                  title: 'A Human — Trader Joe’s store manager',
+                  // translated from Kiara's note (Chinese)
+                  text: 'The manager of the Trader Joe’s on 14th St by NYU, because it is the only one with bird spikes installed above it.',
+                  links: [{ label: 'Trader Joe’s, 14th St', url: 'https://locations.traderjoes.com/ny/new-york/540/' }],
+                },
+                {
+                  id: 'w3-archive', kind: 'step', label: 'An Archive',
+                  title: 'An Archive — eBird',
+                  links: [{ label: 'eBird', url: 'https://ebird.org/home' }],
+                },
+                {
+                  id: 'w3-ai', kind: 'step', label: 'An AI Prompt',
+                  sections: [
+                    { title: 'Prompt A', items: ['Design a device to prevent pigeons from resting on a storefront ledge.'] },
+                    { title: 'Prompt B', items: ['Design a device to prevent humans from resting on a storefront ledge.'] },
+                  ],
+                },
               ],
             },
             {
-              id: 'w3-read', kind: 'step', label: 'Reading: Vis',
-              text: 'Dirk Vis, on research for people who would rather make. Optional: Booth, The Craft of Research; Collins, Creative Research.',
-              todo: 'Add reading notes',
+              id: 'w3-proto', kind: 'step', label: '256 Prototype',
+              images: Array.from({ length: 12 }, (_, i) => `w3-prototype/p${String(i + 1).padStart(2, '0')}`),
+            },
+            {
+              id: 'w3-mindmap', kind: 'step', label: 'Mindmap',
+              images: ['w3-mindmap/mindmap'],
             },
           ],
         },
