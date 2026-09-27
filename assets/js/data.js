@@ -342,7 +342,7 @@ I want the book to show both procedures: how humans build a system to control a 
               ],
             },
             {
-              id: 'w4-256', kind: 'work', label: 'Installation Heights of Street Furniture and Observed Pigeon Use, New York City',
+              id: 'w4-256', kind: 'work', label: 'The 256 Project',
               href: 'works/256/',
               images: ['256-show/h9', '256-show/h7', '256-show/h8', '256-show/s1', '256-show/s2', '256-show/s3', '256-show/s4', '256-show/s5', '256-show/s6'],
             },
