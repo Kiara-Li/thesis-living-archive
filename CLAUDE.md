@@ -10,7 +10,6 @@ Kiara will say something like "add week 6" or "add my research activity notes". 
 2. **New week** → add a `kind: 'week'` node to `root.children`, before the `future` nodes:
    - `date: 'MM.DD'` (the class date), `tag:` short assignment name, `label:` short title.
    - If the week appears as an upcoming `future` node, turn that node into the week instead of adding a duplicate. Add or shift future nodes to match the schedule she gives.
-   - Give it `feedback: [], response: []`.
 3. **Steps** → children with `kind: 'step'`. Nest them when the assignment has parts (e.g. "10 Questions" under "Research Activities").
    - A step that should grow somewhere else on the map gets `island: true`.
    - A finished piece gets `kind: 'work'` + `href: 'works/<slug>/'`, an entry in `works: [...]`, and a page copied from `works/256/index.html`.
@@ -20,7 +19,7 @@ Kiara will say something like "add week 6" or "add my research activity notes". 
    - Captions for individual images go in `entries` (see the header comment in `data.js`): `source` for the reference line, `about` for the source's own description, `text` for her caption, and `more` for longer writing or annotations with footnotes.
    - If she writes notes in Chinese and the site text is English, translate plainly and literally. Don't embellish, and flag it in your reply.
    - **Never paste the teacher’s brief text** (Notion / syllabus). The assignment name is enough.
-   - Kiara's own writing (captions, reflections, feedback, responses) goes in as she wrote it. Don't rewrite it or make it sound polished/AI-like.
+   - Kiara's own writing (captions, reflections) goes in as she wrote it. Don't rewrite it or make it sound polished/AI-like.
    - Anything still missing → a `todo: '…'` string, which shows as a dashed "TO ADD" box. Remove the `todo` once the material is in.
    - Update `meta.updated` to today's date (MM.DD).
 5. **Images** — only web copies go in the repo, under `assets/img/<folder>/full/` and `/thumb/`.

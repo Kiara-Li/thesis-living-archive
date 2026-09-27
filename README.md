@@ -9,7 +9,7 @@ A black-and-white, line-based record of the thesis as it grows.
 
 ## Editing content
 
-Everything on the map lives in `assets/js/data.js`: one node per assignment, labelled with its date and name. Fill in `text`, `images`, `feedback`, `response`, and delete a `todo` once it's done.
+Everything on the map lives in `assets/js/data.js`: one node per assignment, labelled with its date and name. Fill in `text`, `images`, `entries`, and delete a `todo` once it's done.
 
 Images go in `assets/img/<folder>/full/` (≈1800px) and `assets/img/<folder>/thumb/` (≈420px) with the same filename. Refer to them as `'<folder>/<name>'`.
 

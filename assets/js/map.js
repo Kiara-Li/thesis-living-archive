@@ -81,9 +81,15 @@
     title: '600 15px Inter',
     sub: '400 10.5px "IBM Plex Mono"',
     pill: '400 10px "IBM Plex Mono"',
+    more: '500 10.5px "IBM Plex Mono"',
   };
 
   function measure(n) {
+    measureShape(n);
+    n.g.moreW = 14 + tw(`+${n.children.length}`, F.more) + 18;
+  }
+
+  function measureShape(n) {
     if (n.kind === 'week' || n.kind === 'future') {
       const pillText = n.kind === 'future' ? `${n.date} · upcoming` : n.date;
       const pillW = tw(pillText, F.pill) + 16;
@@ -100,7 +106,7 @@
   }
 
   function ext(n) {
-    const more = n.children.length && !S.expanded.has(n.id) && n.kind !== 'root' ? 44 : 0;
+    const more = n.children.length && !S.expanded.has(n.id) && n.kind !== 'root' ? n.g.moreW : 0;
     return n.g.type === 'circle'
       ? { x0: -26, x1: n.g.w + more, y0: -27, y1: 27 }
       : { x0: 0, x1: n.g.w + more, y0: -n.g.h / 2, y1: n.g.h / 2 };
@@ -157,9 +163,10 @@
 
     if (n.children.length && n.kind !== 'root') {
       const mg = el('g', { class: 'more-g' }, g);
-      const mx = n.g.w + 10;
-      el('rect', { class: 'more', x: mx, y: -10, width: 32, height: 20, rx: 10 }, mg);
-      el('text', { class: 'more-t', x: mx + 16, y: -1, 'text-anchor': 'middle' }, mg).textContent = '…';
+      const mx = n.g.w + 14;
+      el('line', { class: 'more-l', x1: n.g.w + 2, y1: 0, x2: mx, y2: 0 }, mg);
+      el('rect', { class: 'more', x: mx, y: -9, width: n.g.moreW - 14, height: 18, rx: 9 }, mg);
+      el('text', { class: 'more-t', x: mx + (n.g.moreW - 14) / 2, y: 0.5, 'text-anchor': 'middle' }, mg).textContent = `+${n.children.length}`;
       n.moreEl = mg;
     }
 
@@ -294,16 +301,16 @@
     s0.head.setAttribute('d', arrow(w1.p.x - 26, w1.p.y, 1, 0));
     s0.g.classList.toggle('dim', !(active.has('root') && active.has(w1.id)));
 
-    // week → week: dashed arcs
+    // week → week: straight dashed arrows, circle edge to circle edge
     for (let i = 0; i < weeks.length - 1; i++) {
       const a = weeks[i]; const b = weeks[i + 1];
       const s = spineAt(i + 1);
-      const x1 = a.p.x - 8; const y1 = a.p.y + 26;
-      const x2 = b.p.x - 8; const y2 = b.p.y - 27;
-      const cx = Math.min(x1, x2) - 34 - Math.min(80, (y2 - y1) * 0.08); const cy = (y1 + y2) / 2;
-      s.path.setAttribute('d', `M${x1},${y1}Q${cx},${cy} ${x2},${y2}`);
-      const dx = x2 - cx; const dy = y2 - cy; const d = Math.hypot(dx, dy) || 1;
-      s.head.setAttribute('d', arrow(x2, y2, dx / d, dy / d));
+      const dx = b.p.x - a.p.x; const dy = b.p.y - a.p.y; const d = Math.hypot(dx, dy) || 1;
+      const ux = dx / d; const uy = dy / d;
+      const x1 = a.p.x + ux * 28; const y1 = a.p.y + uy * 28;
+      const x2 = b.p.x - ux * 28; const y2 = b.p.y - uy * 28;
+      s.path.setAttribute('d', `M${x1},${y1}L${x2},${y2}`);
+      s.head.setAttribute('d', arrow(x2, y2, ux, uy));
       s.g.classList.toggle('future', b.kind === 'future');
       s.g.classList.toggle('dim', !(active.has(a.id) && active.has(b.id)));
     }
@@ -491,9 +498,7 @@
     noteEl.innerHTML = `
       <div class="n-meta">${meta}</div>
       ${text ? `<p><sup>${S.noteNo}</sup>${esc(text)}</p>` : ''}
-      ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : '<button class="n-open" type="button">notes, feedback &amp; response →</button>'}`;
-    const btn = noteEl.querySelector('.n-open');
-    if (btn) btn.onclick = () => { SND.node(n, 0, 0.6); openPanel(n); };
+      ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : ''}`;
     noteEl.classList.add('show');
   }
 
@@ -510,13 +515,6 @@
   }
 
   /* ── panel ──────────────────────────────────────── */
-
-  function listSection(title, items, empty) {
-    const body = items && items.length
-      ? `<ul>${items.map((t) => `<li>${esc(t)}</li>`).join('')}</ul>`
-      : `<div class="todo"><b>TO ADD</b>${esc(empty)}</div>`;
-    return `<section><h3>${title}</h3>${body}</section>`;
-  }
 
   function openPanel(n) {
     hideNote();
@@ -572,10 +570,6 @@
       html += `<section><h3>Links</h3><ul>${n.links
         .map((l) => `<li><a href="${esc(l.url)}" target="_blank" rel="noopener">↗ ${esc(l.label)}</a></li>`)
         .join('')}</ul></section>`;
-    }
-    if (n.kind === 'week') {
-      html += listSection('Feedback', n.feedback, 'Notes from class / crit');
-      html += listSection('Response', n.response, 'What I changed or tried because of it');
     }
     if (n.children.length) {
       html += `<section class="kids"><h3>Contains <span>${n.children.length}</span></h3><ul>${n.children
@@ -779,7 +773,7 @@
       ${mix.length
         ? `<div class="j-mosaic">${mix.map((m, i) => `<figure><button type="button" data-i="${i}"><img loading="lazy" src="${thumb(m.p)}" alt=""></button><figcaption>${m.s}</figcaption></figure>`).join('')}</div>`
         : '<p class="j-empty">Neither side holds material yet — for now, this link is only a question.</p>'}
-      <textarea placeholder="What do these two share? (just for you — not saved)"></textarea>`;
+      <textarea placeholder="What do these two share? Just for you — not saved."></textarea>`;
     juxta.classList.add('open');
     juxta.scrollTop = 0;
     juxta.querySelector('.j-close').onclick = closeJuxta;

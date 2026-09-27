@@ -19,8 +19,11 @@ html, body { height: 100%; overflow: hidden; }
 .node text { fill: var(--fg); font-family: var(--mono); font-size: 13px; dominant-baseline: central; }
 .node .box { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
 .node .icon { fill: none; stroke: var(--fg); stroke-width: 1.2; stroke-linejoin: round; }
-.node .more { fill: #d9d9d9; }
-.node .more-t { fill: #000; font-size: 13px; font-weight: 600; letter-spacing: 1px; }
+.node .more-l { stroke: var(--line); stroke-width: 1; stroke-dasharray: 2 2; }
+.node .more { fill: var(--bg); stroke: var(--line); stroke-width: 1; transition: fill 0.2s; }
+.node .more-t { fill: var(--fg); font-size: 10.5px; font-weight: 500; transition: fill 0.2s; }
+.node:not(.dim):hover .more { fill: var(--fg); }
+.node:not(.dim):hover .more-t { fill: var(--bg); }
 
 .node.root .box { fill: var(--fg); stroke: var(--fg); }
 .node.root text { fill: var(--bg); font-weight: 600; font-size: 14px; letter-spacing: 0.04em; }
@@ -61,8 +64,9 @@ html, body { height: 100%; overflow: hidden; }
 .node.dim .ring, .node.dim .pill-r, .node.dim .box-in { stroke: var(--dim); }
 .node.dim .disc { fill: #2e2e2e; }
 .node.dim .num { fill: #000; }
-.node.dim .more { fill: #2a2a2a; }
-.node.dim .more-t { fill: #000; }
+.node.dim .more { fill: var(--bg); stroke: var(--dim); }
+.node.dim .more-t { fill: var(--dim-text); }
+.node.dim .more-l { stroke: var(--dim); }
 
 /* ── edges ─────────────────────────────────────────── */
 
@@ -113,8 +117,6 @@ html, body { height: 100%; overflow: hidden; }
 .note sup { font-size: 9px; margin-right: 3px; }
 .note .n-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
 .note p { margin: 0 0 8px; }
-.note .n-open { border-bottom: 1px solid currentColor; font-size: 10.5px; }
-.note .n-open:hover { color: var(--mute); }
 
 /* ── hover orbit ───────────────────────────────────── */
 

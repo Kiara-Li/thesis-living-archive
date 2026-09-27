@@ -16,8 +16,6 @@
     links     [{ label, url }]
     entries   [{ img: [...], source, url, about, text, more: { label, text, notes: [{ text, url }] } }]
               → one block per image (or pair): caption text is mine, as written
-    feedback  [ 'note from class crit…' ]   → shown under "Feedback"
-    response  [ 'what I did about it…' ]    → shown under "Response"
     title     longer heading shown in the panel (label stays short on the map)
     blocks    [{ title, text }]          → headed paragraphs (e.g. the four questions)
     sections  [{ title, items: [...] }]  → numbered list, numbering runs on across sections
@@ -48,13 +46,12 @@
       id: 'root',
       kind: 'root',
       label: 'LIVING ARCHIVE',
-      text: 'A record of the thesis as it grows — steps, material, feedback and responses.',
+      text: 'A record of the thesis as it grows.',
       children: [
         /* ───────────────────────── WEEK 1 ───────────────────────── */
         {
           id: 'w1', kind: 'week', label: 'From Interest to Question',
           date: '08.28', tag: '256 · Image Collection',
-          feedback: [], response: [],
           children: [
             {
               id: 'w1-mindmap', kind: 'step', label: 'Mindmap',
@@ -169,7 +166,6 @@ From this painting, I’ve learned that art can go beyond reality to express a p
         {
           id: 'w2', kind: 'week', label: 'Sequence → Category → Book',
           date: '09.04', tag: '256 · Book Development',
-          feedback: [], response: [],
           children: [
             {
               id: 'w2-unseen', kind: 'step', label: 'Unseen Actions',
@@ -262,7 +258,6 @@ I want the book to show both procedures: how humans build a system to control a 
         {
           id: 'w3', kind: 'week', label: 'From 256 to Research Inquiry',
           date: '09.11', tag: 'Unseen Actions II',
-          feedback: [], response: [],
           children: [
             {
               id: 'w3-encounters', kind: 'step', label: 'Unseen Actions',
@@ -303,7 +298,6 @@ I want the book to show both procedures: how humans build a system to control a 
         {
           id: 'w4', kind: 'week', label: 'What Do I Want to Do Next?',
           date: '09.18', tag: 'Research Map',
-          feedback: [], response: [],
           children: [
             {
               id: 'w4-directions', kind: 'step', label: 'Three Directions',
@@ -363,7 +357,6 @@ I want the book to show both procedures: how humans build a system to control a 
           id: 'w5', kind: 'week', label: 'From Direction to Action',
           date: '09.25', tag: 'Research Activities',
           text: 'Moving from a research direction to actually doing something with it.',
-          feedback: [], response: [],
           children: [
             {
               id: 'w5-doc', kind: 'step', label: 'Document 256',
