@@ -777,12 +777,12 @@
     }
     juxta.innerHTML = `
       <button class="j-close" type="button">× CLOSE</button>
-      <div class="j-kicker">CONNECTION ${String(L.n).padStart(2, '0')} — made by you · not saved</div>
+      <div class="j-kicker">CONNECTION ${String(L.n).padStart(2, '0')}</div>
       <div class="j-pair">${juxtaNode(L.a)}<div class="j-line"><span>A ↔ B</span></div>${juxtaNode(L.b)}</div>
       ${mix.length
         ? `<div class="j-mosaic">${mix.map((m, i) => `<figure><button type="button" data-i="${i}"><img loading="lazy" src="${thumb(m.p)}" alt=""></button><figcaption>${m.s}</figcaption></figure>`).join('')}</div>`
-        : '<p class="j-empty">Neither side holds material yet — for now, this link is only a question.</p>'}
-      <textarea placeholder="What do these two share? Just for you — not saved."></textarea>`;
+        : ''}
+      <textarea aria-label="Notes"></textarea>`;
     juxta.classList.add('open');
     juxta.scrollTop = 0;
     juxta.querySelector('.j-close').onclick = closeJuxta;
