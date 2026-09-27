@@ -1,0 +1,80 @@
+/* Works index + standalone work pages */
+
+main { padding: 120px var(--gutter) 90px; max-width: 1180px; }
+
+/* ── index: a file-tree of finished pieces ─────────── */
+
+.tree { margin-top: 10px; }
+.tree-root {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--fg); color: var(--bg);
+  padding: 8px 14px; font-weight: 600; font-size: 14px; letter-spacing: 0.04em;
+}
+.tree-root svg { stroke: var(--bg); }
+
+.tree ol { list-style: none; margin: 0; padding: 0 0 0 16px; border-left: 1px dashed var(--mute); margin-left: 16px; }
+.tree li { position: relative; padding: 22px 0 0 26px; }
+.tree li::before { content: ''; position: absolute; left: -1px; top: 38px; width: 26px; border-top: 1px solid var(--line); }
+.tree li::after { content: ''; position: absolute; left: 22px; top: 35px; width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+
+.work-row {
+  display: grid; grid-template-columns: auto 1fr auto; gap: 18px; align-items: center;
+  border: 1.5px solid var(--line); outline: 1px solid var(--line); outline-offset: -5px;
+  padding: 9px 16px; text-decoration: none; max-width: 640px;
+  transition: background 0.2s, color 0.2s;
+}
+.work-row:hover { background: var(--fg); color: var(--bg); }
+.work-row .no { font-size: 11px; color: var(--mute); }
+.work-row:hover .no { color: var(--bg); }
+.work-row .t { font-family: var(--sans); font-weight: 600; font-size: 17px; }
+.work-row .t small { font-family: var(--mono); font-weight: 400; font-size: 11px; margin-left: 10px; color: var(--mute); }
+.work-row:hover .t small { color: var(--bg); }
+.work-row .d { font-size: 11px; }
+
+.work-row.ghost { border-style: dashed; outline: none; color: var(--mute); pointer-events: none; }
+
+.aside-note { margin-top: 60px; max-width: 360px; font-size: 10.5px; color: var(--mute); border-top: 1px dotted #555; padding-top: 10px; }
+
+/* ── a single work ─────────────────────────────────── */
+
+.crumbs { font-size: 10.5px; color: var(--mute); margin-bottom: 40px; display: flex; gap: 18px; flex-wrap: wrap; }
+.crumbs a { text-decoration: none; border-bottom: 1px solid #555; }
+.crumbs a:hover { color: var(--fg); border-color: var(--fg); }
+
+.work-head { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; align-items: end; border-bottom: 1.5px solid var(--line); padding-bottom: 22px; }
+.work-head h1 { font-family: var(--sans); font-weight: 600; font-size: clamp(64px, 14vw, 180px); line-height: 0.85; letter-spacing: -0.04em; margin: 0; }
+.work-head .kicker { font-size: 11px; margin-bottom: 14px; display: flex; gap: 6px; flex-wrap: wrap; }
+
+dl.meta { display: grid; grid-template-columns: 90px 1fr; margin: 0; font-size: 11px; }
+dl.meta dt, dl.meta dd { margin: 0; padding: 5px 0; border-bottom: 1px dotted #444; }
+dl.meta dt { color: var(--mute); }
+
+.work-body { display: grid; grid-template-columns: minmax(0, 1fr) 300px; gap: 40px; margin-top: 30px; }
+.work-body .lede { font-size: 15px; line-height: 1.6; max-width: 60ch; }
+
+.trail h3, .spreads h3 {
+  font-size: 10px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+  margin: 0 0 8px; padding-bottom: 6px; border-bottom: 1px solid #333;
+  display: flex; justify-content: space-between;
+}
+.trail ol { list-style: none; margin: 0; padding: 0; counter-reset: t; }
+.trail li { position: relative; padding: 6px 0 6px 18px; font-size: 11px; border-left: 1px solid var(--line); }
+.trail li::before { content: ''; position: absolute; left: -3.5px; top: 12px; width: 6px; height: 6px; border-radius: 50%; background: var(--line); }
+.trail a { text-decoration: none; }
+.trail a:hover { text-decoration: underline; }
+.trail .dt { color: var(--mute); margin-right: 8px; }
+
+.spreads { margin-top: 70px; }
+.spread-list { display: grid; gap: 34px; }
+.spread { display: grid; grid-template-columns: 50px 1fr; gap: 12px; }
+.spread .idx { font-size: 10px; color: var(--mute); border-top: 1px solid var(--line); padding-top: 6px; }
+.spread button { display: block; width: 100%; }
+.spread .slot { aspect-ratio: 16 / 10; border: 1px dashed #555; display: grid; place-items: center; color: #666; font-size: 11px; }
+
+@media (max-width: 800px) {
+  main { padding-top: 100px; }
+  .work-head, .work-body { grid-template-columns: 1fr; gap: 24px; }
+  .work-row { grid-template-columns: 1fr auto; }
+  .work-row .no { display: none; }
+  .spread { grid-template-columns: 1fr; }
+}

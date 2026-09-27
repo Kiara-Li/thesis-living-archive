@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Living Archive — Works</title>
+  <meta name="description" content="Finished works from Kiara Li's thesis living archive.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/works.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ident">
+      <a href="../" class="name">KIARA LI — LIVING ARCHIVE</a><br>
+      <span class="sub">BFA Communication Design · Thesis 1 · Fall 2026</span>
+    </div>
+    <nav class="nav">
+      <div class="tabs">
+        <a href="../">Process</a>
+        <a href="./" aria-current="page">Works</a>
+      </div>
+      <button class="sound-toggle" id="sound" type="button">SOUND ON</button>
+    </nav>
+  </header>
+
+  <main>
+    <div class="tree">
+      <div class="tree-root">
+        <svg width="16" height="13" viewBox="0 0 16 13" fill="none" stroke-width="1.2"><path d="M0.6 0.6h14.8v11.8H0.6z M4.4 9.4l6.6-6.2 M6.4 3.2h4.6v4.6"/></svg>
+        WORKS
+      </div>
+      <ol id="works"></ol>
+    </div>
+    <p class="aside-note">¹ Finished pieces live here on their own pages. Each one also sits somewhere on the process map, where it came from.</p>
+  </main>
+
+  <script src="../assets/js/data.js"></script>
+  <script src="../assets/js/sound.js"></script>
+  <script>
+    (() => {
+      const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const list = document.getElementById('works');
+      const works = window.ARCHIVE.works;
+      list.innerHTML = works.map((w, i) => `
+        <li><a class="work-row" href="${esc(w.href)}" data-i="${i}">
+          <span class="no">${String(i + 1).padStart(2, '0')}</span>
+          <span class="t">${esc(w.title)} <small>${esc(w.kind)}</small></span>
+          <span class="d">${esc(w.date)} ↗</span>
+        </a></li>`).join('') + `
+        <li><div class="work-row ghost">
+          <span class="no">${String(works.length + 1).padStart(2, '0')}</span>
+          <span class="t">…</span><span class="d">upcoming</span>
+        </div></li>`;
+
+      list.querySelectorAll('a.work-row').forEach((a) => {
+        a.addEventListener('click', (e) => {
+          if (e.metaKey || e.ctrlKey || !window.MusicBox.on) return;
+          e.preventDefault();
+          window.MusicBox.node({ depth: 1, index: +a.dataset.i });
+          setTimeout(() => { location.href = a.href; }, 220);
+        });
+      });
+
+      const btn = document.getElementById('sound');
+      const paint = () => { btn.textContent = `SOUND ${window.MusicBox.on ? 'ON' : 'OFF'}`; };
+      btn.onclick = () => { window.MusicBox.toggle(); paint(); };
+      paint();
+    })();
+  </script>
+</body>
+</html>

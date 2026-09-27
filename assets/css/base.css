@@ -1,0 +1,127 @@
+/* Shared: tokens, type, header, tabs, lightbox */
+
+:root {
+  --bg: #000;
+  --fg: #f0f0f0;
+  --line: #e6e6e6;
+  --mute: #8c8c8c;
+  --dim: #3f3f3f;
+  --dim-text: #555;
+  --panel: #050505;
+  --mono: 'IBM Plex Mono', ui-monospace, Menlo, monospace;
+  --sans: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --gutter: 28px;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+img { display: block; max-width: 100%; }
+
+/* ── Header ─────────────────────────────────────────── */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 18px var(--gutter);
+  z-index: 40;
+  pointer-events: none;
+}
+.site-header > * { pointer-events: auto; }
+
+.ident { font-size: 10px; letter-spacing: 0.02em; line-height: 1.55; }
+.ident a { text-decoration: none; }
+.ident .name { font-weight: 600; }
+.ident .sub { color: var(--mute); }
+
+.nav { display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
+
+.tabs { display: flex; border: 1.5px solid var(--line); }
+.tabs a {
+  padding: 7px 16px 6px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.tabs a + a { border-left: 1.5px solid var(--line); }
+.tabs a[aria-current='page'] { background: var(--fg); color: var(--bg); }
+.tabs a:not([aria-current='page']):hover { background: #1a1a1a; }
+
+.sound-toggle { font-size: 10px; color: var(--mute); letter-spacing: 0.06em; }
+.sound-toggle:hover { color: var(--fg); }
+
+/* registration marks, like a print sheet */
+.marks { position: fixed; inset: 0; pointer-events: none; z-index: 1; }
+.marks span { position: absolute; font-size: 12px; color: #6a6a6a; line-height: 1; transform: translate(-50%, -50%); }
+
+/* ── Pills ─────────────────────────────────────────── */
+
+.pill {
+  display: inline-block;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0 8px;
+  font-size: 10px;
+  line-height: 17px;
+  white-space: nowrap;
+}
+.pill.ghost { border-style: dashed; color: var(--mute); border-color: var(--mute); }
+
+/* placeholder for material still to come */
+.todo {
+  border: 1px dashed #666; color: var(--mute);
+  padding: 8px 10px; font-size: 11px; margin: 10px 0;
+}
+.todo b { color: var(--fg); font-weight: 500; margin-right: 6px; }
+
+/* ── Lightbox ──────────────────────────────────────── */
+
+.lightbox {
+  position: fixed; inset: 0; z-index: 90;
+  background: rgba(0, 0, 0, 0.96);
+  display: none;
+  align-items: center; justify-content: center;
+}
+.lightbox.open { display: flex; }
+.lightbox img { max-width: calc(100vw - 140px); max-height: calc(100vh - 110px); object-fit: contain; }
+.lightbox .lb-bar {
+  position: absolute; left: var(--gutter); right: var(--gutter); bottom: 18px;
+  display: flex; justify-content: space-between; font-size: 11px; color: var(--mute);
+}
+.lightbox .lb-close { position: absolute; top: 18px; right: var(--gutter); font-size: 11px; letter-spacing: 0.08em; }
+.lightbox .lb-prev, .lightbox .lb-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%;
+}
+.lightbox .lb-prev { left: var(--gutter); }
+.lightbox .lb-next { right: var(--gutter); }
+.lightbox button:hover { background: #1a1a1a; }
+
+@media (max-width: 640px) {
+  :root { --gutter: 16px; }
+  .ident .sub { display: none; }
+  .tabs a { padding: 6px 11px 5px; font-size: 11px; }
+  .lightbox img { max-width: calc(100vw - 32px); }
+  .lightbox .lb-prev, .lightbox .lb-next { top: auto; bottom: 48px; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Living Archive — Process</title>
+  <meta name="description" content="Kiara Li — Thesis living archive. BFA Communication Design, Thesis 1, Fall 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/map.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ident">
+      <a href="./" class="name">KIARA LI — LIVING ARCHIVE</a><br>
+      <span class="sub">BFA Communication Design · Thesis 1 · Fall 2026</span>
+    </div>
+    <nav class="nav">
+      <div class="tabs">
+        <a href="./" aria-current="page">Process</a>
+        <a href="works/">Works</a>
+      </div>
+      <button class="sound-toggle" id="sound" type="button">SOUND ON</button>
+    </nav>
+  </header>
+
+  <div class="marks" aria-hidden="true">
+    <span style="left:14px;top:50%">+</span>
+    <span style="right:6px;top:50%">+</span>
+    <span style="left:50%;bottom:6px">+</span>
+    <span style="left:14px;bottom:6px">+</span>
+    <span style="right:6px;bottom:6px">+</span>
+  </div>
+
+  <svg id="map" aria-label="Process map">
+    <defs></defs>
+    <g id="world">
+      <g id="g-spine"></g>
+      <g id="g-edges"></g>
+      <g id="g-links"></g>
+      <g id="g-nodes"></g>
+    </g>
+  </svg>
+
+  <svg id="overlay" aria-hidden="true">
+    <path id="leader" class="leader"></path>
+    <path id="drag-line" class="drag"></path>
+    <circle id="drag-dot" class="drag-dot" r="3" style="display:none"></circle>
+  </svg>
+
+  <div class="orbit" id="orbit" aria-hidden="true"></div>
+  <aside class="note" id="note" aria-live="polite"></aside>
+  <aside class="panel right" id="panel" aria-label="Step details"></aside>
+  <div class="juxta" id="juxta" role="dialog" aria-label="Connection"></div>
+
+  <div class="legend">
+    <i>◯</i> week &nbsp; <i>▭</i> step &nbsp; <i>⧈</i> work ↗ &nbsp; <i>┈</i> upcoming<br>
+    hover to preview · click to open · drag one node onto another to connect
+  </div>
+  <div class="controls">
+    <button type="button" id="zoom-out" aria-label="Zoom out">−</button>
+    <button type="button" id="zoom-in" aria-label="Zoom in">+</button>
+    <button type="button" id="zoom-fit" class="fit">FIT</button>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/sound.js"></script>
+  <script src="assets/js/lightbox.js"></script>
+  <script src="assets/js/map.js"></script>
+</body>
+</html>

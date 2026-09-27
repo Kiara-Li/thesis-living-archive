@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>256 — Living Archive</title>
+  <meta name="description" content="256 — a printed book by Kiara Li. BFA Communication Design, Thesis 1, Fall 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/css/base.css">
+  <link rel="stylesheet" href="../../assets/css/works.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="ident">
+      <a href="../../" class="name">KIARA LI — LIVING ARCHIVE</a><br>
+      <span class="sub">BFA Communication Design · Thesis 1 · Fall 2026</span>
+    </div>
+    <nav class="nav">
+      <div class="tabs">
+        <a href="../../">Process</a>
+        <a href="../" aria-current="page">Works</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="crumbs">
+      <a href="../">← All works</a>
+      <a href="../../#w4">Seen in process: W04 ↗</a>
+    </div>
+
+    <div class="work-head">
+      <div>
+        <div class="kicker"><span class="pill">09.25</span><span class="pill">Printed book</span></div>
+        <h1>256</h1>
+      </div>
+      <dl class="meta">
+        <dt>Year</dt><dd>2026</dd>
+        <dt>Course</dt><dd>Thesis 1, Fall 2026</dd>
+        <dt>Format</dt><dd>— to add</dd>
+        <dt>Pages</dt><dd>— to add</dd>
+        <dt>Images</dt><dd>256</dd>
+      </dl>
+    </div>
+
+    <div class="work-body">
+      <div>
+        <p class="lede">A book built from a collection of 256 images.</p>
+        <div class="todo"><b>TO ADD</b>Project description</div>
+      </div>
+      <nav class="trail" aria-label="Process">
+        <h3>Process <span>5</span></h3>
+        <ol>
+          <li><span class="dt">08.28</span><a href="../../#w1-images">12 Images</a></li>
+          <li><span class="dt">09.04</span><a href="../../#w2-spreads">Spread Explorations</a></li>
+          <li><span class="dt">09.11</span><a href="../../#w3-proto">256 Prototype</a></li>
+          <li><span class="dt">09.18</span><a href="../../#w4">Printed Book</a></li>
+          <li><span class="dt">09.25</span><a href="../../#w5-doc">Document 256</a></li>
+        </ol>
+      </nav>
+    </div>
+
+    <section class="spreads">
+      <h3>Spreads <span>—</span></h3>
+      <!--
+        To add a spread, replace a slot with:
+        <button type="button" data-full="../../assets/img/book/full/s01.jpg">
+          <img src="../../assets/img/book/full/s01.jpg" alt="Spread 01" loading="lazy">
+        </button>
+      -->
+      <div class="spread-list">
+        <div class="spread"><div class="idx">S01</div><div class="slot">spread to add</div></div>
+        <div class="spread"><div class="idx">S02</div><div class="slot">spread to add</div></div>
+        <div class="spread"><div class="idx">S03</div><div class="slot">spread to add</div></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../../assets/js/lightbox.js"></script>
+  <script>
+    (() => {
+      const buttons = [...document.querySelectorAll('.spread button[data-full]')];
+      const items = buttons.map((b, i) => ({ src: b.dataset.full, caption: `256 — S${String(i + 1).padStart(2, '0')}` }));
+      buttons.forEach((b, i) => { b.onclick = () => window.Lightbox.open(items, i); });
+    })();
+  </script>
+</body>
+</html>
