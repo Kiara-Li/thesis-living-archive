@@ -9,6 +9,7 @@ Kiara will say something like "add week 6" or "add my research activity notes". 
 1. **Content lives in `assets/js/data.js` only.** One node per assignment/step. Read the header comment there for the node fields.
 2. **New week** → add a `kind: 'week'` node to `root.children`, before the `future` nodes:
    - `date: 'MM.DD'` (the class date), `tag:` short assignment name, `label:` short title.
+   - Week 5 and the upcoming nodes are in `data.js` with `hidden: true` (on hold). When Kiara sends that week, rewrite it with her material and remove `hidden`.
    - If the week appears as an upcoming `future` node, turn that node into the week instead of adding a duplicate. Add or shift future nodes to match the schedule she gives.
 3. **Steps** → children with `kind: 'step'`. Nest them when the assignment has parts (e.g. "10 Questions" under "Research Activities").
    - A step that should grow somewhere else on the map gets `island: true`.

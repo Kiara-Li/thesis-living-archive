@@ -45,6 +45,11 @@
 
   const byId = new Map();
   const root = A.root;
+  // `hidden: true` keeps a node in data.js but off the map (for later)
+  (function prune(n) {
+    n.children = (n.children || []).filter((c) => !c.hidden);
+    n.children.forEach(prune);
+  })(root);
   (function walk(n, parent, depth, index) {
     n.parent = parent;
     n.depth = depth;

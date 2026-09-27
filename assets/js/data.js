@@ -20,6 +20,7 @@
     blocks    [{ title, text }]          → headed paragraphs (e.g. the four questions)
     sections  [{ title, items: [...] }]  → numbered list, numbering runs on across sections
     href      works only — the standalone page to open
+    hidden    true = kept here but not shown on the map (not ready yet)
     island    true = grows as a separate cluster, joined by a long dotted line
     children  [ ...nodes ]
 */
@@ -354,7 +355,7 @@ I want the book to show both procedures: how humans build a system to control a 
 
         /* ───────────────────────── WEEK 5 ───────────────────────── */
         {
-          id: 'w5', kind: 'week', label: 'From Direction to Action',
+          id: 'w5', kind: 'week', hidden: true, label: 'From Direction to Action',
           date: '09.25', tag: 'Research Activities',
           text: 'Moving from a research direction to actually doing something with it.',
           children: [
@@ -392,8 +393,8 @@ I want the book to show both procedures: how humans build a system to control a 
         },
 
         /* ───────────────────────── UPCOMING ───────────────────────── */
-        { id: 'f1', kind: 'future', label: 'Drafts & Iterations', date: '10.02' },
-        { id: 'f2', kind: 'future', label: 'Thesis Exchange — Prototype 1', date: '10.09' },
+        { id: 'f1', kind: 'future', hidden: true, label: 'Drafts & Iterations', date: '10.02' },
+        { id: 'f2', kind: 'future', hidden: true, label: 'Thesis Exchange — Prototype 1', date: '10.09' },
       ],
     },
   };
