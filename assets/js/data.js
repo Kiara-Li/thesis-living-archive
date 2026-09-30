@@ -401,11 +401,6 @@ These are the starting cases for my archive of human attempts to repair or resha
               id: 'w5-readings', kind: 'step', label: 'Readings and References',
               children: [
                 {
-                  id: 'w5-papanek', kind: 'step', label: 'Papanek',
-                  title: 'Victor Papanek, Design for the Real World, Ch. 1',
-                  text: `Reading it brought me back to a paper I wrote earlier on microwave UI/UX and passive consumption. I want to put that paper on this site as well.`,
-                },
-                {
                   id: 'w5-butterfly', kind: 'step', label: 'Living in the Time of the Butterfly',
                   title: 'González-Duarte, C. & Méndez-Arreola, R. "Living in the time of the butterfly": Engaging more-than-human temporalities to rethink biodiversity conservation. Journal of Political Ecology.',
                   text: `I found this myself. It is about the Mazahua and Otomi communities in the Monarch Butterfly Biosphere Reserve in Mexico. Their time moves in cycles shared between rain, corn, butterflies, and ancestors, while conservation brought in a linear, single-species timeline.
@@ -467,16 +462,29 @@ My reaction: I really liked it. It feels like the same kind of thing as the oyst
               ],
             },
             {
-              id: 'w5-earlier', kind: 'step', label: 'Earlier Work: Sustainability Course', island: true,
-              text: `These two pieces are from a sustainability class I took before. Looking back, they were already about the same questions.`,
-              entries: [
+              id: 'w5-earlier', kind: 'step', label: 'Earlier Work', island: true,
+              children: [
                 {
-                  source: 'Water',
-                  text: `A digital painting with hand-lettered text about water from a Lakota understanding. Mni is the Lakota word for water.`,
+                  id: 'w5-sustainability', kind: 'step', label: 'Sustainability Course',
+                  text: `These two pieces are from a sustainability class I took before. Looking back, they were already about the same questions.`,
+                  entries: [
+                    {
+                      img: ['w5-earlier/water'],
+                      source: 'Water',
+                      text: `A digital painting with hand-lettered text about water from a Lakota understanding. Mni is the Lakota word for water.`,
+                    },
+                    {
+                      img: ['w5-earlier/turtle'],
+                      source: 'Skywoman and the turtle',
+                      text: `A collage made from cut paper and cut-out text, based on the Skywoman creation story, where the geese, the muskrat, and a great turtle help make the land.`,
+                    },
+                  ],
                 },
                 {
-                  source: 'Skywoman and the turtle',
-                  text: `A collage made from cut paper and cut-out text, based on the Skywoman creation story, where the geese, the muskrat, and a great turtle help make the land.`,
+                  id: 'w5-fluffy', kind: 'step', label: 'Fluffy New Yorker',
+                  // translated from Kiara's note (Chinese)
+                  text: `A website I made in the fall semester of my sophomore year.`,
+                  links: [{ label: 'Fluffy New Yorker', url: 'https://kiara-li.github.io/fluffy-new-yorker/entries/Homepage.html' }],
                 },
               ],
             },

@@ -562,7 +562,7 @@
       html += `<section class="entries"><h3>Collection <span>${n.entries.length}</span></h3>${n.entries.map((e, k) => {
         const btns = (e.img || []).map((p) => {
           entryItems.push({ src: full(p), caption: e.source || String(k + 1).padStart(2, '0') });
-          return `<button type="button" data-entry="${entryItems.length - 1}"><img loading="lazy" src="${thumb(p)}" alt=""></button>`;
+          return `<button type="button" data-entry="${entryItems.length - 1}"><img loading="lazy" src="${full(p)}" alt=""></button>`;
         }).join('');
         const src = e.source ? (e.url ? `<a href="${esc(e.url)}" target="_blank" rel="noopener">${esc(e.source)} ↗</a>` : esc(e.source)) : '';
         const more = e.more ? `<details><summary>${esc(e.more.label || 'More')}</summary>${paras(e.more.text || '')}${e.more.notes && e.more.notes.length ? `<ol class="fn">${e.more.notes.map((f) => `<li>${esc(f.text)}${f.url ? ` <a href="${esc(f.url)}" target="_blank" rel="noopener">↗</a>` : ''}</li>`).join('')}</ol>` : ''}</details>` : '';
