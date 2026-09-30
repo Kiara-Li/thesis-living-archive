@@ -437,9 +437,7 @@ White-footed mice in NYC parks and rats in Manhattan show genetic differences sh
                 {
                   id: 'w5-interspecies', kind: 'step', label: 'Interspecies Library',
                   title: 'Oscar Salguero — Interspecies Library',
-                  text: `An archive of artists' books about interspecies futures, based in Brooklyn.
-
-My reaction: I didn't like it, as a whole collection. It uses animals as aesthetic material and humor to say something about humans, more than actually caring about the animal's perspective. There is little scientific basis. It helped me see what I don't want to do.`,
+                  text: `An archive of artists' books about interspecies futures, based in Brooklyn.`,
                   links: [{ label: 'interspecieslibrary.com', url: 'https://interspecieslibrary.com/' }],
                 },
                 {
