@@ -109,7 +109,8 @@ let uid = 0;
 const newCity = () => ({ key: ++uid, name: '', yearsRaw: '', stillHere: false, strokes: [], lineNote: '', species: [], noSpecies: false, pending: '' });
 
 const state = {
-  lang: /^zh/i.test((navigator.languages && navigator.languages[0]) || navigator.language || '') ? 'zh' : 'en',
+  // English by default; a link ending in ?lang=zh opens in Chinese.
+  lang: new URLSearchParams(location.search).get('lang') === 'zh' ? 'zh' : 'en',
   id: makeId(),
   screen: 0,
   cities: [newCity()],
