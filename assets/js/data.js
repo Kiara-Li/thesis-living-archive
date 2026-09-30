@@ -34,7 +34,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '09.27',
+      updated: '09.30',
     },
     images: { FAIR },
 
@@ -355,37 +355,130 @@ I want the book to show both procedures: how humans build a system to control a 
 
         /* ───────────────────────── WEEK 5 ───────────────────────── */
         {
-          id: 'w5', kind: 'week', hidden: true, label: 'From Direction to Action',
+          id: 'w5', kind: 'week', label: 'From Direction to Action',
           date: '09.25', tag: 'Research Activities',
-          text: 'Moving from a research direction to actually doing something with it.',
           children: [
             {
-              id: 'w5-doc', kind: 'step', label: 'Document 256',
-              text: 'Scans of every spread of the finished book.',
-              todo: 'Add the scans',
-            },
-            {
-              id: 'w5-activities', kind: 'step', label: 'Research Activities',
-              text: 'The two research activities, with drafts, sketches, notes and iterations.',
+              id: 'w5-direction', kind: 'step', label: 'Direction',
               children: [
-                { id: 'w5-act-1', kind: 'step', label: 'Activity 1', todo: 'Add drafts and notes' },
-                { id: 'w5-act-2', kind: 'step', label: 'Activity 2', todo: 'Add drafts and notes' },
-                { id: 'w5-questions', kind: 'step', label: '10 Questions', text: 'What came up while doing — curiosities, confusions, things to test next.', todo: 'Add the 10 questions' },
+                {
+                  id: 'w5-now', kind: 'step', label: 'Where I Am Now',
+                  text: `My thesis started as "evolution." After Pascal's feedback and this week's reading, I am moving toward a narrower direction:
+
+The city as habitat. Looking at New York as an ecological environment, the same way we would look at a marsh or a mudflat, with humans as one of the species living in it.
+
+I am still keeping evolution, but as a timescale in the background, not as the whole topic. Evolution is still happening in the city now. Humans are still evolving too, we just can't feel it in one lifetime.`,
+                },
+                {
+                  id: 'w5-changed', kind: 'step', label: 'How the Direction Changed',
+                  text: `Week 4: Three directions: (1) Coexistence, (2) Evolution as Pattern and Chance, (3) Biological Evolution and Future Bodies.
+
+Week 4–5: Two research activities planned under "evolution as a pattern of change": an archive of NYC environmental projects, and TRACE (people drawing their life as one line).
+
+This week: Went back to why I chose this thesis in the first place, then read about multispecies time. Narrowed down to two options:
+
+1. The city as a new ecological environment, including how the city perceives and holds time, from both animal and human sides.
+
+2. Multispecies time and how different futures are woven together.
+
+For now I am going with option 1. Option 2 becomes a way of looking inside option 1, not a separate topic.`,
+                },
+                {
+                  id: 'w5-why', kind: 'step', label: 'Why I Started',
+                  text: `I first chose this thesis because birds can see colors humans cannot see. Later it became about human efforts to repair nature. What I actually want is not to feel sorry for other species from a human point of view, but to put humans back into the ecosystem and look at nature, and our own future, as a whole.`,
+                },
               ],
             },
             {
-              id: 'w5-papanek', kind: 'step', label: 'Reading: Papanek',
-              text: 'Design for the Real World, ch. 1 (1971). What still holds, what feels dated, how I would frame the designer’s role today.',
-              todo: 'Add reading notes',
+              id: 'w5-documented', kind: 'step', label: 'What I Have Documented',
+              text: `Billion Oyster Project, Governors Island
+
+Rooftop greening in NYC
+
+These are the starting cases for my archive of human attempts to repair or reshape the city.`,
             },
             {
-              id: 'w5-visual', kind: 'step', label: 'Visual Research', island: true,
-              text: 'Communication design that makes me want to make something.',
+              id: 'w5-readings', kind: 'step', label: 'Readings and References',
               children: [
                 {
-                  id: 'w5-visual-text', kind: 'step', label: 'Reflection',
-                  text: 'Not what I like — how communication design is being used across the examples.',
-                  todo: 'Add the ~200 word reflection',
+                  id: 'w5-papanek', kind: 'step', label: 'Papanek',
+                  title: 'Victor Papanek, Design for the Real World, Ch. 1',
+                  text: `Reading it brought me back to a paper I wrote earlier on microwave UI/UX and passive consumption. I want to put that paper on this site as well.`,
+                },
+                {
+                  id: 'w5-butterfly', kind: 'step', label: 'Living in the Time of the Butterfly',
+                  title: 'González-Duarte, C. & Méndez-Arreola, R. "Living in the time of the butterfly": Engaging more-than-human temporalities to rethink biodiversity conservation. Journal of Political Ecology.',
+                  text: `I found this myself. It is about the Mazahua and Otomi communities in the Monarch Butterfly Biosphere Reserve in Mexico. Their time moves in cycles shared between rain, corn, butterflies, and ancestors, while conservation brought in a linear, single-species timeline.
+
+It made me think that life and change might be understood differently across species too. That is why I say humans are still evolving.
+
+Columba González-Duarte teaches anthropology at The New School for Social Research. I hope to contact her for an interview.`,
+                  links: [
+                    { label: 'doi.org/10.2458/jpe.5015', url: 'https://doi.org/10.2458/jpe.5015' },
+                    { label: 'Columba González-Duarte, The New School', url: 'https://www.newschool.edu/nssr/faculty/columba-gonz%C3%A1lez-duarte/' },
+                  ],
+                },
+                {
+                  id: 'w5-urban', kind: 'step', label: 'Urban Evolution in New York',
+                  text: `Atlantic tomcod in the Hudson River evolved resistance to PCB pollution within about 50–100 years. The river cleanup could now be a problem for them.
+
+White-footed mice in NYC parks and rats in Manhattan show genetic differences shaped by the city. Johnson, M.T.J. & Munshi-South, J. (2017). Evolution of life in urban environments. Science.`,
+                  links: [
+                    { label: 'WHOI — Pollution triggers genetic resistance in a coastal fish', url: 'https://www.whoi.edu/press-room/news-release/pollution-triggers-genetic-resistance-mechanism-in-a-coastal-fish' },
+                    { label: 'Science — Evolution of life in urban environments', url: 'https://www.science.org/doi/10.1126/science.aam8327' },
+                  ],
+                },
+                {
+                  id: 'w5-ipbes', kind: 'step', label: 'Nature Futures Framework',
+                  title: 'IPBES — Nature Futures Framework',
+                  text: `A framework for imagining futures for nature through three values: nature for nature, nature for society, nature as culture. The future is not one line.`,
+                  links: [{ label: 'zenodo.org/records/8171339', url: 'https://zenodo.org/records/8171339' }],
+                },
+                {
+                  id: 'w5-interspecies', kind: 'step', label: 'Interspecies Library',
+                  title: 'Oscar Salguero — Interspecies Library',
+                  text: `An archive of artists' books about interspecies futures, based in Brooklyn.
+
+My reaction: I didn't like it, as a whole collection. It uses animals as aesthetic material and humor to say something about humans, more than actually caring about the animal's perspective. There is little scientific basis. It helped me see what I don't want to do.`,
+                  links: [{ label: 'interspecieslibrary.com', url: 'https://interspecieslibrary.com/' }],
+                },
+                {
+                  id: 'w5-pollinator', kind: 'step', label: 'Pollinator Pathmaker',
+                  title: 'Alexandra Daisy Ginsberg — Pollinator Pathmaker',
+                  text: `A garden designed for pollinating insects, not for the human eye. The planting algorithm is public.
+
+My reaction: I really liked it. It feels like the same kind of thing as the oyster project and the rooftop gardens I documented.`,
+                  links: [
+                    { label: 'Museum für Naturkunde Berlin', url: 'https://www.museumfuernaturkunde.berlin/en/programme/pollinator-pathmaker' },
+                    { label: 'pollinator.art', url: 'https://pollinator.art/' },
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'w5-activities', kind: 'step', label: 'Research Activities',
+              children: [
+                {
+                  id: 'w5-act-1', kind: 'step', label: '01 — Archive of Human Attempts',
+                  text: `Human efforts to repair, improve, reshape, or imagine our relationship with the environment and other living things. Starting with the oyster project and rooftop gardens. Pollinator Pathmaker and the Hudson tomcod could go in as well.`,
+                },
+                {
+                  id: 'w5-act-2', kind: 'step', label: '02 — TRACE',
+                  text: `Participants draw their life as one continuous line and mark moments with a limited set of scanned objects. I don't tell them the project is about evolution. I plan to start with a paper version before building the website. This may change to fit the city direction.`,
+                },
+              ],
+            },
+            {
+              id: 'w5-earlier', kind: 'step', label: 'Earlier Work: Sustainability Course', island: true,
+              text: `These two pieces are from a sustainability class I took before. Looking back, they were already about the same questions.`,
+              entries: [
+                {
+                  source: 'Water',
+                  text: `A digital painting with hand-lettered text about water from a Lakota understanding. Mni is the Lakota word for water.`,
+                },
+                {
+                  source: 'Skywoman and the turtle',
+                  text: `A collage made from cut paper and cut-out text, based on the Skywoman creation story, where the geese, the muskrat, and a great turtle help make the land.`,
                 },
               ],
             },
