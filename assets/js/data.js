@@ -362,6 +362,15 @@ I want the book to show both procedures: how humans build a system to control a 
               id: 'w5-direction', kind: 'step', label: 'Direction',
               children: [
                 {
+                  id: 'w5-topic', kind: 'step', label: 'Current Topic',
+                  // translated from Kiara's note (Chinese), 09.30
+                  text: `The evolutionary timescale of the city, and the way time is perceived in a city — maybe not only from an animal's point of view, but from a human one as well. The focus may be on the city itself: treating the city as a new kind of ecological environment and studying it the way we would study a marsh or a mudflat.
+
+Roughly, the thesis asks: if the city is treated as an ecological environment, how is it different from traditional environments? How does it open new opportunities for evolution, and how does it affect the way different species perceive time? How is every member living in this ecosystem affected — the species that live in the city, and the city's structures themselves? How do they adapt to each other, understand each other, or fail to? And could this lead to better solutions and new opportunities in the future?
+
+In short: if we treat the city as a new ecological environment, how does it change time for every member living in it — both the species and the structures of the city itself? And how do they adapt to one another, or misunderstand one another?`,
+                },
+                {
                   id: 'w5-now', kind: 'step', label: 'Where I Am Now',
                   text: `My thesis started as "evolution." After Pascal's feedback and this week's reading, I am moving toward a narrower direction:
 
