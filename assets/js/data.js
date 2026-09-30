@@ -484,7 +484,7 @@ My reaction: I really liked it. It feels like the same kind of thing as the oyst
                   id: 'w5-fluffy', kind: 'step', label: 'Fluffy New Yorker',
                   // translated from Kiara's note (Chinese)
                   text: `A website I made in the fall semester of my sophomore year.`,
-                  links: [{ label: 'Fluffy New Yorker', url: 'https://kiara-li.github.io/fluffy-new-yorker/entries/Homepage.html' }],
+                  links: [{ label: 'Fluffy New Yorker', url: 'https://kiara-li.github.io/fluffy-new-yorker/' }],
                 },
               ],
             },
