@@ -34,7 +34,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '09.30',
+      updated: '10.02',
     },
     images: { FAIR },
 
@@ -348,6 +348,11 @@ I want the book to show both procedures: how humans build a system to control a 
             },
             {
               id: 'w4-abf', kind: 'step', label: 'Art Book Fair', island: true,
+              text: `During my visit to the bookfair, I noticed how many books use material to communicate their ideas before I even open them. One cover used fabric that looked like leaves. Another used PVC plastic arranged in a grid. Other covers also made me want to touch them and think about why those particular materials had been chosen. The material was doing more than decorating the book. It gave me an immediate sense of its subject and changed how I approached it.
+
+In my own bookmaking, I have usually focused on structure: how a book opens, how its pages are organized, and how its form can express the content. This visit made me realize that I have paid much less attention to the material itself. Paper, fabric, and plastic can create a feeling or suggest an idea before the reader gets to the words and images. I want to think more carefully about these choices in my future work, especially when making books.
+
+I also felt encouraged to be bolder with my ideas. I do not always need to follow an expected way of making something. I want to enjoy experimenting with materials and feel more excited and free while designing.`,
               images: FAIR,
             },
           ],
