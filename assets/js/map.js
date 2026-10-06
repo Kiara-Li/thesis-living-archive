@@ -506,7 +506,7 @@
       : `<span class="pill">${esc(dateOf(n))}</span><span class="pill">${esc(tagOf(n))}</span>`;
     noteEl.innerHTML = `
       <div class="n-meta">${meta}</div>
-      ${text ? `<p><sup>${S.noteNo}</sup>${esc(text)}</p>` : ''}
+      ${text ? String(text).split(/\n\s*\n/).map((t, i) => `<p>${i === 0 ? `<sup>${S.noteNo}</sup>` : ''}${esc(t)}</p>`).join('') : ''}
       ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : ''}`;
     noteEl.classList.add('show');
   }

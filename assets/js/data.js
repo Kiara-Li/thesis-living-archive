@@ -484,9 +484,9 @@ My reaction: I really liked it. It feels like the same kind of thing as the oyst
               children: [
                 {
                   id: 'w5-act-1', kind: 'step', label: 'Practice 1 — Archive of Human Attempts',
-                  text: `Human efforts to repair, improve, reshape, or imagine our relationship with the environment and other living things. Starting with the oyster project and rooftop gardens. Pollinator Pathmaker and the Hudson tomcod could go in as well.
+                  text: `This week, I will visit the Billion Oyster Project on Governors Island and a green roof project in New York in order to make a photo archive and two collage posters, and investigate how projects that try to repair or reshape the city become habitats for the species around them.
 
-This week, I will visit the Billion Oyster Project on Governors Island and a green roof project in New York in order to make a photo archive and two collage posters, and investigate how projects that try to repair or reshape the city become habitats for the species around them.`,
+Human efforts to repair, improve, reshape, or imagine our relationship with the environment and other living things. Starting with the oyster project and rooftop gardens. Pollinator Pathmaker and the Hudson tomcod could go in as well.`,
                   children: [
                     {
                       id: 'w5-practice1', kind: 'step', label: 'Oyster and Rooftop',
@@ -544,9 +544,9 @@ So I made a collage poster for each project. One is what I went through, came ac
                 },
                 {
                   id: 'w5-act-2', kind: 'step', label: 'Practice 2 — TRACE',
-                  text: `Participants draw their life as one continuous line and mark moments with a limited set of scanned objects. I don't tell them the project is about evolution. I plan to start with a paper version before building the website. This may change to fit the city direction.
+                  text: `This week, I will ask classmates and friends to draw their time in each city they have lived in in order to make TRACE, a website that turns each person's answers into one image, and investigate how people remember their cities and the animals and plants they lived alongside.
 
-This week, I will ask classmates and friends to draw their time in each city they have lived in in order to make TRACE, a website that turns each person's answers into one image, and investigate how people remember their cities and the animals and plants they lived alongside.`,
+Participants draw their life as one continuous line and mark moments with a limited set of scanned objects. I don't tell them the project is about evolution. I plan to start with a paper version before building the website. This may change to fit the city direction.`,
                   children: [
                     {
                       id: 'w5-trace-p1', kind: 'step', label: 'Prototype 1',
