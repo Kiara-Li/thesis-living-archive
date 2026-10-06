@@ -561,6 +561,12 @@
       html += `<section class="embed">${n.embedHint ? `<p class="embed-hint">↓ ${esc(n.embedHint)}</p>` : ''}<div class="embed-frame"><iframe src="${esc(n.embed)}" title="${esc(n.title || n.label)}" loading="lazy"${n.embedAllow ? ` allow="${esc(n.embedAllow)}"` : ''}></iframe></div>
         <a class="embed-open" href="${esc(n.embed)}" target="_blank" rel="noopener">Open in a new tab ↗</a></section>`;
     }
+    // a video (YouTube id) shown in the panel
+    if (n.video) {
+      html += `<section class="video-sec"><div class="v-embed"><iframe src="https://www.youtube-nocookie.com/embed/${esc(n.video)}?rel=0&amp;playsinline=1&amp;modestbranding=1" title="${esc(n.title || n.label)}" loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div></section>`;
+    }
     const entryItems = [];
     if (n.entries && n.entries.length) {
       const paras = (t) => String(t).split(/\n\s*\n/).map((x) => `<p>${esc(x)}</p>`).join('');

@@ -23,6 +23,7 @@
     hidden    true = kept here but not shown on the map (not ready yet)
     embed     a page to show live inside the panel, e.g. 'trace/' or a full URL
     embedAllow  extra iframe permissions, e.g. 'camera; microphone'
+    video     a YouTube id to show in the panel
     story     true = entries read text first, then their photos
     island    true = grows as a separate cluster, joined by a long dotted line
     children  [ ...nodes ]
@@ -551,8 +552,8 @@ So I made a collage poster for each project. One is what I went through, came ac
 Participants draw their life as one continuous line and mark moments with a limited set of scanned objects. I don't tell them the project is about evolution. I plan to start with a paper version before building the website. This may change to fit the city direction.`,
                   children: [
                     {
-                      id: 'w5-trace-p1', kind: 'step', label: 'Prototype 1',
-                      title: 'TRACE — Prototype 1',
+                      id: 'w5-trace-p1', kind: 'step', label: 'Survey Website',
+                      title: 'TRACE — Survey Website',
                       // translated from Kiara's notes (Chinese)
                       text: `TRACE is a website. Participants fill in one page for each city they have lived in:
 
@@ -814,6 +815,12 @@ Then I narrowed it down: this prototype only does gaze, a hand gesture, and voic
                   embedHint: 'Live — it asks for your camera and microphone.',
                   embedAllow: 'camera; microphone',
                   links: [{ label: 'Pigeon Sightline — open the prototype', url: 'https://kiara-li.github.io/prototype1/' }],
+                },
+                {
+                  id: 'w6-demo', kind: 'step', label: 'Demo',
+                  title: 'Pigeon Sightline — process demo',
+                  video: 'sIyvNgUktqA',
+                  links: [{ label: 'Watch on YouTube', url: 'https://youtu.be/sIyvNgUktqA' }],
                 },
                 {
                   id: 'w6-gaze', kind: 'step', label: 'Sightline',

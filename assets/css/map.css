@@ -212,6 +212,10 @@ html, body { height: 100%; overflow: hidden; }
 .embed-open { display: inline-block; margin-top: 8px; font-size: 10.5px; color: var(--mute); text-decoration: none; border-bottom: 1px solid #555; }
 .embed-open:hover { color: var(--fg); border-color: var(--fg); }
 
+/* video in a panel */
+.v-embed { aspect-ratio: 16 / 9; background: #000; border: 1px solid #333; margin-top: 4px; }
+.v-embed iframe { width: 100%; height: 100%; border: 0; display: block; }
+
 /* story entries: text, then a grid of photos */
 .entries.story .entry { padding: 14px 0 22px; }
 .entries.story .e-text { margin-bottom: 10px; }
