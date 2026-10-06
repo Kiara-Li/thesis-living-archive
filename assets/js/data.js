@@ -754,7 +754,6 @@ There could be many ways to interact. For now I'm trying to draw them out, even 
             },
             {
               id: 'w6-websites', kind: 'step', label: 'Websites I Like',
-              todo: 'Poster image — Claiming Common Spaces: Kunst und urbane Praxis, HAU Hebbel am Ufer, 2018',
               links: [
                 { label: 'Privateer — Wayfinder', url: 'https://wayfinder.privateer.com/?noradId=19077' },
                 { label: 'Common Dimensions — Library', url: 'https://commondimensions.com/library/' },
