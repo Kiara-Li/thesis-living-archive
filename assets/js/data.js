@@ -569,6 +569,13 @@ I purposely didn't say what the line means. For example, I didn't ask about mood
 A friend told me after filling it in that Edinburgh was the happiest place he had lived, and also the place where he remembered the most species.` },
                         { title: 'Classmates', text: `They couldn't see a connection between the line and the animals and plants that come after it. They suggested fixing the drawing area, or even putting the questions first: ask which animals people met, then explain what kind of human–animal relationship the drawing is about.` },
                         { title: 'My response', text: `Not seeing the connection isn't necessarily a bad thing. I wanted it to be open-ended, not just a way to collect data. I think putting the questions first and fixing the y-axis would make it boring. I want the project to be rigorous, but first it has to be interesting. At the same time, I don't want to make the kind of imaginative piece that says "imagine you are a pigeon."` },
+                        { title: 'Pascal', text: `Everyone really liked interacting with it, which shows the interaction part works.
+
+The question is whether I really need this much data. Maybe people don't need to fill in so much other information, and could use only the line to do one thing, focusing on drawing the line itself.
+
+I could think about what drawing a line means, and how to use it best in the work. Maybe with lines drawn by many people.` },
+                        { title: 'My understanding', text: `Using a line to answer a question: what in that act itself is worth looking into? For example, how someone's feelings change while they draw. I'm not sure if that is what he meant.` },
+                        { title: 'My reservation', text: `If I study the act of drawing a line, it might turn into another topic, different from what the thesis is discussing now. So for now I'm holding back, but I hope his comment can give me ideas for where to go later.` },
                       ],
                     },
                     {

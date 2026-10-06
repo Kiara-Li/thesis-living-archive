@@ -15,7 +15,7 @@ Kiara will say something like "add week 6" or "add my research activity notes". 
    - A step that should grow somewhere else on the map gets `island: true`.
    - A finished piece gets `kind: 'work'` + `href: 'works/<slug>/'`, an entry in `works: [...]`, and a page copied from `works/256/index.html`.
 4. **Text rules**
-   - **Only include what Kiara did or explicitly asks for.** No teacher-recommended readings/"Look At" lists, no teacher feedback quotes, no placeholder steps for things she didn't do.
+   - **Only include what Kiara did or explicitly asks for.** No teacher-recommended readings/"Look At" lists, no placeholder steps for things she didn't do. Teacher feedback is fine **in Kiara's own paraphrase together with her understanding/response** — never paste his words verbatim on their own.
    - Label every week with its **date and assignment name**. **Don't write your own descriptions or interpretations** — no `text` unless it's Kiara's words. If she gave no caption for something, leave it empty.
    - Captions for individual images go in `entries` (see the header comment in `data.js`): `source` for the reference line, `about` for the source's own description, `text` for her caption, and `more` for longer writing or annotations with footnotes.
    - If she writes notes in Chinese and the site text is English, translate plainly and literally. Don't embellish, and flag it in your reply.
