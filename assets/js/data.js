@@ -417,10 +417,17 @@ These are the starting cases for my archive of human attempts to repair or resha
 It made me think that life and change might be understood differently across species too. That is why I say humans are still evolving.
 
 Columba González-Duarte teaches anthropology at The New School for Social Research. I hope to contact her for an interview.`,
-                  blocks: [
-                    {
-                      title: 'Next step — email to Professor González-Duarte (gonzalc2@newschool.edu)',
-                      text: `Subject: Parsons thesis student — request for a short conversation
+                  links: [
+                    { label: 'doi.org/10.2458/jpe.5015', url: 'https://doi.org/10.2458/jpe.5015' },
+                    { label: 'Columba González-Duarte, The New School', url: 'https://www.newschool.edu/nssr/faculty/columba-gonz%C3%A1lez-duarte/' },
+                  ],
+                },
+                {
+                  id: 'w5-email', kind: 'step', label: 'Email to Prof. González-Duarte',
+                  title: 'Next step — email to Professor González-Duarte',
+                  text: `gonzalc2@newschool.edu
+
+Subject: Parsons thesis student — request for a short conversation
 
 Dear Professor González-Duarte,
 
@@ -437,12 +444,6 @@ Thank you for your time.
 Best,
 Kiara Li
 BFA Communication Design, Parsons School of Design`,
-                    },
-                  ],
-                  links: [
-                    { label: 'doi.org/10.2458/jpe.5015', url: 'https://doi.org/10.2458/jpe.5015' },
-                    { label: 'Columba González-Duarte, The New School', url: 'https://www.newschool.edu/nssr/faculty/columba-gonz%C3%A1lez-duarte/' },
-                  ],
                 },
                 {
                   id: 'w5-urban', kind: 'step', label: 'Urban Evolution in New York',
