@@ -21,7 +21,8 @@
     sections  [{ title, items: [...] }]  → numbered list, numbering runs on across sections
     href      works only — the standalone page to open
     hidden    true = kept here but not shown on the map (not ready yet)
-    embed     a page to show live inside the panel, e.g. 'trace/'
+    embed     a page to show live inside the panel, e.g. 'trace/' or a full URL
+    embedAllow  extra iframe permissions, e.g. 'camera; microphone'
     story     true = entries read text first, then their photos
     island    true = grows as a separate cluster, joined by a long dotted line
     children  [ ...nodes ]
@@ -36,7 +37,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.05',
+      updated: '10.06',
     },
     images: { FAIR },
 
@@ -731,8 +732,101 @@ What these forms can't show: that experience is decreasing (they measure memory,
           ],
         },
 
+        /* ───────────────────────── WEEK 6 ───────────────────────── */
+        {
+          id: 'w6', kind: 'week', label: 'Prototyping',
+          date: '10.02', tag: 'Prototype 1',
+          children: [
+            {
+              id: 'w6-want', kind: 'step', label: 'What I Want This Prototype to Be',
+              // translated from Kiara's notes (Chinese), 10.06
+              text: `This time the prototype has to be really interesting. I want to use the colorful palette I've been wanting to use, and not limit myself to one color like before. I want to try everything I want to try.
+
+For example, I want to combine digital with something on paper: a spread, a small booklet, or a small fill-out sheet. Small, nice-looking things that people can really take home, beautiful and not expensive. And the paper and the digital should work together perfectly. Not two outputs, but one: only when both exist does it become the prototype.
+
+I don't want the project to become preachy, telling people they need to pay more attention to the animals in their city or protect them better. I just want to bring up an idea: that the city doesn't only belong to humans. It's what I mentioned before: how other species perceive time, and what is different when we treat the city as a habitat.
+
+The way in has to be really interactive, not a big fancy concept thrown out there. I want people to actually have fun, and through that, notice the idea. But it also shouldn't be like a game showing a live camera image. It should be something designed, something actually useful.
+
+For this prototype I'm only using New York as the test field, since everyone here lives in New York. Later it could be other cities. And it's not only about different points of view, it's also about city memory and the animals and plants, like what I collected in the forms that moved me. Someone said the more they liked a city, the more animals they remembered. How can people really feel what it's like to live in a city on Earth, in a space shared with other living things? Maybe it also has to do with when people interact, like rats coming out at night. I haven't figured it out yet.
+
+There could be many ways to interact. For now I'm trying to draw them out, even quick snapshots. Just keeping my mind open.`,
+            },
+            {
+              id: 'w6-websites', kind: 'step', label: 'Websites I Like',
+              todo: 'Poster image — Claiming Common Spaces: Kunst und urbane Praxis, HAU Hebbel am Ufer, 2018',
+              links: [
+                { label: 'Privateer — Wayfinder', url: 'https://wayfinder.privateer.com/?noradId=19077' },
+                { label: 'Common Dimensions — Library', url: 'https://commondimensions.com/library/' },
+                { label: 'Beetle Land Maibara', url: 'https://www.beetleland-maibara.com' },
+                { label: 'Space Trash Signs — The Unavailable Forecast', url: 'https://spacetrashsigns.org/the-unavailable-forecast/' },
+                { label: 'MáLà Project — Dinner menu', url: 'https://www.malaproject.com/menu/dinner' },
+              ],
+            },
+            {
+              id: 'w6-thinking', kind: 'step', label: 'Thinking About the Website',
+              text: `What is the website, exactly? The one thing I'm sure of: I want it to interact with the user, and through that change something. Maybe the user learns something, notices something, or feels something. That's the most important part.
+
+But could it also be an archive? I've found a lot of interesting archives. What I make can be completely different from them, but I'm wondering whether that way of showing data could match what I want to show through the interaction. For example, the user does something and reaches something, and what they reach is the data that their action found.
+
+Or could the user's action be marked on the website? These are two different logics: one is output to the user, the other is the user putting something in.
+
+I'm also looking for APIs I could get data from.
+
+For now New York is the test site. Maybe it opens with a map of New York. I haven't decided. It might be this, it might be something completely different.`,
+            },
+            {
+              id: 'w6-sightline', kind: 'step', label: 'Pigeon Sightline',
+              title: 'Experiment — Pigeon Sightline',
+              text: `I decided to try one thing first, using the pigeon book I already finished.
+
+How does the site know which group of photos to show? By how high people are looking. If you want to see a pigeon somewhere very high, you have to lift your head a lot. So I ask people to pretend they're looking at a pigeon, and the height of their gaze decides what they see. Looking all the way up is different from looking straight ahead, looking down, or looking slightly down.
+
+The visual elements and the photos all follow the original book. The layout follows the groups in the book.
+
+Then I narrowed it down: this prototype only does gaze, a hand gesture, and voice. The rest I'll look into later.`,
+              children: [
+                {
+                  id: 'w6-proto', kind: 'step', label: 'Prototype',
+                  title: 'Pigeon Sightline — Prototype 1',
+                  embed: 'https://kiara-li.github.io/prototype1/',
+                  embedHint: 'Live — it asks for your camera and microphone.',
+                  embedAllow: 'camera; microphone',
+                  links: [{ label: 'Pigeon Sightline — open the prototype', url: 'https://kiara-li.github.io/prototype1/' }],
+                  todo: 'Screenshots / screen recording of the three parts',
+                },
+                {
+                  id: 'w6-gaze', kind: 'step', label: 'Sightline',
+                  text: `Lift your head or lower it, and the site turns to the group in the book at that height.`,
+                },
+                {
+                  id: 'w6-viewfinder', kind: 'step', label: 'Viewfinder',
+                  text: `Instead of people imitating animals, maybe there is one fixed gesture: the camera frame. Thumb and index finger make a right angle, and the other hand does the same, flipped. The pretend-to-take-a-photo gesture. Every time the user makes it, it zooms in and shows more detail of the area inside the frame. Maybe inside the viewfinder it could show the animal's point of view.`,
+                },
+                {
+                  id: 'w6-sound', kind: 'step', label: 'Sound',
+                  text: `People imitate an animal call, like "coo coo," and it's recorded and left in the city. Maybe the user writes what the call is, like "pigeon."
+
+I haven't decided how it should show up: a real photo of a pigeon, just text like a label with "pigeon" and its call, or a pigeon PNG.`,
+                },
+              ],
+            },
+            {
+              id: 'w6-later', kind: 'step', label: 'Ideas for Later',
+              todo: 'Sketches',
+              blocks: [
+                { title: 'Drawing', text: `Ask people to draw an animal that left an impression on them in the city. When they hold the paper up to the computer, it gets scanned, the animal is cut out and goes into the city. Like the museum thing where kids draw a fish and it shows up in the ocean. They keep the paper.` },
+                { title: 'From empty to lively', text: `As more people take part, it goes from nothing to slowly getting lively. People could share good memories: "Oh, you saw squirrels too," "I saw this and that."` },
+                { title: 'Place', text: `It would be good to connect the animals with the places better. Could they really be placed where people saw them, on a base like Google Maps with the streets? Or is that not needed, and it's just different areas, and you open each area to see the animals?` },
+                { title: 'Time', text: `Time is really important.` },
+                { title: 'Imitating animal postures', text: `For example, rats stand up when they fight at night, so I could show a posture people can copy, and it becomes a chance to tell people about animal behavior. But I feel this might get too playful.` },
+                { title: 'A printed booklet', text: `Something that tells people what they can activate. For example, what you would see if you make a bird-flying pose.` },
+              ],
+            },
+          ],
+        },
+
         /* ───────────────────────── UPCOMING ───────────────────────── */
-        { id: 'f1', kind: 'future', hidden: true, label: 'Drafts & Iterations', date: '10.02' },
         { id: 'f2', kind: 'future', hidden: true, label: 'Thesis Exchange — Prototype 1', date: '10.09' },
       ],
     },

@@ -558,7 +558,7 @@
     }
     // a live page inside the panel (e.g. the TRACE survey)
     if (n.embed) {
-      html += `<section class="embed">${n.embedHint ? `<p class="embed-hint">↓ ${esc(n.embedHint)}</p>` : ''}<div class="embed-frame"><iframe src="${esc(n.embed)}" title="${esc(n.title || n.label)}" loading="lazy"></iframe></div>
+      html += `<section class="embed">${n.embedHint ? `<p class="embed-hint">↓ ${esc(n.embedHint)}</p>` : ''}<div class="embed-frame"><iframe src="${esc(n.embed)}" title="${esc(n.title || n.label)}" loading="lazy"${n.embedAllow ? ` allow="${esc(n.embedAllow)}"` : ''}></iframe></div>
         <a class="embed-open" href="${esc(n.embed)}" target="_blank" rel="noopener">Open in a new tab ↗</a></section>`;
     }
     const entryItems = [];
