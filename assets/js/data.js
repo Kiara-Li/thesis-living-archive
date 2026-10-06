@@ -21,6 +21,8 @@
     sections  [{ title, items: [...] }]  → numbered list, numbering runs on across sections
     href      works only — the standalone page to open
     hidden    true = kept here but not shown on the map (not ready yet)
+    embed     a page to show live inside the panel, e.g. 'trace/'
+    story     true = entries read text first, then their photos
     island    true = grows as a separate cluster, joined by a long dotted line
     children  [ ...nodes ]
 */
@@ -34,7 +36,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.02',
+      updated: '10.05',
     },
     images: { FAIR },
 
@@ -415,6 +417,28 @@ These are the starting cases for my archive of human attempts to repair or resha
 It made me think that life and change might be understood differently across species too. That is why I say humans are still evolving.
 
 Columba González-Duarte teaches anthropology at The New School for Social Research. I hope to contact her for an interview.`,
+                  blocks: [
+                    {
+                      title: 'Next step — email to Professor González-Duarte (gonzalc2@newschool.edu)',
+                      text: `Subject: Parsons thesis student — request for a short conversation
+
+Dear Professor González-Duarte,
+
+My name is Kiara Li, and I'm a senior in the BFA Communication Design program at Parsons, currently in Thesis 1.
+
+I recently read your article with Roberto Méndez-Arreola, "Living in the time of the butterfly," and it changed how I'm thinking about my thesis. The idea that rain, corn, butterflies, and people share rhythms that don't fit a linear, single-species conservation timeline stayed with me.
+
+My thesis looks at New York City as a new kind of habitat, and at how the city shapes the time of the species and structures living in it. I'm documenting local projects like the Billion Oyster Project and green roofs, and comparing human project timelines with the life cycles of the species they are meant to help.
+
+Would you have 20–30 minutes in the coming weeks for a short conversation? I'm happy to meet at your office or over Zoom, whichever is easier for you.
+
+Thank you for your time.
+
+Best,
+Kiara Li
+BFA Communication Design, Parsons School of Design`,
+                    },
+                  ],
                   links: [
                     { label: 'doi.org/10.2458/jpe.5015', url: 'https://doi.org/10.2458/jpe.5015' },
                     { label: 'Columba González-Duarte, The New School', url: 'https://www.newschool.edu/nssr/faculty/columba-gonz%C3%A1lez-duarte/' },
@@ -461,10 +485,202 @@ My reaction: I really liked it. It feels like the same kind of thing as the oyst
                 {
                   id: 'w5-act-1', kind: 'step', label: '01 — Archive of Human Attempts',
                   text: `Human efforts to repair, improve, reshape, or imagine our relationship with the environment and other living things. Starting with the oyster project and rooftop gardens. Pollinator Pathmaker and the Hudson tomcod could go in as well.`,
+                  children: [
+                    {
+                      id: 'w5-practice1', kind: 'step', label: 'Practice 1: Oyster and Rooftop',
+                      // translated from Kiara's notes (Chinese)
+                      text: `This time I changed Practice 1. I focused on the two projects I actually went to in person: Oyster and Rooftop. I went through the photos I took there one by one, and I noticed something.`,
+                      children: [
+                        {
+                          id: 'w5-oyster', kind: 'step', label: 'Oyster',
+                          story: true,
+                          text: `This project uses oysters to protect the environment. But when I went on the field trip that day, what I felt wasn't only about oysters.`,
+                          entries: [
+                            { img: ['w5-oyster/oy01', 'w5-oyster/oy02'] },
+                            { text: `I saw chestnuts on the island, the wild kind.`, img: ['w5-oyster/oy03', 'w5-oyster/oy04', 'w5-oyster/oy05'] },
+                            { text: `It was raining that day. The grass was long and green, and it felt like being out in the wild.`, img: ['w5-oyster/oy06', 'w5-oyster/oy07', 'w5-oyster/oy08', 'w5-oyster/oy09'] },
+                            { text: `The staff made us tea with wild herbs. It was really good. It was cold because of the rain, so the warm tea is something I remember well.`, img: ['w5-oyster/oy10'] },
+                            { text: `And these are the oysters.`, img: ['w5-oyster/oy11', 'w5-oyster/oy12', 'w5-oyster/oy13', 'w5-oyster/oy14', 'w5-oyster/oy15', 'w5-oyster/oy16', 'w5-oyster/oy17'] },
+                            { text: `There was also a place introducing the river and the fish that live in it.`, img: ['w5-oyster/oy18', 'w5-oyster/oy19', 'w5-oyster/oy20'] },
+                            { text: `There was an exhibition on the island at the time, about something to do with whale hearts.`, img: ['w5-oyster/oy21', 'w5-oyster/oy22', 'w5-oyster/oy23', 'w5-oyster/oy24', 'w5-oyster/oy25', 'w5-oyster/oy26', 'w5-oyster/oy27'] },
+                            {
+                              text: `There are many projects on the island, like recycling plastic into furniture and putting it out around New York City.
+
+So it isn't only an organization that uses oysters to help the environment. Put together, all of this felt like a habitat. Overall it felt close to nature, and calm.`,
+                              img: ['w5-posters/poster-oyster'],
+                            },
+                          ],
+                        },
+                        {
+                          id: 'w5-rooftop', kind: 'step', label: 'Rooftop',
+                          story: true,
+                          text: `Rooftop was the same. It's a green, environmental project on rooftops, but the area felt a bit like an industrial park, surrounded by big buildings, many of them still under construction.`,
+                          entries: [
+                            { img: ['w5-rooftop/rt01', 'w5-rooftop/rt02'] },
+                            { text: `We climbed up to the rooftop and looked out at the New York skyline. We could also see a lot of places still being built.`, img: ['w5-rooftop/rt03', 'w5-rooftop/rt04', 'w5-rooftop/rt05', 'w5-rooftop/rt06', 'w5-rooftop/rt07'] },
+                            { text: `Next to it is a landfill. Boats bring in waste and fill it into land, so the land can be used again.`, img: ['w5-rooftop/rt08', 'w5-rooftop/rt09'] },
+                            { text: `They caught some small fish, shrimp, and crabs from the water to show us what lives in this river. They also explained New York's water cycle and water treatment.`, img: ['w5-rooftop/rt10', 'w5-rooftop/rt11', 'w5-rooftop/rt12'] },
+                            { text: `And New York's birds, with some things about protecting them.`, img: ['w5-rooftop/rt13', 'w5-rooftop/rt14'] },
+                            { text: `On the rooftop they had already finished, we saw bees and flowers. That surprised me. I didn't expect so much life on top of such grey buildings.`, img: ['w5-rooftop/rt15', 'w5-rooftop/rt16', 'w5-rooftop/rt17', 'w5-rooftop/rt18', 'w5-rooftop/rt19', 'w5-rooftop/rt20', 'w5-rooftop/rt21', 'w5-rooftop/rt22'] },
+                            { img: ['w5-posters/poster-rooftop'] },
+                          ],
+                        },
+                        {
+                          id: 'w5-posters', kind: 'step', label: 'Two Posters',
+                          text: `At both Oyster and Rooftop, what I learned wasn't one single piece of knowledge, but a whole ecosystem woven together.
+
+So I made a collage poster for each project. One is what I went through, came across, and saw at Oyster; the other is Rooftop. Whether it's the water cycle or something else, I think they form a complete system, a habitat. Just looking at the two posters, you can feel how much these two projects actually cover.`,
+                          images: ['w5-posters/poster-oyster', 'w5-posters/poster-rooftop'],
+                        },
+                      ],
+                    },
+                  ],
                 },
                 {
                   id: 'w5-act-2', kind: 'step', label: '02 — TRACE',
                   text: `Participants draw their life as one continuous line and mark moments with a limited set of scanned objects. I don't tell them the project is about evolution. I plan to start with a paper version before building the website. This may change to fit the city direction.`,
+                  children: [
+                    {
+                      id: 'w5-trace-p1', kind: 'step', label: 'Prototype 1',
+                      title: 'TRACE — Prototype 1',
+                      // translated from Kiara's notes (Chinese)
+                      text: `TRACE is a website. Participants fill in one page for each city they have lived in:
+
+— the city, how many years they lived there, and whether they still live there
+— one line, drawn from "arrived" to "now" or "left." What to draw is up to them.
+— "What the line shows," which they can fill in or leave empty
+— the animals and plants they remember, and when they first noticed them
+
+At the end it exports as one image with all the answers on it. There is an English and a Chinese version.
+
+I purposely didn't say what the line means. For example, I didn't ask about mood directly, because I didn't want people to be pushed back into bad memories. So each person chooses what their line stands for.`,
+                      embed: 'trace/',
+                    },
+                    {
+                      id: 'w5-trace-responses', kind: 'step', label: 'Responses',
+                      text: `As of October 5, I have looked at 9.`,
+                      images: ['w5-trace/trace-t-6p6e', 'w5-trace/trace-t-7d3a', 'w5-trace/trace-t-hxuv', 'w5-trace/trace-t-jxb5', 'w5-trace/trace-t-snld', 'w5-trace/trace-t-utlh', 'w5-trace/trace-t-vtmy', 'w5-trace/trace-t-xw68', 'w5-trace/zz-f973'],
+                    },
+                    {
+                      id: 'w5-trace-feedback', kind: 'step', label: 'Feedback',
+                      blocks: [
+                        { title: 'Participants', text: `Almost everyone said it was fun and that they liked doing it. In the group critique I asked who wanted to fill it in. Some people came up on their own, and afterwards they also said they liked the experiment.
+
+A friend told me after filling it in that Edinburgh was the happiest place he had lived, and also the place where he remembered the most species.` },
+                        { title: 'Classmates', text: `They couldn't see a connection between the line and the animals and plants that come after it. They suggested fixing the drawing area, or even putting the questions first: ask which animals people met, then explain what kind of human–animal relationship the drawing is about.` },
+                        { title: 'My response', text: `Not seeing the connection isn't necessarily a bad thing. I wanted it to be open-ended, not just a way to collect data. I think putting the questions first and fixing the y-axis would make it boring. I want the project to be rigorous, but first it has to be interesting. At the same time, I don't want to make the kind of imaginative piece that says "imagine you are a pigeon."` },
+                      ],
+                    },
+                    {
+                      id: 'w5-trace-reading', kind: 'step', label: 'Reading the Forms',
+                      text: `I looked at the first few forms as soon as they came in. By the later ones, I was actually a little scared to open new ones.
+
+There was a very sad feeling. When I designed it, I already expected that some people would have bad memories, so I didn't put mood and the city directly together, and let everyone choose what the line shows. Some wrote landscape, some wrote presence. But after reading them I still felt really sad. I know some of the people who filled it in, and when I saw their lines going down, I thought about what they really went through during that time.
+
+People I don't know wrote a lot of animals and plants from home. Someone wrote horses, and there were species I had never heard of. That's when I realized how far away everyone came from.
+
+Seeing someone move back and forth between cities, going back to a city and leaving again, going somewhere new, or staying somewhere only for a short time, gave me a feeling of drifting. Putting that drifting next to animals and plants that stay put made me a little sad. For example, New York will always have this many pigeons: before I came, while I'm here, after I leave, and decades or hundreds of years from now, there will still be this many pigeons here. They don't change with people arriving and leaving.
+
+Maybe I'm putting my own feelings onto these forms, but there really is so much emotion in them that it scared me a bit.
+
+Because some of them are people I know, I know how they built a connection with the city. For example, one person works in a park and later saw a lot of animals and plants there, so he wrote in a lot of detail. Things like this move me in a way I can't quite explain.`,
+                    },
+                    {
+                      id: 'w5-trace-show', kind: 'step', label: 'What the Forms Show',
+                      text: `These are only observations from 9 forms, not conclusions.`,
+                      sections: [
+                        {
+                          title: 'Observations',
+                          items: [
+                            '"What the line shows": about half of the city pages have it filled in; the other half are "—". The answers include love, life, hope, my presence, landscape, my memories, money I spent, and a few about socializing and being happy.',
+                            '"First noticed": only 3–4 forms have it. The rest are "—".',
+                            'City, years, animals and plants: everyone filled these in, and very specifically.',
+                            'The species lists for New York overlap a lot: pigeons, squirrels, rats, sparrows, cockroaches, raccoons, maples, and sycamores come up again and again. But the New York lines are very different from each other.',
+                            'The same person in different cities: in the Suzhou → Melbourne → New York form, each city has a completely different list, and the New York list is close to everyone else\'s New York list.',
+                            'The lines fall into a few kinds: one stroke like a signature, smooth waves, on/off like a square wave, a line that only rises, and lines broken into pieces.',
+                            'Every city\'s line takes up the same width: 41 years and 2.4 months are the same length on the page.',
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      id: 'w5-trace-refs', kind: 'step', label: 'References',
+                      children: [
+                        {
+                          id: 'w5-ref-ingold', kind: 'step', label: 'Tim Ingold — Lines',
+                          title: 'Tim Ingold, Lines: A Brief History (Routledge, 2007)',
+                          text: `Trace and thread: a thread is a physical strand that can be wound or woven; a trace is the lasting mark a continuous movement leaves on a surface. A line drawn in one stroke on the screen is a trace.
+
+Wayfaring and transport: a wayfarer lives along the way, noticing, adjusting, and stopping on the road. Transport goes from A to B, and the way in between is a gap to cross as quickly as possible.
+
+For TRACE: the axis on the form has two ends, arrived and left / now, which is a point-to-point frame, but people draw into it in one stroke. The Yakutsk form wrote "my presence" for what the line shows. About the drifting I felt reading the forms: in Ingold's terms, a wayfarer isn't homeless, the path itself is where they belong. That's another reading that can sit next to mine.`,
+                          links: [
+                            { label: 'Lines — Routledge Classics edition', url: 'https://www.waterstones.com/book/lines/tim-ingold/9781138640399' },
+                            { label: 'Paul Klee, Pedagogical Sketchbook (1925)', url: 'https://www.thecollector.com/what-was-paul-klee-pedagogical-sketchbook/' },
+                            { label: 'Richard Long, A Line Made by Walking (1967), Tate', url: 'https://www.tate.org.uk/art/artworks/long-a-line-made-by-walking-p07149' },
+                          ],
+                        },
+                        {
+                          id: 'w5-ref-elicitation', kind: 'step', label: 'Graphic Elicitation',
+                          title: 'Graphic elicitation — Anna Bagnoli (2009)',
+                          text: `A method from social research: people draw first (relational maps, timelines, self-portraits), then talk about the drawing. The structure is: draw → the person explains → the researcher records both.
+
+For TRACE: letting people decide what the line means is the same as the lifeline method. But many people left that field empty, so I'm looking at drawings without explanations. Part of the sadness I felt reading them is me explaining those falling lines for them. What my friend told me about Edinburgh is the "conversation after the drawing."`,
+                          links: [
+                            { label: 'Bagnoli (2009), Beyond the standard interview, Qualitative Research', url: 'https://doi.org/10.1177/1468794109343625' },
+                            { label: 'Abstract (NCRM)', url: 'https://eprints.ncrm.ac.uk/774' },
+                            { label: 'Diagrams and Relational Maps, IJQM', url: 'https://journals.library.ualberta.ca/ijqm/index.php/IJQM/article/view/10259/14542' },
+                          ],
+                        },
+                        {
+                          id: 'w5-ref-maps', kind: 'step', label: 'Lynch and Wood',
+                          title: 'Kevin Lynch, The Image of the City (1960) · Denis Wood, Everything Sings (2010)',
+                          text: `Lynch asked residents to draw their city from memory, then overlaid many sketches into one shared image. He looked at what overlaps, not at single people. In my forms, the New York lines are very different from each other, but the New York species lists overlap a lot.
+
+Wood mapped his neighborhood again and again, one thing per map: streetlight halos, jack-o'-lanterns, wind chimes. One map alone is almost useless; together they show the neighborhood. One drawing doing one thing, and the meaning coming from putting many together, is the same structure as my 256 book.`,
+                          links: [
+                            { label: 'Lynch, Consensus of 32 Sketch Maps, Boston (MIT)', url: 'https://dome.mit.edu/handle/1721.3/36504' },
+                            { label: 'Wood, Everything Sings — three maps', url: 'https://makingmaps.net/2010/10/26/out-now-denis-wood-everything-sings/' },
+                            { label: 'Wood, Everything Sings — more maps', url: 'https://www.themarginalian.org/2011/09/06/everything-sings-david-wood/' },
+                          ],
+                        },
+                        {
+                          id: 'w5-ref-baseline', kind: 'step', label: 'Extinction of Experience',
+                          title: 'Extinction of experience and shifting baselines',
+                          text: `Robert Michael Pyle, The Thunder Tree (1993): "extinction of experience," the loss of everyday contact with nature. Daniel Pauly (1995): "shifting baseline syndrome," where each generation takes what it first saw as normal, so long-term decline is quietly accepted. Soga & Gaston (2016) reviewed the causes and effects of the extinction of experience; urbanization is one of the main causes they discuss.
+
+For TRACE: shifting baselines is about how people perceive time, which is close to TRACE. Everyone draws a line starting from their own memory and can't see what happened before it. The "animals and plants remembered" field is about people meeting other species in a city.
+
+What these forms can't show: that experience is decreasing (they measure memory, not how often people meet nature, and there are too few of them), or differences between generations (age and city are mixed together). Three things I can see but can't separate yet: the city itself (the New York lists are close), the person's state there (my friend in Edinburgh), and daily chances to meet nature (the person who works in a park).`,
+                          links: [
+                            { label: 'Pauly (1995), Trends in Ecology & Evolution', url: 'https://doi.org/10.1016/S0169-5347(00)89171-5' },
+                            { label: 'Soga & Gaston (2016), Frontiers in Ecology and the Environment', url: 'https://doi.org/10.1002/fee.1225' },
+                            { label: 'Gaston & Soga (2020), People and Nature', url: 'https://doi.org/10.1002/pan3.10118' },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+                {
+                  id: 'w5-questions', kind: 'step', label: '10 Questions',
+                  sections: [
+                    {
+                      title: 'Questions',
+                      items: [
+                        'What does "the city" mean to different people? Do we even imagine the same thing when we use that word?',
+                        'Some of my research suggests that evolution can happen faster in cities. Why might that be, and under what conditions is it true?',
+                        'From a broader perspective, what can studying evolution in cities help us understand?',
+                        'How can I begin with a personal experience or the perspective of one species, then open it up into a fairer discussion of the larger subject?',
+                        'How do environmental projects in New York respond to the ecological conditions we are living with now? Can they also change those conditions?',
+                        'How have the goals and methods of environmental projects in New York changed from the past to the present?',
+                        'What might these projects need to respond to in the future?',
+                        'Do humans, other species, and the city itself experience change at different speeds? How could I make those differences visible?',
+                        'How can I show evolution as a process of change without suggesting that every change is progress?',
+                        'What can communication design do to help people notice these changes and consider perspectives beyond their own?',
+                      ],
+                    },
+                  ],
                 },
               ],
             },
