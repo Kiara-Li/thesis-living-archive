@@ -814,7 +814,6 @@ Then I narrowed it down: this prototype only does gaze, a hand gesture, and voic
                   embedHint: 'Live — it asks for your camera and microphone.',
                   embedAllow: 'camera; microphone',
                   links: [{ label: 'Pigeon Sightline — open the prototype', url: 'https://kiara-li.github.io/prototype1/' }],
-                  todo: 'Screenshots / screen recording of the three parts',
                 },
                 {
                   id: 'w6-gaze', kind: 'step', label: 'Sightline',
@@ -834,7 +833,6 @@ I haven't decided how it should show up: a real photo of a pigeon, just text lik
             },
             {
               id: 'w6-later', kind: 'step', label: 'Ideas for Later',
-              todo: 'Sketches',
               blocks: [
                 { title: 'Drawing', text: `Ask people to draw an animal that left an impression on them in the city. When they hold the paper up to the computer, it gets scanned, the animal is cut out and goes into the city. Like the museum thing where kids draw a fish and it shows up in the ocean. They keep the paper.` },
                 { title: 'From empty to lively', text: `As more people take part, it goes from nothing to slowly getting lively. People could share good memories: "Oh, you saw squirrels too," "I saw this and that."` },
