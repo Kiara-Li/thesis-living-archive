@@ -775,6 +775,28 @@ I'm also looking for APIs I could get data from.
 For now New York is the test site. Maybe it opens with a map of New York. I haven't decided. It might be this, it might be something completely different.`,
             },
             {
+              id: 'w6-apis', kind: 'step', label: 'Possible APIs',
+              // translated from Kiara's notes (Chinese)
+              sections: [
+                {
+                  title: 'Species observations',
+                  items: [
+                    'iNaturalist API — species observations photographed and uploaded by ordinary people, with photos, coordinates, date and time. Reading it needs no key. There are a lot of records for New York, from pigeons and rats to all kinds of insects and plants. Note: the licenses on the photos vary, so each one has to be checked before showing it publicly.',
+                    'eBird API — Cornell University\'s birdwatching records. Needs a free key. You can ask which birds have appeared in an area in the last 30 days; Manhattan\'s region code is US-NY-061. The data is more standardised than iNaturalist, but it is only birds.',
+                    'GBIF API — a global aggregate of species records, including the data from iNaturalist and eBird. Good for looking at records over long spans of time.',
+                  ],
+                },
+                {
+                  title: 'NYC Open Data — all readable through an API',
+                  items: [
+                    '2015 Street Tree Census — every street tree in New York, with species, location and trunk size, about 680,000 trees.',
+                    'Rat Sightings — rat complaints from the 311 line, updated continuously, with time and address. It is a record of people noticing rats, which is also data about the relationship between people and animals.',
+                    '2018 Central Park Squirrel Census — over three thousand squirrel sightings recorded by volunteers, with fur color, behavior (eating, running, calling) and whether it was morning or afternoon.',
+                  ],
+                },
+              ],
+            },
+            {
               id: 'w6-sightline', kind: 'step', label: 'Pigeon Sightline',
               title: 'Experiment — Pigeon Sightline',
               text: `I decided to try one thing first, using the pigeon book I already finished.
