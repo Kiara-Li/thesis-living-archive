@@ -206,6 +206,7 @@ html, body { height: 100%; overflow: hidden; }
 
 /* live page inside a wider panel */
 .panel.wide { width: min(980px, 100vw); }
+.embed-hint { font-size: 11px; margin: 0 0 8px; }
 .embed-frame { height: min(80vh, 920px); border: 1px solid #333; background: #fff; }
 .embed-frame iframe { width: 100%; height: 100%; border: 0; display: block; }
 .embed-open { display: inline-block; margin-top: 8px; font-size: 10.5px; color: var(--mute); text-decoration: none; border-bottom: 1px solid #555; }
@@ -215,6 +216,7 @@ html, body { height: 100%; overflow: hidden; }
 .entries.story .entry { padding: 14px 0 22px; }
 .entries.story .e-text { margin-bottom: 10px; }
 .entries.story .e-text p { margin: 0 0 8px; }
+.entries.story .e-imgs.e-n1 img { max-height: none; height: auto; }
 .entries.story .e-imgs:not(.e-n1) { grid-template-columns: repeat(3, 1fr); gap: 4px; }
 .entries.story .e-imgs.e-n2, .entries.story .e-imgs.e-n4 { grid-template-columns: repeat(2, 1fr); }
 .entries.story .e-imgs:not(.e-n1) button { aspect-ratio: 1; }

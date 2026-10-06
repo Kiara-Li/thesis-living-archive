@@ -483,11 +483,13 @@ My reaction: I really liked it. It feels like the same kind of thing as the oyst
               id: 'w5-activities', kind: 'step', label: 'Research Activities',
               children: [
                 {
-                  id: 'w5-act-1', kind: 'step', label: '01 — Archive of Human Attempts',
-                  text: `Human efforts to repair, improve, reshape, or imagine our relationship with the environment and other living things. Starting with the oyster project and rooftop gardens. Pollinator Pathmaker and the Hudson tomcod could go in as well.`,
+                  id: 'w5-act-1', kind: 'step', label: 'Practice 1 — Archive of Human Attempts',
+                  text: `Human efforts to repair, improve, reshape, or imagine our relationship with the environment and other living things. Starting with the oyster project and rooftop gardens. Pollinator Pathmaker and the Hudson tomcod could go in as well.
+
+This week, I will visit the Billion Oyster Project on Governors Island and a green roof project in New York in order to make a photo archive and two collage posters, and investigate how projects that try to repair or reshape the city become habitats for the species around them.`,
                   children: [
                     {
-                      id: 'w5-practice1', kind: 'step', label: 'Practice 1: Oyster and Rooftop',
+                      id: 'w5-practice1', kind: 'step', label: 'Oyster and Rooftop',
                       // translated from Kiara's notes (Chinese)
                       text: `This time I changed Practice 1. I focused on the two projects I actually went to in person: Oyster and Rooftop. I went through the photos I took there one by one, and I noticed something.`,
                       children: [
@@ -527,18 +529,24 @@ So it isn't only an organization that uses oysters to help the environment. Put 
                         },
                         {
                           id: 'w5-posters', kind: 'step', label: 'Two Posters',
+                          story: true,
                           text: `At both Oyster and Rooftop, what I learned wasn't one single piece of knowledge, but a whole ecosystem woven together.
 
 So I made a collage poster for each project. One is what I went through, came across, and saw at Oyster; the other is Rooftop. Whether it's the water cycle or something else, I think they form a complete system, a habitat. Just looking at the two posters, you can feel how much these two projects actually cover.`,
-                          images: ['w5-posters/poster-oyster', 'w5-posters/poster-rooftop'],
+                          entries: [
+                            { img: ['w5-posters/poster-oyster'] },
+                            { img: ['w5-posters/poster-rooftop'] },
+                          ],
                         },
                       ],
                     },
                   ],
                 },
                 {
-                  id: 'w5-act-2', kind: 'step', label: '02 — TRACE',
-                  text: `Participants draw their life as one continuous line and mark moments with a limited set of scanned objects. I don't tell them the project is about evolution. I plan to start with a paper version before building the website. This may change to fit the city direction.`,
+                  id: 'w5-act-2', kind: 'step', label: 'Practice 2 — TRACE',
+                  text: `Participants draw their life as one continuous line and mark moments with a limited set of scanned objects. I don't tell them the project is about evolution. I plan to start with a paper version before building the website. This may change to fit the city direction.
+
+This week, I will ask classmates and friends to draw their time in each city they have lived in in order to make TRACE, a website that turns each person's answers into one image, and investigate how people remember their cities and the animals and plants they lived alongside.`,
                   children: [
                     {
                       id: 'w5-trace-p1', kind: 'step', label: 'Prototype 1',
@@ -555,10 +563,11 @@ At the end it exports as one image with all the answers on it. There is an Engli
 
 I purposely didn't say what the line means. For example, I didn't ask about mood directly, because I didn't want people to be pushed back into bad memories. So each person chooses what their line stands for.`,
                       embed: 'trace/',
+                      embedHint: 'Live — you can draw and fill it in right here.',
+                      links: [{ label: 'TRACE — open the survey', url: 'https://kiara-li.github.io/thesis-living-archive/trace/' }],
                     },
                     {
-                      id: 'w5-trace-responses', kind: 'step', label: 'Responses',
-                      text: `As of October 5, I have looked at 9.`,
+                      id: 'w5-trace-responses', kind: 'step', label: 'Collected Responses',
                       images: ['w5-trace/trace-t-6p6e', 'w5-trace/trace-t-7d3a', 'w5-trace/trace-t-hxuv', 'w5-trace/trace-t-jxb5', 'w5-trace/trace-t-snld', 'w5-trace/trace-t-utlh', 'w5-trace/trace-t-vtmy', 'w5-trace/trace-t-xw68', 'w5-trace/zz-f973'],
                     },
                     {
