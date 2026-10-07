@@ -812,7 +812,7 @@ Then I narrowed it down: this prototype only does gaze, a hand gesture, and voic
                   id: 'w6-proto', kind: 'step', label: 'Prototype',
                   title: 'Pigeon Sightline — Prototype 1',
                   embed: 'https://kiara-li.github.io/prototype1/',
-                  embedHint: 'Live — it asks for your camera and microphone.',
+                  embedHint: 'Live — it asks for your camera and microphone, and loads about 20 MB of tracking models first, so it takes a little while before it starts.',
                   embedAllow: 'camera; microphone',
                   links: [{ label: 'Pigeon Sightline — open the prototype', url: 'https://kiara-li.github.io/prototype1/' }],
                 },
