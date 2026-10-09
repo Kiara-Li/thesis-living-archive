@@ -855,13 +855,60 @@ I haven't decided how it should show up: a real photo of a pigeon, just text lik
           children: [
             {
               id: 'w7-exchange', kind: 'step', icon: 'chat', label: 'Thesis Exchange',
-              text: `I learned two main things from this Thesis Exchange.
+              children: [
+                {
+                  id: 'w7-reflection', kind: 'step', label: 'My Reflection',
+                  text: `I learned two main things from this Thesis Exchange.
 
 First, one student brought up a really interesting idea. If I'm now looking at cities as habitats, could I also look at forests as cities? For example, I could explore this idea from the perspectives of Indigenous communities living in close connection with nature. She also mentioned abandoned spaces in cities and places where nature has gradually taken over. Another interesting point she brought up was that pigeons in India tend to be afraid of humans, while pigeons in New York are much less afraid because they have adapted to living in such busy environments. The behavior of animals in a city can actually reflect the conditions and characteristics of that city, which I found really fascinating. She also pointed out that the interactions on my computer screen could be seen as a form of feedback that reflects our interactions with real animals.
 
 Second, another student mentioned that she actually preferred my survey over my current prototype because the survey directly shows how people's experiences and relationships with cities change over time. She really enjoyed looking at the results. She also felt that although my current prototype was interesting and fun, the lack of written explanations made it difficult to understand the main idea I wanted to communicate. This made me think that perhaps I should reconsider how I use design elements to communicate my concept more clearly.
 
 There was also another student who shared her idea of having visitors collaborate to complete something during her thesis exhibition, or even allowing different people to take home different pieces of her work until nothing was left. I found this idea incredibly interesting and inspiring. I really want to learn from her enthusiasm for her own project and maintain that same level of excitement about mine. I hope I can find equally creative and engaging ways to execute my thesis and bring my ideas to life.`,
+                },
+                {
+                  id: 'w7-received', kind: 'step', icon: 'chat', label: 'Feedback Received',
+                  children: [
+                    {
+                      id: 'w7-fb-gahyun', kind: 'step', icon: 'chat', label: 'Gahyun Nam',
+                      title: 'Gahyun Nam — Group I / Amy Fang',
+                      blocks: [
+                        { title: 'How they understood my direction', text: `She has a clear sense of her interests and goals. She is very interested in animals, especially pigeons, and she also pays attention to how people react to them. I think her thesis is motivated by her personal interest in pigeons and her curiosity about how people perceive and respond to them.` },
+                        { title: 'What drew them in', text: `Her Prototype 1 was impressive! She used photography and different coding techniques to create interactive web pages that I could experience firsthand. Being able to interact with her work made it more engaging and sparked my curiosity about how she will further develop her ideas and what she wants to communicate through her thesis.` },
+                        { title: 'References / observations', text: `One reference was her first web page, which used camera tracking to detect the user's head movements. Moving their head up or down allowed them to navigate between pages. Another example used hand gesture recognition to change the height and width of a frame based on the shape of the user's hand gesture. Moving the hand closer or farther away also zoomed the content within the frame in and out. These interactive features were interesting examples of how camera-based technology can create engaging user experiences.` },
+                      ],
+                    },
+                    {
+                      id: 'w7-fb-olivia', kind: 'step', icon: 'chat', label: 'Olivia Lam',
+                      title: 'Olivia Lam — Group C / Ingrid Chou & Prin Limphongpand',
+                      blocks: [
+                        { title: 'How they understood my direction', text: `I think my partner's concept is very intriguing. I really enjoyed her idea of exploring the city with different perspectives through the lense of the pigeons. I like how interactive her prototype is and her overall idea is very strong. I think there are certain elements that could be added to make the intention feel more obvious as well as personal.` },
+                        { title: 'What drew them in', text: `I am drawn to how she chose to execute the project from the different ways people may perceive or interact with pigeons. I am curious to see where she continues to take this project.` },
+                        { title: 'References', text: `(left blank)` },
+                      ],
+                    },
+                    {
+                      id: 'w7-fb-priyamvada', kind: 'step', icon: 'chat', label: 'Priyamvada Mundhra',
+                      title: 'Priyamvada Mundhra — Group J / Emre Parlak',
+                      blocks: [
+                        { title: 'How they understood my direction', text: `They're interested in the relationship between humans and animals. Motivated by the question of how the 2 coexist together in urban cities.` },
+                        { title: 'What drew them in', text: `More than the concept I was excited by the execution and the way she explored her idea — literally using the idea of how do humans and the digital work interact. I think the way she embodied her idea into the digital system drew parallels between the two, taking a very physical naturally existing relationship to the digital world and keeping it interactive.` },
+                        { title: 'References / questions', text: `Shared in class — how do pigeons perceive humans from different angles? Right now the project focuses on animals in urban areas — what if we reverse that: humans in jungles and forests?` },
+                      ],
+                      links: [{ label: 'Video she shared (YouTube)', url: 'https://youtu.be/cVWCBeE5NSo' }],
+                    },
+                    {
+                      id: 'w7-fb-katie', kind: 'step', icon: 'chat', label: 'Katie Herskowitz',
+                      title: 'Katie Herskowitz — Group D / Ben Denzer',
+                      blocks: [
+                        { title: 'How they understood my direction', text: `Different perspectives of animals and people. How are you feeling in the city you are in, what animals did you see? See how feelings and memories change over time. From this idea, made a website that tracks where the eye looks or arm from a pigeon's height. Want people to pay more attention to animals. Very interactive concepts. Brings people and animals together.` },
+                        { title: 'What drew them in', text: `Her website ideas were incredibly detailed and so unique. Her clear through-path also really helped me follow along and want to know more.` },
+                        { title: 'References', text: `Installations of city heights from pigeons` },
+                      ],
+                    },
+                  ],
+                },
+              ],
             },
             {
               id: 'w7-pigeon-vision', kind: 'step', icon: 'video', label: 'Pigeon Vision',
