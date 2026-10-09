@@ -38,7 +38,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.06',
+      updated: '10.09',
     },
     images: { FAIR },
 
@@ -852,8 +852,24 @@ I haven't decided how it should show up: a real photo of a pigeon, just text lik
           ],
         },
 
-        /* ───────────────────────── UPCOMING ───────────────────────── */
-        { id: 'f2', kind: 'future', hidden: true, label: 'Thesis Exchange — Prototype 1', date: '10.09' },
+        /* ───────────────────────── WEEK 7 ───────────────────────── */
+        {
+          id: 'w7', kind: 'week', label: 'Thesis Exchange',
+          date: '10.09', tag: 'Prototype 1',
+          children: [
+            {
+              id: 'w7-exchange', kind: 'step', label: 'Thesis Exchange',
+              text: `I learned two main things from this Thesis Exchange.
+
+First, one student brought up a really interesting idea. If I'm now looking at cities as habitats, could I also look at forests as cities? For example, I could explore this idea from the perspectives of Indigenous communities living in close connection with nature. She also mentioned abandoned spaces in cities and places where nature has gradually taken over. Another interesting point she brought up was that pigeons in India tend to be afraid of humans, while pigeons in New York are much less afraid because they have adapted to living in such busy environments. The behavior of animals in a city can actually reflect the conditions and characteristics of that city, which I found really fascinating. She also pointed out that the interactions on my computer screen could be seen as a form of feedback that reflects our interactions with real animals.
+
+Second, another student mentioned that she actually preferred my survey over my current prototype because the survey directly shows how people's experiences and relationships with cities change over time. She really enjoyed looking at the results. She also felt that although my current prototype was interesting and fun, the lack of written explanations made it difficult to understand the main idea I wanted to communicate. This made me think that perhaps I should reconsider how I use design elements to communicate my concept more clearly.
+
+There was also another student who shared her idea of having visitors collaborate to complete something during her thesis exhibition, or even allowing different people to take home different pieces of her work until nothing was left. I found this idea incredibly interesting and inspiring. I really want to learn from her enthusiasm for her own project and maintain that same level of excitement about mine. I hope I can find equally creative and engaging ways to execute my thesis and bring my ideas to life.`,
+            },
+          ],
+        },
+
       ],
     },
   };
