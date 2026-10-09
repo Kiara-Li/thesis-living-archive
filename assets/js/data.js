@@ -864,6 +864,12 @@ Second, another student mentioned that she actually preferred my survey over my 
 There was also another student who shared her idea of having visitors collaborate to complete something during her thesis exhibition, or even allowing different people to take home different pieces of her work until nothing was left. I found this idea incredibly interesting and inspiring. I really want to learn from her enthusiasm for her own project and maintain that same level of excitement about mine. I hope I can find equally creative and engaging ways to execute my thesis and bring my ideas to life.`,
             },
             {
+              id: 'w7-pigeon-vision', kind: 'step', icon: 'video', label: 'Pigeon Vision',
+              // translated from Kiara's note (Chinese)
+              text: `A video about pigeon vision, roughly about how pigeons see continuously.`,
+              links: [{ label: 'Video on Weibo', url: 'https://weibo.com/5949358756/5352231877484783' }],
+            },
+            {
               id: 'w7-learned', kind: 'step', icon: 'chat', label: 'What I Learned',
               // translated from Kiara's note (Chinese)
               text: `After talking with Pascal about where I am now, the question is how to make a package that holds everything and hands it to the audience. For example, if it's a book for the audience, they could scan it at home, open the link, and interact with the website. If it's shown in a museum or at an exhibition, what would it look like then? And what if I'm not there? This might change where it's used and who it involves. What we design shouldn't only exist at the thesis fair; it should interact more with society. Starting from this, I want to think about how to make something that connects the three practices. Maybe the way I thought about combining physical prints and digital before could be used here?
