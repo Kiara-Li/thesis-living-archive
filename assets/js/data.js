@@ -863,6 +863,12 @@ Second, another student mentioned that she actually preferred my survey over my 
 
 There was also another student who shared her idea of having visitors collaborate to complete something during her thesis exhibition, or even allowing different people to take home different pieces of her work until nothing was left. I found this idea incredibly interesting and inspiring. I really want to learn from her enthusiasm for her own project and maintain that same level of excitement about mine. I hope I can find equally creative and engaging ways to execute my thesis and bring my ideas to life.`,
             },
+            {
+              id: 'w7-learned', kind: 'step', icon: 'chat', label: 'What I Learned',
+              text: `After talking with Pascal about where I am now: how to make a package that holds everything and hands it to the audience. For example, if it's a book for the audience, they could scan it at home, open the link, and interact with the website. If it's shown in a museum or an exhibition, what would that look like? And what if I'm not there? This might change where it's used and who it involves. The design we make shouldn't only exist at an exhibition or a fair, it should interact more with society. Starting from this, I want to think about how to make something that connects the three practices. The way I wanted to combine physical prints and digital before might be useful here.
+
+I want something like this: when people put the book down and walk through the city again, something has changed. Maybe this is what I want to do. Now I need to think about what the trigger is. I think Pascal's metaphor of a package is really accurate, because that's exactly what it is: something handed to the audience.`,
+            },
           ],
         },
 
