@@ -141,7 +141,28 @@
     folder: 'M0.6 1.2h5.2l1.6 1.8h7.9v9.2H0.6z',
     doc: 'M0.6 0.6h8.6l5.2 5.2v6.6H0.6z M9.2 0.6v5.2h5.2',
     work: 'M0.6 0.6h14.8v11.8H0.6z M4.4 9.4l6.6-6.2 M6.4 3.2h4.6v4.6',
+    video: 'M0.6 0.6h14.8v11.8H0.6z M6.2 3.6v5.8l4.8-2.9z',
+    page: 'M0.6 0.6h14.8v11.8H0.6z M0.6 3.6h14.8 M2.4 2.1h0.6 M4.2 2.1h0.6',
+    image: 'M0.6 0.6h14.8v11.8H0.6z M0.6 10.2l4.4-4.2 3.4 3.2 2.4-2 4.6 3.8 M11 3.8a1 1 0 1 0 2 0a1 1 0 1 0 -2 0',
+    list: 'M0.6 1.6h1.4 M4.4 1.6h11 M0.6 6.5h1.4 M4.4 6.5h11 M0.6 11.4h1.4 M4.4 11.4h11',
+    links: 'M8 0.7a5.8 5.8 0 1 0 0.001 0z M2.2 6.5h11.6 M8 0.7c-2.4 2.8-2.4 8.8 0 11.6 M8 0.7c2.4 2.8 2.4 8.8 0 11.6',
+    mail: 'M0.6 0.6h14.8v11.8H0.6z M0.6 0.6l7.4 6.2 7.4-6.2',
+    chat: 'M0.6 0.6h14.8v8.6H6.4l-3.6 3.2v-3.2H0.6z',
   };
+
+  // which icon a node gets: an explicit `icon`, else what it holds
+  function iconFor(n) {
+    if (n.kind === 'root') return ICON.root;
+    if (n.kind === 'work') return ICON.work;
+    if (n.icon && ICON[n.icon]) return ICON[n.icon];
+    if (n.children.length) return ICON.folder;
+    if (n.video) return ICON.video;
+    if (n.embed) return ICON.page;
+    if ((n.entries && n.entries.length) || (n.images && n.images.length)) return ICON.image;
+    if (n.sections && n.sections.length) return ICON.list;
+    if (n.links && n.links.length && !n.text) return ICON.links;
+    return ICON.doc;
+  }
 
   function build(n) {
     measure(n);
@@ -162,8 +183,7 @@
       const { w, h, pad } = n.g;
       el('rect', { class: 'box', x: 0, y: -h / 2, width: w, height: h }, g);
       if (n.kind === 'work') el('rect', { class: 'box box-in', x: 3, y: -h / 2 + 3, width: w - 6, height: h - 6 }, g);
-      const icon = n.kind === 'root' ? ICON.root : n.kind === 'work' ? ICON.work : n.children.length || (n.images && n.images.length) || (n.entries && n.entries.length) ? ICON.folder : ICON.doc;
-      el('path', { class: 'icon', d: icon, transform: `translate(${pad},-6.5)` }, g);
+      el('path', { class: 'icon', d: iconFor(n), transform: `translate(${pad},-6.5)` }, g);
       el('text', { x: pad + 25, y: 0.5 }, g).textContent = n.g.label;
     }
 
@@ -173,6 +193,7 @@
       el('line', { class: 'more-l', x1: n.g.w + 2, y1: 0, x2: mx, y2: 0 }, mg);
       el('rect', { class: 'more', x: mx, y: -9, width: n.g.moreW - 14, height: 18, rx: 9 }, mg);
       el('text', { class: 'more-t', x: mx + (n.g.moreW - 14) / 2, y: 0.5, 'text-anchor': 'middle' }, mg).textContent = `+${n.children.length}`;
+      mg.addEventListener('click', (e) => { e.stopPropagation(); activate(n, { pill: true }); });
       n.moreEl = mg;
     }
 
@@ -466,13 +487,15 @@
     kick();
   }
 
-  function activate(n) {
+  function activate(n, opts = {}) {
     hoverEnd(n, true);
     if (n.kind === 'future') { SND.low(); return; }
     SND.node(n);
-    if (n.kind === 'work') {
+    // a work with children: the pill grows the branch, the box opens the work
+    if (n.kind === 'work' && !(opts.pill && n.children.length)) {
       n.el.classList.add('focus');
-      setTimeout(() => { location.href = n.href; }, 280);
+      if (/^https?:/.test(n.href)) window.open(n.href, '_blank', 'noopener');
+      else setTimeout(() => { location.href = n.href; }, 280);
       return;
     }
     if (n === root) { closePanel(false); focus(root); return; }
@@ -698,7 +721,7 @@
   }
 
   svg.addEventListener('pointerdown', (e) => {
-    if (e.button !== 0 || e.target.closest('.ul-label')) return;
+    if (e.button !== 0 || e.target.closest('.ul-label') || e.target.closest('.more-g')) return;
     const nodeEl = e.target.closest('.node');
     const node = nodeEl ? byId.get(nodeEl.dataset.id) : null;
     drag = { id: e.pointerId, x0: e.clientX, y0: e.clientY, node, moved: false, cam0: { ...S.cam }, target: null };

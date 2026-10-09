@@ -19,7 +19,8 @@
     title     longer heading shown in the panel (label stays short on the map)
     blocks    [{ title, text }]          → headed paragraphs (e.g. the four questions)
     sections  [{ title, items: [...] }]  → numbered list, numbering runs on across sections
-    href      works only — the standalone page to open
+    href      works only — the page to open (a full URL opens in a new tab)
+    icon      override the map icon: 'mail', 'chat', 'video', 'page', 'image', 'list', 'links', 'doc', 'folder'
     hidden    true = kept here but not shown on the map (not ready yet)
     embed     a page to show live inside the panel, e.g. 'trace/' or a full URL
     embedAllow  extra iframe permissions, e.g. 'camera; microphone'
@@ -425,7 +426,7 @@ Columba González-Duarte teaches anthropology at The New School for Social Resea
                   ],
                 },
                 {
-                  id: 'w5-email', kind: 'step', label: 'Email to Prof. González-Duarte',
+                  id: 'w5-email', kind: 'step', icon: 'mail', label: 'Email to Prof. González-Duarte',
                   title: 'Next step — email to Professor González-Duarte',
                   text: `gonzalc2@newschool.edu
 
@@ -574,7 +575,7 @@ I purposely didn't say what the line means. For example, I didn't ask about mood
                       images: ['w5-trace/trace-t-6p6e', 'w5-trace/trace-t-7d3a', 'w5-trace/trace-t-hxuv', 'w5-trace/trace-t-jxb5', 'w5-trace/trace-t-snld', 'w5-trace/trace-t-utlh', 'w5-trace/trace-t-vtmy', 'w5-trace/trace-t-xw68', 'w5-trace/zz-f973'],
                     },
                     {
-                      id: 'w5-trace-feedback', kind: 'step', label: 'Feedback',
+                      id: 'w5-trace-feedback', kind: 'step', icon: 'chat', label: 'Feedback',
                       blocks: [
                         { title: 'Participants', text: `Almost everyone said it was fun and that they liked doing it. In the group critique I asked who wanted to fill it in. Some people came up on their own, and afterwards they also said they liked the experiment.
 
@@ -798,24 +799,19 @@ For now New York is the test site. Maybe it opens with a map of New York. I have
               ],
             },
             {
-              id: 'w6-sightline', kind: 'step', label: 'Pigeon Sightline',
-              title: 'Experiment — Pigeon Sightline',
+              id: 'w6-sightline', kind: 'work', label: 'Prototype',
+              title: 'Pigeon Sightline — Prototype 1',
+              href: 'https://kiara-li.github.io/prototype1/',
               text: `I decided to try one thing first, using the pigeon book I already finished.
 
 How does the site know which group of photos to show? By how high people are looking. If you want to see a pigeon somewhere very high, you have to lift your head a lot. So I ask people to pretend they're looking at a pigeon, and the height of their gaze decides what they see. Looking all the way up is different from looking straight ahead, looking down, or looking slightly down.
 
 The visual elements and the photos all follow the original book. The layout follows the groups in the book.
 
-Then I narrowed it down: this prototype only does gaze, a hand gesture, and voice. The rest I'll look into later.`,
+Then I narrowed it down: this prototype only does gaze, a hand gesture, and voice. The rest I'll look into later.
+
+It asks for your camera and microphone, and loads about 20 MB of tracking models first, so it takes a little while before it starts.`,
               children: [
-                {
-                  id: 'w6-proto', kind: 'step', label: 'Prototype',
-                  title: 'Pigeon Sightline — Prototype 1',
-                  embed: 'https://kiara-li.github.io/prototype1/',
-                  embedHint: 'Live — it asks for your camera and microphone, and loads about 20 MB of tracking models first, so it takes a little while before it starts.',
-                  embedAllow: 'camera; microphone',
-                  links: [{ label: 'Pigeon Sightline — open the prototype', url: 'https://kiara-li.github.io/prototype1/' }],
-                },
                 {
                   id: 'w6-demo', kind: 'step', label: 'Demo',
                   title: 'Pigeon Sightline — process demo',
@@ -858,7 +854,7 @@ I haven't decided how it should show up: a real photo of a pigeon, just text lik
           date: '10.09', tag: 'Prototype 1',
           children: [
             {
-              id: 'w7-exchange', kind: 'step', label: 'Thesis Exchange',
+              id: 'w7-exchange', kind: 'step', icon: 'chat', label: 'Thesis Exchange',
               text: `I learned two main things from this Thesis Exchange.
 
 First, one student brought up a really interesting idea. If I'm now looking at cities as habitats, could I also look at forests as cities? For example, I could explore this idea from the perspectives of Indigenous communities living in close connection with nature. She also mentioned abandoned spaces in cities and places where nature has gradually taken over. Another interesting point she brought up was that pigeons in India tend to be afraid of humans, while pigeons in New York are much less afraid because they have adapted to living in such busy environments. The behavior of animals in a city can actually reflect the conditions and characteristics of that city, which I found really fascinating. She also pointed out that the interactions on my computer screen could be seen as a form of feedback that reflects our interactions with real animals.
