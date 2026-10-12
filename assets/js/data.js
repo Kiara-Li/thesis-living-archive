@@ -25,6 +25,7 @@
     embed     a page to show live inside the panel, e.g. 'trace/' or a full URL
     embedAllow  extra iframe permissions, e.g. 'camera; microphone'
     video     a YouTube id to show in the panel
+    table     { head: [..], rows: [[..], ..] } → a ruled table in the panel
     story     true = entries read text first, then their photos
     island    true = grows as a separate cluster, joined by a long dotted line
     children  [ ...nodes ]
@@ -39,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.09',
+      updated: '10.12',
     },
     images: { FAIR },
 
@@ -922,6 +923,24 @@ There was also another student who shared her idea of having visitors collaborat
               text: `After talking with Pascal about where I am now, the question is how to make a package that holds everything and hands it to the audience. For example, if it's a book for the audience, they could scan it at home, open the link, and interact with the website. If it's shown in a museum or at an exhibition, what would it look like then? And what if I'm not there? This might change where it's used and who it involves. What we design shouldn't only exist at the thesis fair; it should interact more with society. Starting from this, I want to think about how to make something that connects the three practices. Maybe the way I thought about combining physical prints and digital before could be used here?
 
 I want something like this: when people put the book down and move through the city again, something has changed. Maybe this is what I want to do. Now I need to think about what the trigger is. I think Pascal's metaphor of a package is really accurate, because that's exactly what it is: something handed into the audience's hands.`,
+            },
+            {
+              id: 'w7-rubric', kind: 'step', icon: 'list', label: 'Assessment Rubric',
+              title: 'Communication Design Work Assessment Rubric',
+              table: {
+                head: ['Criteria', 'Exceeds | Strong Evidence'],
+                rows: [
+                  ['1 — Concept & Position', 'The work shows a distinctive and well-articulated idea, question, or position that meaningfully extends the research inquiry. The work moves beyond familiar or readily available ideas and develops a clear point of view through design.'],
+                  ['2 — Connecting, Synthesizing & Transforming', 'Creates unexpected and meaningful relationships among research, ideas, contexts, references, and forms. These connections transform existing material into a coherent new proposition or way of understanding the subject.'],
+                  ['3 — Context & Relevance', 'Demonstrates a nuanced understanding of audience or publics, cultural context, precedents, access, consequences, and the conditions in which the work will operate. These considerations meaningfully shape the work.'],
+                  ['4 — Form, Organization & Communication', 'Formal decisions work together with exceptional clarity and intentionality. Hierarchy, composition, image, material, motion, interaction, sound, or other relevant elements strengthen meaning and the experience of the work.'],
+                  ['5 — Research Process', 'Research is sustained, purposeful, and critically interpreted. Sources, observations, precedents, fieldwork, conversations, or other methods actively change, complicate, or redirect the inquiry. Sources, tools, and significant decisions are documented and reflected upon.'],
+                  ['6 — Methods, Experimentation & Iteration', 'Uses purposeful methods to test substantially different possibilities. Learns from uncertainty, failure, or unexpected results and uses those discoveries to redirect or deepen the work.'],
+                  ['7 — Typography', 'Typographic choices and relationships are highly intentional and substantially contribute to meaning, hierarchy, voice, and experience.'],
+                ],
+              },
+              story: true,
+              entries: [{ img: ['w7-rubric/rubric'] }],
             },
           ],
         },
