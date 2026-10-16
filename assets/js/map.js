@@ -601,12 +601,13 @@
       // story: text first, then its photos (a field-trip walk-through)
       if (n.story) {
         html += `<section class="entries story">${n.entries.map((e, k) => {
-          const many = (e.img || []).length > 1;
+          const col = e.layout === 'column';
+          const many = (e.img || []).length > 1 && !col;
           const btns = (e.img || []).map((p) => {
             entryItems.push({ src: full(p), caption: `${n.label} — ${String(k + 1).padStart(2, '0')}` });
             return `<button type="button" data-entry="${entryItems.length - 1}"><img loading="lazy" src="${many ? thumb(p) : full(p)}" alt=""></button>`;
           }).join('');
-          return `<article class="entry">${e.text ? `<div class="e-text">${paras(e.text)}</div>` : ''}<div class="e-imgs e-n${(e.img || []).length}">${btns}</div></article>`;
+          return `<article class="entry">${e.text ? `<div class="e-text">${paras(e.text)}</div>` : ''}<div class="e-imgs e-n${(e.img || []).length}${col ? ' e-col' : ''}">${btns}</div></article>`;
         }).join('')}</section>`;
       } else
       html += `<section class="entries"><h3>Collection <span>${n.entries.length}</span></h3>${n.entries.map((e, k) => {

@@ -232,6 +232,10 @@ html, body { height: 100%; overflow: hidden; }
 .entries.story .e-imgs.e-n2, .entries.story .e-imgs.e-n4 { grid-template-columns: repeat(2, 1fr); }
 .entries.story .e-imgs:not(.e-n1) button { aspect-ratio: 1; }
 .entries.story .e-imgs:not(.e-n1) img { height: 100%; max-height: none; object-fit: cover; }
+/* a group kept together: one column, each image whole */
+.entries.story .e-imgs.e-col { grid-template-columns: 1fr; gap: 6px; }
+.entries.story .e-imgs.e-col button { aspect-ratio: auto; }
+.entries.story .e-imgs.e-col img { height: auto; object-fit: contain; }
 
 /* image-by-image entries (caption, source, annotation) */
 .entry { padding: 18px 0 22px; border-bottom: 1px dotted #333; }
