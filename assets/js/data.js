@@ -942,11 +942,19 @@ I want something like this: when people put the book down and move through the c
               story: true,
               entries: [{ img: ['w7-rubric/rubric'] }],
             },
+          ],
+        },
+
+        /* ───────────────────────── WEEK 8 ───────────────────────── */
+        {
+          id: 'w8', kind: 'week', label: 'Prototype I Workshop',
+          date: '10.16', tag: 'Prototype 1',
+          children: [
             {
-              id: 'w7-proto1b', kind: 'step', label: 'Prototype 1, Continued',
+              id: 'w8-proto1b', kind: 'step', label: 'Prototype 1, Continued',
               children: [
                 {
-                  id: 'w7-fieldkit', kind: 'step', label: 'Field Kit',
+                  id: 'w8-fieldkit', kind: 'step', label: 'Field Kit',
                   // translated from Kiara's note (Chinese)
                   text: `These are the prototype experiments I did this week. The goal is for them to echo the online part, so the audience can do activities offline. For example, the activity cards: each one has a different task, and they encourage people to look at the city from different angles, echoing the gesture part of the website. There is also a small booklet introducing the project, with the website links on it, and a card that asks people to record the sounds around them and make a phone call.
 
@@ -960,7 +968,7 @@ I want something like this: when people put the book down and move through the c
                   ],
                 },
                 {
-                  id: 'w7-poster', kind: 'step', label: 'Poster',
+                  id: 'w8-poster', kind: 'step', label: 'Poster',
                   // translated from Kiara's note (Chinese)
                   text: `In the group critique I told everyone my concern. Sammi and Jhyun said I could put up posters, something like asking people whether they want to become a bird, to catch attention, and then put the website link on them. This made me think of this famous meme, so I think it's also a good way, with something like "Are you tired of being a human" written on it.`,
                   story: true,
@@ -970,7 +978,7 @@ I want something like this: when people put the book down and move through the c
                   ],
                 },
                 {
-                  id: 'w7-feather', kind: 'step', label: 'Paper Feather',
+                  id: 'w8-feather', kind: 'step', label: 'Paper Feather',
                   // translated from Kiara's note (Chinese)
                   text: `Also in the group critique, I saw other people's work. One was made like the order menu of an old TV shopping program, and another made a book like a flip phone. I found these really interesting, borrowing physical objects to catch people's attention. This made me think of bird feathers, which are everywhere. Sometimes I even pick up a nice pigeon feather when I see one. So I'm thinking maybe I could make the prints into origami feathers.
 
