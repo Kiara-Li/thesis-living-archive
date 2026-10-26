@@ -31,11 +31,14 @@ html, body { height: 100%; overflow: hidden; }
 
 .node.work .box-in { fill: none; stroke: var(--line); stroke-width: 1; }
 
-/* a station = a lift button: one ring, big condensed numeral; pressed = white */
+/* a station = a lift button: ring + finer inner bezel, big condensed numeral; pressed = white */
 .node.week .ring { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; transition: fill 0.25s; }
 .node.week .num, .node.future .num { font-family: 'Barlow Condensed', var(--sans); font-size: 23px; font-weight: 500; text-anchor: middle; dominant-baseline: alphabetic; }
 .node.week .num { fill: var(--fg); transition: fill 0.25s; }
+.node.week .bezel { fill: none; stroke: var(--line); stroke-width: 1; stroke-opacity: 0.45; transition: stroke 0.25s; }
 .node.week.focus .ring { fill: var(--fg); stroke: var(--fg); }
+.node.week.focus .bezel { stroke: var(--bg); stroke-opacity: 0.35; }
+.node.dim .bezel { stroke: var(--dim); stroke-opacity: 1; }
 .node.week.focus .num { fill: var(--bg); }
 .node.week .title, .node.future .title { font-family: var(--sans); font-size: 15px; font-weight: 600; }
 .node .sub { font-size: 10.5px; fill: var(--mute); }

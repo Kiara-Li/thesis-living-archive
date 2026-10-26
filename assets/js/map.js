@@ -194,8 +194,9 @@
     n.hit = el('rect', { class: 'hit', x: e.x0 - 4, y: e.y0 - 4, width: e.x1 - e.x0 + 8, height: e.y1 - e.y0 + 8 }, g);
 
     if (n.g.type === 'circle') {
-      // a lift button: one ring, big numeral; it turns white when pressed
+      // a lift button: outer ring, a finer inner bezel, big numeral; white when pressed
       el('circle', { class: 'ring', r: 24 }, g);
+      if (n.kind === 'week') el('circle', { class: 'bezel', r: 20.5 }, g);
       el('text', { class: 'num', x: 0, y: numY() }, g).textContent = n.num;
       el('text', { class: 'title', x: 38, y: -8 }, g).textContent = n.label;
       el('rect', { class: 'pill-r', x: 38.5, y: 4.5, width: n.g.pillW, height: 17, rx: 8.5 }, g);
