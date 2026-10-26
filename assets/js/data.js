@@ -52,6 +52,7 @@
         trail: ['w1-images', 'w3-proto', 'w4-256'] },
       { id: 'prototype-1', title: 'Prototype 1 — Look Up', kind: 'Iterations 01–03', date: '10.23', href: 'prototype-1/', process: 'w8-lookup-site', cover: null,
         trail: [
+          'w5-trace-p1', 'w5-trace-responses', 'w5-trace-feedback', 'w5-trace-reading', 'w5-trace-show', 'w5-trace-refs',
           'w6-want', 'w6-websites', 'w6-thinking', 'w6-apis', 'w6-sightline', 'w6-demo', 'w6-gaze', 'w6-viewfinder', 'w6-sound', 'w6-later',
           'w8-proto1b', 'w8-fieldkit', 'w8-poster', 'w8-feather', 'w8-question', 'w8-lookup', 'w8-midway', 'w8-sections', 'w8-lookup-site',
           'w9-whatif', 'w9-responses', 'w9-reflection',
