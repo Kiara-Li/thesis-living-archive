@@ -75,62 +75,30 @@ window.MusicBox = (() => {
     }
   }
 
-  // a tram bell: a struck metal cup, bright inharmonic partials, long ring
-  function bell(delay = 0, vel = 1) {
+  // wheels over a rail joint: a short damped knock of metal
+  function clack(delay = 0, vel = 1) {
     if (!on) return;
     init();
     if (!ctx) return;
     if (ctx.state === 'suspended') ctx.resume();
     const t = ctx.currentTime + 0.01 + delay;
-    const f = 1180;
-    const partials = [
-      [1, 0.34, 1.6],
-      [2.32, 0.16, 1.1],
-      [4.25, 0.08, 0.6],
-      [6.63, 0.04, 0.3],
-    ];
-    for (const [mul, g, decay] of partials) {
-      const o = ctx.createOscillator();
-      o.type = 'sine';
-      o.frequency.value = f * mul;
-      const e = ctx.createGain();
-      e.gain.setValueAtTime(0.0001, t);
-      e.gain.exponentialRampToValueAtTime(g * vel, t + 0.002);
-      e.gain.exponentialRampToValueAtTime(0.0001, t + decay);
-      o.connect(e);
-      e.connect(master);
-      o.start(t);
-      o.stop(t + decay + 0.05);
-    }
-  }
-
-  // wheels over a rail joint: ta-tan
-  function clack(delay = 0, vel = 1) {
-    if (!on) return;
-    init();
-    if (!ctx) return;
-    const t = ctx.currentTime + 0.01 + delay;
-    const len = Math.floor(ctx.sampleRate * 0.05);
+    const len = Math.floor(ctx.sampleRate * 0.06);
     const buf = ctx.createBuffer(1, len, ctx.sampleRate);
     const d = buf.getChannelData(0);
-    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 4);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 5);
     const src = ctx.createBufferSource();
     src.buffer = buf;
     const bp = ctx.createBiquadFilter();
     bp.type = 'bandpass';
-    bp.frequency.value = 900;
-    bp.Q.value = 1.2;
+    bp.frequency.value = 700;
+    bp.Q.value = 1.4;
     const e = ctx.createGain();
-    e.gain.value = 0.5 * vel;
+    e.gain.value = 0.55 * vel;
     src.connect(bp);
     bp.connect(e);
     e.connect(master);
     src.start(t);
   }
-
-  // the tune a work's process plays, one note per node: a little departure
-  // melody of the station kind, on the same pentatonic comb (loops if long)
-  const TUNE = [76, 79, 81, 84, 81, 79, 76, 74, 76, 79, 84, 86, 88, 86, 84, 81, 79, 81, 84, 81, 79, 76, 74, 72];
 
   function stepFor(node) { return (node.depth || 0) * 2 + (node.index || 0); }
 
@@ -148,14 +116,7 @@ window.MusicBox = (() => {
     // two nodes joined by the visitor
     chord(a, b) { this.node(a, 0, 0.8); this.node(b, 0.06, 0.8); tine(hz(midiForStep(stepFor(a) + stepFor(b) + 5)), 0.14, 0.5); },
     low() { tine(hz(BASE - 12), 0, 0.35); },
-    // a work playing out: ding-ding, the tune, rail joints between weeks, ding
-    depart(delay = 0) { bell(delay, 0.9); bell(delay + 0.2, 0.75); },
-    melody(i, strong) {
-      const m = TUNE[i % TUNE.length];
-      tine(hz(m), 0, strong ? 0.85 : 0.6);
-      if (strong) tine(hz(m - 12), 0.01, 0.4);
-    },
-    rail() { clack(0, 0.9); clack(0.11, 0.6); },
-    arrive() { bell(0.05, 0.7); },
+    // between weeks while a work plays out: ka-tak
+    rail() { clack(0, 0.9); clack(0.12, 0.65); },
   };
 })();

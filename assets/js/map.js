@@ -1,7 +1,6 @@
 /*
   Process map
-  - weeks are stations on one straight line, like a subway line map;
-    each opens like a spider web into its steps
+  - weeks sit on a dashed spine; each opens like a spider web into its steps
   - the map keeps what has been opened, so it grows as you explore
   - only the current step and its path stay bright; everything else dims
     (dimmed nodes still open on click, they just don't preview on hover)
@@ -94,15 +93,7 @@
     sub: '400 10.5px "IBM Plex Mono"',
     pill: '400 10px "IBM Plex Mono"',
     more: '500 10.5px "IBM Plex Mono"',
-    num: '500 23px "Barlow Condensed"',
   };
-
-  // baseline that puts the numerals' ink exactly on the circle's centre
-  function numY() {
-    mctx.font = F.num;
-    const m = mctx.measureText('0123456789');
-    return (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2;
-  }
 
   function measure(n) {
     measureShape(n);
@@ -194,10 +185,9 @@
     n.hit = el('rect', { class: 'hit', x: e.x0 - 4, y: e.y0 - 4, width: e.x1 - e.x0 + 8, height: e.y1 - e.y0 + 8 }, g);
 
     if (n.g.type === 'circle') {
-      // a lift button: outer ring, a finer inner bezel, big numeral; white when pressed
       el('circle', { class: 'ring', r: 24 }, g);
-      if (n.kind === 'week') el('circle', { class: 'bezel', r: 20.5 }, g);
-      el('text', { class: 'num', x: 0, y: numY() }, g).textContent = n.num;
+      if (n.kind === 'week') el('circle', { class: 'disc', r: 18.5 }, g);
+      el('text', { class: 'num', x: 0, y: 0.5 }, g).textContent = n.num;
       el('text', { class: 'title', x: 38, y: -8 }, g).textContent = n.label;
       el('rect', { class: 'pill-r', x: 38.5, y: 4.5, width: n.g.pillW, height: 17, rx: 8.5 }, g);
       el('text', { class: 'pill-t', x: 46.5, y: 13.5 }, g).textContent = n.g.pillText;
@@ -243,9 +233,6 @@
     if (dx < 0.5 || x2 - x1 < dx) return `M${x1},${y1}L${x2},${y2}`;
     return `M${x1},${y1}L${x1 + dx},${y2}H${x2}`;
   }
-
-  // every week sits on this one vertical line
-  const LINE_X = 30;
 
   // vertical room a branch needs (islands are placed on their own)
   function span(n) {
@@ -299,13 +286,13 @@
     })(root);
     visible.forEach(refreshHit);
 
-    root.t = { x: LINE_X - 16, y: 0 };
+    root.t = { x: -44, y: 0 };
     let cursor = 58;
-    weeks.forEach((wk) => {
+    weeks.forEach((wk, i) => {
       const local = layoutWeek(wk);
       let y0 = Infinity; let y1 = -Infinity;
       for (const [id, p] of local) { const e = ext(byId.get(id)); y0 = Math.min(y0, p.y + e.y0); y1 = Math.max(y1, p.y + e.y1); }
-      const wx = LINE_X;
+      const wx = 30 + i * 46;
       const wy = cursor - y0;
       for (const [id, p] of local) byId.get(id).t = { x: p.x + wx, y: p.y + wy };
       cursor = wy + y1 + 32;
@@ -350,7 +337,7 @@
   function spineAt(i) {
     if (!spineEls[i]) {
       const g = el('g', { class: 'spine' }, gSpine);
-      spineEls[i] = { g, path: el('path', {}, g) };
+      spineEls[i] = { g, path: el('path', {}, g), head: el('path', { class: 'head' }, g) };
     }
     return spineEls[i];
   }
@@ -367,22 +354,27 @@
       e.g.classList.toggle('dim', !(active.has(n.id) && active.has(n.parent.id)));
     }
 
-    // the line: straight down through every station
+    // root → first week: elbow, like a file tree
+    const s0 = spineAt(0);
+    const w1 = weeks[0];
+    s0.path.setAttribute('d', `M${root.p.x + 16},${root.p.y + 19}V${w1.p.y}H${w1.p.x - 26}`);
+    s0.head.setAttribute('d', arrow(w1.p.x - 26, w1.p.y, 1, 0));
+    s0.g.classList.toggle('dim', !(active.has('root') && active.has(w1.id)));
+
+    // week → week: the same right-angle elbow as root → week 1
     for (let i = 0; i < weeks.length - 1; i++) {
       const a = weeks[i]; const b = weeks[i + 1];
-      const s = spineAt(i);
-      s.path.setAttribute('d', `M${a.p.x},${a.p.y}V${b.p.y}`);
+      const s = spineAt(i + 1);
+      s.path.setAttribute('d', `M${a.p.x},${a.p.y + 26}V${b.p.y}H${b.p.x - 26}`);
+      s.head.setAttribute('d', arrow(b.p.x - 26, b.p.y, 1, 0));
       s.g.classList.toggle('future', b.kind === 'future');
       s.g.classList.toggle('dim', !(active.has(a.id) && active.has(b.id)));
     }
+  }
 
-    // past the last station the track trails off: the archive is still growing
-    const last = weeks[weeks.length - 1];
-    const tail = spineAt(weeks.length - 1);
-    tail.g.classList.add('tail');
-    tail.path.setAttribute('d', `M${last.p.x},${last.p.y + 34}V${last.p.y + 84}`);
-    tail.g.classList.toggle('dim', !active.has(last.id));
-
+  function arrow(x, y, ux, uy) {
+    const s = 6; const px = -uy; const py = ux;
+    return `M${x},${y}L${x - ux * s + px * s * 0.55},${y - uy * s + py * s * 0.55}L${x - ux * s - px * s * 0.55},${y - uy * s - py * s * 0.55}Z`;
   }
 
   /* ── user links ─────────────────────────────────── */
@@ -478,7 +470,7 @@
     const lit = litAll();
     if (f === root && lit.size) { fitTo([...lit].map((id) => byId.get(id)), instant, 0.32); return; }
     let set;
-    if (f === root) set = [...weeks];
+    if (f === root) set = [root, ...weeks];
     else {
       set = [f];
       if (f.parent && f.parent !== root && !f.island) set.push(f.parent);
@@ -591,7 +583,7 @@
 
   function drawLeader() {
     const n = S.noteFor;
-    if (!n || n === root || !noteEl.classList.contains('show') || innerWidth < 1000) { leader.setAttribute('d', ''); return; }
+    if (!n || !noteEl.classList.contains('show') || innerWidth < 1000) { leader.setAttribute('d', ''); return; }
     const r = noteEl.getBoundingClientRect();
     const endX = n.g.type === 'circle' ? n.p.x + n.g.w + 6 : n.p.x + n.g.w;
     const p = toScreen(endX, n.p.y);
@@ -1002,29 +994,25 @@
     if (!playing) playNext();
   }
 
-  // gap: ms to wait first (after the last tour pulled in)
-  function playNext(gap = 0) {
+  function playNext() {
     playing = queue.shift() || null;
     if (!playing) return;
     closePanel(false);
     hideNote();
     S.focus = 'root';
     setHash(root);
-    // ding-ding: the tram leaves, then the song starts
-    playing.note = 0;
-    SND.depart(gap / 1000);
-    playing.timer = setTimeout(beat, gap + BEAT * 3);
+    beat();
   }
 
   function beat() {
     const t = playing;
-    if (t.i >= t.beats.length) { SND.arrive(); playing = null; paintRows(); playNext(BEAT * 4); return; }
+    if (t.i >= t.beats.length) { playing = null; paintRows(); playNext(); return; }
     const n = t.beats[t.i++];
     if (n) {
       light(t, n);
-      SND.melody(t.note++, n.kind === 'week');
+      SND.node(n, 0, n.kind === 'week' ? 0.9 : 0.6);
       refreshTour(t);
-    } else SND.rail();
+    } else SND.rail(); // the rest between weeks: wheels over a rail joint
     paintRows();
     t.timer = setTimeout(beat, BEAT);
   }
