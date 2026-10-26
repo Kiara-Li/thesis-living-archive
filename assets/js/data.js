@@ -1043,6 +1043,18 @@ I want something like this: when people put the book down and move through the c
                         { title: "Things I dropped while writing them", text: "\"I read a sign that says ___\" (nobody remembers what a sign says), \"I would leave ___ on the ledge\" (nobody leaves things there), \"if I had a fire escape\" (that's imagining, not remembering)." },
                         { title: "Finding pigeons", text: "When you frame a pigeon with your hands, that piece flips over like a card and shows the color underneath. Everything you frame gets cut out. At the end, the cut pieces go into your sentences, like a collage." },
                       ],
+                      children: [
+                        {
+                          id: 'w8-lookup-site', kind: 'work', label: 'Look Up',
+                          title: 'Look Up — Prototype 1',
+                          href: 'https://kiara-li.github.io/prototype1/look-up/',
+                          children: [
+                            { id: 'w8-lookup-intro', kind: 'step', label: 'Introduction', todo: 'to be written' },
+                            { id: 'w8-lookup-demo', kind: 'step', icon: 'video', label: 'Demo Video', todo: 'to be added' },
+                            { id: 'w8-lookup-docs', kind: 'step', icon: 'image', label: 'Documentation', todo: 'to be added' },
+                          ],
+                        },
+                      ],
                     },
                   ],
                 },
