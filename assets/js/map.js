@@ -548,17 +548,14 @@
       return;
     }
     if (n === root) { closePanel(false); focus(root); return; }
-    // a branch that also holds its own material: first click grows it,
-    // clicking it again (once it's the focus) opens its panel
-    if (n.children.length && S.focus === n.id && S.expanded.has(n.id) && hasPanel(n)) {
-      openPanel(n);
-      return;
-    }
+    // a branch grows; if it also holds its own material, its panel opens
+    // at the same time, with the new branches beside it
     if (n.children.length) {
       const fresh = !S.expanded.has(n.id);
       S.expanded.add(n.id);
       closePanel(false);
       focus(n);
+      if (hasPanel(n)) openPanel(n);
       if (fresh) SND.arpeggio(n.children);
     } else {
       focus(n);
@@ -1127,7 +1124,7 @@
     const n = byId.get(decodeURIComponent(location.hash.slice(1)));
     if (!n || n === root) return false;
     ancestors(n).forEach((a) => S.expanded.add(a.id));
-    if (n.children.length) { S.expanded.add(n.id); focus(n, { instant: true }); } else if (n.kind === 'work' || n.kind === 'future') focus(n.parent, { instant: true });
+    if (n.children.length) { S.expanded.add(n.id); focus(n, { instant: true }); if (hasPanel(n)) openPanel(n); } else if (n.kind === 'work' || n.kind === 'future') focus(n.parent, { instant: true });
     else { focus(n, { instant: true }); openPanel(n); }
     return true;
   }
