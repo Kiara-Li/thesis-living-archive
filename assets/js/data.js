@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.16',
+      updated: '10.25',
     },
     images: { FAIR },
 
@@ -989,6 +989,38 @@ I want something like this: when people put the book down and move through the c
                     { img: ['w7-feather/f2-paper'] },
                   ],
                 },
+              ],
+            },
+          ],
+        },
+
+        /* ───────────────────────── WEEK 9 ───────────────────────── */
+        {
+          id: 'w9', kind: 'week', label: 'What If',
+          date: '10.23', tag: 'Prototype 2',
+          children: [
+            {
+              id: 'w9-whatif', kind: 'step', icon: 'chat', label: 'What If Feedback',
+              title: '"What if" feedback on Prototype 1',
+              sections: [
+                {
+                  title: 'Written on the notes',
+                  items: [
+                    'What if the pigeons are human, and human are pigeons?',
+                    'What if there is no interaction needed for viewing the website',
+                    'What if you connect your project to multiple cities? Is it about a specific city or can it be expanded to fit different ones?',
+                    "What if: I know using the hand is a big part of the experience, but what we don't use hands? Only the gesture of our head and eyesight?",
+                    'There is so much going on I think it is a bit hard to naviage around. But I love your website so much interaction I love it ♡',
+                    'What if the texts stay a little bit longer? I feel like some of the informations disappear little fast.',
+                    'What if your website contains more interactive user based activity? Because I really love user can enter text and happens steps from your website! I love your concept/website design overall!',
+                    'What if the website is an open source where people can upload their own photos of the pigeons they saw?',
+                    'What if you narrowed your topic a bit? It feels kind of overwhelming. Maybe. Very cool interactions and storytelling though.',
+                  ],
+                },
+              ],
+              story: true,
+              entries: [
+                { img: ['w9-whatif/note1', 'w9-whatif/note2', 'w9-whatif/note3', 'w9-whatif/note4', 'w9-whatif/note5', 'w9-whatif/note6', 'w9-whatif/note7', 'w9-whatif/note8'] },
               ],
             },
           ],
