@@ -31,9 +31,15 @@ html, body { height: 100%; overflow: hidden; }
 
 .node.work .box-in { fill: none; stroke: var(--line); stroke-width: 1; }
 
-.node.week .ring { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
-.node.week .disc { fill: var(--fg); }
-.node.week .num { fill: var(--bg); font-size: 12px; font-weight: 600; text-anchor: middle; }
+/* a station = a lift button: metal bezel, black face, big condensed numeral */
+.node.week .ring { fill: var(--bg); stroke: #9a9a9a; stroke-width: 1.5; }
+.node.week .disc { fill: var(--bg); stroke: #5c5c5c; stroke-width: 1; }
+.node.week .num, .node.future .num { font-family: 'Barlow Condensed', var(--sans); font-size: 23px; font-weight: 500; text-anchor: middle; }
+.node.week .num { fill: var(--fg); }
+.node.week .glow { fill: none; stroke: #fff; stroke-width: 5; opacity: 0; filter: url(#glow); transition: opacity 0.35s; }
+/* lit: the button you pressed */
+.node.week.focus .ring { stroke: #fff; stroke-width: 2; }
+.node.week.focus .glow { opacity: 0.75; }
 .node.week .title, .node.future .title { font-family: var(--sans); font-size: 15px; font-weight: 600; }
 .node .sub { font-size: 10.5px; fill: var(--mute); }
 .node .pill-r { fill: none; stroke: var(--line); stroke-width: 1; }
@@ -42,7 +48,6 @@ html, body { height: 100%; overflow: hidden; }
 .node.future { cursor: default; }
 .node.future .ring { fill: var(--bg); stroke: #5a5a5a; stroke-width: 1.2; stroke-dasharray: 3 3; }
 .node.future text { fill: #6a6a6a; }
-.node.future .num { text-anchor: middle; font-size: 12px; }
 .node.future .pill-r { stroke: #5a5a5a; stroke-dasharray: 2 2; }
 
 .node .hit { fill: transparent; }
@@ -61,8 +66,8 @@ html, body { height: 100%; overflow: hidden; }
 .node.dim.root .box { fill: #2a2a2a; stroke: #2a2a2a; }
 .node.dim.root text { fill: #000; }
 .node.dim .ring, .node.dim .pill-r, .node.dim .box-in { stroke: var(--dim); }
-.node.dim .disc { fill: #2e2e2e; }
-.node.dim .num { fill: #000; }
+.node.dim .disc { fill: var(--bg); stroke: #2a2a2a; }
+.node.dim .num { fill: var(--dim-text); }
 .node.dim .more { fill: var(--bg); stroke: var(--dim); }
 .node.dim .more-t { fill: var(--dim-text); }
 .node.dim .more-l { stroke: var(--dim); }

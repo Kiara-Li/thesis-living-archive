@@ -40,6 +40,9 @@
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
+  // the glow around a lit station button
+  svg.querySelector('defs').innerHTML = '<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5"/></filter>';
+
   function el(tag, attrs, parent) {
     const e = document.createElementNS(NS, tag);
     for (const k in attrs) e.setAttribute(k, attrs[k]);
@@ -186,9 +189,11 @@
     n.hit = el('rect', { class: 'hit', x: e.x0 - 4, y: e.y0 - 4, width: e.x1 - e.x0 + 8, height: e.y1 - e.y0 + 8 }, g);
 
     if (n.g.type === 'circle') {
+      // a lift button: soft glow when lit, metal bezel, black face, big numeral
+      if (n.kind === 'week') el('circle', { class: 'glow', r: 24 }, g);
       el('circle', { class: 'ring', r: 24 }, g);
-      if (n.kind === 'week') el('circle', { class: 'disc', r: 18.5 }, g);
-      el('text', { class: 'num', x: 0, y: 0.5 }, g).textContent = n.num;
+      if (n.kind === 'week') el('circle', { class: 'disc', r: 20 }, g);
+      el('text', { class: 'num', x: 0, y: 1 }, g).textContent = n.num;
       el('text', { class: 'title', x: 38, y: -8 }, g).textContent = n.label;
       el('rect', { class: 'pill-r', x: 38.5, y: 4.5, width: n.g.pillW, height: 17, rx: 8.5 }, g);
       el('text', { class: 'pill-t', x: 46.5, y: 13.5 }, g).textContent = n.g.pillText;
@@ -996,25 +1001,29 @@
     if (!playing) playNext();
   }
 
-  function playNext() {
+  // gap: ms to wait first (after the last tour pulled in)
+  function playNext(gap = 0) {
     playing = queue.shift() || null;
     if (!playing) return;
     closePanel(false);
     hideNote();
     S.focus = 'root';
     setHash(root);
-    beat();
+    // ding-ding: the tram leaves, then the song starts
+    playing.note = 0;
+    SND.depart(gap / 1000);
+    playing.timer = setTimeout(beat, gap + BEAT * 3);
   }
 
   function beat() {
     const t = playing;
-    if (t.i >= t.beats.length) { playing = null; paintRows(); playNext(); return; }
+    if (t.i >= t.beats.length) { SND.arrive(); playing = null; paintRows(); playNext(BEAT * 4); return; }
     const n = t.beats[t.i++];
     if (n) {
       light(t, n);
-      SND.node(n, 0, n.kind === 'week' ? 0.9 : 0.6);
+      SND.melody(t.note++, n.kind === 'week');
       refreshTour(t);
-    }
+    } else SND.rail();
     paintRows();
     t.timer = setTimeout(beat, BEAT);
   }
