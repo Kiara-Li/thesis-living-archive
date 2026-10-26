@@ -44,10 +44,18 @@
     },
     images: { FAIR },
 
-    // Finished pieces — listed on works/, each with its own page
+    // Finished pieces — the WORKS menu on the map, each with its own page.
+    // `trail`: the process nodes that belong to it, in the order they play
+    // when the work is ticked in the menu (their branches open one by one).
     works: [
-      { id: '256', title: 'Installation Heights of Street Furniture and Observed Pigeon Use, New York City', kind: 'Printed book', date: '09.25', href: '256/', process: 'w4-256', cover: null },
-      { id: 'prototype-1', title: 'Prototype 1 — Look Up', kind: 'Iterations 01–03', date: '10.23', href: 'prototype-1/', process: 'w8-lookup-site', cover: null },
+      { id: '256', title: 'Installation Heights of Street Furniture and Observed Pigeon Use, New York City', kind: 'Printed book', date: '09.25', href: '256/', process: 'w4-256', cover: null,
+        trail: ['w1-images', 'w3-proto', 'w4-256'] },
+      { id: 'prototype-1', title: 'Prototype 1 — Look Up', kind: 'Iterations 01–03', date: '10.23', href: 'prototype-1/', process: 'w8-lookup-site', cover: null,
+        trail: [
+          'w6-want', 'w6-websites', 'w6-thinking', 'w6-apis', 'w6-sightline', 'w6-demo', 'w6-gaze', 'w6-viewfinder', 'w6-sound', 'w6-later',
+          'w8-proto1b', 'w8-fieldkit', 'w8-poster', 'w8-feather', 'w8-question', 'w8-lookup', 'w8-midway', 'w8-sections', 'w8-lookup-site',
+          'w9-whatif', 'w9-responses', 'w9-reflection',
+        ] },
     ],
 
     root: {

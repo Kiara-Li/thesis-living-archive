@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/base.css?v=7">
-  <link rel="stylesheet" href="assets/css/map.css?v=9">
+  <link rel="stylesheet" href="assets/css/map.css?v=11">
 </head>
 <body>
   <header class="site-header">
@@ -20,8 +20,8 @@
     </div>
     <nav class="nav">
       <div class="tabs">
-        <a href="./" aria-current="page">Process</a>
-        <a href="works/">Works</a>
+        <a href="./" id="tab-process" aria-current="page">Process</a>
+        <a href="works/" id="tab-works">Works</a>
       </div>
       <button class="sound-toggle" id="sound" type="button">SOUND ON</button>
     </nav>
@@ -54,6 +54,7 @@
   <div class="orbit" id="orbit" aria-hidden="true"></div>
   <aside class="note" id="note" aria-live="polite"></aside>
   <aside class="panel right" id="panel" aria-label="Step details"></aside>
+  <aside class="works-menu" id="works-menu" aria-label="Works"></aside>
   <div class="juxta" id="juxta" role="dialog" aria-label="Connection"></div>
 
   <div class="legend">
@@ -66,9 +67,9 @@
     <button type="button" id="zoom-fit" class="fit">FIT</button>
   </div>
 
-  <script src="assets/js/data.js?v=26"></script>
+  <script src="assets/js/data.js?v=27"></script>
   <script src="assets/js/sound.js?v=7"></script>
   <script src="assets/js/lightbox.js?v=7"></script>
-  <script src="assets/js/map.js?v=11"></script>
+  <script src="assets/js/map.js?v=13"></script>
 </body>
 </html>

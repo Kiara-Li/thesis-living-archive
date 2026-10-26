@@ -6,6 +6,8 @@
     (dimmed nodes still open on click, they just don't preview on hover)
   - leaf steps slide out a panel; works open their own page
   - drag one node onto another to make your own (unsaved) connection
+  - the WORKS tab drops a menu; ticking a work plays its process out on the
+    map, one node per beat, like a music box running through a song
 */
 (() => {
   const A = window.ARCHIVE;
@@ -27,6 +29,9 @@
   const panel = $('#panel');
   const juxta = $('#juxta');
   const soundBtn = $('#sound');
+  const menu = $('#works-menu');
+  const worksTab = $('#tab-works');
+  const processTab = $('#tab-process');
 
   const IMG = 'assets/img/';
   const thumb = (p) => { const [dir, f] = p.split('/'); return `${IMG}${dir}/thumb/${f}.jpg`; };
@@ -133,6 +138,14 @@
     noteFor: null,
   };
   let visible = [];
+
+  // works ticked in the menu: id → { lit: Set of node ids lit by it, opened: Set it expanded, … }
+  const tours = new Map();
+  function litAll() {
+    const s = new Set();
+    for (const t of tours.values()) t.lit.forEach((id) => s.add(id));
+    return s;
+  }
 
   /* ── building SVG for a node ────────────────────── */
 
@@ -285,6 +298,19 @@
       cursor = wy + y1 + 32;
     });
 
+    // branches folded away (a work unticked in the menu) fade out; if they
+    // open again later they grow out of their parent like the first time
+    const vis = new Set(visible);
+    for (const n of byId.values()) {
+      if (!n.el) continue;
+      const gone = !vis.has(n);
+      if (gone === n.el.classList.contains('gone')) continue;
+      n.el.classList.toggle('gone', gone);
+      const e = edgeEls.get(n.id);
+      if (e) e.g.classList.toggle('gone', gone);
+      if (!gone) n.p = null;
+    }
+
     for (const n of visible) {
       if (!n.p) {
         const from = n.parent && n.parent.p ? { x: n.parent.p.x + n.parent.g.out, y: n.parent.p.y } : n.t;
@@ -381,8 +407,12 @@
 
   function activeSet() {
     const f = byId.get(S.focus);
+    const lit = litAll();
+    // at the root with works ticked: only their threads stay bright
+    if (f === root && lit.size) return new Set(['root', ...lit]);
     const act = new Set([f.id, ...ancestors(f).map((a) => a.id)]);
     if (S.expanded.has(f.id)) f.children.forEach((c) => act.add(c.id));
+    lit.forEach((id) => act.add(id));
     return act;
   }
 
@@ -407,6 +437,9 @@
       const pw = panel.getBoundingClientRect().width;
       if (pw >= W - 40) return v; // panel covers everything on phones
       if (panel.classList.contains('right')) v.r = W - pw - 32; else v.l = pw + 32;
+    } else if (menu.classList.contains('open')) {
+      const r = menu.getBoundingClientRect();
+      if (mobile) v.t = r.bottom + 16; else v.r = r.left - 32;
     } else if (noteEl.classList.contains('show')) {
       if (narrow) v.b = H - noteEl.getBoundingClientRect().height - 80;
       else v.r = W - 250 - 70;
@@ -434,6 +467,8 @@
 
   function frameFocus(instant) {
     const f = byId.get(S.focus);
+    const lit = litAll();
+    if (f === root && lit.size) { fitTo([...lit].map((id) => byId.get(id)), instant, 0.32); return; }
     let set;
     if (f === root) set = [root, ...weeks];
     else {
@@ -494,6 +529,7 @@
 
   function activate(n, opts = {}) {
     hoverEnd(n, true);
+    finishTours();
     if (n.kind === 'future') { SND.low(); return; }
     SND.node(n);
     // a work with children: the pill grows the branch, the box opens the work
@@ -531,6 +567,7 @@
   /* ── side note (footnote) ───────────────────────── */
 
   function showNote(n) {
+    if (menu.classList.contains('open')) { hideNote(); return; }
     const text = n === root ? A.root.text : n.text;
     if (!text && !n.date) { hideNote(); return; }
     S.noteNo += 1;
@@ -560,6 +597,7 @@
   /* ── panel ──────────────────────────────────────── */
 
   function openPanel(n) {
+    closeMenu(true);
     hideNote();
     const sp = toScreen(center(n).x, center(n).y);
     const side = sp.x > innerWidth * 0.55 ? 'left' : 'right';
@@ -808,7 +846,9 @@
 
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' || (window.Lightbox && window.Lightbox.isOpen())) return;
-    if (juxta.classList.contains('open')) closeJuxta(); else stepUp();
+    if (juxta.classList.contains('open')) closeJuxta();
+    else if (menu.classList.contains('open')) closeMenu();
+    else stepUp();
   });
 
   addEventListener('resize', () => { frameFocus(); kick(); });
@@ -854,6 +894,215 @@
 
   function closeJuxta() { juxta.classList.remove('open'); SND.low(); }
 
+  /* ── works menu: tick a work, its process plays out ─ */
+
+  const BEAT = 260; // ms — one node per beat, one beat of rest between weeks
+  const pad2 = (n) => String(n).padStart(2, '0');
+  const WORK_ICON = '<svg width="16" height="13" viewBox="0 0 16 13" fill="none" stroke-width="1.2"><path d="M0.6 0.6h14.8v11.8H0.6z M4.4 9.4l6.6-6.2 M6.4 3.2h4.6v4.6"/></svg>';
+  const trailOf = (w) => (w.trail || [w.process]).map((id) => byId.get(id)).filter(Boolean);
+  let playing = null;
+  const queue = [];
+
+  function weekSpan(w) {
+    const nums = [...new Set(trailOf(w).map((n) => n.week.num))];
+    return nums.length > 1 ? `W${nums[0]}–W${nums[nums.length - 1]}` : nums.length ? `W${nums[0]}` : '';
+  }
+
+  // the song: every node on the way down to each trail node, in order; null = a rest
+  function beatsFor(w) {
+    const out = []; const seen = new Set(); let wk = null;
+    trailOf(w).forEach((n) => {
+      [...ancestors(n).reverse().filter((a) => a !== root), n].forEach((p) => {
+        if (seen.has(p.id)) return;
+        seen.add(p.id);
+        if (wk && p.week !== wk) out.push(null);
+        wk = p.week;
+        out.push(p);
+      });
+    });
+    return out;
+  }
+
+  function renderMenu() {
+    const works = A.works || [];
+    menu.innerHTML = `
+      <div class="wm-head"><span>WORKS<i>${works.length}</i></span><button type="button" class="wm-close">× CLOSE</button></div>
+      <ol class="wm-list">
+        ${works.map((w, i) => `
+          <li class="wm-row" data-w="${esc(w.id)}">
+            <button type="button" class="wm-tick" aria-pressed="false">
+              <span class="wm-box">[ ]</span><span class="wm-no">${pad2(i + 1)}</span>
+              <span class="wm-t">${esc(w.title)}<small>${esc(w.kind)}</small></span>
+              <span class="wm-wk">${esc(weekSpan(w))}</span><span class="wm-d">${esc(w.date)}</span>
+            </button>
+            <a class="wm-go" href="works/${esc(w.href)}" aria-label="Open ${esc(w.title)}"><span>${WORK_ICON}</span></a>
+          </li>`).join('')}
+        <li class="wm-row ghost">
+          <span class="wm-tick"><span class="wm-box">[ ]</span><span class="wm-no">${pad2(works.length + 1)}</span><span class="wm-t">…</span><span class="wm-wk"></span><span class="wm-d">upcoming</span></span>
+          <span class="wm-go"></span>
+        </li>
+      </ol>
+      <div class="wm-foot"><span>[●] play its process</span><span>□ open the page</span></div>`;
+    menu.querySelector('.wm-close').onclick = () => closeMenu();
+    menu.querySelectorAll('.wm-row[data-w]').forEach((row, i) => {
+      const w = works[i];
+      row.querySelector('.wm-tick').onclick = () => {
+        const t = tours.get(w.id);
+        if (t && !t.closing) untick(w); else if (!t) tick(w);
+      };
+      const go = row.querySelector('.wm-go');
+      go.onclick = (e) => {
+        if (e.metaKey || e.ctrlKey || !SND.on) return;
+        e.preventDefault();
+        SND.node({ depth: 1, index: i });
+        setTimeout(() => { location.href = go.href; }, 220);
+      };
+    });
+  }
+
+  function paintRows() {
+    menu.querySelectorAll('.wm-row[data-w]').forEach((row) => {
+      const w = A.works.find((x) => x.id === row.dataset.w);
+      const t = tours.get(w.id);
+      const on = !!t && !t.closing;
+      row.classList.toggle('on', on);
+      row.classList.toggle('playing', !!t && t === playing);
+      row.querySelector('.wm-tick').setAttribute('aria-pressed', String(on));
+      row.querySelector('.wm-box').textContent = on ? '[●]' : '[ ]';
+      row.querySelector('.wm-wk').textContent = t && t === playing
+        ? `${pad2(t.lit.size)}/${pad2(t.beats.filter(Boolean).length)}`
+        : weekSpan(w);
+    });
+  }
+
+  function refreshTour(t) {
+    layout();
+    updateClasses();
+    if (t) fitTo([...t.lit].map((id) => byId.get(id)), false, 0.32); else frameFocus();
+    kick();
+  }
+
+  // light one node; open its parent first so it grows out of it
+  function light(t, n) {
+    const p = n.parent;
+    if (p && !S.expanded.has(p.id)) { S.expanded.add(p.id); t.opened.add(p.id); }
+    t.lit.add(n.id);
+  }
+
+  function tick(w) {
+    const t = { w, beats: beatsFor(w), i: 0, lit: new Set(), opened: new Set(), timer: null, closing: false };
+    tours.set(w.id, t);
+    queue.push(t);
+    paintRows();
+    if (!playing) playNext();
+  }
+
+  function playNext() {
+    playing = queue.shift() || null;
+    if (!playing) return;
+    closePanel(false);
+    hideNote();
+    S.focus = 'root';
+    setHash(root);
+    beat();
+  }
+
+  function beat() {
+    const t = playing;
+    if (t.i >= t.beats.length) { playing = null; paintRows(); playNext(); return; }
+    const n = t.beats[t.i++];
+    if (n) {
+      light(t, n);
+      SND.node(n, 0, n.kind === 'week' ? 0.9 : 0.6);
+      refreshTour(t);
+    }
+    paintRows();
+    t.timer = setTimeout(beat, BEAT);
+  }
+
+  // the visitor takes over mid-song: whatever is left opens at once, silently
+  function finishTours() {
+    if (!playing) return;
+    for (const t of [playing, ...queue]) {
+      clearTimeout(t.timer);
+      while (t.i < t.beats.length) { const n = t.beats[t.i++]; if (n) light(t, n); }
+    }
+    playing = null;
+    queue.length = 0;
+    layout();
+    updateClasses();
+    paintRows();
+  }
+
+  // unticked: the thread goes dark back to front, then the branches it opened fold away
+  function untick(w) {
+    const t = tours.get(w.id);
+    clearTimeout(t.timer);
+    if (playing === t) playing = null;
+    const qi = queue.indexOf(t);
+    if (qi >= 0) queue.splice(qi, 1);
+    t.closing = true;
+    paintRows();
+    const order = [...t.lit].reverse();
+    let k = 0;
+    (function fade() {
+      if (k < order.length) {
+        const n = byId.get(order[k++]);
+        t.lit.delete(n.id);
+        SND.node(n, 0, 0.28);
+        updateClasses();
+        kick();
+        t.timer = setTimeout(fade, BEAT / 3);
+        return;
+      }
+      tours.delete(w.id);
+      const keep = new Set();
+      for (const o of tours.values()) o.lit.forEach((id) => ancestors(byId.get(id)).forEach((a) => keep.add(a.id)));
+      t.opened.forEach((id) => { if (!keep.has(id)) S.expanded.delete(id); });
+      if (ancestors(byId.get(S.focus)).some((a) => !S.expanded.has(a.id))) { closePanel(false); S.focus = 'root'; setHash(root); }
+      refreshTour(playing);
+      paintRows();
+      if (!playing) playNext();
+    })();
+  }
+
+  function openMenu() {
+    if (menu.classList.contains('open')) return;
+    closePanel(false);
+    hideNote();
+    menu.classList.add('open');
+    worksTab.setAttribute('aria-current', 'page');
+    processTab.removeAttribute('aria-current');
+    SND.arpeggio((A.works || []).map((w, i) => ({ depth: 1, index: i })));
+    frameFocus();
+    kick();
+  }
+
+  function closeMenu(quiet) {
+    if (!menu.classList.contains('open')) return;
+    menu.classList.remove('open');
+    processTab.setAttribute('aria-current', 'page');
+    worksTab.removeAttribute('aria-current');
+    if (quiet) return;
+    SND.low();
+    const f = byId.get(S.focus);
+    if (!S.panelNode && (f.children.length || f === root)) showNote(f);
+    frameFocus();
+    kick();
+  }
+
+  renderMenu();
+  worksTab.addEventListener('click', (e) => {
+    if (e.metaKey || e.ctrlKey) return;
+    e.preventDefault();
+    if (menu.classList.contains('open')) closeMenu(); else openMenu();
+  });
+  processTab.addEventListener('click', (e) => {
+    if (!menu.classList.contains('open')) return;
+    e.preventDefault();
+    closeMenu();
+  });
+
   /* ── sound toggle ───────────────────────────────── */
 
   const paintSound = () => { soundBtn.textContent = `SOUND ${SND.on ? 'ON' : 'OFF'}`; };
@@ -872,6 +1121,7 @@
   }
 
   addEventListener('hashchange', () => {
+    if (location.hash === '#works') { openMenu(); return; }
     const n = byId.get(decodeURIComponent(location.hash.slice(1))) || root;
     if (n.id === S.focus && !S.panelNode) return;
     closePanel(false);
@@ -882,7 +1132,9 @@
 
   const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
   Promise.race([ready, new Promise((r) => setTimeout(r, 1500))]).then(() => {
+    const wantMenu = location.hash === '#works';
     if (!openFromHash()) focus(root, { instant: true });
+    if (wantMenu) openMenu();
     for (const n of visible) n.p = { ...n.t };
     kick();
   });
