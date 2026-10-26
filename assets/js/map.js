@@ -1,6 +1,7 @@
 /*
   Process map
-  - weeks sit on a dashed spine; each opens like a spider web into its steps
+  - weeks are stations on one straight line, like a subway line map;
+    each opens like a spider web into its steps
   - the map keeps what has been opened, so it grows as you explore
   - only the current step and its path stay bright; everything else dims
     (dimmed nodes still open on click, they just don't preview on hover)
@@ -119,7 +120,7 @@
   function ext(n) {
     const more = n.children.length && !S.expanded.has(n.id) && n.kind !== 'root' ? n.g.moreW : 0;
     return n.g.type === 'circle'
-      ? { x0: -26, x1: n.g.w + more, y0: -27, y1: 27 }
+      ? { x0: n === stationOf() ? -40 - TAG_W : -26, x1: n.g.w + more, y0: -27, y1: 27 }
       : { x0: 0, x1: n.g.w + more, y0: -n.g.h / 2, y1: n.g.h / 2 };
   }
 
@@ -234,6 +235,9 @@
     return `M${x1},${y1}L${x1 + dx},${y2}H${x2}`;
   }
 
+  // every week sits on this one vertical line
+  const LINE_X = 30;
+
   // vertical room a branch needs (islands are placed on their own)
   function span(n) {
     const own = n.g.type === 'circle' ? 54 : n.g.h;
@@ -286,13 +290,13 @@
     })(root);
     visible.forEach(refreshHit);
 
-    root.t = { x: -44, y: 0 };
+    root.t = { x: LINE_X - 16, y: 0 };
     let cursor = 58;
-    weeks.forEach((wk, i) => {
+    weeks.forEach((wk) => {
       const local = layoutWeek(wk);
       let y0 = Infinity; let y1 = -Infinity;
       for (const [id, p] of local) { const e = ext(byId.get(id)); y0 = Math.min(y0, p.y + e.y0); y1 = Math.max(y1, p.y + e.y1); }
-      const wx = 30 + i * 46;
+      const wx = LINE_X;
       const wy = cursor - y0;
       for (const [id, p] of local) byId.get(id).t = { x: p.x + wx, y: p.y + wy };
       cursor = wy + y1 + 32;
@@ -337,10 +341,21 @@
   function spineAt(i) {
     if (!spineEls[i]) {
       const g = el('g', { class: 'spine' }, gSpine);
-      spineEls[i] = { g, path: el('path', {}, g), head: el('path', { class: 'head' }, g) };
+      spineEls[i] = { g, path: el('path', {}, g) };
     }
     return spineEls[i];
   }
+
+  // the station you're at: the week of the current step, or the latest week
+  function stationOf() {
+    const f = byId.get(S.focus);
+    if (f && f.week) return f.week;
+    return [...weeks].reverse().find((w) => w.kind === 'week') || weeks[0];
+  }
+
+  // 12 characters of 10px Plex Mono + padding
+  const TAG_W = 90;
+  let tagEl = null;
 
   function drawEdges(active) {
     for (const n of visible) {
@@ -354,27 +369,27 @@
       e.g.classList.toggle('dim', !(active.has(n.id) && active.has(n.parent.id)));
     }
 
-    // root → first week: elbow, like a file tree
+    // the line: root → week 1 → week 2 …, straight down through every station
     const s0 = spineAt(0);
     const w1 = weeks[0];
-    s0.path.setAttribute('d', `M${root.p.x + 16},${root.p.y + 19}V${w1.p.y}H${w1.p.x - 26}`);
-    s0.head.setAttribute('d', arrow(w1.p.x - 26, w1.p.y, 1, 0));
+    s0.path.setAttribute('d', `M${w1.p.x},${root.p.y + 19}V${w1.p.y}`);
     s0.g.classList.toggle('dim', !(active.has('root') && active.has(w1.id)));
-
-    // week → week: the same right-angle elbow as root → week 1
     for (let i = 0; i < weeks.length - 1; i++) {
       const a = weeks[i]; const b = weeks[i + 1];
       const s = spineAt(i + 1);
-      s.path.setAttribute('d', `M${a.p.x},${a.p.y + 26}V${b.p.y}H${b.p.x - 26}`);
-      s.head.setAttribute('d', arrow(b.p.x - 26, b.p.y, 1, 0));
+      s.path.setAttribute('d', `M${a.p.x},${a.p.y}V${b.p.y}`);
       s.g.classList.toggle('future', b.kind === 'future');
       s.g.classList.toggle('dim', !(active.has(a.id) && active.has(b.id)));
     }
-  }
 
-  function arrow(x, y, ux, uy) {
-    const s = 6; const px = -uy; const py = ux;
-    return `M${x},${y}L${x - ux * s + px * s * 0.55},${y - uy * s + py * s * 0.55}L${x - ux * s - px * s * 0.55},${y - uy * s - py * s * 0.55}Z`;
+    // THIS STATION ▸ marker, like the platform signs
+    if (!tagEl) {
+      tagEl = el('g', { class: 'station-tag' }, gSpine);
+      el('path', { d: `M0,-9H${TAG_W}L${TAG_W + 8},0L${TAG_W},9H0Z` }, tagEl);
+      el('text', { x: 9, y: 0.5 }, tagEl).textContent = 'THIS STATION';
+    }
+    const st = stationOf();
+    tagEl.setAttribute('transform', `translate(${st.p.x - 36 - TAG_W},${st.p.y})`);
   }
 
   /* ── user links ─────────────────────────────────── */
@@ -566,19 +581,46 @@
 
   /* ── side note (footnote) ───────────────────────── */
 
+  // the stops after this one: later weeks on the main line, or a step's own branch
+  function nextStops(n) {
+    if (n === root || n.kind === 'week') {
+      const i = weeks.indexOf(n === root ? stationOf() : n);
+      return weeks.slice(i + 1, i + 5);
+    }
+    return n.children.slice(0, 4);
+  }
+  const stopName = (c) => (c.week === c ? `W${c.num} ${c.label}` : c.label);
+
+  // like the display inside a subway car: where you are, then NEXT STOP
+  function boardHTML(n) {
+    const st = stationOf();
+    const head = n === root ? 'Living Archive' : n.title || n.label;
+    const sub = n === root
+      ? `updated ${A.meta.updated} · ${weeks.filter((w) => w.kind === 'week').length} weeks`
+      : [dateOf(n), tagOf(n)].filter(Boolean).join(' · ');
+    const stops = nextStops(n);
+    const ticker = stops.length
+      ? `NEXT STOP&ensp;${esc(stopName(stops[0]))}${stops.length > 1 ? `&emsp;·&emsp;then ${stops.slice(1).map((c) => esc(stopName(c))).join('&emsp;·&emsp;')}` : ''}&emsp;&emsp;&emsp;`
+      : n === root || n.kind === 'week' ? 'END OF LINE · NEXT STATION TO BE ANNOUNCED&emsp;&emsp;&emsp;' : '';
+    const here = n === root ? `NOW AT&ensp;${esc(stopName(st))}&emsp;·&emsp;` : '';
+    return `
+      <div class="board">
+        <div class="b-now"><span class="b-bullet">${esc(st.num)}</span><div><b>${esc(head)}</b><span>${esc(sub)}</span></div></div>
+        ${ticker ? `<div class="b-led"><div class="b-run" style="--t:${Math.max(8, ticker.length / 9)}s"><span>${here}${ticker}</span><span aria-hidden="true">${here}${ticker}</span></div></div>` : ''}
+        ${stops.length ? `<ol class="b-stops">${stops.map((c, i) => `<li><button type="button" data-stop="${c.id}"${c.kind === 'future' ? ' disabled' : ''}>${esc(stopName(c))}</button><span>${i + 1} stop${i ? 's' : ''}</span></li>`).join('')}</ol>` : ''}
+      </div>`;
+  }
+
   function showNote(n) {
     if (menu.classList.contains('open')) { hideNote(); return; }
     const text = n === root ? A.root.text : n.text;
-    if (!text && !n.date) { hideNote(); return; }
     S.noteNo += 1;
     S.noteFor = n;
-    const meta = n === root
-      ? `<span class="pill">updated ${esc(A.meta.updated)}</span><span class="pill">${weeks.filter((w) => w.kind === 'week').length} weeks</span>`
-      : `<span class="pill">${esc(dateOf(n))}</span><span class="pill">${esc(tagOf(n))}</span>`;
     noteEl.innerHTML = `
-      <div class="n-meta">${meta}</div>
+      ${boardHTML(n)}
       ${text ? String(text).split(/\n\s*\n/).map((t, i) => `<p>${i === 0 ? `<sup>${S.noteNo}</sup>` : ''}${esc(t)}</p>`).join('') : ''}
       ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : ''}`;
+    noteEl.querySelectorAll('[data-stop]').forEach((b) => { b.onclick = () => activate(byId.get(b.dataset.stop)); });
     noteEl.classList.add('show');
   }
 
