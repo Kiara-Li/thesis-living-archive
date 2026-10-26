@@ -470,7 +470,7 @@
   // Inside the archive the zoom stays put and the view moves as little as it
   // can: nothing if the step and its branch are already on screen, otherwise
   // just far enough. Only a branch too big for the screen zooms out.
-  function glideTo(nodes, instant, k0) {
+  function glideTo(nodes, instant, k0, keep) {
     let x0 = Infinity; let y0 = Infinity; let x1 = -Infinity; let y1 = -Infinity;
     for (const n of nodes) {
       const e = ext(n);
@@ -493,6 +493,12 @@
     // sideways, nudge just enough; the left edge wins when both don't fit
     if (x + x1 * k > v.r) x -= x + x1 * k - v.r;
     if (x + x0 * k < v.l) x += v.l - (x + x0 * k);
+    // a phone can't fit a wide branch: slide on to the right to show what
+    // just grew, as far as the clicked node can go without leaving the screen
+    if (keep && x + x1 * k > v.r) {
+      const kx0 = keep.t.x + ext(keep).x0;
+      x -= Math.max(0, Math.min(x + x1 * k - v.r, x + kx0 * k - v.l));
+    }
     // vertically, when it has to move, it settles in the upper part of the
     // screen, leaving room below for the next week to open without moving again
     if (y + y1 * k > v.b || y + y0 * k < v.t) {
@@ -515,7 +521,7 @@
       if (S.expanded.has(f.id)) set.push(...f.children);
     }
     if (f === root) fitTo(set, instant, 0.32);
-    else glideTo(set, instant, innerWidth < 640 ? 0.55 : 0.9);
+    else glideTo(set, instant, innerWidth < 640 ? 0.55 : 0.9, innerWidth < 640 ? f : null);
   }
 
   /* ── animation loop ─────────────────────────────── */
