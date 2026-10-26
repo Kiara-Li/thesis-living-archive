@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.25',
+      updated: '10.26',
     },
     images: { FAIR },
 
@@ -1022,6 +1022,22 @@ I want something like this: when people put the book down and move through the c
               entries: [
                 { img: ['w9-whatif/note1', 'w9-whatif/note2', 'w9-whatif/note3', 'w9-whatif/note4', 'w9-whatif/note5', 'w9-whatif/note6', 'w9-whatif/note7', 'w9-whatif/note8'] },
               ],
+            },
+            {
+              id: 'w9-responses', kind: 'step', icon: 'chat', label: 'My Responses',
+              title: 'Responding to the “What if”s',
+              blocks: [
+                { title: "1. “What if you connect your project to multiple cities? Is it about a specific system city or can it be expanded to fit different ones?”", text: "I think this one is good. I feel like it connects a bit with what the girl at the thesis exchange said, and what my friend said before, that the state of animals and humans reflects the state of the city. It makes me think of what Nancy said, that pigeons are dirty because New York is dirty. Pretty good." },
+                { title: "2. “What if the pigeons are human, and human are pigeons?”", text: "This one is pretty good. It makes me think of the question about anti-bird spikes I asked AI when I did Daily Object. What I wrote was inventing a device to get rid of humans that doesn’t hurt humans. But this might become anthropomorphizing? If I do this, I need a lot of research to avoid anthropomorphism." },
+                { title: "3. “What if there is no interaction needed for viewing the website?”", text: "Then why would that website exist? A website with no interaction is completely a “window”, just to present the information exactly as it is. Maybe it’s also kind of interesting, but it feels a little far." },
+                { title: "4. “I know using the hand is a big part of the experience, but what if we don’t use hands? Only the gesture of our head and eyesight?”", text: "I thought about this too, but it’s too specific a UI/UX change, more suitable for improving Prototype 1." },
+                { title: "5. “There is so much going on, I think it is a bit hard to navigate around. But I like your website, so much interaction, I love it ♡”", text: "Same reason as above." },
+                { title: "6. “What if the texts stay a little bit longer? I feel like some of the informations disappear little fast.”", text: "Same, a specific change suggestion." },
+                { title: "7. “What if your website contains more interactive user-based activity? Because I really love user can enter text and [things] happen step by step from your website! I love your concept/website design overall!”", text: "Same as above." },
+                { title: "8. “What if the website is an open source where people can upload their own photos of the pigeons they saw?”", text: "If it’s a specific website improvement, I think it’s pretty good. About letting everyone participate, upload photos, build a city animal and plant archive together, or the feeling of an event, it reminds me of something I saw when I was doing research before: https://www.newschannel6now.com/2026/07/21/city-nature-challenge-documents-over-170-species-need-conservation/ Actually it’s pretty good, maybe it could be made into that kind of event/branding design, but I can kind of imagine it’s missing that touch of unexpected, fantastical color." },
+                { title: "9. “What if you narrowed your topic a bit? It feels kind of overwhelming maybe. Very cool interactions and storytelling though.”", text: "" },
+              ],
+              links: [{ label: 'City Nature Challenge — News Channel 6', url: 'https://www.newschannel6now.com/2026/07/21/city-nature-challenge-documents-over-170-species-need-conservation/' }],
             },
             {
               id: 'w9-reflection', kind: 'step', label: 'Reflection',
