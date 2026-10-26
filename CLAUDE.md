@@ -15,7 +15,7 @@ Kiara will say something like "add week 6" or "add my research activity notes". 
    - **Cause → effect grows outward, never side by side.** If one thing comes from another (a response to feedback, an idea that came out of an experiment, a list prompted by a sentence), make it a *child* of what caused it. Siblings are only for things that are genuinely parallel. Kiara has asked for this repeatedly.
    - A node can hold its own material *and* have children: the first click grows the branch, the second click opens its panel. So never split a node's content into a sibling just to make room for children.
    - A step that should grow somewhere else on the map gets `island: true`.
-   - A finished piece gets `kind: 'work'` + `href: 'works/<slug>/'`, an entry in `works: [...]`, and a page copied from `works/256/index.html`.
+   - A finished piece gets `kind: 'work'` + `href: 'works/<slug>/'`, an entry in `works: [...]`, and a page copied from `works/256/index.html`. Its `trail` lists the process node ids that belong to it, in order — that's what plays on the map when it's ticked in the WORKS menu. When a new node belongs to a work, add its id to that work's `trail`.
 4. **Text rules**
    - **Only include what Kiara did or explicitly asks for.** No teacher-recommended readings/"Look At" lists, no placeholder steps for things she didn't do. Teacher feedback is fine **in Kiara's own paraphrase together with her understanding/response** — never paste his words verbatim on their own.
    - Label every week with its **date and assignment name**. **Don't write your own descriptions or interpretations** — no `text` unless it's Kiara's words. If she gave no caption for something, leave it empty.
