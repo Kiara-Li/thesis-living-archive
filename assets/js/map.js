@@ -540,17 +540,14 @@
       return;
     }
     if (n === root) { closePanel(false); focus(root); return; }
-    // a branch that also holds its own material: first click grows it,
-    // clicking it again (once it's the focus) opens its panel
-    if (n.children.length && S.focus === n.id && S.expanded.has(n.id) && hasPanel(n)) {
-      openPanel(n);
-      return;
-    }
+    // a branch grows; if it also holds its own material, its panel opens
+    // at the same time, with the new branches beside it
     if (n.children.length) {
       const fresh = !S.expanded.has(n.id);
       S.expanded.add(n.id);
       closePanel(false);
       focus(n);
+      if (hasPanel(n)) openPanel(n);
       if (fresh) SND.arpeggio(n.children);
     } else {
       focus(n);
@@ -569,20 +566,16 @@
   function showNote(n) {
     if (menu.classList.contains('open')) { hideNote(); return; }
     const text = n === root ? A.root.text : n.text;
-    if (!text && !n.date && !(n.images && n.images.length) && !(n.entries && n.entries.length)) { hideNote(); return; }
+    if (!text && !n.date) { hideNote(); return; }
     S.noteNo += 1;
     S.noteFor = n;
-    const own = n === root ? [] : [...(n.images || []), ...(n.entries || []).flatMap((e) => e.img || [])];
     const meta = n === root
       ? `<span class="pill">updated ${esc(A.meta.updated)}</span><span class="pill">${weeks.filter((w) => w.kind === 'week').length} weeks</span>`
       : `<span class="pill">${esc(dateOf(n))}</span><span class="pill">${esc(tagOf(n))}</span>`;
     noteEl.innerHTML = `
       <div class="n-meta">${meta}</div>
       ${text ? String(text).split(/\n\s*\n/).map((t, i) => `<p>${i === 0 ? `<sup>${S.noteNo}</sup>` : ''}${esc(t)}</p>`).join('') : ''}
-      ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : ''}
-      ${own.length ? `<div class="n-imgs">${own.map((p) => `<button type="button"><img loading="lazy" src="${thumb(p)}" alt=""></button>`).join('')}</div>` : ''}`;
-    // a branch's own photos show right away; clicking one opens its full panel
-    noteEl.querySelectorAll('.n-imgs button').forEach((b) => { b.onclick = () => openPanel(n); });
+      ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : ''}`;
     noteEl.classList.add('show');
   }
 
@@ -1119,7 +1112,7 @@
     const n = byId.get(decodeURIComponent(location.hash.slice(1)));
     if (!n || n === root) return false;
     ancestors(n).forEach((a) => S.expanded.add(a.id));
-    if (n.children.length) { S.expanded.add(n.id); focus(n, { instant: true }); } else if (n.kind === 'work' || n.kind === 'future') focus(n.parent, { instant: true });
+    if (n.children.length) { S.expanded.add(n.id); focus(n, { instant: true }); if (hasPanel(n)) openPanel(n); } else if (n.kind === 'work' || n.kind === 'future') focus(n.parent, { instant: true });
     else { focus(n, { instant: true }); openPanel(n); }
     return true;
   }
