@@ -1,6 +1,9 @@
 /*
   Process map
-  - weeks sit on a dashed spine; each opens like a spider web into its steps
+  - weeks are stations on one straight line, like a subway line map;
+    each opens like a spider web into its steps
+  - the camera keeps one zoom between weeks and only glides as far as it
+    must, down and to the right, the way the eye reads
   - the map keeps what has been opened, so it grows as you explore
   - only the current step and its path stay bright; everything else dims
     (dimmed nodes still open on click, they just don't preview on hover)
@@ -234,6 +237,11 @@
     return `M${x1},${y1}L${x1 + dx},${y2}H${x2}`;
   }
 
+  // every week sits on this one vertical line
+  const LINE_X = 30;
+  // track between one station's branch and the next station
+  const TRACK = 52;
+
   // vertical room a branch needs (islands are placed on their own)
   function span(n) {
     const own = n.g.type === 'circle' ? 54 : n.g.h;
@@ -286,16 +294,16 @@
     })(root);
     visible.forEach(refreshHit);
 
-    root.t = { x: -44, y: 0 };
+    root.t = { x: LINE_X - 16, y: 0 };
     let cursor = 58;
-    weeks.forEach((wk, i) => {
+    weeks.forEach((wk) => {
       const local = layoutWeek(wk);
       let y0 = Infinity; let y1 = -Infinity;
       for (const [id, p] of local) { const e = ext(byId.get(id)); y0 = Math.min(y0, p.y + e.y0); y1 = Math.max(y1, p.y + e.y1); }
-      const wx = 30 + i * 46;
+      const wx = LINE_X;
       const wy = cursor - y0;
       for (const [id, p] of local) byId.get(id).t = { x: p.x + wx, y: p.y + wy };
-      cursor = wy + y1 + 32;
+      cursor = wy + y1 + TRACK;
     });
 
     // branches folded away (a work unticked in the menu) fade out; if they
@@ -337,7 +345,7 @@
   function spineAt(i) {
     if (!spineEls[i]) {
       const g = el('g', { class: 'spine' }, gSpine);
-      spineEls[i] = { g, path: el('path', {}, g), head: el('path', { class: 'head' }, g) };
+      spineEls[i] = { g, path: el('path', {}, g) };
     }
     return spineEls[i];
   }
@@ -354,30 +362,24 @@
       e.g.classList.toggle('dim', !(active.has(n.id) && active.has(n.parent.id)));
     }
 
-    // root → first week: elbow, like a file tree
-    const s0 = spineAt(0);
-    const w1 = weeks[0];
-    s0.path.setAttribute('d', `M${root.p.x + 16},${root.p.y + 19}V${w1.p.y}H${w1.p.x - 26}`);
-    s0.head.setAttribute('d', arrow(w1.p.x - 26, w1.p.y, 1, 0));
-    s0.g.classList.toggle('dim', !(active.has('root') && active.has(w1.id)));
-
-    // week → week: the same right-angle elbow as root → week 1
+    // the line: straight down through every station
     for (let i = 0; i < weeks.length - 1; i++) {
       const a = weeks[i]; const b = weeks[i + 1];
-      const s = spineAt(i + 1);
-      s.path.setAttribute('d', `M${a.p.x},${a.p.y + 26}V${b.p.y}H${b.p.x - 26}`);
-      s.head.setAttribute('d', arrow(b.p.x - 26, b.p.y, 1, 0));
+      const s = spineAt(i);
+      s.path.setAttribute('d', `M${a.p.x},${a.p.y}V${b.p.y}`);
       s.g.classList.toggle('future', b.kind === 'future');
       s.g.classList.toggle('dim', !(active.has(a.id) && active.has(b.id)));
     }
+
+    // past the last station the track trails off: the archive is still growing
+    const last = weeks[weeks.length - 1];
+    const tail = spineAt(weeks.length - 1);
+    tail.g.classList.add('tail');
+    tail.path.setAttribute('d', `M${last.p.x},${last.p.y + 34}V${last.p.y + 84}`);
+    tail.g.classList.toggle('dim', !active.has(last.id));
   }
 
-  function arrow(x, y, ux, uy) {
-    const s = 6; const px = -uy; const py = ux;
-    return `M${x},${y}L${x - ux * s + px * s * 0.55},${y - uy * s + py * s * 0.55}L${x - ux * s - px * s * 0.55},${y - uy * s - py * s * 0.55}Z`;
-  }
-
-  /* ── user links ─────────────────────────────────── */
+    /* ── user links ─────────────────────────────────── */
 
   function drawLinks() {
     for (const L of S.links) {
@@ -465,18 +467,55 @@
     if (instant) { S.cam = cam; S.camT = null; } else S.camT = cam;
   }
 
+  // Inside the archive the zoom stays put and the view moves as little as it
+  // can: nothing if the step and its branch are already on screen, otherwise
+  // just far enough. Only a branch too big for the screen zooms out.
+  function glideTo(nodes, instant, k0) {
+    let x0 = Infinity; let y0 = Infinity; let x1 = -Infinity; let y1 = -Infinity;
+    for (const n of nodes) {
+      const e = ext(n);
+      x0 = Math.min(x0, n.t.x + e.x0); x1 = Math.max(x1, n.t.x + e.x1);
+      y0 = Math.min(y0, n.t.y + e.y0); y1 = Math.max(y1, n.t.y + e.y1);
+    }
+    const v = viewport();
+    // on a phone a wide branch runs off to the right (drag to follow it)
+    // rather than shrinking the text past reading
+    const fitW = innerWidth < 640 ? Infinity : (v.r - v.l) / (x1 - x0 || 1);
+    const k = Math.min(k0, fitW, (v.b - v.t) / (y1 - y0 || 1));
+    const base = S.camT || S.cam;
+    let { x, y } = base;
+    if (Math.abs(base.k - k) > 0.005) {
+      // coming in from the overview (or a big branch): keep the line where the eye is
+      const line = base.x + LINE_X * base.k;
+      x = clamp(line, v.l + 40, v.r) - LINE_X * k;
+      y = (v.t + v.b) / 2 - ((y0 + y1) / 2) * k;
+    }
+    // sideways, nudge just enough; the left edge wins when both don't fit
+    if (x + x1 * k > v.r) x -= x + x1 * k - v.r;
+    if (x + x0 * k < v.l) x += v.l - (x + x0 * k);
+    // vertically, when it has to move, it settles in the upper part of the
+    // screen, leaving room below for the next week to open without moving again
+    if (y + y1 * k > v.b || y + y0 * k < v.t) {
+      const room = v.b - v.t - (y1 - y0) * k;
+      y = v.t + clamp(room, 0, (v.b - v.t) * 0.18) - y0 * k;
+    }
+    const cam = { k, x, y };
+    if (instant) { S.cam = cam; S.camT = null; } else S.camT = cam;
+  }
+
   function frameFocus(instant) {
     const f = byId.get(S.focus);
     const lit = litAll();
     if (f === root && lit.size) { fitTo([...lit].map((id) => byId.get(id)), instant, 0.32); return; }
     let set;
-    if (f === root) set = [root, ...weeks];
+    if (f === root) set = [...weeks];
     else {
       set = [f];
       if (f.parent && f.parent !== root && !f.island) set.push(f.parent);
       if (S.expanded.has(f.id)) set.push(...f.children);
     }
-    fitTo(set, instant, f === root ? 0.32 : innerWidth < 640 ? 0.42 : 0.62);
+    if (f === root) fitTo(set, instant, 0.32);
+    else glideTo(set, instant, innerWidth < 640 ? 0.55 : 0.9);
   }
 
   /* ── animation loop ─────────────────────────────── */
@@ -583,7 +622,7 @@
 
   function drawLeader() {
     const n = S.noteFor;
-    if (!n || !noteEl.classList.contains('show') || innerWidth < 1000) { leader.setAttribute('d', ''); return; }
+    if (!n || n === root || !noteEl.classList.contains('show') || innerWidth < 1000) { leader.setAttribute('d', ''); return; }
     const r = noteEl.getBoundingClientRect();
     const endX = n.g.type === 'circle' ? n.p.x + n.g.w + 6 : n.p.x + n.g.w;
     const p = toScreen(endX, n.p.y);
@@ -716,7 +755,7 @@
   let orbitNode = null;
 
   function hoverStart(n) {
-    if (n.el.classList.contains('dim') || n.kind === 'future') return;
+    if (n.el.classList.contains('dim') || n.kind === 'future' || S.camT) return;
     clearTimeout(hoverTimer);
     hoverTimer = setTimeout(() => showOrbit(n), 110);
   }

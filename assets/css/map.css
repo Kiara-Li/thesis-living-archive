@@ -31,7 +31,7 @@ html, body { height: 100%; overflow: hidden; }
 
 .node.work .box-in { fill: none; stroke: var(--line); stroke-width: 1; }
 
-.node.week .ring { fill: none; stroke: var(--line); stroke-width: 1.5; }
+.node.week .ring { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
 .node.week .disc { fill: var(--fg); }
 .node.week .num { fill: var(--bg); font-size: 15px; font-weight: 600; text-anchor: middle; }
 .node.week .title, .node.future .title { font-family: var(--sans); font-size: 15px; font-weight: 600; }
@@ -40,7 +40,7 @@ html, body { height: 100%; overflow: hidden; }
 .node .pill-t { font-size: 10px; }
 
 .node.future { cursor: default; }
-.node.future .ring { fill: none; stroke: #5a5a5a; stroke-width: 1.2; stroke-dasharray: 3 3; }
+.node.future .ring { fill: var(--bg); stroke: #5a5a5a; stroke-width: 1.2; stroke-dasharray: 3 3; }
 .node.future text { fill: #6a6a6a; }
 .node.future .num { text-anchor: middle; font-size: 12px; }
 .node.future .pill-r { stroke: #5a5a5a; stroke-dasharray: 2 2; }
@@ -77,11 +77,15 @@ html, body { height: 100%; overflow: hidden; }
 
 .node.gone, .edge.gone { opacity: 0; pointer-events: none; transition: opacity 0.25s; }
 
-.spine path { fill: none; stroke: var(--line); stroke-width: 1.3; stroke-dasharray: 5 5; }
-.spine.future path { stroke: #4a4a4a; stroke-dasharray: 2 5; }
-.spine.dim path { stroke: var(--dim); }
-.spine .head { fill: var(--line); }
-.spine.dim .head, .spine.future .head { fill: var(--dim); }
+/* the line: one quiet track through every station, like a subway map;
+   the stations stay bright, the track sits back */
+.spine path { fill: none; stroke: var(--fg); stroke-opacity: 0.32; stroke-width: 3; stroke-linecap: round; transition: stroke-opacity 0.35s; }
+.spine.future path { stroke-opacity: 0.18; stroke-width: 1.5; stroke-dasharray: 2 5; }
+.spine.dim path { stroke-opacity: 0.14; }
+.spine.tail path { stroke-width: 3; stroke-dasharray: 0 9; }
+
+/* no archive box at the top; the line starts at week 01 */
+.node.root { display: none; }
 
 .ulink path { fill: none; stroke: var(--fg); stroke-width: 1.2; stroke-dasharray: 7 4; animation: march 1.2s linear infinite; }
 .ulink circle { fill: var(--fg); }
