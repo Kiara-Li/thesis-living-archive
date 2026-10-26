@@ -40,9 +40,6 @@
   const clamp = (v, a, b) => Math.max(a, Math.min(b, v));
   const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 
-  // the glow around a lit station button
-  svg.querySelector('defs').innerHTML = '<filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3.5"/></filter>';
-
   function el(tag, attrs, parent) {
     const e = document.createElementNS(NS, tag);
     for (const k in attrs) e.setAttribute(k, attrs[k]);
@@ -97,7 +94,15 @@
     sub: '400 10.5px "IBM Plex Mono"',
     pill: '400 10px "IBM Plex Mono"',
     more: '500 10.5px "IBM Plex Mono"',
+    num: '500 23px "Barlow Condensed"',
   };
+
+  // baseline that puts the numerals' ink exactly on the circle's centre
+  function numY() {
+    mctx.font = F.num;
+    const m = mctx.measureText('0123456789');
+    return (m.actualBoundingBoxAscent - m.actualBoundingBoxDescent) / 2;
+  }
 
   function measure(n) {
     measureShape(n);
@@ -189,11 +194,9 @@
     n.hit = el('rect', { class: 'hit', x: e.x0 - 4, y: e.y0 - 4, width: e.x1 - e.x0 + 8, height: e.y1 - e.y0 + 8 }, g);
 
     if (n.g.type === 'circle') {
-      // a lift button: soft glow when lit, metal bezel, black face, big numeral
-      if (n.kind === 'week') el('circle', { class: 'glow', r: 24 }, g);
+      // a lift button: one ring, big numeral; it turns white when pressed
       el('circle', { class: 'ring', r: 24 }, g);
-      if (n.kind === 'week') el('circle', { class: 'disc', r: 20 }, g);
-      el('text', { class: 'num', x: 0, y: 1 }, g).textContent = n.num;
+      el('text', { class: 'num', x: 0, y: numY() }, g).textContent = n.num;
       el('text', { class: 'title', x: 38, y: -8 }, g).textContent = n.label;
       el('rect', { class: 'pill-r', x: 38.5, y: 4.5, width: n.g.pillW, height: 17, rx: 8.5 }, g);
       el('text', { class: 'pill-t', x: 46.5, y: 13.5 }, g).textContent = n.g.pillText;
