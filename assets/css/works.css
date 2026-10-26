@@ -143,3 +143,23 @@ ul.about-meta li:first-child { padding-left: 0; border-left: 0; }
   .set { grid-template-columns: 1fr; }
   .pg-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* not made yet — dashed box, like the map's "to add" */
+.tbd { border: 1px dashed var(--mute); color: var(--mute); font-size: 11px; padding: 14px 16px; }
+.tbd-media { margin-top: 14px; aspect-ratio: 16 / 9; max-width: 720px; display: flex; align-items: center; justify-content: center; }
+
+/* iterations — one row each, links on the right */
+.iters { margin-top: 80px; }
+.iters .pg-head span, .trail h3 span { color: var(--mute); }
+.iters ol { list-style: none; margin: 0; padding: 0; }
+.iters li { display: grid; grid-template-columns: 28px 52px minmax(160px, 1fr) auto; gap: 14px; align-items: baseline; padding: 12px 0; border-bottom: 1px solid #333; font-size: 11px; }
+.iters .no, .iters .dt { color: var(--mute); }
+.iters .t { font-family: var(--sans); font-weight: 600; font-size: 17px; }
+.iters .ln { display: flex; flex-wrap: wrap; gap: 6px 16px; justify-content: flex-end; }
+.iters .ln a { text-decoration: none; border-bottom: 1px solid #555; }
+.iters .ln a:hover { border-color: var(--fg); }
+@media (max-width: 800px) {
+  .iters li { grid-template-columns: 28px 1fr; }
+  .iters .dt { grid-column: 2; grid-row: 1; justify-self: end; }
+  .iters .t, .iters .ln { grid-column: 1 / -1; justify-content: flex-start; }
+}

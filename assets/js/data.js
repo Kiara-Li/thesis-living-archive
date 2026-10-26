@@ -47,6 +47,7 @@
     // Finished pieces — listed on works/, each with its own page
     works: [
       { id: '256', title: 'Installation Heights of Street Furniture and Observed Pigeon Use, New York City', kind: 'Printed book', date: '09.25', href: '256/', process: 'w4-256', cover: null },
+      { id: 'prototype-1', title: 'Prototype 1 — Look Up', kind: 'Iterations 01–03', date: '10.23', href: 'prototype-1/', process: 'w8-lookup-site', cover: null },
     ],
 
     root: {
@@ -802,7 +803,7 @@ For now New York is the test site. Maybe it opens with a map of New York. I have
               ],
             },
             {
-              id: 'w6-sightline', kind: 'work', label: 'Prototype',
+              id: 'w6-sightline', kind: 'work', label: 'Prototype · Iteration 01',
               title: 'Pigeon Sightline — Prototype 1',
               href: 'https://kiara-li.github.io/prototype1/',
               text: `I decided to try one thing first, using the pigeon book I already finished.
@@ -956,7 +957,7 @@ I want something like this: when people put the book down and move through the c
               id: 'w8-proto1b', kind: 'step', label: 'Prototype 1, Continued',
               children: [
                 {
-                  id: 'w8-fieldkit', kind: 'step', label: 'Field Kit',
+                  id: 'w8-fieldkit', kind: 'step', label: 'Field Kit · Iteration 02',
                   // translated from Kiara's note (Chinese)
                   text: `These are the prototype experiments I did this week. The goal is for them to echo the online part, so the audience can do activities offline. For example, the activity cards: each one has a different task, and they encourage people to look at the city from different angles, echoing the gesture part of the website. There is also a small booklet introducing the project, with the website links on it, and a card that asks people to record the sounds around them and make a phone call.
 
@@ -1034,24 +1035,41 @@ I want something like this: when people put the book down and move through the c
                   ],
                   children: [
                     {
-                      id: 'w8-sections', kind: 'step', label: 'From Rise to Sections',
-                      title: '10.21–22 · From one continuous rise to sections',
-                      text: "It's no longer just lifting your head and rising. It becomes section by section. Each section has a question. Finding pigeons comes later and is not the whole thing. More text. I want the whole piece to feel artistic.\n\nI still needed an excuse for why looking at pigeons matters. My idea: ask questions that are not about pigeons. A pigeon on a park railing → which park did you last go to. A windowsill → what can you see from your window. Pigeons stand on the things we use every day, so when you see them you think of your own life, because their lives overlap with yours.\n\nSeven objects. Everything below eye level (60″) is removed. The objects have to tell a story and make sense. Heights are the median from my record table. Each section: the object, who it was designed for and why, drawings, finding pigeons, and one sentence to fill in.",
-                      table: { head: ['Height', 'Object'], rows: [["120″", "Awning"], ["159″", "Sign"], ["180″", "Ledge & sill"], ["216″", "Traffic signal"], ["300″", "Fire escape"], ["348″", "Streetlight"], ["960″", "In flight"]] },
-                      blocks: [
-                        { title: "The questions", text: "One blank each so it's easy to write. Must be a memory, not \"if\". The object becomes the pigeon picture.\n\n960″  In flight — The last time I looked up at the [ ], the sky was ___.\n348″  Streetlight — Late one night, under the [ ], I was walking to ___.\n300″  Fire escape — I've seen people use the [ ] to ___.\n216″  Traffic signal — Waiting for the [ ] to turn green, I thought about ___.\n180″  Ledge & sill — Past the [ ] outside my window, I can see ___.\n159″  Sign — Every day I walk past the [ ] of ___.\n120″  Awning — I waited out the rain under the [ ] of a ___." },
-                        { title: "Things I dropped while writing them", text: "\"I read a sign that says ___\" (nobody remembers what a sign says), \"I would leave ___ on the ledge\" (nobody leaves things there), \"if I had a fire escape\" (that's imagining, not remembering)." },
-                        { title: "Finding pigeons", text: "When you frame a pigeon with your hands, that piece flips over like a card and shows the color underneath. Everything you frame gets cut out. At the end, the cut pieces go into your sentences, like a collage." },
-                      ],
+                      id: 'w8-midway', kind: 'step', label: 'Midway Thoughts',
+                      // translated from Kiara's notes (Chinese), line by line
+                      text: `Origami as a medium, built into the design, something like imitating, getting close to
+The sound of wings flapping
+Gradient design
+Gestures, the peace dove hand gesture
+Next project: printmaking, motion, riso prints
+Blurry gradient, the color of a pigeon's chest, moving, emotion, stands for sadness
+If I think about it this way: what do they get from each interaction, what changes, what will be different when they come back to the dashboard? What does the website change based on? The traces users leave.
+How to do the navigation, how to divide the levels, for example what the point of view is, getting gradually smaller, maybe the pigeon's motion-compensated view that Amy sent me. How the emotion bursts out.
+How to go from quiet to loud. How to end. Treat it as a complete story instead of open.
+
+What is it actually supposed to bring? What is this website for? Maybe at the end it still ends with a feather.
+
+Maybe it shouldn't be imitating the pigeon's call.
+Color changes, faster and faster, maybe the colors get richer and richer, and in the end become something like a bird's colors. Memory, the shapes seen, the world.
+Maybe the movements should be continuous, for example first look up, then make the window gesture to zoom in, and then the whole website feels like rising from the bottom up, and at the end you see a deep blue sky. Or they alternate, for example first look up, then zoom in, then look up again. Anyway, no longer the scale of the book like now, but longer and longer, and while rising you can zoom in with the gesture to look at the photos at any time. And then maybe the background? gets richer and richer, the higher up the more colors, gradually turning into the feeling of a pigeon? Or it could, for example, become more and more blurry color blocks, more and more abstract feelings? The sound also gets more and more. Still use height as the website's navigation system.
+At a certain height it becomes a city that is strange to us, right? Maybe after reaching certain heights, show certain memories, for example at balcony height there are quilts hung out to dry, then streetlights, anyway more memories about the city?`,
                       children: [
                         {
-                          id: 'w8-lookup-site', kind: 'work', label: 'Look Up',
-                          title: 'Look Up — Prototype 1',
-                          href: 'https://kiara-li.github.io/prototype1/look-up/',
+                          id: 'w8-sections', kind: 'step', label: 'From Rise to Sections',
+                          title: '10.21–22 · From one continuous rise to sections',
+                          text: "It's no longer just lifting your head and rising. It becomes section by section. Each section has a question. Finding pigeons comes later and is not the whole thing. More text. I want the whole piece to feel artistic.\n\nI still needed an excuse for why looking at pigeons matters. My idea: ask questions that are not about pigeons. A pigeon on a park railing → which park did you last go to. A windowsill → what can you see from your window. Pigeons stand on the things we use every day, so when you see them you think of your own life, because their lives overlap with yours.\n\nSeven objects. Everything below eye level (60″) is removed. The objects have to tell a story and make sense. Heights are the median from my record table. Each section: the object, who it was designed for and why, drawings, finding pigeons, and one sentence to fill in.",
+                          table: { head: ['Height', 'Object'], rows: [["120″", "Awning"], ["159″", "Sign"], ["180″", "Ledge & sill"], ["216″", "Traffic signal"], ["300″", "Fire escape"], ["348″", "Streetlight"], ["960″", "In flight"]] },
+                          blocks: [
+                            { title: "The questions", text: "One blank each so it's easy to write. Must be a memory, not \"if\". The object becomes the pigeon picture.\n\n960″  In flight — The last time I looked up at the [ ], the sky was ___.\n348″  Streetlight — Late one night, under the [ ], I was walking to ___.\n300″  Fire escape — I've seen people use the [ ] to ___.\n216″  Traffic signal — Waiting for the [ ] to turn green, I thought about ___.\n180″  Ledge & sill — Past the [ ] outside my window, I can see ___.\n159″  Sign — Every day I walk past the [ ] of ___.\n120″  Awning — I waited out the rain under the [ ] of a ___." },
+                            { title: "Things I dropped while writing them", text: "\"I read a sign that says ___\" (nobody remembers what a sign says), \"I would leave ___ on the ledge\" (nobody leaves things there), \"if I had a fire escape\" (that's imagining, not remembering)." },
+                            { title: "Finding pigeons", text: "When you frame a pigeon with your hands, that piece flips over like a card and shows the color underneath. Everything you frame gets cut out. At the end, the cut pieces go into your sentences, like a collage." },
+                          ],
                           children: [
-                            { id: 'w8-lookup-intro', kind: 'step', label: 'Introduction', todo: 'to be written' },
-                            { id: 'w8-lookup-demo', kind: 'step', icon: 'video', label: 'Demo Video', todo: 'to be added' },
-                            { id: 'w8-lookup-docs', kind: 'step', icon: 'image', label: 'Documentation', todo: 'to be added' },
+                            {
+                              id: 'w8-lookup-site', kind: 'work', label: 'Look Up · Iteration 03',
+                              title: 'Look Up — Prototype 1',
+                              href: 'works/prototype-1/',
+                            },
                           ],
                         },
                       ],
