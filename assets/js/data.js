@@ -776,25 +776,27 @@ Or could the user's action be marked on the website? These are two different log
 I'm also looking for APIs I could get data from.
 
 For now New York is the test site. Maybe it opens with a map of New York. I haven't decided. It might be this, it might be something completely different.`,
-            },
-            {
-              id: 'w6-apis', kind: 'step', label: 'Possible APIs',
-              // translated from Kiara's notes (Chinese)
-              sections: [
+              children: [
                 {
-                  title: 'Species observations',
-                  items: [
-                    'iNaturalist API — species observations photographed and uploaded by ordinary people, with photos, coordinates, date and time. Reading it needs no key. There are a lot of records for New York, from pigeons and rats to all kinds of insects and plants. Note: the licenses on the photos vary, so each one has to be checked before showing it publicly.',
-                    'eBird API — Cornell University\'s birdwatching records. Needs a free key. You can ask which birds have appeared in an area in the last 30 days; Manhattan\'s region code is US-NY-061. The data is more standardised than iNaturalist, but it is only birds.',
-                    'GBIF API — a global aggregate of species records, including the data from iNaturalist and eBird. Good for looking at records over long spans of time.',
-                  ],
-                },
-                {
-                  title: 'NYC Open Data — all readable through an API',
-                  items: [
-                    '2015 Street Tree Census — every street tree in New York, with species, location and trunk size, about 680,000 trees.',
-                    'Rat Sightings — rat complaints from the 311 line, updated continuously, with time and address. It is a record of people noticing rats, which is also data about the relationship between people and animals.',
-                    '2018 Central Park Squirrel Census — over three thousand squirrel sightings recorded by volunteers, with fur color, behavior (eating, running, calling) and whether it was morning or afternoon.',
+                  id: 'w6-apis', kind: 'step', label: 'Possible APIs',
+                  // translated from Kiara's notes (Chinese)
+                  sections: [
+                    {
+                      title: 'Species observations',
+                      items: [
+                        'iNaturalist API — species observations photographed and uploaded by ordinary people, with photos, coordinates, date and time. Reading it needs no key. There are a lot of records for New York, from pigeons and rats to all kinds of insects and plants. Note: the licenses on the photos vary, so each one has to be checked before showing it publicly.',
+                        'eBird API — Cornell University\'s birdwatching records. Needs a free key. You can ask which birds have appeared in an area in the last 30 days; Manhattan\'s region code is US-NY-061. The data is more standardised than iNaturalist, but it is only birds.',
+                        'GBIF API — a global aggregate of species records, including the data from iNaturalist and eBird. Good for looking at records over long spans of time.',
+                      ],
+                    },
+                    {
+                      title: 'NYC Open Data — all readable through an API',
+                      items: [
+                        '2015 Street Tree Census — every street tree in New York, with species, location and trunk size, about 680,000 trees.',
+                        'Rat Sightings — rat complaints from the 311 line, updated continuously, with time and address. It is a record of people noticing rats, which is also data about the relationship between people and animals.',
+                        '2018 Central Park Squirrel Census — over three thousand squirrel sightings recorded by volunteers, with fur color, behavior (eating, running, calling) and whether it was morning or afternoon.',
+                      ],
+                    },
                   ],
                 },
               ],
@@ -966,27 +968,29 @@ I want something like this: when people put the book down and move through the c
                     { img: ['w7-kit/k5-booklet'] },
                     { img: ['w7-kit/k6-call'] },
                   ],
-                },
-                {
-                  id: 'w8-poster', kind: 'step', label: 'Poster',
-                  // translated from Kiara's note (Chinese)
-                  text: `In the group critique I told everyone my concern. Sammi and Jhyun said I could put up posters, something like asking people whether they want to become a bird, to catch attention, and then put the website link on them. This made me think of this famous meme, so I think it's also a good way, with something like "Are you tired of being a human" written on it.`,
-                  story: true,
-                  entries: [
-                    { img: ['w7-poster/p1-meme'] },
-                    { img: ['w7-poster/p2-draft'] },
-                  ],
-                },
-                {
-                  id: 'w8-feather', kind: 'step', label: 'Paper Feather',
-                  // translated from Kiara's note (Chinese)
-                  text: `Also in the group critique, I saw other people's work. One was made like the order menu of an old TV shopping program, and another made a book like a flip phone. I found these really interesting, borrowing physical objects to catch people's attention. This made me think of bird feathers, which are everywhere. Sometimes I even pick up a nice pigeon feather when I see one. So I'm thinking maybe I could make the prints into origami feathers.
+                  children: [
+                    {
+                      id: 'w8-poster', kind: 'step', label: 'Poster',
+                      // translated from Kiara's note (Chinese)
+                      text: `In the group critique I told everyone my concern. Sammi and Jhyun said I could put up posters, something like asking people whether they want to become a bird, to catch attention, and then put the website link on them. This made me think of this famous meme, so I think it's also a good way, with something like "Are you tired of being a human" written on it.`,
+                      story: true,
+                      entries: [
+                        { img: ['w7-poster/p1-meme'] },
+                        { img: ['w7-poster/p2-draft'] },
+                      ],
+                    },
+                    {
+                      id: 'w8-feather', kind: 'step', label: 'Paper Feather',
+                      // translated from Kiara's note (Chinese)
+                      text: `Also in the group critique, I saw other people's work. One was made like the order menu of an old TV shopping program, and another made a book like a flip phone. I found these really interesting, borrowing physical objects to catch people's attention. This made me think of bird feathers, which are everywhere. Sometimes I even pick up a nice pigeon feather when I see one. So I'm thinking maybe I could make the prints into origami feathers.
 
-    This is my small exercise. Right now it's my favorite, because imagine picking up a feather from the ground, opening it, and entering the world of becoming a pigeon! (Even though my website isn't all like that.) The concept itself is really interesting.`,
-                  story: true,
-                  entries: [
-                    { img: ['w7-feather/f1-feather'] },
-                    { img: ['w7-feather/f2-paper'] },
+        This is my small exercise. Right now it's my favorite, because imagine picking up a feather from the ground, opening it, and entering the world of becoming a pigeon! (Even though my website isn't all like that.) The concept itself is really interesting.`,
+                      story: true,
+                      entries: [
+                        { img: ['w7-feather/f1-feather'] },
+                        { img: ['w7-feather/f2-paper'] },
+                      ],
+                    },
                   ],
                 },
               ],
@@ -1022,22 +1026,24 @@ I want something like this: when people put the book down and move through the c
               entries: [
                 { img: ['w9-whatif/note1', 'w9-whatif/note2', 'w9-whatif/note3', 'w9-whatif/note4', 'w9-whatif/note5', 'w9-whatif/note6', 'w9-whatif/note7', 'w9-whatif/note8'] },
               ],
-            },
-            {
-              id: 'w9-responses', kind: 'step', icon: 'chat', label: 'My Responses',
-              title: 'Responding to the “What if”s',
-              blocks: [
-                { title: "1. “What if you connect your project to multiple cities? Is it about a specific system city or can it be expanded to fit different ones?”", text: "I think this one is good. I feel like it connects a bit with what the girl at the thesis exchange said, and what my friend said before, that the state of animals and humans reflects the state of the city. It makes me think of what Nancy said, that pigeons are dirty because New York is dirty. Pretty good." },
-                { title: "2. “What if the pigeons are human, and human are pigeons?”", text: "This one is pretty good. It makes me think of the question about anti-bird spikes I asked AI when I did Daily Object. What I wrote was inventing a device to get rid of humans that doesn’t hurt humans. But this might become anthropomorphizing? If I do this, I need a lot of research to avoid anthropomorphism." },
-                { title: "3. “What if there is no interaction needed for viewing the website?”", text: "Then why would that website exist? A website with no interaction is completely a “window”, just to present the information exactly as it is. Maybe it’s also kind of interesting, but it feels a little far." },
-                { title: "4. “I know using the hand is a big part of the experience, but what if we don’t use hands? Only the gesture of our head and eyesight?”", text: "I thought about this too, but it’s too specific a UI/UX change, more suitable for improving Prototype 1." },
-                { title: "5. “There is so much going on, I think it is a bit hard to navigate around. But I like your website, so much interaction, I love it ♡”", text: "Same reason as above." },
-                { title: "6. “What if the texts stay a little bit longer? I feel like some of the informations disappear little fast.”", text: "Same, a specific change suggestion." },
-                { title: "7. “What if your website contains more interactive user-based activity? Because I really love user can enter text and [things] happen step by step from your website! I love your concept/website design overall!”", text: "Same as above." },
-                { title: "8. “What if the website is an open source where people can upload their own photos of the pigeons they saw?”", text: "If it’s a specific website improvement, I think it’s pretty good. About letting everyone participate, upload photos, build a city animal and plant archive together, or the feeling of an event, it reminds me of something I saw when I was doing research before: https://www.newschannel6now.com/2026/07/21/city-nature-challenge-documents-over-170-species-need-conservation/ Actually it’s pretty good, maybe it could be made into that kind of event/branding design, but I can kind of imagine it’s missing that touch of unexpected, fantastical color." },
-                { title: "9. “What if you narrowed your topic a bit? It feels kind of overwhelming maybe. Very cool interactions and storytelling though.”", text: "" },
+              children: [
+                {
+                  id: 'w9-responses', kind: 'step', icon: 'chat', label: 'My Responses',
+                  title: 'Responding to the “What if”s',
+                  blocks: [
+                    { title: "1. “What if you connect your project to multiple cities? Is it about a specific system city or can it be expanded to fit different ones?”", text: "I think this one is good. I feel like it connects a bit with what the girl at the thesis exchange said, and what my friend said before, that the state of animals and humans reflects the state of the city. It makes me think of what Nancy said, that pigeons are dirty because New York is dirty. Pretty good." },
+                    { title: "2. “What if the pigeons are human, and human are pigeons?”", text: "This one is pretty good. It makes me think of the question about anti-bird spikes I asked AI when I did Daily Object. What I wrote was inventing a device to get rid of humans that doesn’t hurt humans. But this might become anthropomorphizing? If I do this, I need a lot of research to avoid anthropomorphism." },
+                    { title: "3. “What if there is no interaction needed for viewing the website?”", text: "Then why would that website exist? A website with no interaction is completely a “window”, just to present the information exactly as it is. Maybe it’s also kind of interesting, but it feels a little far." },
+                    { title: "4. “I know using the hand is a big part of the experience, but what if we don’t use hands? Only the gesture of our head and eyesight?”", text: "I thought about this too, but it’s too specific a UI/UX change, more suitable for improving Prototype 1." },
+                    { title: "5. “There is so much going on, I think it is a bit hard to navigate around. But I like your website, so much interaction, I love it ♡”", text: "Same reason as above." },
+                    { title: "6. “What if the texts stay a little bit longer? I feel like some of the informations disappear little fast.”", text: "Same, a specific change suggestion." },
+                    { title: "7. “What if your website contains more interactive user-based activity? Because I really love user can enter text and [things] happen step by step from your website! I love your concept/website design overall!”", text: "Same as above." },
+                    { title: "8. “What if the website is an open source where people can upload their own photos of the pigeons they saw?”", text: "If it’s a specific website improvement, I think it’s pretty good. About letting everyone participate, upload photos, build a city animal and plant archive together, or the feeling of an event, it reminds me of something I saw when I was doing research before: https://www.newschannel6now.com/2026/07/21/city-nature-challenge-documents-over-170-species-need-conservation/ Actually it’s pretty good, maybe it could be made into that kind of event/branding design, but I can kind of imagine it’s missing that touch of unexpected, fantastical color." },
+                    { title: "9. “What if you narrowed your topic a bit? It feels kind of overwhelming maybe. Very cool interactions and storytelling though.”", text: "" },
+                  ],
+                  links: [{ label: 'City Nature Challenge — News Channel 6', url: 'https://www.newschannel6now.com/2026/07/21/city-nature-challenge-documents-over-170-species-need-conservation/' }],
+                },
               ],
-              links: [{ label: 'City Nature Challenge — News Channel 6', url: 'https://www.newschannel6now.com/2026/07/21/city-nature-challenge-documents-over-170-species-need-conservation/' }],
             },
             {
               id: 'w9-reflection', kind: 'step', label: 'Reflection',

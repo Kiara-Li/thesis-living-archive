@@ -12,6 +12,8 @@ Kiara will say something like "add week 6" or "add my research activity notes". 
    - The upcoming nodes are in `data.js` with `hidden: true` (on hold). Remove `hidden` only when Kiara asks.
    - If the week appears as an upcoming `future` node, turn that node into the week instead of adding a duplicate. Add or shift future nodes to match the schedule she gives.
 3. **Steps** → children with `kind: 'step'`. Nest them when the assignment has parts (e.g. "10 Questions" under "Research Activities").
+   - **Cause → effect grows outward, never side by side.** If one thing comes from another (a response to feedback, an idea that came out of an experiment, a list prompted by a sentence), make it a *child* of what caused it. Siblings are only for things that are genuinely parallel. Kiara has asked for this repeatedly.
+   - A node can hold its own material *and* have children: the first click grows the branch, the second click opens its panel. So never split a node's content into a sibling just to make room for children.
    - A step that should grow somewhere else on the map gets `island: true`.
    - A finished piece gets `kind: 'work'` + `href: 'works/<slug>/'`, an entry in `works: [...]`, and a page copied from `works/256/index.html`.
 4. **Text rules**

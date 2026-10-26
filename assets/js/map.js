@@ -487,6 +487,11 @@
     kick();
   }
 
+  function hasPanel(n) {
+    return !!((n.images && n.images.length) || (n.entries && n.entries.length) || (n.sections && n.sections.length)
+      || (n.blocks && n.blocks.length) || n.table || (n.links && n.links.length) || n.embed || n.video);
+  }
+
   function activate(n, opts = {}) {
     hoverEnd(n, true);
     if (n.kind === 'future') { SND.low(); return; }
@@ -499,6 +504,12 @@
       return;
     }
     if (n === root) { closePanel(false); focus(root); return; }
+    // a branch that also holds its own material: first click grows it,
+    // clicking it again (once it's the focus) opens its panel
+    if (n.children.length && S.focus === n.id && S.expanded.has(n.id) && hasPanel(n)) {
+      openPanel(n);
+      return;
+    }
     if (n.children.length) {
       const fresh = !S.expanded.has(n.id);
       S.expanded.add(n.id);
