@@ -120,7 +120,7 @@
   function ext(n) {
     const more = n.children.length && !S.expanded.has(n.id) && n.kind !== 'root' ? n.g.moreW : 0;
     return n.g.type === 'circle'
-      ? { x0: n === stationOf() ? -40 - TAG_W : -26, x1: n.g.w + more, y0: -27, y1: 27 }
+      ? { x0: -26, x1: n.g.w + more, y0: -27, y1: 27 }
       : { x0: 0, x1: n.g.w + more, y0: -n.g.h / 2, y1: n.g.h / 2 };
   }
 
@@ -346,17 +346,6 @@
     return spineEls[i];
   }
 
-  // the station you're at: the week of the current step, or the latest week
-  function stationOf() {
-    const f = byId.get(S.focus);
-    if (f && f.week) return f.week;
-    return [...weeks].reverse().find((w) => w.kind === 'week') || weeks[0];
-  }
-
-  // 12 characters of 10px Plex Mono + padding
-  const TAG_W = 90;
-  let tagEl = null;
-
   function drawEdges(active) {
     for (const n of visible) {
       if (!n.parent || n.parent === root) continue;
@@ -369,27 +358,22 @@
       e.g.classList.toggle('dim', !(active.has(n.id) && active.has(n.parent.id)));
     }
 
-    // the line: root → week 1 → week 2 …, straight down through every station
-    const s0 = spineAt(0);
-    const w1 = weeks[0];
-    s0.path.setAttribute('d', `M${w1.p.x},${root.p.y + 19}V${w1.p.y}`);
-    s0.g.classList.toggle('dim', !(active.has('root') && active.has(w1.id)));
+    // the line: straight down through every station
     for (let i = 0; i < weeks.length - 1; i++) {
       const a = weeks[i]; const b = weeks[i + 1];
-      const s = spineAt(i + 1);
+      const s = spineAt(i);
       s.path.setAttribute('d', `M${a.p.x},${a.p.y}V${b.p.y}`);
       s.g.classList.toggle('future', b.kind === 'future');
       s.g.classList.toggle('dim', !(active.has(a.id) && active.has(b.id)));
     }
 
-    // THIS STATION ▸ marker, like the platform signs
-    if (!tagEl) {
-      tagEl = el('g', { class: 'station-tag' }, gSpine);
-      el('path', { d: `M0,-9H${TAG_W}L${TAG_W + 8},0L${TAG_W},9H0Z` }, tagEl);
-      el('text', { x: 9, y: 0.5 }, tagEl).textContent = 'THIS STATION';
-    }
-    const st = stationOf();
-    tagEl.setAttribute('transform', `translate(${st.p.x - 36 - TAG_W},${st.p.y})`);
+    // past the last station the track trails off: the archive is still growing
+    const last = weeks[weeks.length - 1];
+    const tail = spineAt(weeks.length - 1);
+    tail.g.classList.add('tail');
+    tail.path.setAttribute('d', `M${last.p.x},${last.p.y + 34}V${last.p.y + 84}`);
+    tail.g.classList.toggle('dim', !active.has(last.id));
+
   }
 
   /* ── user links ─────────────────────────────────── */
@@ -485,7 +469,7 @@
     const lit = litAll();
     if (f === root && lit.size) { fitTo([...lit].map((id) => byId.get(id)), instant, 0.32); return; }
     let set;
-    if (f === root) set = [root, ...weeks];
+    if (f === root) set = [...weeks];
     else {
       set = [f];
       if (f.parent && f.parent !== root && !f.island) set.push(f.parent);
@@ -581,46 +565,19 @@
 
   /* ── side note (footnote) ───────────────────────── */
 
-  // the stops after this one: later weeks on the main line, or a step's own branch
-  function nextStops(n) {
-    if (n === root || n.kind === 'week') {
-      const i = weeks.indexOf(n === root ? stationOf() : n);
-      return weeks.slice(i + 1, i + 5);
-    }
-    return n.children.slice(0, 4);
-  }
-  const stopName = (c) => (c.week === c ? `W${c.num} ${c.label}` : c.label);
-
-  // like the display inside a subway car: where you are, then NEXT STOP
-  function boardHTML(n) {
-    const st = stationOf();
-    const head = n === root ? 'Living Archive' : n.title || n.label;
-    const sub = n === root
-      ? `updated ${A.meta.updated} · ${weeks.filter((w) => w.kind === 'week').length} weeks`
-      : [dateOf(n), tagOf(n)].filter(Boolean).join(' · ');
-    const stops = nextStops(n);
-    const ticker = stops.length
-      ? `NEXT STOP&ensp;${esc(stopName(stops[0]))}${stops.length > 1 ? `&emsp;·&emsp;then ${stops.slice(1).map((c) => esc(stopName(c))).join('&emsp;·&emsp;')}` : ''}&emsp;&emsp;&emsp;`
-      : n === root || n.kind === 'week' ? 'END OF LINE · NEXT STATION TO BE ANNOUNCED&emsp;&emsp;&emsp;' : '';
-    const here = n === root ? `NOW AT&ensp;${esc(stopName(st))}&emsp;·&emsp;` : '';
-    return `
-      <div class="board">
-        <div class="b-now"><span class="b-bullet">${esc(st.num)}</span><div><b>${esc(head)}</b><span>${esc(sub)}</span></div></div>
-        ${ticker ? `<div class="b-led"><div class="b-run" style="--t:${Math.max(8, ticker.length / 9)}s"><span>${here}${ticker}</span><span aria-hidden="true">${here}${ticker}</span></div></div>` : ''}
-        ${stops.length ? `<ol class="b-stops">${stops.map((c, i) => `<li><button type="button" data-stop="${c.id}"${c.kind === 'future' ? ' disabled' : ''}>${esc(stopName(c))}</button><span>${i + 1} stop${i ? 's' : ''}</span></li>`).join('')}</ol>` : ''}
-      </div>`;
-  }
-
   function showNote(n) {
     if (menu.classList.contains('open')) { hideNote(); return; }
     const text = n === root ? A.root.text : n.text;
+    if (!text && !n.date) { hideNote(); return; }
     S.noteNo += 1;
     S.noteFor = n;
+    const meta = n === root
+      ? `<span class="pill">updated ${esc(A.meta.updated)}</span><span class="pill">${weeks.filter((w) => w.kind === 'week').length} weeks</span>`
+      : `<span class="pill">${esc(dateOf(n))}</span><span class="pill">${esc(tagOf(n))}</span>`;
     noteEl.innerHTML = `
-      ${boardHTML(n)}
+      <div class="n-meta">${meta}</div>
       ${text ? String(text).split(/\n\s*\n/).map((t, i) => `<p>${i === 0 ? `<sup>${S.noteNo}</sup>` : ''}${esc(t)}</p>`).join('') : ''}
       ${n === root ? '<p style="color:var(--mute)">Start with a week.</p>' : ''}`;
-    noteEl.querySelectorAll('[data-stop]').forEach((b) => { b.onclick = () => activate(byId.get(b.dataset.stop)); });
     noteEl.classList.add('show');
   }
 
@@ -628,7 +585,7 @@
 
   function drawLeader() {
     const n = S.noteFor;
-    if (!n || !noteEl.classList.contains('show') || innerWidth < 1000) { leader.setAttribute('d', ''); return; }
+    if (!n || n === root || !noteEl.classList.contains('show') || innerWidth < 1000) { leader.setAttribute('d', ''); return; }
     const r = noteEl.getBoundingClientRect();
     const endX = n.g.type === 'circle' ? n.p.x + n.g.w + 6 : n.p.x + n.g.w;
     const p = toScreen(endX, n.p.y);

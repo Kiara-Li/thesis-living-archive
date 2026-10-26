@@ -77,14 +77,15 @@ html, body { height: 100%; overflow: hidden; }
 
 .node.gone, .edge.gone { opacity: 0; pointer-events: none; transition: opacity 0.25s; }
 
-/* the line: one solid track through every station, like a subway map */
-.spine path { fill: none; stroke: var(--line); stroke-width: 5; }
-.spine.future path { stroke: #4a4a4a; stroke-width: 2; stroke-dasharray: 2 5; }
-.spine.dim path { stroke: #2a2a2a; }
+/* the line: one quiet track through every station, like a subway map;
+   the stations stay bright, the track sits back */
+.spine path { fill: none; stroke: var(--fg); stroke-opacity: 0.32; stroke-width: 3; stroke-linecap: round; transition: stroke-opacity 0.35s; }
+.spine.future path { stroke-opacity: 0.18; stroke-width: 1.5; stroke-dasharray: 2 5; }
+.spine.dim path { stroke-opacity: 0.14; }
+.spine.tail path { stroke-width: 3; stroke-dasharray: 0 9; }
 
-/* THIS STATION ▸ */
-.station-tag path { fill: var(--fg); }
-.station-tag text { fill: var(--bg); font-family: var(--mono); font-size: 10px; font-weight: 500; letter-spacing: 0.04em; dominant-baseline: central; }
+/* the archive box at the top is gone; the line starts at week 01 */
+.node.root { display: none; }
 
 .ulink path { fill: none; stroke: var(--fg); stroke-width: 1.2; stroke-dasharray: 7 4; animation: march 1.2s linear infinite; }
 .ulink circle { fill: var(--fg); }
@@ -120,55 +121,7 @@ html, body { height: 100%; overflow: hidden; }
 .note.show { opacity: 1; transform: none; pointer-events: auto; }
 .note sup { font-size: 9px; margin-right: 3px; }
 
-/* the board: like the display inside a subway car */
-.board { margin-bottom: 12px; }
-.b-now { display: flex; gap: 10px; align-items: center; margin-bottom: 8px; }
-.b-bullet {
-  flex: none; width: 34px; height: 34px; border-radius: 50%;
-  display: grid; place-items: center;
-  background: var(--fg); color: var(--bg);
-  font-size: 12px; font-weight: 600;
-}
-.b-now b { display: block; font-family: var(--sans); font-size: 14px; font-weight: 600; line-height: 1.25; }
-.b-now div span { display: block; color: var(--mute); font-size: 10px; }
-
-/* NEXT STOP ticker, dot-matrix style */
-.b-led {
-  position: relative; overflow: hidden;
-  border: 1px solid var(--fg); border-radius: 3px;
-  padding: 5px 0; margin-bottom: 4px;
-  font-size: 13px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
-  white-space: nowrap;
-}
-.b-led::after {
-  content: ''; position: absolute; inset: 0; pointer-events: none;
-  background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.6) 0 1px, transparent 1px 3px);
-}
-.b-run { display: inline-flex; animation: run var(--t) linear infinite; }
-.b-run span { padding-left: 10px; }
-@keyframes run { to { transform: translateX(-50%); } }
-@media (prefers-reduced-motion: reduce) { .b-run { animation: none; } }
-
-/* the stops ahead, slanted along the track */
-.b-stops {
-  list-style: none; margin: 0; padding: 74px 0 0;
-  display: flex;
-  border-bottom: 3px solid var(--fg);
-}
-.b-stops li { position: relative; flex: 1; height: 0; }
-.b-stops li::before { content: ''; position: absolute; left: 0; bottom: 0; width: 1px; height: 8px; background: var(--fg); }
-.b-stops button {
-  position: absolute; left: 2px; bottom: 6px;
-  max-width: 112px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
-  transform: rotate(-32deg); transform-origin: left bottom;
-  font-size: 10px; text-align: left;
-}
-.b-stops button:hover { text-decoration: underline; }
-.b-stops button:disabled { color: var(--mute); cursor: default; text-decoration: none; }
-.b-stops li span { position: absolute; left: 0; top: 6px; font-size: 9px; color: var(--mute); white-space: nowrap; }
-.board:has(.b-stops) { padding-bottom: 18px; }
+.note .n-meta { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 6px; }
 .note p { margin: 0 0 8px; }
 
 /* ── hover orbit ───────────────────────────────────── */
