@@ -178,3 +178,12 @@ ul.about-meta li:first-child { padding-left: 0; border-left: 0; }
 
 .v-frame.sq { aspect-ratio: 1; }
 @media (max-width: 800px) { .ms-all-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* a landscape video across the full width of the page */
+.v-wide { margin-top: 14px; aspect-ratio: 16 / 9; background: #0a0a0a; }
+.v-wide iframe { width: 100%; height: 100%; border: 0; display: block; }
+.pg-head .yt-link { text-transform: none; letter-spacing: 0.02em; }
+
+/* a square video the size of one square in the photo grid above it */
+.v-row.tri { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+@media (max-width: 800px) { .v-row.tri { grid-template-columns: 1fr; gap: 12px; } }
