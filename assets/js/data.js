@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.26',
+      updated: '10.27',
     },
     images: { FAIR },
 
@@ -54,7 +54,7 @@
         trail: [
           'w5-trace-p1', 'w5-trace-responses', 'w5-trace-feedback', 'w5-trace-reading', 'w5-trace-show', 'w5-trace-refs',
           'w6-want', 'w6-websites', 'w6-thinking', 'w6-apis', 'w6-sightline', 'w6-demo', 'w6-gaze', 'w6-viewfinder', 'w6-sound', 'w6-later',
-          'w8-proto1b', 'w8-fieldkit', 'w8-poster', 'w8-feather', 'w8-question', 'w8-lookup', 'w8-midway', 'w8-sections', 'w8-lookup-site',
+          'w8-proto1b', 'w8-fieldkit', 'w8-poster', 'w8-feather', 'w8-question', 'w8-lookup', 'w8-midway', 'w8-sections', 'w8-figma', 'w8-lookup-site',
           'w9-whatif', 'w9-responses', 'w9-reflection',
         ] },
     ],
@@ -1075,9 +1075,23 @@ At a certain height it becomes a city that is strange to us, right? Maybe after 
                           ],
                           children: [
                             {
-                              id: 'w8-lookup-site', kind: 'work', label: 'Look Up · Iteration 03',
-                              title: 'Look Up — Prototype 1',
-                              href: 'works/prototype-1/',
+                              id: 'w8-figma', kind: 'step', label: 'Figma Design',
+                              // translated from Kiara's message (Chinese)
+                              text: "Before the website, I designed it in Figma: the image processing, how the text moves, how each frame is laid out, and some sketches of the animation. Then I sent these to Claude for live coding.",
+                              entries: [
+                                { img: ['w8-figma/1-pigeons'], text: 'Image processing: the pigeons.' },
+                                { img: ['w8-figma/2-type'], text: 'How the text moves: LOOK UP.' },
+                                { img: ['w8-figma/3-frames'], text: 'Frames: how each screen is laid out.' },
+                                { img: ['w8-figma/4-animation'], text: 'Animation sketches, frame by frame.' },
+                                { img: ['w8-figma/5-poster-feathers'], text: 'Image processing: the poster and the paper feathers.' },
+                              ],
+                              children: [
+                                {
+                                  id: 'w8-lookup-site', kind: 'work', label: 'Look Up · Iteration 03',
+                                  title: 'Look Up — Prototype 1',
+                                  href: 'works/prototype-1/',
+                                },
+                              ],
                             },
                           ],
                         },
