@@ -163,3 +163,17 @@ ul.about-meta li:first-child { padding-left: 0; border-left: 0; }
   .iters .dt { grid-column: 2; grid-row: 1; justify-self: end; }
   .iters .t, .iters .ln { grid-column: 1 / -1; justify-content: flex-start; }
 }
+
+/* photo mosaic — 3 × 3, one square swaps at a time */
+.mosaic { margin-top: 80px; }
+.ms-note { font-size: 11px; color: var(--mute); max-width: 62ch; margin: 0 0 14px; }
+.ms-grid, .ms-all-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+.ms-grid[hidden], .ms-all-grid[hidden] { display: none; }
+.ms-grid button, .ms-all-grid button { position: relative; aspect-ratio: 4 / 3; overflow: hidden; }
+.ms-grid img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 0.7s ease; }
+.ms-grid img.on { opacity: 1; }
+.ms-all-grid { grid-template-columns: repeat(4, 1fr); }
+.ms-all-grid button:hover img { opacity: 0.8; }
+
+.v-frame.sq { aspect-ratio: 1; }
+@media (max-width: 800px) { .ms-all-grid { grid-template-columns: repeat(2, 1fr); } }
