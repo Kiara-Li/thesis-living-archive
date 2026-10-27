@@ -1149,6 +1149,126 @@ At a certain height it becomes a city that is strange to us, right? Maybe after 
                     { title: "9. “What if you narrowed your topic a bit? It feels kind of overwhelming maybe. Very cool interactions and storytelling though.”", text: "" },
                   ],
                   links: [{ label: 'City Nature Challenge — News Channel 6', url: 'https://www.newschannel6now.com/2026/07/21/city-nature-challenge-documents-over-170-species-need-conservation/' }],
+                  children: [
+                    {
+                      id: 'w9-directions', kind: 'step', label: 'Three Directions',
+                      title: '10.27 · What If: three directions for Prototype 2',
+                      text: `From the "What If" feedback on Prototype 1, I picked three directions that open possibilities. Below is what I said about each one, translated plainly in my own words, with the assignment's three questions answered.`,
+                      children: [
+                        {
+                          id: 'w9-dir-interaction', kind: 'step', label: 'Interaction Languages',
+                          title: 'Direction 1 · Interaction languages',
+                          blocks: [
+                            { title: 'The idea', text: `Can, or can't, the interaction between people and screens represent the interaction between people and nature? Screen interaction, full-body interaction, typing, one-way input, all kinds of methods. What do these interaction languages have in common with the interaction language of the natural world, and how are they different?
+
+Connected to: the note "What if there is no interaction needed for viewing the website?" (a website without interaction is completely a "window"), Pascal's question, and the contradiction that Prototype 1 is a screen telling people to look up and away from the screen.` },
+                            { title: 'Threads I mentioned', text: `• Things people do actively: turning the page of a book, scrolling down a website to keep getting information, walking in nature and looking forward. Maybe I take "active" as the way in, the feeling of actively interacting.
+• How people in the past interacted with machines or media. The big map from my AI class: how do you define interaction between people and machines? People may need to adapt to or cooperate with these things to make the interaction work.
+• Using tools: if people drive a horse carriage over the land, they need flat ground and round wheels. More about body language, or people's natural movements.
+• From ancient ways of interacting all the way to sitting in front of a computer. Like a pigeon landing on a windowsill.
+• The meme: what would people do once they invented the computer? It turns out they just watch cat videos on it.
+• Reading behaviors and actions, and translating them out like a language or code. Something like semiotics, or summarizing. For example, I look at many, many images and extract an action from each. Say, just guessing, with no research yet, there are 10 actions in human history that could sum up the whole process of human evolution, whether interacting with tools or the body language we use when we talk. Only these 10 things could define our existence.
+• Text as a product of interaction is an interesting thing in itself. Typeface design. A girl I met at the Thesis Exchange made letters out of real objects. She said we use typefaces without knowing where they come from, just like we eat food without knowing its history: some recipes were made by very, very poor people, and once they reached big cities they became limited dishes in Michelin restaurants.
+• The project that turns emotions into symbols, like giving emotions an exchange rate.
+• Starting from something a bit dry or serious and academic, but ending with outcomes that are more fun.
+• Evolution: from monkeys coming down from the trees and learning to walk upright. The human ancestor was a fish that looked a lot like a giant salamander, and it slowly evolved into the shape of a human. Looking for the things that haven't changed all these years.
+• Animal experiments: scientists getting crows to cooperate using tools to open nuts or get a reward; chimpanzees stacking boxes to reach a banana. I did a survey before about the emotions of lab mice. Animal IQ tests. Training your own dog to learn tricks. A dog pressing buttons to say it wants to eat or go out to play, which in some way might be the same thing as people pressing a computer screen.
+• People actively learning how to interact with computers, symbol systems, a dog pressing a button: these might be the same thing.` },
+                            { title: 'Possible forms', text: `Research-led; a methodology; a book. Might involve branding or typeface design.` },
+                            { title: 'What interests me about it?', text: `I really enjoy making interactions. I look forward to people interacting in different ways, the feeling of "wow, it can actually go this far," an interaction beyond imagination, using interaction itself as a medium to reach an unexpected effect. If it were only about the meaning of interaction, like looking at screen gestures, it wouldn't attract me that much. What attracts me is that it also involves interaction between nature and people, and evolution. It feels a bit like a game: I explore, I do research, and in my own way I give a conclusion. Whether that conclusion is correct, I don't know. Because it is so abstract and I can't imagine at all how to make it, it's more interesting to me than a project where I can see the end at a glance.` },
+                            { title: 'How does it connect to my inquiry?', text: `What I was doing before was how pigeons use the city's buildings, and using is interacting. So people using computers and pigeons using streetlights are, plainly, the same thing. It also connects quite directly to my first research direction, evolution. It can connect to pigeons too, but it does go further away.` },
+                            { title: 'What would I need to find out before pursuing it?', text: `It is too general. Right now it feels like everything in the world could fit into this set of rules. I need to know what should be inside the scope of the project and what should be kicked out. First I need to filter these directions, then find academic papers, and find out whether anyone has done similar research before.` },
+                            { title: 'Questions I asked while thinking', text: `• Why can, or why can't, the interaction between people and screens represent the interaction between people and nature?
+• What do screen, full-body, typing and one-way-input interactions have in common with the interaction language of the natural world, and how are they different?
+• How do we define interaction between people and machines?
+• What would people do once they invented the computer?
+• How do I get across this boundary, from ancient ways of interacting all the way to sitting in front of a computer?
+• Could 10 actions in human history sum up the whole process of human evolution and define our existence?
+• What history is behind the typefaces we use?
+• Is a dog pressing a button to say it wants to eat the same thing as a person pressing a computer screen?` },
+                          ],
+                          children: [
+                            {
+                              id: 'w9-dir-research', kind: 'step', label: 'About Research',
+                              text: `The research in Direction 1 is different from the kind of research I don't like. What I don't like is data-type research: for example, I investigate a city, say Beijing, and "XX research shows that so many people in Beijing are actually afraid of birds," or "some people have some kind of allergy," and then the data shows this. The kind where you collect data materials or APIs to make information design. I don't mean I won't use APIs. I mean designs made from this direction are the kind of research I've done many times already. What I'm thinking about is how research can become interesting.`,
+                            },
+                          ],
+                        },
+                        {
+                          id: 'w9-dir-swap', kind: 'step', label: 'Pigeon–Human Swap',
+                          title: 'Direction 2 · Pigeon–human swap',
+                          blocks: [
+                            { title: 'The idea', text: `From the note "What if the pigeons are human, and humans are pigeons?" It gives a very big direction. The method of swapping, of putting yourself in the other's place, is itself already a research method.` },
+                            { title: 'Threads I mentioned', text: `• Anti-bird spikes. When I did Daily Object, I asked AI about them, and what I wrote was inventing a device to get rid of humans that doesn't hurt humans. The concept of "get rid of human": how do you get rid of humans?
+• People staying or leaving: a person lives in a city for a while, and for some reason has to leave; some people stay.
+• Bird ecology: please stop feeding the gulls near the city, because if they think food is plentiful, they will stay here, but they don't know that the food people give them isn't the food they really want. This is like big companies and big cities, especially New York: there are many job opportunities that look attractive, but once you go you find you can't do it for long. Is this really what you want to do? In China this is called 北漂 ("drifting to Beijing"): young people are drawn to a certain city for some reason, but don't plan their future, their career, what they're really interested in, or what work is good for them in the long run.
+• A researcher said the pigeon's only mistake is being disliked by people. It's the same with people: our flaws are endlessly magnified by the city. Both pigeons and people chose to live in this kind of environment, so they must have sacrificed some things, had to adapt, and given some things up.
+• Taking a step back: suppose people lived like pigeons, in the pigeon's situation. I don't want to suppose aliens, something more advanced than people, looking at people the way we look at pigeons.
+• Researching the traits of birds, what position birds are in, what position people are in, and why swap the two. What does birds' reaction to people stand for, and what does people's reaction to birds stand for?
+• New York as the test field: what is people's attitude toward pigeons, really?
+• When I was taking photos, more than once I saw a flock of pigeons eating bread on the ground, and some people would deliberately walk through the flock just to scare them off, and then the pigeons would come back. These people are really, really bad. But maybe this is also a direction I want.
+• Does this direction need to relate to interaction? If it does, it might involve AI: being driven away might mean being driven away by AI. The relationship between people and AI, people and the computer screen, or people and themselves, and our relationship with birds, or birds and their environment: what can be compared, or what do they share?
+• The main direction might be finding an analogy or a common point, really finding something like a window or a platform that lets the two communicate.
+• Position, or niche: the niche on Earth, the niche in each other's minds, in the eyes of other animals, or in the whole of Earth's civilization. For the Earth, is it more meaningful that birds evolved, or that humans evolved? Of course, maybe neither has any meaning at all.` },
+                            { title: "What I don't want", text: `• Supposing literally that people are pigeons and pigeons are people: too abstract.
+• Comparing people to migratory birds: a bit too literary.
+• A sad or melancholy atmosphere.` },
+                            { title: 'Possible forms', text: `An event design, where I invite people and they come and take part, or something that guides people to think from the other's position. Might involve branding, motion graphics, posters, event planning. Speculative design. This kind of project doesn't suit one-way presentation; I'd rather see each person's own reaction and their own answer to this question, letting people take part and keep building their own ideas. (This is quite like Prototype 1, which didn't manage to get across my intention of wanting everyone to come and think about this question with me.) The difference from Direction 1: Direction 1 could be a book, a methodology, research results shown in a form.` },
+                            { title: 'What interests me about it?', text: `The method of swapping, of changing places, is really hard, but quite interesting.` },
+                            { title: 'How does it connect to my inquiry?', text: `It's simple: they're all birds. It's a continuation of the two animals' perspectives from before, just with the perspective switched.` },
+                            { title: 'What would I need to find out before pursuing it?', text: `The position the two are in, whether the niche on Earth, in each other's minds, or in civilization. The traits of birds. New Yorkers' attitude toward pigeons.` },
+                            { title: 'Questions I asked while thinking', text: `• What if the pigeons are human, and humans are pigeons?
+• How do you get rid of humans?
+• Is this really what you want to do?
+• Why swap the two?
+• What does birds' reaction to people stand for, and what does people's reaction to birds stand for?
+• What is New Yorkers' attitude toward pigeons, really?
+• Does this direction need to relate to interaction?
+• What can be compared, or what is shared, between people and AI, people and screens, or people and themselves, and our relationship with birds, or birds and their environment?
+• How do I make this project real?
+• What position do the two hold: on Earth, in each other's minds, in the eyes of other animals, in Earth's civilization?
+• For the Earth, is it more meaningful that birds evolved, or that humans evolved? Or does neither have any meaning?` },
+                          ],
+                        },
+                        {
+                          id: 'w9-dir-habitats', kind: 'step', label: 'Multiple Habitats',
+                          title: 'Direction 3 · Multiple cities / multiple habitats',
+                          blocks: [
+                            { title: 'The idea', text: `From the notes "What if you connect your project to multiple cities?" and "What if the website is an open source where people can upload their own photos of the pigeons they saw?" What I mainly want to explore is how the state of animals and people reflects the state of the city. This is even a big concept, still the idea of habitat: when you live in a habitat, some of your habits or ways are endlessly magnified, or quietly changed. Like I discussed in Prototype 1, the traces you find, and you who follow the traces, also become the traces themselves.` },
+                            { title: 'Threads I mentioned', text: `• Why are pigeons dirty? Like my friend said, pigeons are dirty because New York is dirty. Pigeons even get their feet worn down from walking on the ground; many pigeons have problems with their feet, even injured feet. People may be like pigeons too: for money, or to survive, you know you shouldn't stay up at night, but you keep working overtime. I'm not saying I want to make a metaphor.
+• "Multiple cities" first makes me think of multiple cultures, or multiple environments and fields. In my understanding, multiple cities can be translated as multiple habitats.
+• Something a friend told me this morning, about the SDGs: why is world food distribution said to be unfair? In some places, land can produce ten loaves of bread worth of value; in others, the land produces only 0.1 of a loaf and can't feed the population. That's about how rich the land itself is, and has nothing to do with people's effort. I answered him: if there were no territories or borders, if the concept of the city didn't exist, people should be able to move freely. If this place isn't good, I'd go and live on richer land; I could just cross the line.
+• Why are birds freer than people? Many migratory birds cross half the Earth when they migrate. For them, territories and national borders don't exist; they just look for the next place they know they want, like a breeding ground, or a place where they can refuel.
+• Multiple cities makes me think of migratory birds, because they move around between many cities. In strong contrast, a bird that stays in the same city becomes something like a citizen of that city. The contrast between these two kinds of birds is already interesting. And it's not only birds: fish also migrate, swimming back upstream. Just doing research on these creatures would already be quite interesting; I'd need to read some science reporting.
+• Urban management might be a fairly interesting topic, like the structure and construction of a city.
+• People actively feeding migratory birds, so that they can't migrate.
+• Black-headed gulls in China: in recent years, a lot of people in China have started birdwatching. Some coastal cities use the gulls as part of their tourism and promote going to see them; this only became popular in the last few years. Some cities tell people not to feed them, but others even make feeding the gulls bread a way to make money. I think it's quite a negative thing. Maybe I could follow a black-headed gull as it goes through these cities: what connects these cities to each other? Connecting it with birdwatching.` },
+                            { title: "What I don't want", text: `• Cultural differences: it gets too lost.
+• The behavior of residents in each city: I'm not sure I'm interested, and it might be offensive.
+• Information design: I've done a lot of it, and I don't want to do it again.
+• Doing event planning for all three directions.` },
+                            { title: 'Possible forms', text: `An event held in multiple cities. A marathon running along a migratory bird route, a worldwide marathon with migratory birds as its theme (an environmental kind of idea). Speculative design: what if people could move like migratory birds? What would happen without international borders or boundaries? What would multiple cities look like mapped onto a map? A collective archive.` },
+                            { title: 'What interests me about it?', text: `I really like the concept that the state of animals reflects the state of the city. A lot of my designs involve the city: I live in the city, so it's convenient for research, and the concept of the city itself is interesting (I did a project before about the unexpected risks people take on in the city). If it's about cultural differences, I don't want to do that. Translating multiple cities as multiple habitats, and researching and understanding it that way, would be more interesting.` },
+                            { title: 'How does it connect to my inquiry?', text: `I researched New York before, people's collective memory of New York. So I start from the city plus birds, and go deeper from there.` },
+                            { title: 'What would I need to find out before pursuing it?', text: `Which cities to choose. How exactly to do my research.` },
+                            { title: 'Questions I asked while thinking', text: `• Why are pigeons dirty?
+• When you hear "multiple cities," what do you think of first?
+• Why is world food distribution said to be unfair?
+• Why are birds freer than people?
+• What other possible directions are there?
+• What if people could move like migratory birds?
+• What would happen without international borders or boundaries?
+• What would multiple cities look like mapped onto a map?
+• How should we understand multiple cities and multiple habitats?
+• Which cities should I choose?
+• How exactly should I do my research?
+• What connects these cities to each other?
+• How can research become interesting?` },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
                 },
               ],
             },
