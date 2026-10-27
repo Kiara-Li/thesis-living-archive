@@ -5,13 +5,19 @@
   - pauses with PAUSE or when scrolled off screen; ALL PHOTOS shows every one
   - <section class="mosaic" data-src="../../assets/img/<folder>" data-photos="a b c …">
     the first nine in data-photos are the ones you see first
+  - squares are cropped from the middle; "name:70" moves a landscape crop
+    70% of the way to the right, "name:y30" moves a portrait crop 30% down
+    (so the thing in the photo stays in the square)
 */
 (() => {
   const sec = document.querySelector('.mosaic');
   if (!sec) return;
 
   const base = sec.dataset.src;
-  const photos = sec.dataset.photos.trim().split(/\s+/);
+  const list = sec.dataset.photos.trim().split(/\s+/).map((s) => s.split(':'));
+  const photos = list.map(([p]) => p);
+  const aim = list.map(([, a]) => (!a ? '50% 50%' : a[0] === 'y' ? `50% ${a.slice(1)}%` : `${a}% 50%`));
+  const show = (img, k) => { img.style.objectPosition = aim[k]; img.src = thumb(photos[k]); };
   const full = (p) => `${base}/full/${p}.jpg`;
   const thumb = (p) => `${base}/thumb/${p}.jpg`;
   const items = photos.map((p) => ({ src: full(p), caption: '' }));
@@ -30,11 +36,12 @@
   const waiting = photos.map((_, i) => i).slice(N);
 
   grid.innerHTML = shown.map((k, i) => `
-    <button type="button" data-cell="${i}"><img class="on" src="${thumb(photos[k])}" alt=""><img alt=""></button>`).join('');
+    <button type="button" data-cell="${i}"><img class="on" alt=""><img alt=""></button>`).join('');
   const cells = [...grid.children];
+  cells.forEach((c, i) => show(c.querySelector('img'), shown[i]));
   cells.forEach((c, i) => { c.onclick = () => window.Lightbox.open(items, shown[i]); });
 
-  all.innerHTML = photos.map((p, i) => `<button type="button" data-i="${i}"><img loading="lazy" src="${thumb(p)}" alt=""></button>`).join('');
+  all.innerHTML = photos.map((p, i) => `<button type="button" data-i="${i}"><img loading="lazy" src="${thumb(p)}" style="object-position:${aim[i]}" alt=""></button>`).join('');
   all.querySelectorAll('button').forEach((b) => { b.onclick = () => window.Lightbox.open(items, +b.dataset.i); });
 
   let last = -1;
@@ -50,7 +57,7 @@
     const front = a.classList.contains('on') ? a : b;
     const back = front === a ? b : a;
     back.onload = () => { back.classList.add('on'); front.classList.remove('on'); };
-    back.src = thumb(photos[next]);
+    show(back, next);
   }
 
   let playing = !reduce;
