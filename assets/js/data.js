@@ -50,8 +50,9 @@
     works: [
       { id: '256', title: 'Installation Heights of Street Furniture and Observed Pigeon Use, New York City', kind: 'Printed book', date: '09.25', href: '256/', process: 'w4-256', cover: null,
         trail: ['w1-images', 'w3-proto', 'w4-256'] },
-      { id: 'prototype-1', title: 'Prototype 1 — Look Up', kind: 'Iterations 01–03', date: '10.23', href: 'prototype-1/', process: 'w8-lookup-site', cover: null,
+      { id: 'prototype-1', title: 'Prototype 1 — Look Up', kind: 'Iterations 01–05', date: '10.23', href: 'prototype-1/', process: 'w8-lookup-site', cover: null,
         trail: [
+          'w5-oyster', 'w5-rooftop', 'w5-posters',
           'w5-trace-p1', 'w5-trace-responses', 'w5-trace-feedback', 'w5-trace-reading', 'w5-trace-show', 'w5-trace-refs',
           'w6-want', 'w6-websites', 'w6-thinking', 'w6-apis', 'w6-sightline', 'w6-demo', 'w6-gaze', 'w6-viewfinder', 'w6-sound', 'w6-later',
           'w8-proto1b', 'w8-fieldkit', 'w8-poster', 'w8-feather', 'w8-question', 'w8-lookup', 'w8-midway', 'w8-sections', 'w8-figma', 'w8-lookup-site',
@@ -812,7 +813,7 @@ For now New York is the test site. Maybe it opens with a map of New York. I have
               ],
             },
             {
-              id: 'w6-sightline', kind: 'work', label: 'Prototype · Iteration 01',
+              id: 'w6-sightline', kind: 'work', label: 'Prototype · Iteration 03',
               title: 'Pigeon Sightline — Prototype 1',
               href: 'https://kiara-li.github.io/prototype1/',
               text: `I decided to try one thing first, using the pigeon book I already finished.
@@ -966,7 +967,7 @@ I want something like this: when people put the book down and move through the c
               id: 'w8-proto1b', kind: 'step', label: 'Prototype 1, Continued',
               children: [
                 {
-                  id: 'w8-fieldkit', kind: 'step', label: 'Field Kit · Iteration 02',
+                  id: 'w8-fieldkit', kind: 'step', label: 'Field Kit · Iteration 04',
                   // translated from Kiara's note (Chinese)
                   text: `These are the prototype experiments I did this week. The goal is for them to echo the online part, so the audience can do activities offline. For example, the activity cards: each one has a different task, and they encourage people to look at the city from different angles, echoing the gesture part of the website. There is also a small booklet introducing the project, with the website links on it, and a card that asks people to record the sounds around them and make a phone call.
 
@@ -1087,7 +1088,7 @@ At a certain height it becomes a city that is strange to us, right? Maybe after 
                               ],
                               children: [
                                 {
-                                  id: 'w8-lookup-site', kind: 'work', label: 'Look Up · Iteration 03',
+                                  id: 'w8-lookup-site', kind: 'work', label: 'Look Up · Iteration 05',
                                   title: 'Look Up — Prototype 1',
                                   href: 'works/prototype-1/',
                                 },
