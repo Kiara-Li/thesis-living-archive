@@ -1257,7 +1257,7 @@ What I took from it: having a tool and using a tool are different, which connect
                                         { img: ['w9-flesh/insects'], source: 'Fabian et al. (2024), Fig. 1', text: 'Orbiting, stalling and inverting behaviours around a light source.' },
                                       ],
                                       links: [
-                                        { label: 'Fabian et al. (2024) — Why flying insects gather at artificial light (open access)', url: 'https://www.nature.com/articles/s41467-024-44785-3' },
+                                        { label: 'Fabian et al. (2024), Why flying insects gather at artificial light (open access)', url: 'https://www.nature.com/articles/s41467-024-44785-3' },
                                       ],
                                     },
                                     {
