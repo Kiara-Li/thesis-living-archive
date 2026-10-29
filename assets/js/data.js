@@ -1241,6 +1241,17 @@ This connects to a question I keep thinking about: when we design an interface, 
                                       ],
                                     },
                                     {
+                                      id: 'w9-flesh-microwave', kind: 'step', icon: 'doc', label: 'Earlier Work: Microwave Paper',
+                                      title: 'The 30-Second Turn: Reimagining the Microwave’s Power Dynamic',
+                                      text: `A paper I wrote earlier about the interface of the microwave. I think it’s related to this direction.`,
+                                      blocks: [
+                                        { title: 'From the paper', text: `This paper argues that the UI/UX of the modern microwave, structured around automation and preset programming, reinforces a mode of consumption that prioritizes efficiency over engagement, convenience over comprehension. In doing so, it does more than merely cook food—it reshapes domestic labor, reconfigures family dynamics, and alters the very way individuals relate to what they eat. Through a critical design lens informed by Marxist theories of commodification, Nudge Theory, and user-centered design, this study examines how the microwave’s interface functions as both an enabler and a limiter of user agency. By rethinking its UI/UX, we can challenge the notion that convenience must come at the expense of control, instead imagining a microwave that fosters empowerment rather than passive acquiescence.` },
+                                      ],
+                                      links: [
+                                        { label: 'Read the paper (PDF, 9 pages)', url: 'assets/docs/the-30-second-turn.pdf' },
+                                      ],
+                                    },
+                                    {
                                       id: 'w9-flesh-readings', kind: 'step', label: 'Readings So Far',
                                       blocks: [
                                         { title: 'Fabian, Sondhi, Allen, Theobald & Lin (2024). "Why flying insects gather at artificial light." Nature Communications, 15, 689.', text: `Insects tend to keep their backs toward the brightest light, which in nature is the sky. Using motion capture, the researchers found that around artificial lights, insects don't fly straight toward the light; they orbit it, stall, or flip over, because the light confuses the rule they use to stay upright.
