@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.27',
+      updated: '10.29',
     },
     images: { FAIR },
 
@@ -1191,6 +1191,101 @@ Connected to: the note "What if there is no interaction needed for viewing the w
                             {
                               id: 'w9-dir-research', kind: 'step', label: 'About Research',
                               text: `The research in Direction 1 is different from the kind of research I don't like. What I don't like is data-type research: for example, I investigate a city, say Beijing, and "XX research shows that so many people in Beijing are actually afraid of birds," or "some people have some kind of allergy," and then the data shows this. The kind where you collect data materials or APIs to make information design. I don't mean I won't use APIs. I mean designs made from this direction are the kind of research I've done many times already. What I'm thinking about is how research can become interesting.`,
+                            },
+                            {
+                              id: 'w9-oneonone', kind: 'step', icon: 'chat', label: 'One-on-One',
+                              title: '10.28 · One-on-one',
+                              blocks: [
+                                { title: 'The feather', text: `I showed the photos of my paper feather placed in different places around New York. I didn't expect pigeons to come so close; some of them even walked over the feather. The feedback I got was that my earlier projects were always looking for the distance between me and pigeons, and that this is also a kind of distance.` },
+                                { title: 'Prototype 1', text: `I said I knew some parts were missing, for example I didn't show how I experimented. But I didn't think there was much more I could do on the website itself, so I moved on to Prototype 2.` },
+                                { title: 'What I presented', text: `I talked about how each creature has its own way of interacting with things or with its environment, and how that extends to humans. I also showed Calculating Empires (Kate Crawford and Vladan Joler, 2023).
+
+I was asked why I took one section out of that map. My answer: next to it there is a section about AI. Before seeing this map, I never thought that interaction could mean people actively taking steps to interact with machines or equipment, and that on the other side there is something passive, like machines detecting the environment around us.
+
+The feedback I got was that this alone, active and passive interaction, "flesh and machine communication," could be a thesis topic, and that it connects back to my first book about pigeons and city buildings. I also heard the idea that text itself is an interface, a system: reading and writing are both interactions.` },
+                                { title: 'My choice', text: `I was asked whether I'm more interested in animals and their environment, or people and machines. I'd like to do both, but for Prototype 2 I chose people and machines / interfaces. There is time for another project later in the course, so the animal side can wait.` },
+                                { title: 'Next step', text: `Before thinking about a visual language, collect a lot of materials, then play around with them in class.` },
+                              ],
+                              children: [
+                                {
+                                  id: 'w9-flesh', kind: 'step', label: 'Flesh and Machine',
+                                  title: '10.29 · Prototype 2 research log: flesh and machine',
+                                  text: `This page records my research for Prototype 2 after the "What If" week: the feedback I got in a one-on-one, the direction I chose, what I'm collecting, and the papers I've been reading.`,
+                                  children: [
+                                    {
+                                      id: 'w9-flesh-now', kind: 'step', label: 'Where My Thinking Is Now',
+                                      blocks: [
+                                        { title: 'Every creature has its own built-in way of interacting', text: `A moth's body tells it how to fly: keep your back toward the brightest light, because in nature that is the sky. Street lights confuse that rule. Pigeons can live in the city because the heights of buildings and the corners they hide in fit the cliffs that rock doves originally lived on. Humans have this too. Laptops and screens make people adapt to them by using people's most basic mechanisms.` },
+                                        { title: 'Active and passive', text: `Sometimes I take steps to use a machine: typing, pressing, scrolling. Sometimes a machine reads me without me doing anything: a camera, a sensor, an automatic door.` },
+                                        { title: 'Text is an interface too', text: `Reading and writing are both interactions with a system. As someone whose first language isn't English, I notice this a lot. Sometimes I read an English text, I understand every word, but nothing stays in my head. I just looked through it. It's only on the second read, when I'm really into it, that I understand what it says. That doesn't mean I can't read it; it means I read it but it didn't leave anything. This feels like a third state, between active and passive.` },
+                                        { title: 'The judgment in that moment', text: `Whether a sign or an instruction works or not isn't about whether it's well designed. It's about for whom, at what moment, in what state. It's the judgment in that instant, not the objective conditions.
+
+This connects to a question I keep thinking about: when we design an interface, are we designing an object, or a set of possibilities for action between a body and its environment?` },
+                                      ],
+                                      entries: [
+                                        { img: ['w9-flesh/interfaces'], source: 'Calculating Empires (Kate Crawford and Vladan Joler, 2023)', text: 'The "Interfaces" section, headed "Communication between flesh and machines."' },
+                                      ],
+                                      children: [
+                                        {
+                                          id: 'w9-flesh-collect', kind: 'step', label: "What I'm Collecting",
+                                          text: `I plan to collect three kinds of things.`,
+                                          blocks: [
+                                            { title: '1. Text', text: `Signs and instruction texts around me, like "Push" on a door or "Stand clear of the closing doors" on the subway, plus my own moments of reading without anything staying. For each one I want to note when it caused an effective interaction and when it didn't, and for whom, in what moment.` },
+                                            { title: '2. Interfaces in history', text: `An extension of the Calculating Empires map: things that have been called interfaces before, like typewriters, telegraph keys, rotary phones, and diagrams that tell the body how to use a machine. I'll read more about this, so I'm not just guessing on my own.` },
+                                            { title: '3. Interfaces in daily life', text: `Observations from my own life rather than from archives: using a laptop, using a phone, sitting on a chair, walking, driving on the road. For each one, whether I'm acting on it, or it's reading me.` },
+                                          ],
+                                          entries: [
+                                            { img: ['w9-flesh/running'], text: 'A sequence of running movements, broken into numbered positions.' },
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                    {
+                                      id: 'w9-flesh-readings', kind: 'step', label: 'Readings So Far',
+                                      blocks: [
+                                        { title: 'Fabian, Sondhi, Allen, Theobald & Lin (2024). "Why flying insects gather at artificial light." Nature Communications, 15, 689.', text: `Insects tend to keep their backs toward the brightest light, which in nature is the sky. Using motion capture, the researchers found that around artificial lights, insects don't fly straight toward the light; they orbit it, stall, or flip over, because the light confuses the rule they use to stay upright.
+
+What I took from it: the moth didn't change. The light only changed the condition its built-in rule depends on.` },
+                                        { title: 'Warren (1984). "Perceiving affordances: Visual guidance of stair climbing." Journal of Experimental Psychology: Human Perception and Performance, 10(5), 683–703.', text: `Whether people judged a stair as climbable, and which height felt most comfortable, depended less on the stair's absolute height and more on its ratio to their own leg length. The same stair is not the same stair for different bodies.
+
+What I took from it: "use" might already happen before the action, in the relationship between a body and its environment.` },
+                                        { title: 'Iriki, Tanaka & Iwamura (1996). "Coding of modified body schema during tool use by macaque postcentral neurones." NeuroReport, 7(14), 2325–2330.', text: `Monkeys were trained to use a rake to reach food. When they actively used the rake, some neurons that respond to the space near the hand started responding to space along the tool. When they only held the rake without using it, this wasn't observed. Whether this means the tool becomes part of the body is still debated (see Makin & Krakauer, 2023, eLife).
+
+What I took from it: having a tool and using a tool are different, which connects to active and passive.` },
+                                      ],
+                                      entries: [
+                                        { img: ['w9-flesh/insects'], source: 'Fabian et al. (2024), Fig. 1', text: 'Orbiting, stalling and inverting behaviours around a light source.' },
+                                      ],
+                                      links: [
+                                        { label: 'Fabian et al. (2024) — Why flying insects gather at artificial light (open access)', url: 'https://www.nature.com/articles/s41467-024-44785-3' },
+                                      ],
+                                    },
+                                    {
+                                      id: 'w9-flesh-later', kind: 'step', label: 'Directions Kept for Later',
+                                      text: `• Animals and their environment: how animals interact with tools and environments, like dogs pressing soundboard buttons, crows using tools, pigeons living on buildings.
+• Pigeon–human swap: what if pigeons were human and humans were pigeons; anti-pigeon spikes and being pushed away.
+• Multiple cities, multiple habitats: migratory birds that move between cities, and birds that stay in one city.`,
+                                      entries: [
+                                        { img: ['w9-flesh/flyway'], text: 'The East Asian–Australasian Flyway, one of the routes migratory waterbirds travel across many countries.' },
+                                      ],
+                                    },
+                                    {
+                                      id: 'w9-flesh-questions', kind: 'step', icon: 'list', label: "Questions I'm Carrying",
+                                      sections: [
+                                        {
+                                          title: "Questions I'm carrying",
+                                          items: [
+                                            'When does an interaction feel active, when passive, and when is it something in between?',
+                                            'What makes a piece of text an effective interaction for one person in one moment, and not for another?',
+                                            'When we design an interface, are we designing an object, or a set of possibilities for action between a body and its environment?',
+                                            'From the earliest tools to the screen, what has changed in how our bodies interact, and what has stayed the same?',
+                                          ],
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              ],
                             },
                           ],
                         },
