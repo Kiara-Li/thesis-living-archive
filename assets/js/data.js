@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.29',
+      updated: '10.30',
     },
     images: { FAIR },
 
@@ -1381,6 +1381,26 @@ What I took from it: having a tool and using a tool are different, which connect
             {
               id: 'w9-reflection', kind: 'step', label: 'Reflection',
               text: `I kind of don't know what I'm doing anymore. Afterwards I did think carefully about why the thing I made for Prototype 1 is something I myself really don't feel very satisfied with, and why it's now very tricky for me to deal with. First I want to say that I really do change how I see my work a lot because of other people's comments. If all the feedback I got was positive, maybe I wouldn't even look back and reflect on this work, or even my whole creative path and approach, although I could vaguely feel that the problems were there. When I design, I really want the audience to feel something, and sometimes I even trick myself. Even if the logic doesn't hold together, or even goes completely against my first idea, I would, without noticing, convince myself to go make that thing. So just like the feedback I got in class, I didn't really think carefully about my original topic, and what kind of experiment to use to test what kind of thing. When I was making this prototype, there were two feelings that were real. One was wanting a really fun interactive guide. While making it, I was thinking of something like those interactive science installations in museums for kids to play with, where everyone has so much fun and is a little surprised that it can go this far! And the other one is the lines from Practice 1, where everyone responded to the city. I think it's a little bit like taking a shortcut. I guess I felt that even if I didn't design anything, just putting these people's sincere answers together, you could already feel so much emotion, so I wanted to borrow that kind of power. I hoped for something like being by the window on a rainy day, everyone remembering how this city feels. I wanted to get these answers. So you can see, even though I really do love pigeons, just for this project, I didn't have anything I wanted to ask or say about pigeons. Of course maybe it's because I didn't research enough, though I want to say it doesn't seem like that, because when I like something I go and learn about it. But if I see things like pigeons were actually brought to this city by humans, or pigeons' feet get hurt by uneven ground, or pigeons still court each other even after being married for many years, I don't really feel especially touched anymore. I myself clearly like fun projects more, but I can't make them, and I feel really troubled about it. After seeing a lot of people's Prototype 1, and the books at the book fair, and talking with friends about thesis, I feel like maybe first, I still need to think more fully in my life and write my ideas down. And although maybe I'm taking a bit of a shortcut, I feel like if I compare something to something, maybe it would be better! Anyway, let's design more boldly. Maybe I can also try speculative design, I don't think I've done it before. For the next project I want to fully use all kinds of skills I learned before, branding, motion graphics, typography design, and I hope I can make a work that I'm happy with.`,
+            },
+          ],
+        },
+
+        /* ───────────────────────── WEEK 10 ───────────────────────── */
+        {
+          id: 'w10', kind: 'week', label: 'Research Question',
+          date: '10.30', tag: 'Prototype 2',
+          children: [
+            {
+              id: 'w10-question', kind: 'step', icon: 'doc', label: 'Research Question',
+              text: `Every day we press elevator buttons, push open doors, and wait for the bus doors to part, countless times and almost without noticing. In each of these moments, a decision is made. How much of it do we actually make? And how much do we quietly hand over, or leave to habit and common sense?
+
+As one creature among many, we are guided by instinct and judgment, finding our way through a chaotic world by sight. In Warren’s experiment, Perceiving Affordances: Visual Guidance of Stair Climbing, people could tell at a glance how high a step their legs could climb. This perception is so ordinary that we hardly notice it. Yet in Don Norman’s terms, the height of the stair is itself a signifier, since the part of an affordance we can perceive is exactly what signifies. In Signifiers, not Affordances, signifiers are the clues we search for in a vast world, “whether it is flags waving in the wind, the difference between empty or crowded train platforms, or the desire lines illustrated by footprints in the fields that suggest paths to follow.”
+
+A stair speaks through its shape. A door may speak through words: PUSH, PULL. But some things do not need to speak at all. A button, simply by being there, wakes a habit in us and moves the hand before the mind arrives.
+
+These artificial signifiers never taught themselves to us. Over the years, we learned them, willingly and actively, until we had learned not to judge at all. The reward is obvious: the time for thinking and deciding shrinks to almost nothing. But what is the cost?
+
+This brings me back to a paper I once wrote about the microwave’s buttons and the agency they quietly take: What if the microwave wasn’t the director, but the stage? Perhaps, at some point, we will want to take back the small decisions that everyday life has worn away.`,
             },
           ],
         },
