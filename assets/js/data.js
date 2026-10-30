@@ -1401,6 +1401,14 @@ A stair speaks through its shape. A door may speak through words: PUSH, PULL. Bu
 These artificial signifiers never taught themselves to us. Over the years, we learned them, willingly and actively, until we had learned not to judge at all. The reward is obvious: the time for thinking and deciding shrinks to almost nothing. But what is the cost?
 
 This brings me back to a paper I once wrote about the microwave’s buttons and the agency they quietly take: What if the microwave wasn’t the director, but the stage? Perhaps, at some point, we will want to take back the small decisions that everyday life has worn away.`,
+              children: [
+                {
+                  id: 'w10-annet', kind: 'step', icon: 'image', label: "Annet's Arrangement",
+                  entries: [
+                    { img: ['w10-cards/annet'], text: `What Annet laid out. She said this is a bridge, from complete refusal to something you can touch even without words. Because there is complete agreement, you can interact even in a hurry, or when you can't see clearly. Only by gradually moving toward the left can you take action.` },
+                  ],
+                },
+              ],
             },
             {
               id: 'w10-books', kind: 'step', icon: 'image', label: 'Explore the Books',
