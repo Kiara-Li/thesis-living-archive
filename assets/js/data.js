@@ -1402,6 +1402,21 @@ These artificial signifiers never taught themselves to us. Over the years, we le
 
 This brings me back to a paper I once wrote about the microwave’s buttons and the agency they quietly take: What if the microwave wasn’t the director, but the stage? Perhaps, at some point, we will want to take back the small decisions that everyday life has worn away.`,
             },
+            {
+              id: 'w10-books', kind: 'step', icon: 'image', label: 'Explore the Books',
+              entries: [
+                { img: ['w10-books/b01'], text: 'The puzzle of people in the bottom left is really interesting.' },
+                { img: ['w10-books/b02'], text: 'What was taken away from the grass?' },
+                { img: ['w10-books/b03'], text: 'Braille, a very clean white page.' },
+                { img: ['w10-books/b04'], text: 'An explosion of inspiration.' },
+                { img: ['w10-books/b05'], text: 'Guiding the eye.' },
+                { img: ['w10-books/b06'], text: 'This page feels very fresh, very wet, very full of life.' },
+                { img: ['w10-books/b07'], text: 'It feels a bit like Resident Evil, the letters crawling out of the book, twisted.' },
+                { img: ['w10-books/b08'], text: 'Sticky.' },
+                { img: ['w10-books/b09', 'w10-books/b10'], text: 'I think this one is so romantic.' },
+                { img: ['w10-books/b11'], text: 'An interesting cover.' },
+              ],
+            },
           ],
         },
 
