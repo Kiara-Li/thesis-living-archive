@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '10.30',
+      updated: '11.04',
     },
     images: { FAIR },
 
@@ -1406,6 +1406,12 @@ This brings me back to a paper I once wrote about the microwave’s buttons and 
                   id: 'w10-annet', kind: 'step', icon: 'image', label: "Annet's Arrangement",
                   entries: [
                     { img: ['w10-cards/annet'], text: `What Annet laid out. She said this is a bridge, from complete refusal to something you can touch even without words. Because there is complete agreement, you can interact even in a hurry, or when you can't see clearly. Only by gradually moving toward the left can you take action.` },
+                  ],
+                },
+                {
+                  id: 'w10-game', kind: 'step', icon: 'image', label: 'A Card Game',
+                  entries: [
+                    { img: ['w10-cards/game'], text: `Without knowing which picture cards the other player has, play an action card. Based on the action, players choose a picture card from their hand. For example, after Look for, you can play a picture you have to look for before you can interact with it, like an elevator button, not a warning sign. Whoever can't play a card loses.` },
                   ],
                 },
               ],
