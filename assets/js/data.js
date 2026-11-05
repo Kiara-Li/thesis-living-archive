@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '11.04',
+      updated: '11.05',
     },
     images: { FAIR },
 
@@ -1392,7 +1392,8 @@ What I took from it: having a tool and using a tool are different, which connect
           children: [
             {
               id: 'w10-question', kind: 'step', icon: 'doc', label: 'Research Question',
-              text: `Every day we press elevator buttons, push open doors, and wait for the bus doors to part, countless times and almost without noticing. In each of these moments, a decision is made. How much of it do we actually make? And how much do we quietly hand over, or leave to habit and common sense?
+              blocks: [
+                { title: 'Research Question', text: `Every day we press elevator buttons, push open doors, and wait for the bus doors to part, countless times and almost without noticing. In each of these moments, a decision is made. How much of it do we actually make? And how much do we quietly hand over, or leave to habit and common sense?
 
 As one creature among many, we are guided by instinct and judgment, finding our way through a chaotic world by sight. In Warren’s experiment, Perceiving Affordances: Visual Guidance of Stair Climbing, people could tell at a glance how high a step their legs could climb. This perception is so ordinary that we hardly notice it. Yet in Don Norman’s terms, the height of the stair is itself a signifier, since the part of an affordance we can perceive is exactly what signifies. In Signifiers, not Affordances, signifiers are the clues we search for in a vast world, “whether it is flags waving in the wind, the difference between empty or crowded train platforms, or the desire lines illustrated by footprints in the fields that suggest paths to follow.”
 
@@ -1400,20 +1401,7 @@ A stair speaks through its shape. A door may speak through words: PUSH, PULL. Bu
 
 These artificial signifiers never taught themselves to us. Over the years, we learned them, willingly and actively, until we had learned not to judge at all. The reward is obvious: the time for thinking and deciding shrinks to almost nothing. But what is the cost?
 
-This brings me back to a paper I once wrote about the microwave’s buttons and the agency they quietly take: What if the microwave wasn’t the director, but the stage? Perhaps, at some point, we will want to take back the small decisions that everyday life has worn away.`,
-              children: [
-                {
-                  id: 'w10-annet', kind: 'step', icon: 'image', label: "Annet's Arrangement",
-                  entries: [
-                    { img: ['w10-cards/annet'], text: `What Annet laid out. She said this is a bridge, from complete refusal to something you can touch even without words. Because there is complete agreement, you can interact even in a hurry, or when you can't see clearly. Only by gradually moving toward the left can you take action.` },
-                  ],
-                },
-                {
-                  id: 'w10-game', kind: 'step', icon: 'image', label: 'A Card Game',
-                  entries: [
-                    { img: ['w10-cards/game'], text: `Without knowing which picture cards the other player has, play an action card. Based on the action, players choose a picture card from their hand. For example, after Look for, you can play a picture you have to look for before you can interact with it, like an elevator button, not a warning sign. Whoever can't play a card loses.` },
-                  ],
-                },
+This brings me back to a paper I once wrote about the microwave’s buttons and the agency they quietly take: What if the microwave wasn’t the director, but the stage? Perhaps, at some point, we will want to take back the small decisions that everyday life has worn away.` },
               ],
             },
             {
@@ -1429,6 +1417,287 @@ This brings me back to a paper I once wrote about the microwave’s buttons and 
                 { img: ['w10-books/b08'], text: 'Sticky.' },
                 { img: ['w10-books/b09', 'w10-books/b10'], text: 'I think this one is so romantic.' },
                 { img: ['w10-books/b11'], text: 'An interesting cover.' },
+              ],
+            },
+            {
+              id: 'w10-playtest', kind: 'step', icon: 'image', label: 'Playtest',
+              title: 'Playtest: cards with no rules (11/2–11/3)',
+              blocks: [
+                { title: 'Cards with no rules', text: `I gave the first version of the cards to four people without any rules, and asked them to play. Everyone invented a different game.` },
+              ],
+              table: {
+                head: ['Player', 'What they did', 'What it explores'],
+                rows: [
+                  ['Player 1', 'Shuffled scenario, state and condition cards (e.g. 20 m from the bus + can’t see clearly)', 'Does our judgment stay the same when the situation changes?'],
+                  ['Player 2', 'Drew a few cards and told a story with them, taking turns', 'Cards as a way to start conversation'],
+                  ['Player 3', 'Laid out all the cards as a “bridge,” from complete refusal (e.g. No Loitering) to things you can touch without words', 'Distance and trust between people and objects'],
+                  ['Player 4', 'Played an action card like PUSH, then looked for things that can be pushed', 'Which objects one verb can apply to'],
+                ],
+              },
+              entries: [
+                { img: ['w10-p2/board-playtest'] },
+              ],
+              children: [
+                {
+                  id: 'w10-annet', kind: 'step', icon: 'image', label: "Annet's Arrangement",
+                  entries: [
+                    { img: ['w10-cards/annet'], text: `What Annet laid out. She said this is a bridge, from complete refusal to something you can touch even without words. Because there is complete agreement, you can interact even in a hurry, or when you can't see clearly. Only by gradually moving toward the left can you take action.` },
+                  ],
+                },
+                {
+                  id: 'w10-game', kind: 'step', icon: 'image', label: 'A Card Game',
+                  entries: [
+                    { img: ['w10-cards/game'], text: `Without knowing which picture cards the other player has, play an action card. Based on the action, players choose a picture card from their hand. For example, after Look for, you can play a picture you have to look for before you can interact with it, like an elevator button, not a warning sign. Whoever can't play a card loses.` },
+                  ],
+                },
+                {
+                  id: 'w10-playtest-reflection', kind: 'step', label: 'My Reflection',
+                  text: `I was surprised by all of them. I didn't think of any of these ways to play, and each of them makes sense. I would want to play the first two myself. But none of them answered my own question: what do I want to get from this game, and what can players take away? I think I need to answer that for myself before testing more.`,
+                },
+              ],
+            },
+            {
+              id: 'w10-needs', kind: 'step', icon: 'list', label: 'What the Game Needs',
+              title: 'What the game needs (11/2)',
+              sections: [
+                {
+                  title: 'What the game needs',
+                  items: [
+                    'A surface layer that is fun: winning, cooperating, talking with friends. Telling players to “take back agency” would be boring. Agency is also too big for this prototype.',
+                    'Rasmussen’s three levels (skill-based, rule-based, knowledge-based) are something I want to build into the game.',
+                    'I like Guess Who because the result is clear and visible on the table.',
+                    'I don’t want to say people should take back control of their habits. Habits form for good reasons. I’m more interested in the wonder of it: noticing how many judgments we already make without realizing.',
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'w10-say', kind: 'step', label: 'Looking for What I Want to Say',
+              title: 'Looking for what I want to say (11/4)',
+              children: [
+                {
+                  id: 'w10-say-dropped', kind: 'step', icon: 'list', label: 'Directions I Tried and Dropped',
+                  sections: [
+                    {
+                      title: 'Directions I tried and dropped',
+                      items: [
+                        'A booklet where each group writes rules for the next group.',
+                        'A game about how notices and signs come to exist.',
+                        'A booklet where players write the rules while playing. Too confusing.',
+                        'Describing sizes with things in the city instead of units. This was a friend’s idea, so I left it.',
+                      ],
+                    },
+                  ],
+                },
+                {
+                  id: 'w10-say-themes', kind: 'step', icon: 'list', label: 'Four Themes I Considered',
+                  sections: [
+                    {
+                      title: 'Four themes I considered',
+                      items: [
+                        'The body reads an object before the text does.',
+                        'An object suggests a verb, but not always the right one (like a milk carton that looks like it opens one way, but opens another).',
+                        'Verbs are learned, not natural.',
+                        'Instructions are not carried out, they are interpreted.',
+                      ],
+                    },
+                  ],
+                },
+                {
+                  id: 'w10-say-observed', kind: 'step', icon: 'list', label: 'What I Actually Observed',
+                  sections: [
+                    {
+                      title: 'What I actually observed',
+                      items: [
+                        'Knowing when to pull the cord on the bus, without thinking.',
+                        'When you know a place well enough, you can relax, get lost in your own thoughts, and let your intuition and your feet take you.',
+                        'Reacting to a warning sign when you are still some distance away.',
+                      ],
+                    },
+                  ],
+                },
+                {
+                  id: 'w10-say-nyc', kind: 'step', label: 'New York’s Own Interactions',
+                  text: `I found some ways New Yorkers interact with the city that might be different from other cities. I see them as signifiers of the city: information we already know, telling us what to do next, without thinking.`,
+                  blocks: [
+                    { title: '1. Crosswalk buttons that don’t work', text: `In 2014, a New York City DOT spokesperson said only about 9 percent of crosswalk buttons in New York actually work. 99% Invisible puts it as around 100 buttons that still work citywide, with close to 1,000 more that do nothing. When the New York Times revealed in 2004 that most of the buttons didn’t work, about 750 were still operational. Few city-dwellers still believe in them, yet many press them out of habit.` },
+                    { title: '2. The bus’s yellow tape strips and rear doors', text: `MTA’s own guidance: when your stop is approaching, push a mounted yellow tape strip, pull a yellow cord along the windows, or press a red stop button on a grab bar, then exit through the rear doors. Once the bus stops, a green light over the rear doors shows they can be opened; on some buses, the doors open when you press the tape strip on them. On a New York transit forum, riders complain about figuring out how hard or how lightly to press the “touch tape to open door” strip.` },
+                    { title: '3. Separate uptown and downtown subway entrances', text: `Many stations have separate street entrances for each direction, and once you’re on the wrong side, you often can’t cross over without exiting and paying again. For example, on the 4/5/6, the Downtown Only entrances are on the west side of Lexington Avenue and the Uptown Only entrances on the east side.` },
+                    { title: '4. Taxi roof lights', text: `The old roof light had four combinations: medallion number on and off-duty light off meant available; both off meant a passenger was inside; and two more combinations meant off duty, with or without a “going my way” pickup. In a 2012 TLC survey of 7,353 passengers, 37% said the roof light did not clearly show availability. From 2013, the off-duty light was eliminated: a lit medallion number means available, a dark one means unavailable.` },
+                    { title: '5. The MetroCard swipe', text: `Getting the angle and speed of the swipe just right became a point of pride that separated real New Yorkers from visitors. Now OMNY has replaced it: the MTA stopped selling MetroCards at the end of 2025, and existing cards can be used until the end of 2026.` },
+                  ],
+                  entries: [
+                    { img: ['w10-p2/board-nyc'] },
+                  ],
+                },
+                {
+                  id: 'w10-say-sentence', kind: 'step', label: 'The Sentence I’m Keeping',
+                  text: `“The city has more information than we could ever think through. We survive because our bodies act like a detective who doesn’t need to think, and reads what to do at a glance.”
+
+Everything else can change. This stays.`,
+                },
+              ],
+            },
+            {
+              id: 'w10-impostors', kind: 'step', icon: 'image', label: 'Game Draft: Impostors',
+              title: 'Game draft: Impostors (11/4)',
+              entries: [
+                { img: ['w10-p2/board-impostors'] },
+              ],
+              children: [
+                {
+                  id: 'w10-imp-hypothesis', kind: 'step', label: 'The Hypothesis',
+                  blocks: [
+                    { title: 'The hypothesis', text: `Imagine this: it is a hypothesis for discussion. We need to think in reverse. What would it be like if we had to spend a lot of time and effort on things that have already become things we don’t need to think about?
+
+The city is full of all kinds of information. Because we can read signifiers naturally and react without being aware of it, we don’t need to put extra effort into this. But what if we did?` },
+                  ],
+                  children: [
+                    {
+                      id: 'w10-imp-why', kind: 'step', label: 'Why a Board Game',
+                      blocks: [
+                        { title: 'Why a board game', text: `I think that because when we do these things, we don’t need to use any thinking. But when we play a game, play a board game, we unconsciously start to think, and even communicate. I want to use the mechanism of playing a board game as the opposite of our not thinking, to let people explore these things again.` },
+                      ],
+                      entries: [
+                        { img: ['w10-p2/board-why'] },
+                      ],
+                      children: [
+                        {
+                          id: 'w10-imp-players', kind: 'step', label: 'Players',
+                          children: [
+                            {
+                              id: 'w10-imp-impostors', kind: 'step', label: 'The Impostors',
+                              title: 'Player 1, 2, 3: The Impostors',
+                              blocks: [
+                                { title: 'Player 1, 2, 3: The Impostors', text: `You look human. You are not. You have no body that already knows the city. Every button, cord and sign is a puzzle to you. You can unfold clues, read the shared handbook, watch each other, and whisper. Work together to reach the destination without being caught.` },
+                              ],
+                              children: [
+                                {
+                                  id: 'w10-imp-handbook', kind: 'step', label: 'The Handbook',
+                                  blocks: [
+                                    { title: 'The handbook', text: `This handbook is written together by the Impostors. Its purpose is to turn what they have learned into habits. After using something a certain number of times, they can use it the way humans do, like pushing a button or opening a door, without checking the handbook again.
+
+A Field Guide to Passing as Human in New York
+
+Each page:
+• What it is: ______
+• What humans do: ______
+• When: ______
+• Written by: ______
+• □ Used once □ Used twice` },
+                                  ],
+                                  children: [
+                                    {
+                                      id: 'w10-imp-levels', kind: 'step', label: 'Three Levels',
+                                      title: 'Three levels (Jens Rasmussen, 1983)',
+                                      blocks: [
+                                        { title: 'Knowledge-based', text: 'Something new, no rule yet. You have to stop and work it out.' },
+                                        { title: 'Rule-based', text: 'You follow a rule. If it says PULL, you pull.' },
+                                        { title: 'Skill-based', text: 'Your body does it without thinking.' },
+                                        { title: 'With practice', text: 'With practice, things move from knowledge to rule to skill. For the Detective, everything is already skill. For the Impostors, everything starts as knowledge.' },
+                                      ],
+                                      children: [
+                                        {
+                                          id: 'w10-imp-shift', kind: 'step', label: 'A Shift I Noticed',
+                                          text: `At the beginning I was thinking about “interaction happens before we interact”: our judgment starts before we touch anything. Now I’m thinking more about “interaction happens before thinking”. I’m not sure yet which one is better.`,
+                                        },
+                                      ],
+                                    },
+                                  ],
+                                },
+                              ],
+                            },
+                            {
+                              id: 'w10-imp-detective', kind: 'step', label: 'The Detective',
+                              title: 'Player 4: The Detective',
+                              text: `You are human. You live here. You never think about any of this.`,
+                            },
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'w10-oneonone', kind: 'step', icon: 'chat', label: '1:1 Feedback',
+              title: '1:1 feedback (11/4)',
+              sections: [
+                {
+                  title: '1:1 feedback',
+                  items: [
+                    'I got feedback that the Impostors feel a lot like AI training. When I was asked why I made them, I said I wanted to take skill and knowledge away from a person, and that reminded us both of AI.',
+                    'I got feedback that the three levels are right, and could be used as lenses to look at things.',
+                    'It could become a speculative educational project: training AI, teaching an algorithm, for example how to open a door, between human and non-human. Teaching things that don’t make sense.',
+                    'We talked about unconscious actions, like playing with the tag of a tea bag while talking, or what we do while waiting for the subway. Would a machine need to learn these?',
+                    'I mentioned that AI companies record people’s hand movements to train robots, and that this training is for profit, so it only covers useful movements. No one trains the meaningless movements and language, like sitting under a tree eating an apple. I got feedback that this is an interesting concept, and it could be speculative design.',
+                    'I got feedback that the line “You have no body that already knows the city” is interesting.',
+                    'Other notes from the talk: how humans and AI respond to the world; affordance and interface; thinking about the world in three layers; code.',
+                    'I wrote down Fluxus event scores next to these notes.',
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'w10-now', kind: 'step', label: 'Where I Am Now',
+              title: 'Where I am now (11/5)',
+              text: `I think I will play the teacher, and the student is an AI. An AI without a body, not a robot arm. I’m happy I can finally do speculative design. The rest I’m still not sure about. I’m still deciding whether to teach completely meaningless actions, like playing with a tea bag tag, or habits we learned and no longer need to think about, like opening a door or pressing an elevator button.`,
+            },
+            {
+              id: 'w10-refs', kind: 'step', icon: 'links', label: 'References',
+              sections: [
+                {
+                  title: 'Designers and artists',
+                  items: [
+                    'Naoto Fukasawa, Without Thought workshops (from 1999)',
+                    'Jane Fulton Suri, Thoughtless Acts? (IDEO, 2005)',
+                    'Katerina Kamprani, The Uncomfortable (from 2011)',
+                    'Jacques Carelman, Catalogue of Unfindable Objects (1969)',
+                    'George Brecht, Drip Music (1959–62), event scores',
+                    'Yoko Ono, Grapefruit (1964)',
+                  ],
+                },
+                {
+                  title: 'Theory',
+                  items: [
+                    'Jens Rasmussen, “Skills, Rules, and Knowledge; Signals, Signs, and Symbols…” (1983)',
+                    'Don Norman, “Signifiers, not affordances” (2008)',
+                    'Marcel Mauss, “Techniques of the Body” (1934)',
+                    'Georg Simmel, “The Metropolis and Mental Life” (1903)',
+                    'Stanley Milgram, “The Experience of Living in Cities” (1970)',
+                  ],
+                },
+                {
+                  title: 'Games',
+                  items: [
+                    'Guess Who (Bald Edition), Spyfall, A Fake Artist Goes to New York, Scotland Yard, Mao',
+                  ],
+                },
+              ],
+              entries: [
+                { img: ['w10-p2/board-refs'] },
+              ],
+              links: [
+                { label: 'Katerina Kamprani, The Uncomfortable: theuncomfortable.com', url: 'https://www.theuncomfortable.com' },
+                { label: 'Jacques Carelman: Don Norman on unusable objects', url: 'https://jnd.org/unusable-objects/' },
+                { label: 'George Brecht, Drip Music: Getty, The Scores Project', url: 'https://www.getty.edu/publications/scores/06/commentary/' },
+                { label: 'ABC News, “Why the Crosswalk Buttons in Your City May Not Work” (2014)', url: 'https://abcnews.com/Business/idea-citys-crosswalk-buttons-work/story?id=24796722' },
+                { label: '99% Invisible, placebo buttons', url: 'https://99percentinvisible.org/?p=13948' },
+                { label: 'Tribeca Citizen', url: 'https://tribecacitizen.com/2020/11/06/seen-heard-lambert-fils-at-duane/' },
+                { label: 'Untapped Cities, “Do Crosswalk Buttons in NYC Actually Work?”', url: 'https://untappedcities.com/?p=406476' },
+                { label: 'MTA, Riding the bus', url: 'https://new2stg3.mta.info/guides/riding-the-bus' },
+                { label: 'ny.com, How to ride NYC buses', url: 'https://ny.com/transportation/buses/ridebuses.html' },
+                { label: 'NYC Transit Forums', url: 'https://www.nyctransitforums.com/topic/39018-subway-fare-sign-is-unfriendly-to-tourists/page/2/' },
+                { label: 'nycmoov, Uptown vs Downtown entrances', url: 'https://nycmoov.com/guide/uptown-vs-downtown-nyc-subway-don-t-pick-the-wrong-entrance' },
+                { label: 'Fodor’s forum, NYC subway entrances', url: 'https://www.fodors.com/community/united-states/new-york-subway-routes-241828-printthread/' },
+                { label: 'NYC TLC, roof light rules (PDF)', url: 'https://www.nyc.gov/assets/tlc/downloads/pdf/archived_public_notices/public_notice_rules_packet.pdf' },
+                { label: 'NYC TLC, Industry Notice #12-56 (PDF)', url: 'https://www.nyc.gov/assets/tlc/downloads/pdf/archived_industry_notices/industry_notice_12_56.pdf' },
+                { label: 'NBC New York, MetroCard era ends', url: 'https://www.nbcnewyork.com/news/local/new-york-subway-ends-metrocard-era-switches-fully-tap-go-fares/6436123/' },
+                { label: 'Gothamist, MTA to stop selling MetroCards', url: 'https://api-prod.gothamist.com/news/mta-to-stop-selling-metrocards-by-end-of-2025-as-nyc-transit-fares-move-to-omny' },
+                { label: 'SiliconANGLE, China’s “cyber laborers” train humanoid robots (2026)', url: 'https://siliconangle.com/?p=727269' },
+                { label: 'DEV, Robot training data is turning labor into infrastructure', url: 'https://dev.to/simon_paxton/robot-training-data-is-turning-labor-into-infrastructure-2ebd' },
+                { label: 'remio, Workers wear motion trackers to teach robots', url: 'https://www.remio.ai/post/workers-wear-motion-trackers-to-teach-robots-the-jobs-humans-already-know' },
               ],
             },
           ],
