@@ -1153,7 +1153,7 @@ At a certain height it becomes a city that is strange to us, right? Maybe after 
                     {
                       id: 'w9-directions', kind: 'step', label: 'Three Directions',
                       title: '10.27 · What If: three directions for Prototype 2',
-                      text: `From the "What If" feedback on Prototype 1, I picked three directions that open possibilities. Below is what I said about each one, translated plainly in my own words, with the assignment's three questions answered.`,
+                      text: `From the "What If" feedback on Prototype 1, I picked three directions that open possibilities.`,
                       children: [
                         {
                           id: 'w9-dir-interaction', kind: 'step', label: 'Interaction Languages',
@@ -1194,30 +1194,29 @@ Connected to: the note "What if there is no interaction needed for viewing the w
                             },
                             {
                               id: 'w9-oneonone', kind: 'step', icon: 'chat', label: 'One-on-One',
-                              title: '10.28 · One-on-one',
+                              title: '10.28 · One-on-one with Pascal Glissmann',
                               blocks: [
-                                { title: 'The feather', text: `I showed the photos of my paper feather placed in different places around New York. I didn't expect pigeons to come so close; some of them even walked over the feather. The feedback I got was that my earlier projects were always looking for the distance between me and pigeons, and that this is also a kind of distance.` },
+                                { title: 'The feather', text: `I showed the photos of my paper feather placed in different places around New York. I didn't expect pigeons to come so close; some of them even walked over the feather. Pascal pointed out that my earlier projects were always looking for the distance between me and pigeons, and that this is also a kind of distance.` },
                                 { title: 'Prototype 1', text: `I said I knew some parts were missing, for example I didn't show how I experimented. But I didn't think there was much more I could do on the website itself, so I moved on to Prototype 2.` },
                                 { title: 'What I presented', text: `I talked about how each creature has its own way of interacting with things or with its environment, and how that extends to humans. I also showed Calculating Empires (Kate Crawford and Vladan Joler, 2023).
 
-I was asked why I took one section out of that map. My answer: next to it there is a section about AI. Before seeing this map, I never thought that interaction could mean people actively taking steps to interact with machines or equipment, and that on the other side there is something passive, like machines detecting the environment around us.
+Pascal asked why I took one section out of that map. My answer: next to it there is a section about AI. Before seeing this map, I never thought that interaction could mean people actively taking steps to interact with machines or equipment, and that on the other side there is something passive, like machines detecting the environment around us.
 
-The feedback I got was that this alone, active and passive interaction, "flesh and machine communication," could be a thesis topic, and that it connects back to my first book about pigeons and city buildings. I also heard the idea that text itself is an interface, a system: reading and writing are both interactions.` },
-                                { title: 'My choice', text: `I was asked whether I'm more interested in animals and their environment, or people and machines. I'd like to do both, but for Prototype 2 I chose people and machines / interfaces. There is time for another project later in the course, so the animal side can wait.` },
-                                { title: 'Next step', text: `Before thinking about a visual language, collect a lot of materials, then play around with them in class.` },
+Pascal said that this alone, active and passive interaction, "flesh and machine communication," could be a thesis topic, and that it connects back to my first book about pigeons and city buildings. He also brought up the idea that text itself is an interface, a system: reading and writing are both interactions.` },
+                                { title: 'My choice', text: `Pascal asked whether I'm more interested in animals and their environment, or people and machines. I'd like to do both, but for Prototype 2 I chose people and machines / interfaces. There is time for another project later in the course, so the animal side can wait.` },
+                                { title: 'Next step', text: `Pascal's suggestion: before thinking about a visual language, collect a lot of materials, then play around with them in class.` },
                               ],
                               children: [
                                 {
                                   id: 'w9-flesh', kind: 'step', label: 'Flesh and Machine',
                                   title: '10.29 · Prototype 2 research log: flesh and machine',
-                                  text: `This page records my research for Prototype 2 after the "What If" week: the feedback I got in a one-on-one, the direction I chose, what I'm collecting, and the papers I've been reading.`,
                                   children: [
                                     {
                                       id: 'w9-flesh-now', kind: 'step', label: 'Where My Thinking Is Now',
                                       blocks: [
                                         { title: 'Every creature has its own built-in way of interacting', text: `A moth's body tells it how to fly: keep your back toward the brightest light, because in nature that is the sky. Street lights confuse that rule. Pigeons can live in the city because the heights of buildings and the corners they hide in fit the cliffs that rock doves originally lived on. Humans have this too. Laptops and screens make people adapt to them by using people's most basic mechanisms.` },
                                         { title: 'Active and passive', text: `Sometimes I take steps to use a machine: typing, pressing, scrolling. Sometimes a machine reads me without me doing anything: a camera, a sensor, an automatic door.` },
-                                        { title: 'Text is an interface too', text: `Reading and writing are both interactions with a system. As someone whose first language isn't English, I notice this a lot. Sometimes I read an English text, I understand every word, but nothing stays in my head. I just looked through it. It's only on the second read, when I'm really into it, that I understand what it says. That doesn't mean I can't read it; it means I read it but it didn't leave anything. This feels like a third state, between active and passive.` },
+                                        { title: 'Text is an interface too', text: `Pascal brought up that reading and writing are both interactions with a system. As someone whose first language isn't English, I notice this a lot. Sometimes I read an English text, I understand every word, but nothing stays in my head. I just looked through it. It's only on the second read, when I'm really into it, that I understand what it says. That doesn't mean I can't read it; it means I read it but it didn't leave anything. This feels like a third state, between active and passive.` },
                                         { title: 'The judgment in that moment', text: `Whether a sign or an instruction works or not isn't about whether it's well designed. It's about for whom, at what moment, in what state. It's the judgment in that instant, not the objective conditions.
 
 This connects to a question I keep thinking about: when we design an interface, are we designing an object, or a set of possibilities for action between a body and its environment?` },
@@ -1622,17 +1621,17 @@ Each page:
             },
             {
               id: 'w10-oneonone', kind: 'step', icon: 'chat', label: '1:1 Feedback',
-              title: '1:1 feedback (11/4)',
+              title: '1:1 feedback with Pascal Glissmann (11/4)',
               sections: [
                 {
                   title: '1:1 feedback',
                   items: [
-                    'I got feedback that the Impostors feel a lot like AI training. When I was asked why I made them, I said I wanted to take skill and knowledge away from a person, and that reminded us both of AI.',
-                    'I got feedback that the three levels are right, and could be used as lenses to look at things.',
-                    'It could become a speculative educational project: training AI, teaching an algorithm, for example how to open a door, between human and non-human. Teaching things that don’t make sense.',
+                    'Pascal said the Impostors feel a lot like AI training. When he asked why I made them, I said I wanted to take skill and knowledge away from a person, and that reminded us both of AI.',
+                    'Pascal said the three levels are right, and could be used as lenses to look at things.',
+                    'Pascal suggested it could become a speculative educational project: training AI, teaching an algorithm, for example how to open a door, between human and non-human. Teaching things that don’t make sense.',
                     'We talked about unconscious actions, like playing with the tag of a tea bag while talking, or what we do while waiting for the subway. Would a machine need to learn these?',
-                    'I mentioned that AI companies record people’s hand movements to train robots, and that this training is for profit, so it only covers useful movements. No one trains the meaningless movements and language, like sitting under a tree eating an apple. I got feedback that this is an interesting concept, and it could be speculative design.',
-                    'I got feedback that the line “You have no body that already knows the city” is interesting.',
+                    'I mentioned that AI companies record people’s hand movements to train robots, and that this training is for profit, so it only covers useful movements. No one trains the meaningless movements and language, like sitting under a tree eating an apple. Pascal said this is an interesting concept, and it could be speculative design.',
+                    'Pascal said the line “You have no body that already knows the city” is interesting.',
                     'Other notes from the talk: how humans and AI respond to the world; affordance and interface; thinking about the world in three layers; code.',
                     'I wrote down Fluxus event scores next to these notes.',
                   ],
