@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '11.05',
+      updated: '11.06',
     },
     images: { FAIR },
 
@@ -1697,6 +1697,91 @@ Each page:
                 { label: 'SiliconANGLE, China’s “cyber laborers” train humanoid robots (2026)', url: 'https://siliconangle.com/?p=727269' },
                 { label: 'DEV, Robot training data is turning labor into infrastructure', url: 'https://dev.to/simon_paxton/robot-training-data-is-turning-labor-into-infrastructure-2ebd' },
                 { label: 'remio, Workers wear motion trackers to teach robots', url: 'https://www.remio.ai/post/workers-wear-motion-trackers-to-teach-robots-the-jobs-humans-already-know' },
+              ],
+            },
+          ],
+        },
+
+        /* ───────────────────────── WEEK 11 ───────────────────────── */
+        {
+          id: 'w11', kind: 'week', label: 'Thesis Exchange 2',
+          date: '11.06', tag: 'Prototype 2',
+          children: [
+            {
+              id: 'w11-deck', kind: 'work', label: 'What I Presented',
+              title: 'No Body Knows the City — Thesis Exchange 2 slides',
+              href: 'exchange-2/',
+            },
+            {
+              id: 'w11-question', kind: 'step', icon: 'chat', label: 'The Question I Asked',
+              blocks: [
+                { title: 'My question', text: `If you had to teach an AI with no body one thing you do without thinking, what would you teach it first?` },
+              ],
+              children: [
+                {
+                  id: 'w11-received', kind: 'step', icon: 'chat', label: 'Feedback Received',
+                  children: [
+                    {
+                      id: 'w11-fb-blossom', kind: 'step', icon: 'chat', label: 'Blossom Marquez',
+                      blocks: [
+                        { title: 'Teaching an AI with no body', text: `I’d teach it to stare off into space. Let it sit there and just stare.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-priyamvada', kind: 'step', icon: 'chat', label: 'Priyamvada Mundhra',
+                      blocks: [
+                        { title: 'On my project', text: `I ike the idea of a tangible poster` },
+                        { title: 'Teaching an AI with no body', text: `I think the idea of trusting one's gut or instincts is inherently human. By instinct i mean subconscious ability to process past experiences, emotions, memories, and logic in a moment or in the “gut” and arrive at a feeling before you can logically explain it or conclude if it's the right move. It may not always be rational or right, but there's something about being able to sense something without knowing exactly why.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-abby', kind: 'step', icon: 'chat', label: 'Abby Kim',
+                      blocks: [
+                        { title: 'On my project', text: `I would definitely consider adding a qr code instead of the website link for tangible posters/flyers so people feel more inclined to visit and experience your website.` },
+                        { title: 'Teaching an AI with no body', text: `I think one thing that is intricately human that I could teach personally is the awareness of one’s self in comparison to others. I think something that I’ve rarely thought about and have now been made aware of is the simplicity in others living their lives and coexisting with my own life and routine. The idea of chance of running into strangers and people and the simple aspect of noticing those interruptions/overlappings. This also ties into your city observations but it goes outside of what you could alone possibly take note of and instead puts yourself in the perspective of awareness regarding other perspectives kind of like how you are doing it with the pigeon perspective? This could also lead into a more human interaction and a theme of what to take from these observations? I like the pigeons. It feels unique for something so known as a symbol of the city.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-jihyun', kind: 'step', icon: 'chat', label: 'Jihyun Lee',
+                      blocks: [
+                        { title: 'On my project', text: `This development of seeing your work progress in class with Pascal to now is nice to see in Prototype 2 🙂 I feel that your use of meaningless could be used in the opposite way and add a layer to your project as well.` },
+                        { title: 'Teaching an AI with no body', text: `I think I would teach AI how to hear tone and intonation in speech and decipher for itself what a person means despite what they say. I think this naturally moves into thinking about how pigeons think and feel emotion, so this could also be a layer between people, human, and AI.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-yeonjoo', kind: 'step', icon: 'chat', label: 'Yeonjoo Noh',
+                      blocks: [
+                        { title: 'Teaching an AI with no body', text: `I think I would teach AI not to invade the essential emotional area of humans because I believe there is a field where AI excels and humans excel at and i don’t think the way people processing their emotion is not the field where ai can be involved, seeing all the consequences happened due to ai start touching upon those things.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-myungwon', kind: 'step', icon: 'chat', label: 'Myungwon Lee',
+                      blocks: [
+                        { title: 'On my project', text: `I think it would be interesting to see how different people create their own rules. Maybe you could expand the project by collecting and comparing the different games people come up with. I think that could make the project even more interesting.` },
+                        { title: 'Teaching an AI with no body', text: `I would teach it how to read people's facial expressions because we often understand how someone feels without them saying anything.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-sharanya', kind: 'step', icon: 'chat', label: 'Sharanya Khemka',
+                      blocks: [
+                        { title: 'On my project', text: `You could document all the unconscious decisions we make with other people and our surroundings, like adjusting our walking speed or making space for someone since it related back to “no body knowing the city” physically.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-taylor', kind: 'step', icon: 'chat', label: 'Taylor McKelvey',
+                      blocks: [
+                        { title: 'On my project', text: `I love the pigeon game!` },
+                        { title: 'Teaching an AI with no body', text: `If I have to teach an AI with no body one thing I do without thinking I would first teach it to read body language? I’m still confused by the question a bit. I think very very few things that we do are meaningless so it’s hard for me to think of something meaningless to teach.` },
+                      ],
+                    },
+                    {
+                      id: 'w11-fb-gahyun', kind: 'step', icon: 'chat', label: 'Gahyun Nam',
+                      blocks: [
+                        { title: 'On my project', text: `I really liked how you made the project interactive, as I think it helps engage users and makes the overall experience more interesting. One thing I would suggest is putting a little more focus on the visual design. At the moment, the outcome feels more AI and technology driven than design-focused. I think there is an opportunity to develop the visual language further and make the design feel more intentional. Also, when looking at the website and the card game, they seem a little disconnected visually. It might be helpful to establish a stronger visual connection between the two through consistent typography, colors, or graphic elements so they feel like parts of the same project.` },
+                      ],
+                    },
+                  ],
+                },
               ],
             },
           ],
