@@ -1032,17 +1032,18 @@
       <div class="wm-head"><span>WORKS<i>${works.length}</i></span><button type="button" class="wm-close">× CLOSE</button></div>
       <ol class="wm-list">
         ${works.map((w, i) => `
-          <li class="wm-row" data-tour="work:${esc(w.id)}" data-w="${esc(w.id)}">
-            <button type="button" class="wm-tick" aria-pressed="false">
+          <li class="wm-row wk-row" data-tour="work:${esc(w.id)}" data-w="${esc(w.id)}">
+            <button type="button" class="wm-tick wk-tick" aria-pressed="false" aria-label="Play the process of ${esc(w.title)}">
               <span class="wm-box">[ ]</span><span class="wm-no">${pad2(i + 1)}</span>
-              <span class="wm-t">${esc(w.title)}</span>
             </button>
+            <a class="wm-t wm-link" href="works/${esc(w.href)}">${esc(w.title)}<i class="go">↗</i></a>
           </li>`).join('')}
-        <li class="wm-row ghost">
-          <span class="wm-tick"><span class="wm-box">[ ]</span><span class="wm-no">${pad2(works.length + 1)}</span><span class="wm-t">…</span></span>
+        <li class="wm-row wk-row ghost">
+          <span class="wm-tick wk-tick"><span class="wm-box">[ ]</span><span class="wm-no">${pad2(works.length + 1)}</span></span>
+          <span class="wm-t">…</span>
         </li>
       </ol>
-      <div class="wm-foot"><span>[●] play its process</span></div>`;
+      <div class="wm-foot"><span>[●] play its process</span><span>↗ open the page</span></div>`;
     menu.querySelector('.wm-close').onclick = () => closeSheets();
     menu.querySelectorAll('.wm-row[data-w]').forEach((row, i) => {
       const w = works[i];
@@ -1050,6 +1051,13 @@
         const key = `work:${w.id}`;
         const t = tours.get(key);
         if (t && !t.closing) untick(key); else if (!t) tick(key, trailIds(w));
+      };
+      const go = row.querySelector('.wm-link');
+      go.onclick = (e) => {
+        if (e.metaKey || e.ctrlKey || !SND.on) return;
+        e.preventDefault();
+        SND.node({ depth: 1, index: i });
+        setTimeout(() => { location.href = go.href; }, 220);
       };
     });
   }

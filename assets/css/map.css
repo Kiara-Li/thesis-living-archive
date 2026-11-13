@@ -361,6 +361,14 @@ html, body { height: 100%; overflow: hidden; }
   text-align: left; padding: 12px 10px 12px 2px; font-size: 11px;
 }
 button.wm-tick:hover { background: #111; }
+
+/* a work row: the box plays its process, the title opens its page */
+.wk-tick { flex: 0 0 auto; grid-template-columns: 30px 20px; padding-right: 0; }
+.wm-link { flex: 1; min-width: 0; display: block; padding: 12px 10px; color: var(--fg); text-decoration: none; }
+.wm-link .go { font-family: var(--mono); font-style: normal; font-size: 11px; color: var(--mute); margin-left: 9px; vertical-align: 1px; }
+a.wm-link:hover { background: #111; }
+a.wm-link:hover .go { color: var(--fg); }
+.wk-row.ghost .wm-t { padding: 12px 10px; }
 .wm-box { white-space: pre; }
 .wm-no { color: var(--mute); }
 .wm-t { font-family: var(--sans); font-weight: 600; font-size: 14px; line-height: 1.25; }
