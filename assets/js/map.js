@@ -1005,16 +1005,11 @@
 
   const BEAT = 260; // ms — one node per beat, one beat of rest between weeks
   const pad2 = (n) => String(n).padStart(2, '0');
-  const WORK_ICON = '<svg width="16" height="13" viewBox="0 0 16 13" fill="none" stroke-width="1.2"><path d="M0.6 0.6h14.8v11.8H0.6z M4.4 9.4l6.6-6.2 M6.4 3.2h4.6v4.6"/></svg>';
   const trailIds = (w) => w.trail || [w.process];
   const trailOf = (ids) => ids.map((id) => byId.get(id)).filter(Boolean);
   let playing = null;
   const queue = [];
 
-  function weekSpan(ids) {
-    const nums = [...new Set(trailOf(ids).map((n) => n.week.num))];
-    return nums.length > 1 ? `W${nums[0]}–W${nums[nums.length - 1]}` : nums.length ? `W${nums[0]}` : '';
-  }
 
   // the song: every node on the way down to each trail node, in order; null = a rest
   function beatsFor(ids) {
@@ -1040,17 +1035,14 @@
           <li class="wm-row" data-tour="work:${esc(w.id)}" data-w="${esc(w.id)}">
             <button type="button" class="wm-tick" aria-pressed="false">
               <span class="wm-box">[ ]</span><span class="wm-no">${pad2(i + 1)}</span>
-              <span class="wm-t">${esc(w.title)}<small>${esc(w.kind)}</small></span>
-              <span class="wm-wk" data-wk="${esc(weekSpan(trailIds(w)))}">${esc(weekSpan(trailIds(w)))}</span><span class="wm-d">${esc(w.date)}</span>
+              <span class="wm-t">${esc(w.title)}</span>
             </button>
-            <a class="wm-go" href="works/${esc(w.href)}" aria-label="Open ${esc(w.title)}"><span>${WORK_ICON}</span></a>
           </li>`).join('')}
         <li class="wm-row ghost">
-          <span class="wm-tick"><span class="wm-box">[ ]</span><span class="wm-no">${pad2(works.length + 1)}</span><span class="wm-t">…</span><span class="wm-wk"></span><span class="wm-d">upcoming</span></span>
-          <span class="wm-go"></span>
+          <span class="wm-tick"><span class="wm-box">[ ]</span><span class="wm-no">${pad2(works.length + 1)}</span><span class="wm-t">…</span></span>
         </li>
       </ol>
-      <div class="wm-foot"><span>[●] play its process</span><span>□ open the page</span></div>`;
+      <div class="wm-foot"><span>[●] play its process</span></div>`;
     menu.querySelector('.wm-close').onclick = () => closeSheets();
     menu.querySelectorAll('.wm-row[data-w]').forEach((row, i) => {
       const w = works[i];
@@ -1059,19 +1051,10 @@
         const t = tours.get(key);
         if (t && !t.closing) untick(key); else if (!t) tick(key, trailIds(w));
       };
-      const go = row.querySelector('.wm-go');
-      go.onclick = (e) => {
-        if (e.metaKey || e.ctrlKey || !SND.on) return;
-        e.preventDefault();
-        SND.node({ depth: 1, index: i });
-        setTimeout(() => { location.href = go.href; }, 220);
-      };
     });
   }
 
   // the class overview, line by line: ticking one plays the nodes it asks for
-  const GO_ICON = '<svg width="16" height="13" viewBox="0 0 16 13" fill="none" stroke-width="1.2"><path d="M0.6 0.6h14.8v11.8H0.6z M4.4 9.4l6.6-6.2 M6.4 3.2h4.6v4.6"/></svg>';
-
   function renderCheck() {
     const groups = A.checklist || [];
     const total = groups.reduce((n, g) => n + g.items.length, 0);
@@ -1080,22 +1063,15 @@
       <ol class="wm-list">
         ${groups.map((g, gi) => `
           <li class="ck-group"><span>${esc(g.week)}</span><span>${esc(g.title)}</span></li>
-          ${g.items.map((it, ii) => {
-            const span = weekSpan(it.trail);
-            return `
+          ${g.items.map((it, ii) => `
           <li class="wm-row ck-row" data-tour="ck:${gi}.${ii}" data-g="${gi}" data-i="${ii}">
             <button type="button" class="wm-tick" aria-pressed="false">
               <span class="wm-box">[ ]</span>
               <span class="wm-t ck-t">${esc(it.text)}</span>
-              <span class="wm-wk" data-wk="${esc(span)}">${esc(span)}</span>
             </button>
-            ${it.href
-              ? `<a class="wm-go" href="${esc(it.href)}" aria-label="Open the page"><span>${GO_ICON}</span></a>`
-              : '<span class="wm-go bare"></span>'}
-          </li>`;
-          }).join('')}`).join('')}
+          </li>`).join('')}`).join('')}
       </ol>
-      <div class="wm-foot"><span>[●] open it on the map</span><span>□ open the page</span></div>`;
+      <div class="wm-foot"><span>[●] open it on the map</span></div>`;
     check.querySelector('.wm-close').onclick = () => closeSheets();
     check.querySelectorAll('.ck-row').forEach((row) => {
       const it = groups[+row.dataset.g].items[+row.dataset.i];
