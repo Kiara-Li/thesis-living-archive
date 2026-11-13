@@ -60,6 +60,99 @@
         ] },
     ],
 
+    // The Living Archive overview handed out in class: each line as it was
+    // written, and the nodes on the map it points at. Ticking a line plays
+    // those nodes the same way ticking a work does.
+    checklist: [
+      {
+        week: 'Weeks 1–2', title: 'Visual Narrative',
+        items: [
+          { text: 'The 12 images you collected, with sources and short captions explaining why you chose them.',
+            trail: ['w1-images'] },
+        ],
+      },
+      {
+        week: 'Week 3', title: '256 Book',
+        items: [
+          { text: 'Photos or scans of pages or spreads from your final printed book.',
+            trail: ['w4-256'], href: 'works/256/' },
+          { text: 'Drafts, sequencing experiments, or other process material that shows how the book developed.',
+            trail: ['w1-orders', 'w3-proto'] },
+        ],
+      },
+      {
+        week: 'Week 4', title: 'Unseen Actions and Research Map',
+        items: [
+          { text: 'Unseen Actions: Photograph of an object, list of 10 unseen actions, and 200-word reflection.',
+            trail: ['w2-object', 'w2-actions', 'w2-reflection', 'w3-human', 'w3-archive', 'w3-ai'] },
+          { text: 'Research Map: Your map of personal experience, access and resources, communication design methods, and possible subtopics. Include revisions if you made them.',
+            trail: ['w1-mindmap', 'w3-mindmap'] },
+          { text: 'Three possible directions: Add your three typeset proposals. Each should show what or whom you would engage, what you wanted to find out, how you might document or share it, and who might be interested.',
+            trail: ['w4-dir-1', 'w4-dir-2', 'w4-dir-3'] },
+        ],
+      },
+      {
+        week: 'Week 5', title: 'Research activities and precedents',
+        items: [
+          { text: 'Documentation of your two research activities: what you did, what each activity produced, and relevant notes, drafts, sketches, or experiments.',
+            trail: ['w5-oyster', 'w5-rooftop', 'w5-posters', 'w5-trace-p1', 'w5-trace-responses', 'w5-trace-feedback', 'w5-trace-reading', 'w5-trace-show', 'w5-trace-refs'] },
+          { text: 'The 10 questions that came up while doing the work.',
+            trail: ['w5-questions'] },
+          { text: 'The 10 communication design precedents (Art Book Fair or other opportunity) you photographed, with your 200-word reflection on what they showed you about the possibilities of communication design.',
+            trail: ['w4-abf'] },
+        ],
+      },
+      {
+        week: 'Week 6', title: 'From research to prototyping',
+        items: [
+          { text: 'Early sketches, tests, or iterations that show how your research activities led to Prototype 1.',
+            trail: ['w6-websites', 'w6-thinking', 'w6-apis', 'w6-sightline', 'w6-gaze', 'w6-viewfinder', 'w6-sound'] },
+          { text: 'A short note on what you wanted the prototype to help you find out.',
+            trail: ['w6-want'] },
+        ],
+      },
+      {
+        week: 'Week 7', title: 'Prototype 1 and “What if?” feedback',
+        items: [
+          { text: 'Documentation of Prototype 1, the question it explored, and what you learned through making and sharing it.',
+            trail: ['w8-question', 'w8-lookup', 'w8-midway', 'w8-sections', 'w8-figma', 'w8-lookup-site'], href: 'works/prototype-1/' },
+          { text: 'The “What if?” suggestions you received. Identify which possibilities you chose to pursue and why.',
+            trail: ['w9-whatif', 'w9-responses', 'w9-dir-interaction', 'w9-dir-swap', 'w9-dir-habitats'] },
+          { text: 'The presentation you shared in class, as a link or images.',
+            trail: ['w8-lookup-site'], href: 'works/prototype-1/' },
+        ],
+      },
+      {
+        week: 'Week 8', title: 'Prototype 2 and further research',
+        items: [
+          { text: 'Documentation of Prototype 2. Explain what the new medium let you investigate.',
+            trail: ['w10-needs', 'w10-impostors', 'w10-imp-hypothesis', 'w10-imp-why', 'w10-imp-players', 'w10-imp-impostors', 'w10-imp-handbook', 'w10-imp-levels', 'w10-imp-detective'] },
+          { text: 'The two additional precedent projects and two articles you found, with source details and notes on how they informed your inquiry.',
+            trail: ['w10-refs'] },
+          { text: 'Three process visuals, such as a setup, materials in use, fieldwork, an interview, or a test. Add a short caption explaining what each shows. You can choose whether to appear in the images.',
+            trail: ['w10-playtest', 'w10-annet', 'w10-game', 'w10-playtest-reflection'] },
+        ],
+      },
+      {
+        week: 'Week 9', title: 'Writing, looking, and presenting',
+        items: [
+          { text: 'Your 200-word research question paragraph incorporating the two quotations you selected, with both sources credited.',
+            trail: ['w10-question', 'w10-refs'] },
+          { text: 'Photos or notes from the books you explored, showing what you found useful or inspiring for your process.',
+            trail: ['w10-books'] },
+        ],
+      },
+      {
+        week: 'Nov 6', title: 'Thesis Exchange 2',
+        items: [
+          { text: 'Link or images of your presentation.',
+            trail: ['w11-deck'], href: 'exchange-2/' },
+          { text: 'Documentation of feedback (can be notes written after the presentation).',
+            trail: ['w11-question', 'w11-received', 'w11-fb-blossom', 'w11-fb-priyamvada', 'w11-fb-abby', 'w11-fb-jihyun', 'w11-fb-yeonjoo', 'w11-fb-myungwon', 'w11-fb-sharanya', 'w11-fb-taylor', 'w11-fb-gahyun'] },
+        ],
+      },
+    ],
+
     root: {
       id: 'root',
       kind: 'root',

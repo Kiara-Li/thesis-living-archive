@@ -33,7 +33,9 @@
   const juxta = $('#juxta');
   const soundBtn = $('#sound');
   const menu = $('#works-menu');
+  const check = $('#check-menu');
   const worksTab = $('#tab-works');
+  const checkTab = $('#tab-check');
   const processTab = $('#tab-process');
 
   const IMG = 'assets/img/';
@@ -209,7 +211,7 @@
       el('line', { class: 'more-l', x1: n.g.w + 2, y1: 0, x2: mx, y2: 0 }, mg);
       el('rect', { class: 'more', x: mx, y: -9, width: n.g.moreW - 14, height: 18, rx: 9 }, mg);
       el('text', { class: 'more-t', x: mx + (n.g.moreW - 14) / 2, y: 0.5, 'text-anchor': 'middle' }, mg).textContent = `+${n.children.length}`;
-      mg.addEventListener('click', (e) => { e.stopPropagation(); activate(n, { pill: true }); });
+      mg.addEventListener('click', (e) => { e.stopPropagation(); growAll(n); });
       n.moreEl = mg;
     }
 
@@ -575,6 +577,7 @@
   function activate(n, opts = {}) {
     hoverEnd(n, true);
     finishTours();
+    if (!opts.pill) dropBloom();
     if (n.kind === 'future') { SND.low(); return; }
     SND.node(n);
     // a work with children: the pill grows the branch, the box opens the work
@@ -592,12 +595,74 @@
       S.expanded.add(n.id);
       closePanel(false);
       focus(n);
-      if (hasPanel(n)) openPanel(n);
+      // the +N pill is about what is behind the node, so it leaves the panel shut
+      if (hasPanel(n) && !opts.bare) openPanel(n);
       if (fresh) SND.arpeggio(n.children);
     } else {
       focus(n);
       openPanel(n);
     }
+  }
+
+  // the +N pill: one click and everything behind it comes out, one node per beat,
+  // and only that branch stays lit, the way a ticked work lights only its own thread
+  let bloom = null;
+  let bloomTour = null;
+
+  function endBloom() {
+    if (!bloom) return;
+    clearTimeout(bloom.timer);
+    while (bloom.i < bloom.q.length) S.expanded.add(bloom.q[bloom.i++].id);
+    bloom = null;
+    if (bloomTour) shownUnder(bloomTour.from).forEach((x) => bloomTour.lit.add(x.id));
+    layout();
+    updateClasses();
+    kick();
+  }
+
+  // the visitor moves on: the branch stays open, the thread stops being the lit one
+  function dropBloom() {
+    endBloom();
+    if (!bloomTour) return;
+    tours.delete('bloom');
+    bloomTour = null;
+    updateClasses();
+  }
+
+  // everything open under n, for the camera to hold
+  function shownUnder(n) {
+    const out = [n];
+    (function w(x) { if (!S.expanded.has(x.id)) return; x.children.forEach((c) => { out.push(c); w(c); }); })(n);
+    return out;
+  }
+
+  function growAll(n) {
+    dropBloom();
+    activate(n, { pill: true, bare: true });
+    const q = [];
+    (function w(x) { x.children.forEach((c) => { if (c.children.length && !S.expanded.has(c.id)) q.push(c); w(c); }); })(n);
+    bloomTour = { from: n, lit: new Set(), opened: new Set(), beats: [], i: 0, timer: null, closing: false };
+    tours.set('bloom', bloomTour);
+    shownUnder(n).forEach((x) => bloomTour.lit.add(x.id));
+    updateClasses();
+    if (!q.length) { kick(); return; }
+    bloom = { q, i: 0, timer: null };
+    (function beat() {
+      if (!bloom) return;
+      if (bloom.i >= bloom.q.length) { bloom = null; return; }
+      const x = bloom.q[bloom.i++];
+      S.expanded.add(x.id);
+      SND.node(x, 0, 0.5);
+      layout();
+      shownUnder(n).forEach((y) => bloomTour.lit.add(y.id));
+      updateClasses();
+      // the camera walks with the growing tip instead of pulling back off everything
+      const near = [x, ...x.children];
+      if (x.parent) near.push(x.parent);
+      glideTo(near, false, innerWidth < 640 ? 0.55 : 0.9, innerWidth < 640 ? x : null);
+      kick();
+      bloom.timer = setTimeout(beat, BEAT);
+    })();
   }
 
   function stepUp() {
@@ -609,7 +674,7 @@
   /* ── side note (footnote) ───────────────────────── */
 
   function showNote(n) {
-    if (menu.classList.contains('open')) { hideNote(); return; }
+    if (openSheetName()) { hideNote(); return; }
     const text = n === root ? A.root.text : n.text;
     if (!text && !n.date) { hideNote(); return; }
     S.noteNo += 1;
@@ -639,7 +704,7 @@
   /* ── panel ──────────────────────────────────────── */
 
   function openPanel(n) {
-    closeMenu(true);
+    closeSheets(true);
     hideNote();
     const sp = toScreen(center(n).x, center(n).y);
     const side = sp.x > innerWidth * 0.55 ? 'left' : 'right';
@@ -772,16 +837,16 @@
   }
 
   function showOrbit(n) {
-    const imgs = collectImages(n, 10);
-    const count = imgs.length || clamp(n.children.length || 4, 3, 6);
-    const size = imgs.length ? 64 : 38;
-    const R = (imgs.length ? 104 : 74) + count * 4;
-    const items = Array.from({ length: count }, (_, i) => {
-      const inner = imgs[i] ? `<img src="${thumb(imgs[i])}" alt="">` : '<div class="o-empty"></div>';
-      return `<div class="o-item" style="--a:${(360 * i) / count - 90}deg;--r:${R}px;--i:${i};--s:${size}px"><div class="o-inner">${inner}</div></div>`;
-    }).join('');
+    const found = collectImages(n, 10);
+    if (!found.length) return; // nothing to turn, so nothing turns
+    // one image on its own would just sit there: send the same one round six times
+    const imgs = found.length === 1 ? Array.from({ length: 6 }, () => found[0]) : found;
+    const count = imgs.length;
+    const size = 64;
+    const R = 104 + count * 4;
+    const items = Array.from({ length: count }, (_, i) => `<div class="o-item" style="--a:${(360 * i) / count - 90}deg;--r:${R}px;--i:${i};--s:${size}px"><div class="o-inner"><img src="${thumb(imgs[i])}" alt=""></div></div>`).join('');
     const total = collectImages(n, 9999).length;
-    const caption = total ? `${total} image${total > 1 ? 's' : ''}` : 'no material yet';
+    const caption = `${total} image${total > 1 ? 's' : ''}`;
     orbitEl.innerHTML = `<div class="ring">${items}</div><div class="o-caption" style="top:${R + size / 2 + 14}px">${caption}</div>`;
     orbitNode = n;
     placeOrbit();
@@ -889,7 +954,7 @@
   document.addEventListener('keydown', (e) => {
     if (e.key !== 'Escape' || (window.Lightbox && window.Lightbox.isOpen())) return;
     if (juxta.classList.contains('open')) closeJuxta();
-    else if (menu.classList.contains('open')) closeMenu();
+    else if (openSheetName()) closeSheets();
     else stepUp();
   });
 
@@ -941,19 +1006,20 @@
   const BEAT = 260; // ms — one node per beat, one beat of rest between weeks
   const pad2 = (n) => String(n).padStart(2, '0');
   const WORK_ICON = '<svg width="16" height="13" viewBox="0 0 16 13" fill="none" stroke-width="1.2"><path d="M0.6 0.6h14.8v11.8H0.6z M4.4 9.4l6.6-6.2 M6.4 3.2h4.6v4.6"/></svg>';
-  const trailOf = (w) => (w.trail || [w.process]).map((id) => byId.get(id)).filter(Boolean);
+  const trailIds = (w) => w.trail || [w.process];
+  const trailOf = (ids) => ids.map((id) => byId.get(id)).filter(Boolean);
   let playing = null;
   const queue = [];
 
-  function weekSpan(w) {
-    const nums = [...new Set(trailOf(w).map((n) => n.week.num))];
+  function weekSpan(ids) {
+    const nums = [...new Set(trailOf(ids).map((n) => n.week.num))];
     return nums.length > 1 ? `W${nums[0]}–W${nums[nums.length - 1]}` : nums.length ? `W${nums[0]}` : '';
   }
 
   // the song: every node on the way down to each trail node, in order; null = a rest
-  function beatsFor(w) {
+  function beatsFor(ids) {
     const out = []; const seen = new Set(); let wk = null;
-    trailOf(w).forEach((n) => {
+    trailOf(ids).forEach((n) => {
       [...ancestors(n).reverse().filter((a) => a !== root), n].forEach((p) => {
         if (seen.has(p.id)) return;
         seen.add(p.id);
@@ -971,11 +1037,11 @@
       <div class="wm-head"><span>WORKS<i>${works.length}</i></span><button type="button" class="wm-close">× CLOSE</button></div>
       <ol class="wm-list">
         ${works.map((w, i) => `
-          <li class="wm-row" data-w="${esc(w.id)}">
+          <li class="wm-row" data-tour="work:${esc(w.id)}" data-w="${esc(w.id)}">
             <button type="button" class="wm-tick" aria-pressed="false">
               <span class="wm-box">[ ]</span><span class="wm-no">${pad2(i + 1)}</span>
               <span class="wm-t">${esc(w.title)}<small>${esc(w.kind)}</small></span>
-              <span class="wm-wk">${esc(weekSpan(w))}</span><span class="wm-d">${esc(w.date)}</span>
+              <span class="wm-wk" data-wk="${esc(weekSpan(trailIds(w)))}">${esc(weekSpan(trailIds(w)))}</span><span class="wm-d">${esc(w.date)}</span>
             </button>
             <a class="wm-go" href="works/${esc(w.href)}" aria-label="Open ${esc(w.title)}"><span>${WORK_ICON}</span></a>
           </li>`).join('')}
@@ -985,12 +1051,13 @@
         </li>
       </ol>
       <div class="wm-foot"><span>[●] play its process</span><span>□ open the page</span></div>`;
-    menu.querySelector('.wm-close').onclick = () => closeMenu();
+    menu.querySelector('.wm-close').onclick = () => closeSheets();
     menu.querySelectorAll('.wm-row[data-w]').forEach((row, i) => {
       const w = works[i];
       row.querySelector('.wm-tick').onclick = () => {
-        const t = tours.get(w.id);
-        if (t && !t.closing) untick(w); else if (!t) tick(w);
+        const key = `work:${w.id}`;
+        const t = tours.get(key);
+        if (t && !t.closing) untick(key); else if (!t) tick(key, trailIds(w));
       };
       const go = row.querySelector('.wm-go');
       go.onclick = (e) => {
@@ -1002,18 +1069,58 @@
     });
   }
 
+  // the class overview, line by line: ticking one plays the nodes it asks for
+  const GO_ICON = '<svg width="16" height="13" viewBox="0 0 16 13" fill="none" stroke-width="1.2"><path d="M0.6 0.6h14.8v11.8H0.6z M4.4 9.4l6.6-6.2 M6.4 3.2h4.6v4.6"/></svg>';
+
+  function renderCheck() {
+    const groups = A.checklist || [];
+    const total = groups.reduce((n, g) => n + g.items.length, 0);
+    check.innerHTML = `
+      <div class="wm-head"><span>CHECKLIST<i>${total}</i></span><button type="button" class="wm-close">× CLOSE</button></div>
+      <ol class="wm-list">
+        ${groups.map((g, gi) => `
+          <li class="ck-group"><span>${esc(g.week)}</span><span>${esc(g.title)}</span></li>
+          ${g.items.map((it, ii) => {
+            const span = weekSpan(it.trail);
+            return `
+          <li class="wm-row ck-row" data-tour="ck:${gi}.${ii}" data-g="${gi}" data-i="${ii}">
+            <button type="button" class="wm-tick" aria-pressed="false">
+              <span class="wm-box">[ ]</span>
+              <span class="wm-t ck-t">${esc(it.text)}</span>
+              <span class="wm-wk" data-wk="${esc(span)}">${esc(span)}</span>
+            </button>
+            ${it.href
+              ? `<a class="wm-go" href="${esc(it.href)}" aria-label="Open the page"><span>${GO_ICON}</span></a>`
+              : '<span class="wm-go bare"></span>'}
+          </li>`;
+          }).join('')}`).join('')}
+      </ol>
+      <div class="wm-foot"><span>[●] open it on the map</span><span>□ open the page</span></div>`;
+    check.querySelector('.wm-close').onclick = () => closeSheets();
+    check.querySelectorAll('.ck-row').forEach((row) => {
+      const it = groups[+row.dataset.g].items[+row.dataset.i];
+      const key = row.dataset.tour;
+      row.querySelector('.wm-tick').onclick = () => {
+        const t = tours.get(key);
+        if (t && !t.closing) untick(key); else if (!t) tick(key, it.trail);
+      };
+    });
+  }
+
   function paintRows() {
-    menu.querySelectorAll('.wm-row[data-w]').forEach((row) => {
-      const w = A.works.find((x) => x.id === row.dataset.w);
-      const t = tours.get(w.id);
+    document.querySelectorAll('.wm-row[data-tour]').forEach((row) => {
+      const t = tours.get(row.dataset.tour);
       const on = !!t && !t.closing;
       row.classList.toggle('on', on);
       row.classList.toggle('playing', !!t && t === playing);
       row.querySelector('.wm-tick').setAttribute('aria-pressed', String(on));
       row.querySelector('.wm-box').textContent = on ? '[●]' : '[ ]';
-      row.querySelector('.wm-wk').textContent = t && t === playing
-        ? `${pad2(t.lit.size)}/${pad2(t.beats.filter(Boolean).length)}`
-        : weekSpan(w);
+      const wk = row.querySelector('.wm-wk');
+      if (wk) {
+        wk.textContent = t && t === playing
+          ? `${pad2(t.lit.size)}/${pad2(t.beats.filter(Boolean).length)}`
+          : wk.dataset.wk;
+      }
     });
   }
 
@@ -1031,9 +1138,10 @@
     t.lit.add(n.id);
   }
 
-  function tick(w) {
-    const t = { w, beats: beatsFor(w), i: 0, lit: new Set(), opened: new Set(), timer: null, closing: false };
-    tours.set(w.id, t);
+  function tick(key, ids) {
+    dropBloom();
+    const t = { key, beats: beatsFor(ids), i: 0, lit: new Set(), opened: new Set(), timer: null, closing: false };
+    tours.set(key, t);
     queue.push(t);
     paintRows();
     if (!playing) playNext();
@@ -1077,8 +1185,8 @@
   }
 
   // unticked: the thread goes dark back to front, then the branches it opened fold away
-  function untick(w) {
-    const t = tours.get(w.id);
+  function untick(key) {
+    const t = tours.get(key);
     clearTimeout(t.timer);
     if (playing === t) playing = null;
     const qi = queue.indexOf(t);
@@ -1097,7 +1205,7 @@
         t.timer = setTimeout(fade, BEAT / 3);
         return;
       }
-      tours.delete(w.id);
+      tours.delete(key);
       const keep = new Set();
       for (const o of tours.values()) o.lit.forEach((id) => ancestors(byId.get(id)).forEach((a) => keep.add(a.id)));
       t.opened.forEach((id) => { if (!keep.has(id)) S.expanded.delete(id); });
@@ -1108,23 +1216,36 @@
     })();
   }
 
-  function openMenu() {
-    if (menu.classList.contains('open')) return;
+  const sheets = { works: menu, checklist: check };
+  const TABS = { process: processTab, works: worksTab, checklist: checkTab };
+  const openSheetName = () => Object.keys(sheets).find((k) => sheets[k].classList.contains('open')) || null;
+
+  function paintTabs(which) {
+    for (const k in TABS) {
+      if (k === which) TABS[k].setAttribute('aria-current', 'page');
+      else TABS[k].removeAttribute('aria-current');
+    }
+  }
+
+  function openSheet(which) {
+    if (openSheetName() === which) return;
+    for (const k in sheets) sheets[k].classList.remove('open');
     closePanel(false);
     hideNote();
-    menu.classList.add('open');
-    worksTab.setAttribute('aria-current', 'page');
-    processTab.removeAttribute('aria-current');
-    SND.arpeggio((A.works || []).map((w, i) => ({ depth: 1, index: i })));
+    sheets[which].classList.add('open');
+    paintTabs(which);
+    const rows = which === 'works'
+      ? (A.works || []).length
+      : (A.checklist || []).reduce((n, g) => n + g.items.length, 0);
+    SND.arpeggio(Array.from({ length: Math.min(rows, 8) }, (_, i) => ({ depth: 1, index: i })));
     frameFocus();
     kick();
   }
 
-  function closeMenu(quiet) {
-    if (!menu.classList.contains('open')) return;
-    menu.classList.remove('open');
-    processTab.setAttribute('aria-current', 'page');
-    worksTab.removeAttribute('aria-current');
+  function closeSheets(quiet) {
+    if (!openSheetName()) return;
+    for (const k in sheets) sheets[k].classList.remove('open');
+    paintTabs('process');
     if (quiet) return;
     SND.low();
     const f = byId.get(S.focus);
@@ -1134,15 +1255,18 @@
   }
 
   renderMenu();
-  worksTab.addEventListener('click', (e) => {
-    if (e.metaKey || e.ctrlKey) return;
-    e.preventDefault();
-    if (menu.classList.contains('open')) closeMenu(); else openMenu();
+  renderCheck();
+  [['works', worksTab], ['checklist', checkTab]].forEach(([which, tabEl]) => {
+    tabEl.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey) return;
+      e.preventDefault();
+      if (openSheetName() === which) closeSheets(); else openSheet(which);
+    });
   });
   processTab.addEventListener('click', (e) => {
-    if (!menu.classList.contains('open')) return;
+    if (!openSheetName()) return;
     e.preventDefault();
-    closeMenu();
+    closeSheets();
   });
 
   /* ── sound toggle ───────────────────────────────── */
@@ -1163,7 +1287,8 @@
   }
 
   addEventListener('hashchange', () => {
-    if (location.hash === '#works') { openMenu(); return; }
+    if (location.hash === '#works') { openSheet('works'); return; }
+    if (location.hash === '#checklist') { openSheet('checklist'); return; }
     const n = byId.get(decodeURIComponent(location.hash.slice(1))) || root;
     if (n.id === S.focus && !S.panelNode) return;
     closePanel(false);
@@ -1174,9 +1299,9 @@
 
   const ready = document.fonts && document.fonts.ready ? document.fonts.ready : Promise.resolve();
   Promise.race([ready, new Promise((r) => setTimeout(r, 1500))]).then(() => {
-    const wantMenu = location.hash === '#works';
+    const wantSheet = location.hash === '#works' ? 'works' : (location.hash === '#checklist' ? 'checklist' : null);
     if (!openFromHash()) focus(root, { instant: true });
-    if (wantMenu) openMenu();
+    if (wantSheet) openSheet(wantSheet);
     for (const n of visible) n.p = { ...n.t };
     kick();
   });

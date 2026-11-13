@@ -379,8 +379,23 @@ a.wm-go:hover svg { stroke: var(--bg); }
 
 .wm-foot { display: flex; gap: 20px; font-size: 10px; color: var(--mute); padding-top: 9px; }
 
+/* the checklist sheet: the class overview, line by line */
+.check-menu { width: min(560px, calc(100vw - 2 * var(--gutter))); max-height: calc(100vh - 128px); overflow-y: auto; }
+.ck-group {
+  display: flex; gap: 12px; align-items: baseline;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--mute); padding: 15px 2px 6px;
+}
+.ck-group span + span { color: var(--fg); letter-spacing: 0.06em; }
+.ck-row .wm-tick { grid-template-columns: 30px 1fr 54px; }
+.wm-go.bare { border-left: 0; }
+.ck-t { font-family: var(--mono); font-weight: 400; font-size: 11.5px; line-height: 1.55; }
+.ck-row .wm-wk { text-align: right; }
+.ck-row.on .ck-t { color: var(--fg); }
+
 @media (max-width: 640px) {
   .works-menu { top: 72px; padding: 10px 12px; }
   .wm-tick { grid-template-columns: 28px 1fr 38px; }
   .wm-no, .wm-wk { display: none; }
+  .ck-row .wm-tick { grid-template-columns: 28px 1fr; }
 }

@@ -21,7 +21,7 @@ Kiara will say something like "add week 6" or "add my research activity notes". 
    - Label every week with its **date and assignment name**. **Don't write your own descriptions or interpretations** — no `text` unless it's Kiara's words. If she gave no caption for something, leave it empty.
    - Captions for individual images go in `entries` (see the header comment in `data.js`): `source` for the reference line, `about` for the source's own description, `text` for her caption, and `more` for longer writing or annotations with footnotes.
    - If she writes notes in Chinese and the site text is English, translate plainly and literally. Don't embellish, and flag it in your reply.
-   - **Never paste the teacher’s brief text** (Notion / syllabus). The assignment name is enough.
+   - **Never paste the teacher’s brief text** (Notion / syllabus) into the week nodes. The assignment name is enough. The one exception Kiara asked for: `checklist: [...]` in `data.js`, which keeps the lines of the class Living Archive overview word for word, each with the node ids it asks for. It lives behind the CHECKLIST tab and nowhere else. When a new week is added, add its lines there and point the older lines at any new nodes.
    - Kiara's own writing (captions, reflections) goes in as she wrote it. Don't rewrite it or make it sound polished/AI-like.
    - Anything still missing → a `todo: '…'` string, which shows as a dashed "TO ADD" box. Remove the `todo` once the material is in.
    - Update `meta.updated` to today's date (MM.DD).
@@ -41,6 +41,8 @@ The visual design and interaction (`assets/css/*`, `assets/js/map.js`, `sound.js
 - Black + white only. Lines are the main element. Mono type (IBM Plex Mono) plus Inter for titles.
 - References: the Dropbox "Smart Workspace" file-tree poster (boxed folder nodes, dotted leader notes, grey inactive nodes, "…" pills) and the "Achievement" chapter map (circled numbered nodes, dashed arrows, pill tags).
 - Map behaviour: branches grow and stay; the current step and its path stay bright, everything else dims (still clickable, but no hover preview); hover shows an orbit of images; leaves open a side panel; works open real pages; visitor-made connections are never saved; every click plays a music-box note.
+- The `+N` pill opens everything behind a node, one node per beat, and only that branch stays lit (the node's own box is what opens its panel). Ticking a work, or a line of the checklist, lights only that thread.
+- The orbit only turns when there are images: none and it doesn't appear, one and the same image goes round six times.
 
 ## Preview
 
