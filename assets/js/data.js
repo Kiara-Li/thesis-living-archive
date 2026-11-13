@@ -40,7 +40,7 @@
     meta: {
       author: 'Kiara Li',
       course: 'BFA Communication Design — Thesis 1, Fall 2026',
-      updated: '11.06',
+      updated: '11.13',
     },
     images: { FAIR },
 
@@ -1871,6 +1871,125 @@ Each page:
                       id: 'w11-fb-gahyun', kind: 'step', icon: 'chat', label: 'Gahyun Nam',
                       blocks: [
                         { title: 'On my project', text: `I really liked how you made the project interactive, as I think it helps engage users and makes the overall experience more interesting. One thing I would suggest is putting a little more focus on the visual design. At the moment, the outcome feels more AI and technology driven than design-focused. I think there is an opportunity to develop the visual language further and make the design feel more intentional. Also, when looking at the website and the card game, they seem a little disconnected visually. It might be helpful to establish a stronger visual connection between the two through consistent typography, colors, or graphic elements so they feel like parts of the same project.` },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+          ],
+        },
+
+        /* ───────────────────────── WEEK 12 ───────────────────────── */
+        {
+          id: 'w12', kind: 'week', label: 'Taking a Moment',
+          date: '11.14', tag: 'Prototype 2',
+          children: [
+            {
+              id: 'w12-plan', kind: 'step', icon: 'list', label: 'Three-Week Production Plan',
+              title: 'Three-week production plan (11/14–12/4)',
+              text: `November 14 — December 4, 2026
+
+Prototype 2 → Physical Extension → Documentation & Demonstration`,
+              table: {
+                head: ['Week', 'Focus', 'Main Outcome'],
+                rows: [
+                  ['01', 'Prototype & Feedback', 'Completed Prototype 2'],
+                  ['02', 'Physical Exploration', 'Physical extension + documentation'],
+                  ['03', 'Finalize & Demonstrate', 'Finished work + portfolio + presentation'],
+                ],
+              },
+              children: [
+                {
+                  id: 'w12-p1', kind: 'step', icon: 'list', label: '01 · Prototype 2',
+                  title: '01 / Prototype 2 — Nov 14–20 · Week One',
+                  text: `Goal: Complete Prototype 2, gather feedback, and refine the final version.`,
+                  table: {
+                    head: ['Date', 'Tasks'],
+                    rows: [
+                      ['SAT · NOV 14', 'Develop the sticker concept and prepare the first version. Bring paper to the Hub for printing in the afternoon or evening.'],
+                      ['SUN · NOV 15', 'Share the stickers with people, gather feedback, and identify what needs improvement.'],
+                      ['MON · NOV 16', 'Further develop the Thesis concept and refine the direction of Prototype 2.'],
+                      ['WED · NOV 18', 'Present a completed Prototype 2 and collect feedback.'],
+                      ['THU · NOV 19', 'Revise the prototype based on Wednesday’s feedback. Continue working in the evening and, if possible, print the updated version at the Hub.'],
+                      ['FRI · NOV 20', 'Bring the revised Prototype 2 for review.'],
+                    ],
+                  },
+                  sections: [
+                    {
+                      title: 'End-of-week milestone',
+                      items: [
+                        'Sticker prototype produced and tested',
+                        'Feedback collected and incorporated',
+                        'Prototype 2 completed and refined',
+                      ],
+                    },
+                  ],
+                  children: [
+                    {
+                      id: 'w12-p2', kind: 'step', icon: 'list', label: '02 · Physical Extension',
+                      title: '02 / Physical Extension — Nov 21–27 · Week Two',
+                      text: `Goal: Build upon Prototype 2 through physical experimentation, while documenting the results of the first prototype.
+
+Assuming Week One is completed as planned.`,
+                      sections: [
+                        {
+                          title: 'Physical development',
+                          items: [
+                            'Determine how Prototype 2 could extend into a physical form.',
+                            'Book time at the Laser Lab or Design Lab in advance.',
+                            'Develop and produce physical experiments.',
+                          ],
+                        },
+                        {
+                          title: 'Documentation & portfolio',
+                          items: [
+                            'Organize the results and feedback from Prototype 2.',
+                            'Update the Thesis website with the prototype and its results.',
+                            'Add Prototype 2 and its process to the portfolio.',
+                          ],
+                        },
+                        {
+                          title: 'End-of-week milestone',
+                          items: [
+                            'Physical extension developed',
+                            'Prototype 2 documented on the website',
+                            'Portfolio updated with Prototype 2',
+                          ],
+                        },
+                      ],
+                      children: [
+                        {
+                          id: 'w12-p3', kind: 'step', icon: 'list', label: '03 · Finalization & Demonstration',
+                          title: '03 / Finalization & Demonstration — Nov 28 – Dec 4 · Week Three',
+                          text: `Goal: Finalize the physical work from Week Two, demonstrate the outcome, and integrate the results into the portfolio.`,
+                          sections: [
+                            {
+                              title: 'Final production',
+                              items: [
+                                'Finish the physical experiments developed during Week Two.',
+                                'Prepare and demonstrate the completed work.',
+                              ],
+                            },
+                            {
+                              title: 'Documentation & presentation',
+                              items: [
+                                'Document the physical outcomes and demonstration.',
+                                'Add the physical extension and its results to the Thesis portfolio.',
+                                'Prepare the final presentation.',
+                              ],
+                            },
+                            {
+                              title: 'End-of-week milestone',
+                              items: [
+                                'Physical extension finalized',
+                                'Demonstration completed',
+                                'Thesis portfolio updated',
+                                'Final presentation prepared',
+                              ],
+                            },
+                          ],
+                        },
                       ],
                     },
                   ],
