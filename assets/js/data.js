@@ -1873,6 +1873,12 @@ Each page:
                         { title: 'On my project', text: `I really liked how you made the project interactive, as I think it helps engage users and makes the overall experience more interesting. One thing I would suggest is putting a little more focus on the visual design. At the moment, the outcome feels more AI and technology driven than design-focused. I think there is an opportunity to develop the visual language further and make the design feel more intentional. Also, when looking at the website and the card game, they seem a little disconnected visually. It might be helpful to establish a stronger visual connection between the two through consistent typography, colors, or graphic elements so they feel like parts of the same project.` },
                       ],
                     },
+                    {
+                      id: 'w11-noticed', kind: 'step', icon: 'doc', label: 'What I Noticed',
+                      blocks: [
+                        { title: 'What I noticed', text: `Almost nobody answered with an action like pressing a button or opening a door. Most answers were about reading other people, instinct, or doing nothing.` },
+                      ],
+                    },
                   ],
                 },
               ],
@@ -1882,11 +1888,219 @@ Each page:
 
         /* ───────────────────────── WEEK 12 ───────────────────────── */
         {
-          id: 'w12', kind: 'week', label: 'Taking a Moment',
+          id: 'w12', kind: 'week', label: 'Teaching a Mind With No Body',
+          date: '11.13', tag: 'Prototype 2',
+          children: [
+            {
+              id: 'w12-meaningless', kind: 'step', icon: 'doc', label: 'Rethinking “Meaningless”',
+              title: 'Rethinking “meaningless” (11/6)',
+              text: `A hug, or rubbing your hands when you're nervous, is not meaningless. Maybe what I mean is: actions that have meaning but no use, or no profit.`,
+              children: [
+                {
+                  id: 'w12-reading', kind: 'step', icon: 'list', label: 'What I’m Reading',
+                  children: [
+                    {
+                      id: 'w12-read-bodies', kind: 'step', icon: 'list', label: 'Bodies and AI',
+                      sections: [
+                        {
+                          title: 'Bodies and AI',
+                          items: [
+                            'Moravec’s paradox: what is easy for humans (walking, grasping) is hardest for machines.',
+                            'Rodney Brooks, “Elephants Don’t Play Chess” (1990) and “Intelligence Without Representation” (1991)',
+                            'Hubert Dreyfus, What Computers Can’t Do (1972)',
+                            'Stevan Harnad, the symbol grounding problem (1990)',
+                          ],
+                        },
+                      ],
+                    },
+                    {
+                      id: 'w12-read-touch', kind: 'step', icon: 'list', label: 'Touch and Small Movements',
+                      sections: [
+                        {
+                          title: 'Touch and small movements',
+                          items: [
+                            'Ekman & Friesen (1969): “adaptors”, like rubbing hands or touching your hair',
+                            'Harry Harlow, “The Nature of Love” (1958)',
+                            'Löken et al. (2009): nerves in the skin that respond to slow, gentle touch',
+                          ],
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'w12-materials', kind: 'step', icon: 'doc', label: 'Teaching Materials, in the City',
+              title: 'Teaching materials, in the city (11/6–11/9)',
+              text: `I want to make physical teaching materials for an AI with no body. No AI feel: colorful, designed, printed (riso, silkscreen, typography), and the form has to carry the meaning. I want it to happen in the city, and I want it to make sense.
+
+One idea: each person teaches their own AI, the one that already has their memory.
+
+I got feedback that teaching an AI could connect to role-play, like how we ask AI to “act as” someone. I don't want the AI to play a pigeon, but role-play itself is interesting.`,
+            },
+            {
+              id: 'w12-material-refs', kind: 'step', icon: 'list', label: 'References for the Teaching Materials',
+              title: 'References for the teaching materials (11/13)',
+              sections: [
+                {
+                  title: 'References',
+                  items: [
+                    'Corita Kent, Immaculate Heart College Art Department Rules, and her “finder” for looking',
+                    'Bruno Munari, Supplemento al dizionario italiano (1958): a dictionary of hand gestures',
+                    'Bruno Munari, Libri illeggibili: books with no words, read by hand and eye',
+                    'Desmond Morris, Manwatching (1977): a field guide to human behavior',
+                    'Georges Perec, An Attempt at Exhausting a Place in Paris (1975): the “infra-ordinary”',
+                    'Stephanie Dinkins, Conversations with Bina48 (2014–)',
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'w12-ideas', kind: 'step', icon: 'folder', label: 'Ideas I Explored',
+              title: 'Ideas I explored (11/13)',
+              children: [
+                {
+                  id: 'w12-idea-teaching', kind: 'step', icon: 'list', label: 'Teaching',
+                  sections: [
+                    {
+                      title: 'Teaching',
+                      items: [
+                        'Classic teaching methods and experiments, re-run with an AI as the student: Helen Keller and the water pump, the kitten carousel (Held & Hein), Mary’s Room, Clever Hans, The Ignorant Schoolmaster, the Leitner box, Comenius’s Orbis Pictus.',
+                        'Things people already do to AI as “teachers” without realizing it: giving it a role, giving examples, thumbs up and down, reCAPTCHA.',
+                      ],
+                    },
+                  ],
+                },
+                {
+                  id: 'w12-idea-prompt', kind: 'step', icon: 'doc', label: 'Prompt',
+                  text: `A prompt means different things in different places: a theater prompter, the command-line prompt (where the machine prompts the human), prompting and fading in behavior teaching, Oblique Strategies, a writing prompt.`,
+                },
+                {
+                  id: 'w12-idea-tangible', kind: 'step', icon: 'doc', label: 'Tangible Interfaces',
+                  text: `Physical materials for a non-physical student: the Jacquard loom's punched cards, Cubetto, Tern, AlgoBlock, Dynamicland, Durrell Bishop's Marble Answering Machine, Papert's LOGO turtle.`,
+                },
+                {
+                  id: 'w12-idea-storyboard', kind: 'step', icon: 'image', label: 'Storyboard',
+                  text: `Green stickers: people find them in the city, scan, and write a prompt about what they're doing. The prompts become an action guide for their AI. Red stickers: the AI sends instructions back, and people follow them at the same places.`,
+                  images: ['w12-story/storyboard'],
+                },
+                {
+                  id: 'w12-idea-speculative', kind: 'step', icon: 'doc', label: 'Speculative Idea',
+                  text: `After people train their AI with their own body, the AI turns around and uses people's bodies: it tells them what to do. The AI's words have to really come from each person's own AI.`,
+                },
+              ],
+            },
+            {
+              id: 'w12-happening', kind: 'step', icon: 'list', label: 'What’s Already Happening',
+              title: 'What’s already happening (11/13)',
+              sections: [
+                {
+                  title: 'Already happening',
+                  items: [
+                    'AI hiring humans: RentAHuman (2026), where AI agents hire people for physical tasks. It calls them “meatworkers.”',
+                    'GPT-4 and TaskRabbit (2023): in a safety test, the model hired a person to solve a CAPTCHA for it.',
+                    'Amazon’s wristband patents (2018): tracking warehouse workers’ hands and guiding them with vibrations.',
+                    'Algorithmic management: delivery riders’ routes and pace decided by apps.',
+                    'The EU Platform Work Directive (2024): platforms may not process workers’ emotional or psychological state.',
+                  ],
+                },
+              ],
+              blocks: [
+                { title: 'What I keep thinking about', text: `The law protects our emotional body data from platforms, but people might hand it to their own AI for free.` },
+              ],
+            },
+            {
+              id: 'w12-narrowing', kind: 'step', icon: 'chat', label: 'Feedback and Narrowing Down',
+              title: 'Feedback and narrowing down (11/13)',
+              text: `I got feedback that the whole idea was too complicated and built on too many assumptions, and that I should focus on one part. I agree it felt forced.`,
+              children: [
+                {
+                  id: 'w12-sticker', kind: 'step', icon: 'doc', label: 'The Sticker',
+                  text: `What I'm interested in: when you see a cup, you just pick it up. You don't think. But if there's a small sticker on it with something written, your brain has to stop and read it. A small piece of paper makes you think.
+
+Most of us already assume our conscious thoughts and designs are used as training data. If even the things we don't think about are taken too, both the conscious and the unconscious mind are occupied. It's ironic.`,
+                },
+                {
+                  id: 'w12-next', kind: 'step', icon: 'list', label: 'Next Step',
+                  text: `Design three different stickers, put them in the real world on simple body actions, like climbing stairs, and watch how people react.`,
+                  sections: [
+                    {
+                      title: 'Possible directions for the three',
+                      items: [
+                        'Telling you you’re being recorded',
+                        'Telling you what to do',
+                        'Asking you to teach',
+                      ],
+                    },
+                  ],
+                },
+                {
+                  id: 'w12-sticker-refs', kind: 'step', icon: 'image', label: 'Sticker References',
+                  sections: [
+                    {
+                      title: 'Sticker references',
+                      items: [
+                        'Signs that say “camera on, please smile”: telling you you’re being recorded, in a friendly way.',
+                        'The watching-eyes study (Bateson, Nettle & Roberts, 2006): a picture of eyes above an honesty box changed how much people paid. Later studies found mixed results.',
+                        'Handwritten “out of order” notes taped on machines.',
+                      ],
+                    },
+                  ],
+                  images: ['w12-notes/elevator', 'w12-notes/broken-stairs', 'w12-notes/atm'],
+                },
+                {
+                  id: 'w12-group-notes', kind: 'step', icon: 'list', label: 'Notes From My Group',
+                  sections: [
+                    {
+                      title: 'Notes from my group',
+                      items: [
+                        'Chat to GPT as a real person',
+                        'Where patterns come from',
+                        'Things not human but real human',
+                        'Observation',
+                        'Human autonomy',
+                      ],
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              id: 'w12-refs', kind: 'step', icon: 'links', label: 'References',
+              sections: [
+                {
+                  title: 'Reading',
+                  items: [
+                    'Shoshana Zuboff, The Age of Surveillance Capitalism (2019): “behavioral surplus”',
+                    'Bateson, Nettle & Roberts, “Cues of being watched enhance cooperation in a real-world setting” (2006)',
+                    'Northover et al., “Artificial surveillance cues do not increase generosity” (2017)',
+                  ],
+                },
+              ],
+              links: [
+                { label: 'Built In, RentAHuman and “meatworkers”', url: 'https://builtin.com/articles/what-is-rentahuman' },
+                { label: 'AI Guide, fact-check of the GPT-4 TaskRabbit story', url: 'https://aiguide.substack.com/p/did-gpt-4-hire-and-then-lie-to-a' },
+                { label: 'NPR, Amazon wristband patents (2018)', url: 'https://www.npr.org/sections/thetwo-way/2018/02/01/582370715/wrist-watching-amazon-patents-system-to-track-guide-employees-hands' },
+                { label: 'Beyond Datafied Labor (delivery riders)', url: 'https://nhsjs.com/?p=25906' },
+                { label: 'Seonok Lee, “The AI Mode” (2024)', url: 'https://illej.unibo.it/article/view/20869' },
+                { label: 'EU-OSHA, Directive 2024/2831', url: 'https://osha.europa.eu/en/legislation/directive/directive-20242831eu-platform-work' },
+                { label: 'SiliconANGLE, “cyber laborers” training humanoid robots', url: 'https://siliconangle.com/?p=727269' },
+                { label: 'Getty, George Brecht’s Drip Music', url: 'https://www.getty.edu/publications/scores/06/commentary/' },
+                { label: 'Corita Kent’s finders (Ackland Art Museum)', url: 'https://ackland.org/?p=21162' },
+                { label: 'Munari, Speak Italian (The Marginalian)', url: 'https://www.themarginalian.org/2012/12/13/bruno-munari-speak-italian-gestures/' },
+              ],
+            },
+          ],
+        },
+
+        /* ───────────────────────── WEEK 13 ───────────────────────── */
+        {
+          id: 'w13', kind: 'week', label: 'Taking a Moment',
           date: '11.14', tag: 'Prototype 2',
           children: [
             {
-              id: 'w12-plan', kind: 'step', icon: 'list', label: 'Three-Week Production Plan',
+              id: 'w13-plan', kind: 'step', icon: 'list', label: 'Three-Week Production Plan',
               title: 'Three-week production plan (11/14–12/4)',
               text: `November 14 — December 4, 2026
 
@@ -1901,7 +2115,7 @@ Prototype 2 → Physical Extension → Documentation & Demonstration`,
               },
               children: [
                 {
-                  id: 'w12-p1', kind: 'step', icon: 'list', label: '01 · Prototype 2',
+                  id: 'w13-p1', kind: 'step', icon: 'list', label: '01 · Prototype 2',
                   title: '01 / Prototype 2 — Nov 14–20 · Week One',
                   text: `Goal: Complete Prototype 2, gather feedback, and refine the final version.`,
                   table: {
@@ -1927,7 +2141,7 @@ Prototype 2 → Physical Extension → Documentation & Demonstration`,
                   ],
                   children: [
                     {
-                      id: 'w12-p2', kind: 'step', icon: 'list', label: '02 · Physical Extension',
+                      id: 'w13-p2', kind: 'step', icon: 'list', label: '02 · Physical Extension',
                       title: '02 / Physical Extension — Nov 21–27 · Week Two',
                       text: `Goal: Build upon Prototype 2 through physical experimentation, while documenting the results of the first prototype.
 
@@ -1960,7 +2174,7 @@ Assuming Week One is completed as planned.`,
                       ],
                       children: [
                         {
-                          id: 'w12-p3', kind: 'step', icon: 'list', label: '03 · Finalization & Demonstration',
+                          id: 'w13-p3', kind: 'step', icon: 'list', label: '03 · Finalization & Demonstration',
                           title: '03 / Finalization & Demonstration — Nov 28 – Dec 4 · Week Three',
                           text: `Goal: Finalize the physical work from Week Two, demonstrate the outcome, and integrate the results into the portfolio.`,
                           sections: [
