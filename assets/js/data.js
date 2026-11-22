@@ -2356,6 +2356,59 @@ The book takes its inspiration from Helen Keller, who learned the word water by 
               images: ['w14/stickers-toggle', 'w14/stickers-labels'],
               todo: 'Photos of the stickers in place',
             },
+            {
+              id: 'w14-influences', kind: 'step', icon: 'doc', label: 'What’s Been Influencing My Thesis',
+              title: 'What’s been influencing my thesis',
+              text: `Recently a few things have been influencing how I think about my thesis. I don't have a clear conclusion yet, so I'm writing them down first.
+
+These are the things influencing my thesis recently. Anyway, I'm recording them here first.`,
+              children: [
+                {
+                  id: 'w14-inf-class', kind: 'step', icon: 'image', label: 'Slides From My AI Class',
+                  title: 'Slides from my AI class',
+                  text: `In the recitation of my Artificial Intelligence, Creativity and Society class, I saw a slide quoting Levy Lorenzo, roughly: how much cement a bridge needs has a right or wrong answer, but there's no problem to solve in music; it's something intangible and unquantifiable. I really love this idea. I think design is actually like this too. For example, now many vibe-coding people are competing for a limited number of users willing to pay, and they are actually creating needs, not thinking of products based on needs. So it's getting harder and harder to think of products starting from needs. I think this is quite an interesting point.
+
+Another slide from the same recitation asked: to what degree does it count as music, to what degree does it count as creation? This is also a direction I was thinking about before. For example, those "meaningless" interactions: I was thinking before about whether they have some kind of copyright too. A lot of AI takes other people's paintings and other people's designs to train on, and this is seen as copying other people's ideas. But if it's the movements I'm not even thinking about that get taken by AI to imitate and learn, in what situation can I say "I don't want you to learn this"?
+
+There's also one point that really moved me: after you do these movements and then you're asked to retell the movement, you can't even describe it clearly yourself, and while you're retelling it, that one moment of the movement has already disappeared. That moment is what I want to look for.
+
+These places feel like they have a kind of tension to me, even though I haven't thought deeply about them yet.`,
+                  images: ['w14-influences/slide-music', 'w14-influences/slide-instrument'],
+                },
+                {
+                  id: 'w14-inf-yorushika', kind: 'step', icon: 'video', label: 'Yorushika, 盗作 Live',
+                  title: 'Yorushika, 盗作 (Plagiarism) live, 2025',
+                  text: `Recently I've also been listening to “強盗と花束” (Robber and Bouquet), “盗作” (Plagiarism) and “Replicant” from the Japanese band Yorushika's 2025 live “盗作 再演”, and thinking about similar questions: the things that were stolen, how much of them still belongs to the creator's original heart?`,
+                  entries: [
+                    { img: ['w14-influences/yorushika-1', 'w14-influences/yorushika-2'], text: `Why I took these two screenshots: I think they are about how gestures relate to each other.
+
+In one, the hand is raised high in a fist, which means picking up a kitchen knife. It is about to slash down, about to stab. It's the classic gesture of a robber, and it makes the whole moment very tense.
+
+In the other, the hand holds out flowers. This is a very slow gesture.
+
+The difference is only in the hand: whether the fist faces up or faces down. That alone separates two completely different gestures.
+
+And both are also waiting. One is waiting to give you the bouquet, so the other person waits to receive it. The other is waiting to be stabbed.
+
+So it's just this: how big or small a body movement is, and these small differences, make connections I find really interesting.` },
+                  ],
+                  video: 'WwOyV_iXKgM',
+                  links: [
+                    { label: '盗作 (Plagiarism), LIVE TOUR 2025 “盗作 再演” ver.', url: 'https://www.youtube.com/watch?v=WwOyV_iXKgM' },
+                    { label: '強盗と花束 (Robber and Bouquet)', url: 'https://www.youtube.com/watch?v=qi1x1qgXbO8' },
+                    { label: 'レプリカント (Replicant), live', url: 'https://www.youtube.com/watch?v=tWez_36Zs6I' },
+                    { label: 'LIVE TOUR 2025 “盗作 再演”, trailer', url: 'https://www.youtube.com/watch?v=Mpyj4Bxw7lY' },
+                  ],
+                },
+                {
+                  id: 'w14-inf-drip', kind: 'step', icon: 'image', label: 'Drip Music, Translated',
+                  title: 'Drip Music, translated',
+                  text: `And there's a project I saw on Xiaohongshu by a Central Saint Martins student, translating George Brecht's Drip Music: Fluxus turned ordinary actions into events anyone could interpret, but in the streaming era, algorithms quietly pull those interpretations back into a controllable range.`,
+                  images: ['w14-influences/drip-music'],
+                  links: [{ label: '4天能做什么 · Tao (Xiaohongshu)', url: 'https://www.xiaohongshu.com/discovery/item/690fd086000000000301848f?xsec_token=ABD1prp7KM6SwPEAhQ6g2HkUgYCxRkCEdu6KZN1fQeOkM=&xsec_source=pc_share' }],
+                },
+              ],
+            },
           ],
         },
 
