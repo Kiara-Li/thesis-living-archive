@@ -2392,7 +2392,7 @@ And both are also waiting. One is waiting to give you the bouquet, so the other 
 
 So it's just this: how big or small a body movement is, and these small differences, make connections I find really interesting.` },
                   ],
-                  video: 'WwOyV_iXKgM',
+                  video: 'tWez_36Zs6I',
                   links: [
                     { label: '盗作 (Plagiarism), LIVE TOUR 2025 “盗作 再演” ver.', url: 'https://www.youtube.com/watch?v=WwOyV_iXKgM' },
                     { label: '強盗と花束 (Robber and Bouquet)', url: 'https://www.youtube.com/watch?v=qi1x1qgXbO8' },
