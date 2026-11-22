@@ -2216,27 +2216,28 @@ Assuming Week One is completed as planned.`,
         /* ───────────────────────── WEEK 14 ───────────────────────── */
         // Process text translated from Kiara's notes and conversations (Chinese), 11.21
         {
-          id: 'w14', kind: 'week', label: 'Unthinking',
+          id: 'w14', kind: 'week', label: 'Small Gestures and AI',
           date: '11.16', tag: 'Prototype 2',
           children: [
             {
               id: 'w14-notice', kind: 'step', icon: 'page', label: 'Prototype 2.a · NOTICE',
               title: 'Prototype 2.a — NOTICE (11.16–11.21)',
-              todo: 'Documentation of the NOTICE browser extension · screenshots / screen recording · link to try it',
+              images: ['w14/notice-figma', 'w14/notice-screen-1'],
               children: [
                 {
                   id: 'w14-notice-refs', kind: 'step', icon: 'image', label: 'References',
-                  images: ['w14-notice-refs/01-location', 'w14-notice-refs/02-tracking', 'w14-notice-refs/03-terms'],
+                  images: ['w14-notice-refs/01-location', 'w14-notice-refs/02-tracking', 'w14-notice-refs/03-terms', 'w14-notice-refs/04-feedback'],
                 },
               ],
             },
             {
               id: 'w14-moodboard', kind: 'step', icon: 'image', label: 'Moodboard',
-              todo: 'Moodboard image',
+              images: ['w14/moodboard'],
             },
             {
-              id: 'w14-keller', kind: 'step', icon: 'doc', label: 'Helen Keller, Reversed',
-              title: 'Helen Keller, reversed',
+              id: 'w14-keller', kind: 'step', icon: 'doc', label: 'An AI With No Body',
+              title: 'An AI with no body',
+              images: ['w14/keller-photo', 'w14/keller-alphabet'],
               text: `It's like what's told in Helen Keller's book. When the teacher was teaching her, it was because she didn't know there was the word water, but she could feel this wide world, so the teacher let her touch water to let her feel water. And I'm kind of reversing this: an AI that has no body. Or, how to say, it doesn't have real human perception. An AI without real human perception has no way to really feel things in the outside world, so it can only learn by observing others, or it knows the word, but it can't match it with the sensation. And I want to look at the world from this perspective.`,
               blocks: [
                 { quote: true, text: `“I knew then that ‘w-a-t-e-r’ meant the wonderful cool something that was flowing over my hand.”
@@ -2245,8 +2246,8 @@ Assuming Week One is completed as planned.`,
               ],
               children: [
                 {
-                  id: 'w14-umwelt', kind: 'step', icon: 'doc', label: 'Umwelt, and a Fictional AI',
-                  title: 'Umwelt, and a fictional AI',
+                  id: 'w14-umwelt', kind: 'step', icon: 'doc', label: 'Can AI Become Human?',
+                  title: 'Can AI become human?',
                   blocks: [
                     { quote: true, text: `An umwelt (plural: umwelten) is the specific, subjective perceptual world that an organism inhabits, shaped by its unique sensory organs, physiology, and behavioral needs.` },
                     { text: `I even feel I could tell this kind of story through a hypothetical, fictional AI, just like in Helen Keller. A robot that wants to learn, wants to become human. The robot has learned everything, so the AI asks a human: to become human, what else do I need? The human says what AI doesn't understand is when people are idle, when they don't even know what they themselves are doing. Because AI is learning how humans think, but AI didn't realize that sometimes, the moments when humans feel most human are when humans aren't thinking and act subconsciously, that is, following the reactions of the “heart.” The AI says I can learn, I need to observe and then learn a lot. And so this bodiless AI begins its journey of learning? This is just something I randomly thought of.
@@ -2259,6 +2260,7 @@ The city doesn't only belong to us.` },
                   children: [
                     {
                       id: 'w14-meaningless', kind: 'step', icon: 'doc', label: 'Meaningless Actions',
+                      images: ['w14/meaningless-comic', 'w14/meaningless-diagram', 'w14/meaningless-photos', 'w14/meaningless-paper', 'w14/meaningless-agent'],
                       text: `Maybe I'll first go find like 10 of these meaningless things, like why do you pull your hair when you're nervous, and then label them by some category, and use the robot's language to interpret them, break this thing down layer by layer. Each one broken down to a very fine level, to the level that's enough for the robot to fully learn it. And maybe the final effect is like people looking at an AI's learning record or learning notes.
 
 I want to know: has anyone actually trained AI to learn this kind of displacement action? Whether learning from animals or from humans, has anyone trained AI to do this?`,
@@ -2267,15 +2269,17 @@ I want to know: has anyone actually trained AI to learn this kind of displacemen
                       ],
                       children: [
                         {
-                          id: 'w14-experiment', kind: 'step', icon: 'doc', label: 'An Experiment',
+                          id: 'w14-experiment', kind: 'step', icon: 'doc', label: 'Asking People About Their Gestures',
+                          images: ['w14/experiment-face', 'w14/experiment-hands'],
                           text: `I would ask people to describe their mood at that moment, or what they were thinking while they were doing these unconscious movements. Like, for this experiment, I might not even tell them specifically that I'm doing an experiment. Instead, I just casually chat with someone, and while we're chatting, I look at the other person's body language, and then I suddenly point it out and say, “Can you explain this to me?” It's roughly this kind of experiment design.`,
                           blocks: [
                             { title: 'Trying it on myself', text: `Do you think, if I go, like, very very hard, to explain to the robot, like, what action I'm going to do and for what reason. For example, right now when I'm talking to you, my hands, like, my left hand is propped on my right hand, and then my body leans forward, and I talk like this. Maybe let me try to explain it now. Maybe it's because I have a meeting soon, so I'm a little nervous, and then. Because my right hand is warm, so I put the back of my hand, which is a little cold, on top of it, so that it feels a little warmer. And then I lean my body forward, like this, so what I say is easier to be recorded into Claude's listening. So I lean my body forward, and then, and then because I'm nervous, so I use the back of my left hand to rub the palm of my right hand, and then a little bit, the weight of my body presses a little on the back of my right hand, so there's a tiny bit of pain. I don't know, maybe it's because I'm really anxious, so I have this behavior, roughly like this. Even if I describe to the AI in this much detail, this kind of action, what do I think it might mean for the AI? I don't know. Like, if it could completely understand these actions of mine, what could it bring?` },
                           ],
                           children: [
                             {
-                              id: 'w14-breakdown', kind: 'step', icon: 'doc', label: 'Breaking Actions Down, and Signs',
-                              title: 'Breaking actions down, and signs',
+                              id: 'w14-breakdown', kind: 'step', icon: 'doc', label: 'Breaking Actions Into Steps',
+                              title: 'Breaking actions into steps',
+                              images: ['w14/breakdown-therbligs', 'w14/breakdown-gestures-1', 'w14/breakdown-gestures-2', 'w14/breakdown-teachable-machine', 'w14/breakdown-dtpr', 'w14/breakdown-cctv'],
                               text: `For example, like the 3 layers (skill-based, rule-based, knowledge-based), used to locate, or how to accurately map it to that kind of code situation. I don't want to make that kind of really fake thing, but I do want to make that kind of feeling of further breaking it down or learning it.
 
 On DTPR: I've decided, I want to learn its method, not just the result of its design. I do also quite like its classification, but what I want to learn is the act of classifying itself.
@@ -2283,8 +2287,8 @@ On DTPR: I've decided, I want to learn its method, not just the result of its de
 In the real world, for example where there's CCTV, I found these things are explicit, there are clear regulations that they have to be made very visible.`,
                               children: [
                                 {
-                                  id: 'w14-book', kind: 'step', icon: 'doc', label: 'After Feedback: the Book',
-                                  title: 'After feedback: the book',
+                                  id: 'w14-book', kind: 'step', icon: 'doc', label: 'The Book',
+                                  title: 'The book',
                                   text: `I got feedback that the stair sticker could make people aware of their everyday small actions, and how they relate to AI, or how AI can't relate to these actions they do every day. I actually think this is kind of right. I have a vague idea about AI and creation, or people actively thinking, interacting and using tools, and people handing over power, whether to intuition, bodily reactions, subconscious behavior, or to AI. To what degree? To let AI learn, imitate, copy? To become, to what degree? But that's impossible and also useless, just like even every person, every moment, every reaction is different. People can't become pigeons. Like the AI that is the reverse of Helen Keller: an AI that can't touch water with a warm hand can't feel. And even another person, or a person in another state, doesn't feel the same, right? Like butterflies living in butterfly time. I don't know.
 
 I hope that “every person, every moment, every reaction is different” and handing things over to the body (intuition, the subconscious, muscle memory) are talking about the same thing.
@@ -2326,7 +2330,6 @@ The book takes its inspiration from Helen Keller, who learned the word water by 
             },
             {
               id: 'w14-refs', kind: 'step', icon: 'list', label: 'References',
-              todo: 'Sources for: the Bonus Context comic (link), the everyday “thoughtless” photographs, the virtual agent performing self-adaptors, the Ekman & Friesen figure, gesture phases',
               sections: [
                 {
                   title: 'References',
@@ -2350,7 +2353,8 @@ The book takes its inspiration from Helen Keller, who learned the word water by 
             {
               id: 'w14-stickers', kind: 'step', icon: 'image', label: 'Prototype 2.b · Stickers',
               title: 'Prototype 2.b — Stickers (11.16–11.21)',
-              todo: 'Documentation of the sticker series · photos of the stickers in place',
+              images: ['w14/stickers-toggle', 'w14/stickers-labels'],
+              todo: 'Photos of the stickers in place',
             },
           ],
         },
