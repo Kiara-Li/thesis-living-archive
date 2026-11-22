@@ -571,7 +571,7 @@
 
   function hasPanel(n) {
     return !!((n.images && n.images.length) || (n.entries && n.entries.length) || (n.sections && n.sections.length)
-      || (n.blocks && n.blocks.length) || n.table || (n.links && n.links.length) || n.embed || n.video);
+      || (n.blocks && n.blocks.length) || n.table || (n.links && n.links.length) || n.embed || n.video || n.todo);
   }
 
   function activate(n, opts = {}) {
@@ -727,7 +727,8 @@
         .join('')}</tbody></table></section>`;
     }
     if (n.blocks && n.blocks.length) {
-      html += n.blocks.map((bl) => `<section class="block"><h3>${esc(bl.title)}</h3>${String(bl.text || '').split(/\n\s*\n/).map((t) => `<p class="p-text">${esc(t)}</p>`).join('')}</section>`).join('');
+      // a block can go without a title, and `quote: true` sets it in from the edge
+      html += n.blocks.map((bl) => `<section class="block${bl.quote ? ' quote' : ''}">${bl.title ? `<h3>${esc(bl.title)}</h3>` : ''}${String(bl.text || '').split(/\n\s*\n/).map((t) => `<p class="p-text">${esc(t)}</p>`).join('')}</section>`).join('');
     }
     if (imgs.length) {
       html += `<section><h3>Material <span>${imgs.length}</span></h3><div class="grid">${imgs

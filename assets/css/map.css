@@ -204,6 +204,7 @@ html, body { height: 100%; overflow: hidden; }
 /* headed paragraphs */
 .panel .block { margin-top: 20px; }
 .panel .block h3 { text-transform: none; letter-spacing: 0.02em; font-size: 11px; }
+.panel .block.quote .p-text { padding-left: 22px; color: var(--mute); }
 
 /* numbered lists (e.g. unseen actions) */
 .steps ol { list-style: none; margin: 0; padding: 0; }
