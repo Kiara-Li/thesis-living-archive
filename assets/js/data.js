@@ -2223,6 +2223,12 @@ Assuming Week One is completed as planned.`,
               id: 'w14-notice', kind: 'step', icon: 'page', label: 'Prototype 2.a · NOTICE',
               title: 'Prototype 2.a — NOTICE (11.16–11.21)',
               todo: 'Documentation of the NOTICE browser extension · screenshots / screen recording · link to try it',
+              children: [
+                {
+                  id: 'w14-notice-refs', kind: 'step', icon: 'image', label: 'References',
+                  images: ['w14-notice-refs/01-location', 'w14-notice-refs/02-tracking', 'w14-notice-refs/03-terms'],
+                },
+              ],
             },
             {
               id: 'w14-moodboard', kind: 'step', icon: 'image', label: 'Moodboard',
